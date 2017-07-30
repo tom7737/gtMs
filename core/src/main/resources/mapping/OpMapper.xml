@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gt.ms.mapper.admin.OpMapepr">
+    <resultMap id="OpResultMap" type="com.gt.ms.entity.admin.Op">
+        <result column="op_code" property="opCode" jdbcType="VARCHAR"/>
+        <result column="op_name" property="opName" jdbcType="VARCHAR"/>
+        <result column="op_dept" property="opDept" jdbcType="VARCHAR"/>
+        <result column="op_password" property="opPassword" jdbcType="VARCHAR"/>
+        <result column="op_limit" property="opLimit" jdbcType="VARCHAR"/>
+        <result column="op_regist" property="opRegist" jdbcType="VARCHAR"/>
+        <result column="op_login" property="opLogin" jdbcType="VARCHAR"/>
+        <result column="op_prelogin" property="opPrelogin" jdbcType="VARCHAR"/>
+        <result column="op_chenge" property="opChenge" jdbcType="VARCHAR"/>
+        <result column="op_memo" property="opMemo" jdbcType="VARCHAR"/>
+        <result column="op_truename" property="opTruename" jdbcType="VARCHAR"/>
+        <result column="op_hits" property="opHits" jdbcType="INTEGER"/>
+        <result column="op_power" property="opPower" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="op_export" property="opExport" jdbcType="VARCHAR"/>
+        <result column="op_state" property="opState" jdbcType="VARCHAR"/>
+        <result column="op_sfzh" property="opSfzh" jdbcType="VARCHAR"/>
+        <result column="op_js" property="opJs" jdbcType="INTEGER"/>
+        <result column="op_jsmr" property="opJsmr" jdbcType="INTEGER"/>
+        <result column="op_zb" property="opZb" jdbcType="VARCHAR"/>
+        <result column="op_zbjs" property="opZbjs" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="op_List">
+        op_code,op_name,op_dept,op_password,op_limit,op_regist,op_login,op_prelogin,op_chenge,
+        op_memo,op_truename,op_hits,op_power,mobile,op_export,op_state,op_sfzh,op_js,op_jsmr,
+        op_zb,op_zbjs
+    </sql>
+
+    <select id="getByOpName" resultMap="OpResultMap" parameterType="java.lang.String">
+        select
+        <include refid="op_List"/>
+        from op
+        where op_name = #{opName}
+    </select>
+
+    <select id="get" resultMap="OpResultMap" parameterType="java.lang.String">
+        select
+        <include refid="op_List"/>
+        from op
+        where op_code = #{op_code}
+    </select>
+    <select id="getList" resultMap="OpResultMap">
+        select
+        <include refid="op_List"/>
+        from op
+    </select>
+
+</mapper>

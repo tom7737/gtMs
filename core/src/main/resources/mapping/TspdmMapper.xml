@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.common.TspdmMapper">
+  <resultMap id="BaseResultMap" type="com.gt.ms.entity.common.Tspdm">
+    <result column="bf" jdbcType="NVARCHAR" property="bf" />
+    <result column="bfzs" jdbcType="NVARCHAR" property="bfzs" />
+    <result column="fgroup" jdbcType="NVARCHAR" property="fgroup" />
+    <result column="flink" jdbcType="NVARCHAR" property="flink" />
+    <result column="fspdm" jdbcType="NVARCHAR" property="fspdm" />
+    <result column="fspeng" jdbcType="NVARCHAR" property="fspeng" />
+    <result column="fspname" jdbcType="NVARCHAR" property="fspname" />
+    <result column="id" jdbcType="NVARCHAR" property="id" />
+    <result column="lsqgx" jdbcType="NVARCHAR" property="lsqgx" />
+    <result column="page" jdbcType="NVARCHAR" property="page" />
+    <result column="px" jdbcType="NVARCHAR" property="px" />
+    <result column="szh" jdbcType="NVARCHAR" property="szh" />
+    <result column="ztdm" jdbcType="NVARCHAR" property="ztdm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bf, bfzs, fgroup, flink, fspdm, fspeng, fspname, id, lsqgx, page, px, szh, ztdm
+  </sql>
+  <insert id="insert" parameterType="com.gt.ms.entity.common.Tspdm">
+    insert into tSPDM (bf, bfzs, fgroup, 
+      flink, fspdm, fspeng, 
+      fspname, id, lsqgx, 
+      page, px, szh, ztdm
+      )
+    values (#{bf,jdbcType=NVARCHAR}, #{bfzs,jdbcType=NVARCHAR}, #{fgroup,jdbcType=NVARCHAR}, 
+      #{flink,jdbcType=NVARCHAR}, #{fspdm,jdbcType=NVARCHAR}, #{fspeng,jdbcType=NVARCHAR}, 
+      #{fspname,jdbcType=NVARCHAR}, #{id,jdbcType=NVARCHAR}, #{lsqgx,jdbcType=NVARCHAR}, 
+      #{page,jdbcType=NVARCHAR}, #{px,jdbcType=NVARCHAR}, #{szh,jdbcType=NVARCHAR}, #{ztdm,jdbcType=NVARCHAR}
+      )
+  </insert>
+</mapper>

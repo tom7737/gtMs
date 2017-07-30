@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.sqs.Sqs01Mapper">
+  <resultMap id="OpResultMap" type="com.gt.ms.entity.sqs.Sqs01">
+    <id column="guid" jdbcType="NVARCHAR" property="guid" />
+    <result column="app_name" jdbcType="NVARCHAR" property="appName" />
+    <result column="app_addr" jdbcType="NVARCHAR" property="appAddr" />
+    <result column="if_common0" jdbcType="BIT" property="ifCommon0" />
+    <result column="if_common1" jdbcType="BIT" property="ifCommon1" />
+    <result column="post_code" jdbcType="NVARCHAR" property="postCode" />
+    <result column="person" jdbcType="NVARCHAR" property="person" />
+    <result column="phone" jdbcType="NVARCHAR" property="phone" />
+    <result column="fax" jdbcType="NVARCHAR" property="fax" />
+    <result column="agent_name" jdbcType="NVARCHAR" property="agentName" />
+    <result column="tm_kind_y" jdbcType="BIT" property="tmKindY" />
+    <result column="tm_kind_j" jdbcType="BIT" property="tmKindJ" />
+    <result column="tm_kind_t" jdbcType="BIT" property="tmKindT" />
+    <result column="solid" jdbcType="BIT" property="solid" />
+    <result column="colour" jdbcType="BIT" property="colour" />
+    <result column="dgn_desc" jdbcType="LONGVARCHAR" property="dgnDesc" />
+    <result column="class" jdbcType="NVARCHAR" property="class_" />
+    <result column="comm_serv" jdbcType="LONGVARCHAR" property="commServ" />
+    <result column="attach" jdbcType="NVARCHAR" property="attach" />
+    <result column="common_app" jdbcType="LONGVARCHAR" property="commonApp" />
+    <result column="int_code" jdbcType="NVARCHAR" property="intCode" />
+    <result column="memo1" jdbcType="LONGVARCHAR" property="memo1" />
+    <result column="tm_name" jdbcType="NVARCHAR" property="tmName" />
+    <result column="add_comm" jdbcType="LONGVARCHAR" property="addComm" />
+    <result column="agent_number" jdbcType="NVARCHAR" property="agentNumber" />
+    <result column="pic" jdbcType="LONGVARBINARY" property="pic" />
+    <result column="ctm_code" jdbcType="NVARCHAR" property="ctmCode" />
+    <result column="make_date" jdbcType="NVARCHAR" property="makeDate" />
+    <result column="make_op" jdbcType="NVARCHAR" property="makeOp" />
+    <result column="sent_date" jdbcType="NVARCHAR" property="sentDate" />
+    <result column="sent_op" jdbcType="NVARCHAR" property="sentOp" />
+    <result column="sent_state" jdbcType="NVARCHAR" property="sentState" />
+    <result column="list_code" jdbcType="NVARCHAR" property="listCode" />
+    <result column="rtn_state" jdbcType="NVARCHAR" property="rtnState" />
+    <result column="reg_code" jdbcType="NVARCHAR" property="regCode" />
+    <result column="pice" jdbcType="DECIMAL" property="pice" />
+    <result column="counterman" jdbcType="NVARCHAR" property="counterman" />
+    <result column="archiveNO" jdbcType="NVARCHAR" property="archiveno" />
+    <result column="gui_fee" jdbcType="DECIMAL" property="guiFee" />
+    <result column="reg_type" jdbcType="NVARCHAR" property="regType" />
+    <result column="accountman" jdbcType="NVARCHAR" property="accountman" />
+    <result column="accountstate" jdbcType="NVARCHAR" property="accountstate" />
+    <result column="accountmemo" jdbcType="NVARCHAR" property="accountmemo" />
+    <result column="accountdate" jdbcType="NVARCHAR" property="accountdate" />
+    <result column="invoice" jdbcType="NVARCHAR" property="invoice" />
+    <result column="receiptcode" jdbcType="NVARCHAR" property="receiptcode" />
+    <result column="invoicedate" jdbcType="NVARCHAR" property="invoicedate" />
+    <result column="invoiceman" jdbcType="NVARCHAR" property="invoiceman" />
+    <result column="receivable" jdbcType="NVARCHAR" property="receivable" />
+    <result column="app_date" jdbcType="NVARCHAR" property="appDate" />
+    <result column="sqdate" jdbcType="NVARCHAR" property="sqdate" />
+    <result column="dlguid" jdbcType="NVARCHAR" property="dlguid" />
+    <result column="fpqx" jdbcType="NVARCHAR" property="fpqx" />
+    <result column="ztdm" jdbcType="NVARCHAR" property="ztdm" />
+    <result column="app_code" jdbcType="NVARCHAR" property="appCode" />
+    <result column="jkrq" jdbcType="NVARCHAR" property="jkrq" />
+    <result column="jkfs" jdbcType="NVARCHAR" property="jkfs" />
+    <result column="sjje" jdbcType="NVARCHAR" property="sjje" />
+    <result column="ywy_op" jdbcType="NVARCHAR" property="ywyOp" />
+    <result column="snwh" jdbcType="NVARCHAR" property="snwh" />
+    <result column="cjid" jdbcType="NVARCHAR" property="cjid" />
+    <result column="cjid_zb" jdbcType="NVARCHAR" property="cjidZb" />
+    <result column="agent_fee" jdbcType="DECIMAL" property="agentFee" />
+    <result column="gfcz" jdbcType="NVARCHAR" property="gfcz" />
+    <result column="country_fee" jdbcType="DECIMAL" property="countryFee" />
+    <result column="app_name_e" jdbcType="NVARCHAR" property="appNameE" />
+    <result column="app_addr_e" jdbcType="NVARCHAR" property="appAddrE" />
+    <result column="app_state" jdbcType="NVARCHAR" property="appState" />
+    <result column="gjid" jdbcType="NVARCHAR" property="gjid" />
+    <result column="app_new" jdbcType="NVARCHAR" property="appNew" />
+    <result column="class_more" jdbcType="INTEGER" property="classMore" />
+    <result column="sound" jdbcType="BIT" property="sound" />
+    <result column="priority_claim" jdbcType="INTEGER" property="priorityClaim" />
+    <result column="priority_prove" jdbcType="INTEGER" property="priorityProve" />
+    <result column="priority_state" jdbcType="NVARCHAR" property="priorityState" />
+    <result column="app_number" jdbcType="NVARCHAR" property="appNumber" />
+    <result column="app_jsr" jdbcType="NVARCHAR" property="appJsr" />
+    <result column="app_jsrdz" jdbcType="NVARCHAR" property="appJsrdz" />
+    <result column="app_jsryb" jdbcType="NVARCHAR" property="appJsryb" />
+    <result column="gui_feem" jdbcType="DECIMAL" property="guiFeem" />
+  </resultMap>
+
+  <sql id="op_List">
+    guid, app_name, app_addr, if_common0, if_common1, post_code, person, phone, fax, 
+    agent_name, tm_kind_y, tm_kind_j, tm_kind_t, solid, colour,dgn_desc, class,comm_serv, attach,common_app, int_code,memo1,
+    tm_name,add_comm, agent_number,pic, ctm_code, make_date, make_op, sent_date, sent_op, sent_state,
+    list_code, rtn_state, reg_code, pice, counterman, archiveNO, gui_fee, reg_type, accountman, 
+    accountstate, accountmemo, accountdate, invoice, receiptcode, invoicedate, invoiceman, 
+    receivable, app_date, sqdate, dlguid, fpqx, ztdm, app_code, jkrq, jkfs, sjje, ywy_op, 
+    snwh, cjid, cjid_zb, agent_fee, gfcz, country_fee, app_name_e, app_addr_e, app_state, 
+    gjid, app_new, class_more, sound, priority_claim, priority_prove, priority_state, 
+    app_number, app_jsr, app_jsrdz, app_jsryb, gui_feem
+  </sql>
+
+    <select id="get" parameterType="java.lang.String" resultMap="OpResultMap">
+        select
+        <include refid="op_List" />
+        from [01]
+        where guid = #{guid}
+    </select>
+  <insert id="insert" parameterType="com.gt.ms.entity.sqs.Sqs01">
+    <selectKey keyProperty="guid" order="AFTER" resultType="java.lang.String">
+      SQL_Server
+    </selectKey>
+    insert into [01] (app_name, app_addr, if_common0,
+    if_common1, post_code, person,
+    phone, fax, agent_name,
+    tm_kind_y, tm_kind_j, tm_kind_t, solid,
+    colour, class, attach,
+    int_code, tm_name, agent_number,
+    ctm_code, make_date, make_op,
+    sent_date, sent_op, sent_state,
+    list_code, rtn_state, reg_code,
+    pice, counterman, archiveNO,
+    gui_fee, reg_type, accountman,
+    accountstate, accountmemo, accountdate,
+    invoice, receiptcode, invoicedate,
+    invoiceman, receivable, app_date,
+    sqdate, dlguid, fpqx,
+    ztdm, app_code, jkrq,
+    jkfs, sjje, ywy_op,
+    snwh, cjid, cjid_zb,
+    agent_fee, gfcz, country_fee,
+    app_name_e, app_addr_e, app_state,
+    gjid, app_new, class_more,
+    sound, priority_claim, priority_prove,
+    priority_state, app_number, app_jsr,
+    app_jsrdz, app_jsryb, gui_feem,
+    dgn_desc, comm_serv, common_app,
+    memo1, add_comm, pic
+    )
+    values (#{appName,jdbcType=NVARCHAR}, #{appAddr,jdbcType=NVARCHAR}, #{ifCommon0,jdbcType=BIT},
+    #{ifCommon1,jdbcType=BIT}, #{postCode,jdbcType=NVARCHAR}, #{person,jdbcType=NVARCHAR},
+    #{phone,jdbcType=NVARCHAR}, #{fax,jdbcType=NVARCHAR}, #{agentName,jdbcType=NVARCHAR},
+    #{tmKindY,jdbcType=BIT}, #{tmKindJ,jdbcType=BIT}, #{tmKindT,jdbcType=BIT}, #{solid,jdbcType=BIT},
+    #{colour,jdbcType=BIT}, #{class,jdbcType=NVARCHAR}, #{attach,jdbcType=NVARCHAR},
+    #{intCode,jdbcType=NVARCHAR}, #{tmName,jdbcType=NVARCHAR}, #{agentNumber,jdbcType=NVARCHAR},
+    #{ctmCode,jdbcType=NVARCHAR}, #{makeDate,jdbcType=NVARCHAR}, #{makeOp,jdbcType=NVARCHAR},
+    #{sentDate,jdbcType=NVARCHAR}, #{sentOp,jdbcType=NVARCHAR}, #{sentState,jdbcType=NVARCHAR},
+    #{listCode,jdbcType=NVARCHAR}, #{rtnState,jdbcType=NVARCHAR}, #{regCode,jdbcType=NVARCHAR},
+    #{pice,jdbcType=DECIMAL}, #{counterman,jdbcType=NVARCHAR}, #{archiveno,jdbcType=NVARCHAR},
+    #{guiFee,jdbcType=DECIMAL}, #{regType,jdbcType=NVARCHAR}, #{accountman,jdbcType=NVARCHAR},
+    #{accountstate,jdbcType=NVARCHAR}, #{accountmemo,jdbcType=NVARCHAR}, #{accountdate,jdbcType=NVARCHAR},
+    #{invoice,jdbcType=NVARCHAR}, #{receiptcode,jdbcType=NVARCHAR}, #{invoicedate,jdbcType=NVARCHAR},
+    #{invoiceman,jdbcType=NVARCHAR}, #{receivable,jdbcType=NVARCHAR}, #{appDate,jdbcType=NVARCHAR},
+    #{sqdate,jdbcType=NVARCHAR}, #{dlguid,jdbcType=NVARCHAR}, #{fpqx,jdbcType=NVARCHAR},
+    #{ztdm,jdbcType=NVARCHAR}, #{appCode,jdbcType=NVARCHAR}, #{jkrq,jdbcType=NVARCHAR},
+    #{jkfs,jdbcType=NVARCHAR}, #{sjje,jdbcType=NVARCHAR}, #{ywyOp,jdbcType=NVARCHAR},
+    #{snwh,jdbcType=NVARCHAR}, #{cjid,jdbcType=NVARCHAR}, #{cjidZb,jdbcType=NVARCHAR},
+    #{agentFee,jdbcType=DECIMAL}, #{gfcz,jdbcType=NVARCHAR}, #{countryFee,jdbcType=DECIMAL},
+    #{appNameE,jdbcType=NVARCHAR}, #{appAddrE,jdbcType=NVARCHAR}, #{appState,jdbcType=NVARCHAR},
+    #{gjid,jdbcType=NVARCHAR}, #{appNew,jdbcType=NVARCHAR}, #{classMore,jdbcType=INTEGER},
+    #{sound,jdbcType=BIT}, #{priorityClaim,jdbcType=INTEGER}, #{priorityProve,jdbcType=INTEGER},
+    #{priorityState,jdbcType=NVARCHAR}, #{appNumber,jdbcType=NVARCHAR}, #{appJsr,jdbcType=NVARCHAR},
+    #{appJsrdz,jdbcType=NVARCHAR}, #{appJsryb,jdbcType=NVARCHAR}, #{guiFeem,jdbcType=DECIMAL},
+    #{dgnDesc,jdbcType=LONGVARCHAR}, #{commServ,jdbcType=LONGVARCHAR}, #{commonApp,jdbcType=LONGVARCHAR},
+    #{memo1,jdbcType=LONGVARCHAR}, #{addComm,jdbcType=LONGVARCHAR}, #{pic,jdbcType=LONGVARBINARY}
+    )
+  </insert>
+</mapper>

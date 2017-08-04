@@ -3,12 +3,17 @@ package com.gt.ms.controller;
 import com.gt.ms.entity.admin.ActUser;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.admin.Role;
+import com.gt.ms.entity.common.Tspdm;
+import com.gt.ms.entity.sqs.App01More;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
+import com.gt.ms.service.common.TspdmService;
+import com.gt.ms.service.sqs.App01MoreService;
 import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +46,17 @@ public class Sqs01Controller extends BaseController {
     private Sqs01Service sqs01Server;
     @Autowired
     private OpService opService;
+    @Autowired
+    private App01MoreService app01MoreService;
+    @Autowired
+    private TspdmService tspdmService;
+
+    private static final String common_fax = "010-63347865";//传真
+    private static final Double common_country_fei = 300.00;//规费
+    private static final Double common_country_fei_jt = 1500.00;//规费(集体)
+    private static final Double common_country_fei_zm = 1500.00;//规费（证明）
+    private static final String common_dlguid = "10000";//代理组织ID
+
     /**
      * 商标注册申请书管理页
      *
@@ -110,25 +126,106 @@ public class Sqs01Controller extends BaseController {
      * @param model
      * @return
      */
-    @RequestMapping("/editPage")
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editPage(String guid, Model model) {
         Sqs01 sqs01 = sqs01Server.get(guid);
+        List<Op> ops = opService.getList();
+
         model.addAttribute("sqs01", sqs01);
-        return "/sqs/01/userEdit";
+        model.addAttribute("ops", ops);
+
+        return "/sqs/01/edit";
+    }
+
+    /**
+     * 添加商标注册申请书小类页
+     *
+     * @return
+     */
+    @RequestMapping(value = "/addItem", method = RequestMethod.GET)
+    public String addItem(Integer class_, String appguid, Model model) {
+//        List<Tspdm> tspdms = null;
+//        String classes_ = null;
+//        List<App01More> items = null;
+//        if (class_ < 10) {
+//            classes_ = "0" + class_;
+//        } else
+//            classes_ = "" + class_;
+//        tspdms = tspdmService.getListByClass(classes_);
+//        model.addAttribute("tspdms", tspdms);
+        model.addAttribute("class_", class_);
+//        Sqs01 sqs01 = sqs01Server.get(appguid);
+//        if (StringUtils.isNotBlank(appguid))
+//            items = app01MoreService.getByAppguid(appguid);
+//        else
+//            items = new ArrayList<App01More>();
+//        model.addAttribute("items", items);
+        return "/sqs/01/addItem";
     }
 
     /**
      * 编辑商标注册申请书
      *
-     * @param Sqs01
+     * @param sqs01
      * @return
      */
-    @RequestMapping("/edit")
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult edit(Sqs01 Sqs01) {
+    public AjaxResult edit(Sqs01 sqs01, byte[] wts) {
         AjaxResult result = new AjaxResult();
         try {
-            sqs01Server.update(Sqs01);
+
+            if (sqs01.getTmKindJ() == null) {//集体
+                sqs01.setTmKindJ(false);
+            }
+            if (sqs01.getTmKindT() == null) {//证明
+                sqs01.setTmKindT(false);
+            }
+            if (sqs01.getIfCommon0() == null) {//是否共同申请
+                sqs01.setIfCommon0(false);
+                sqs01.setIfCommon1(true);
+            } else {
+                sqs01.setIfCommon0(true);
+                sqs01.setIfCommon1(false);
+            }
+            if (sqs01.getSolid() == null) {//三维
+                sqs01.setSolid(false);
+            }
+            if (sqs01.getColour() == null) {//颜色
+                sqs01.setColour(false);
+            }
+            if (sqs01.getSound() == null) {//声音
+                sqs01.setSound(false);
+            }
+
+            if (sqs01.getTmKindJ() || sqs01.getTmKindT() || sqs01.getIfCommon0() ||
+                    sqs01.getSolid() || sqs01.getColour() || sqs01.getSound()) {
+                sqs01.setTmKindY(false);//有商标申请声明
+            } else {
+                sqs01.setTmKindY(true);//无商标申请声明
+            }
+
+            // fax
+            sqs01.setFax(common_fax);
+            //attach
+            if (StringUtils.isNotBlank(sqs01.getAddComm())) {
+                sqs01.setAttach("1");
+            } else {
+                sqs01.setAttach("0");
+            }
+            sqs01.setDlguid(common_dlguid);
+            //费用计算--费用在前端计算
+            if (sqs01.getTmKindJ() != null) {
+                sqs01.setCountryFee(common_country_fei_jt);
+            } else if (sqs01.getTmKindT() != null) {
+                sqs01.setCountryFee(common_country_fei_zm);
+            } else {
+                sqs01.setCountryFee(common_country_fei);
+            }
+            //agentFee
+
+            LOGGER.debug(sqs01.toString());
+//            sqs01Server.update(Sqs01);
             result.setSuccess(true);
             result.setMessage("修改成功！");
             return result;

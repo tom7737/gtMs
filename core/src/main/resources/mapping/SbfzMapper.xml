@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.common.SbfzMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.common.Sbfz">
+        <result column="fenzu" jdbcType="NVARCHAR" property="fenzu"/>
+        <result column="page" jdbcType="SMALLINT" property="page"/>
+        <result column="xinxi" jdbcType="NVARCHAR" property="xinxi"/>
+        <result column="zhushi" jdbcType="NVARCHAR" property="zhushi"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    fenzu,page,xinxi,zhushi
+  </sql>
+
+    <select id="getListByClass" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from sbfz
+        WHERE
+        fenzu like '${classes}%'
+    </select>
+</mapper>

@@ -3,34 +3,35 @@ package com.gt.ms.entity.common;
 import java.io.Serializable;
 
 /**
+ * 商品代码
  * @author 
  */
 public class Tspdm implements Serializable {
-    private String bf;
+    private String bf;//所属部分
 
-    private String bfzs;
+    private String bfzs;//所属部分注释
 
-    private String fgroup;
+    private String fgroup;//分组
 
-    private String flink;
+    private String flink;//关联商品
 
-    private String fspdm;
+    private String fspdm;//商品代码
 
-    private String fspeng;
+    private String fspeng;//商品英文名
 
-    private String fspname;
+    private String fspname;//商品名称
 
-    private String id;
+    private String id;//商品分类ID
 
-    private String lsqgx;
+    private String lsqgx;//类似群关系
 
-    private String page;
+    private String page;//页码
 
-    private String px;
+    private String px;//排序（名称的英文首字母）
 
-    private String szh;
+    private String szh;//
 
-    private String ztdm;
+    private String ztdm;//状态代码
 
 
     private static final long serialVersionUID = 1L;

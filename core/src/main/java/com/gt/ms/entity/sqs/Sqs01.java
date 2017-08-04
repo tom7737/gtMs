@@ -33,12 +33,12 @@ public class Sqs01 implements java.io.Serializable {
     private String intCode;
     private String memo1;//备注
     private String tmName;//商标名称
-    private String addComm;//附加小类
+    private String addComm;//超出10项的小类
     private String agentNumber;//申请书编号
     private byte[] pic;//商标图样
     private String ctmCode;//申请人编号
     private String makeDate;//申请书制作日期
-    private String makeOp;//申请书制作人
+    private String makeOp;//代理人
     private String sentDate;//报送日期（添加清单的日期）
     private String sentOp;//报送人（添加清单的人）
     private String sentState;//报送状态，1未下载/0000已下载/空,未报送
@@ -46,9 +46,9 @@ public class Sqs01 implements java.io.Serializable {
     private String rtnState;
     private String regCode;//注册号
     private Double pice;//费用
-    private String counterman;//代理人
+    private String counterman;//业务来源编号
     private String archiveNo;//是否存档
-    private Double guiFee;//规费
+    private Double guiFee;//规费(所选类)
     private String regType;//申请类型，0普通申请/1网上申请/2网上特惠申请
     private String accountman;//财务审核人员
     private String accountstate;//财务审核状态，1已审核/空，未审核/0审核不通过
@@ -70,7 +70,7 @@ public class Sqs01 implements java.io.Serializable {
     private String sjje;//实际金额
     private String ywyOp;//业务联系人
     private String snwh;
-    private String cjid;//创建人ID
+    private String cjid;//录入人
     private String cjidZb;
     private Double agentFee;//代理费
     private String gfcz;
@@ -89,7 +89,7 @@ public class Sqs01 implements java.io.Serializable {
     private String appJsr;//国内接收人
     private String appJsrdz;//国内接收人地址
     private String appJsryb;//国内接收人邮编
-    private Double guiFeem;
+    private Double guiFeem;//附加项目规费
 
 
     // Constructors

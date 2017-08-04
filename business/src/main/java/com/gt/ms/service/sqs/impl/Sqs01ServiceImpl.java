@@ -17,7 +17,7 @@ public class Sqs01ServiceImpl extends BaseServiceImpl<Sqs01, String> implements 
     private Sqs01Mapper sqs01Dao;
 
     @Autowired
-    public void setOpDao(Sqs01Mapper sqs01Dao) {
+    public void setDao(Sqs01Mapper sqs01Dao) {
         super.dao = sqs01Dao;
         this.sqs01Dao = sqs01Dao;
     }

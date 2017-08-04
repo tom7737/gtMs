@@ -7,6 +7,8 @@ import com.gt.ms.service.common.TspdmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by admini on 2017/5/10.
  */
@@ -22,4 +24,8 @@ public class TspdmServiceImpl extends BaseServiceImpl<Tspdm, String> implements 
         this.tspdmMapper = tspdmMapper;
     }
 
+    @Override
+    public List<Tspdm> getListByClass(String class_) {
+        return tspdmMapper.getListByClass(class_);
+    }
 }

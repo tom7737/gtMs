@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gt.ms.mapper.sqs.Sqs01Mapper">
-  <resultMap id="OpResultMap" type="com.gt.ms.entity.sqs.Sqs01">
+  <resultMap id="Sqs01ResultMap" type="com.gt.ms.entity.sqs.Sqs01">
     <id column="guid" jdbcType="NVARCHAR" property="guid" />
     <result column="app_name" jdbcType="NVARCHAR" property="appName" />
     <result column="app_addr" jdbcType="NVARCHAR" property="appAddr" />
@@ -84,7 +84,7 @@
     <result column="gui_feem" jdbcType="DECIMAL" property="guiFeem" />
   </resultMap>
 
-  <sql id="op_List">
+  <sql id="Sqs01_List">
     guid, app_name, app_addr, if_common0, if_common1, post_code, person, phone, fax, 
     agent_name, tm_kind_y, tm_kind_j, tm_kind_t, solid, colour,dgn_desc, class,comm_serv, attach,common_app, int_code,memo1,
     tm_name,add_comm, agent_number,pic, ctm_code, make_date, make_op, sent_date, sent_op, sent_state,
@@ -96,9 +96,9 @@
     app_number, app_jsr, app_jsrdz, app_jsryb, gui_feem
   </sql>
 
-    <select id="get" parameterType="java.lang.String" resultMap="OpResultMap">
+    <select id="get" parameterType="java.lang.String" resultMap="Sqs01ResultMap">
         select
-        <include refid="op_List" />
+        <include refid="Sqs01_List" />
         from [01]
         where guid = #{guid}
     </select>

@@ -222,10 +222,20 @@ public class Sqs01Controller extends BaseController {
             } else {
                 sqs01.setCountryFee(common_country_fei);
             }
+            String commServ = sqs01.getCommServ();
+            String addComm =  sqs01.getAddComm();
+            sqs01.setGuiFee(sqs01.getCountryFee());
+            if(com.gt.ms.utils.StringUtils.isNotBlank(addComm)){
+                String[] split = addComm.split("。")[0].split("；");
+                sqs01.setGuiFeem(sqs01.getCountryFee()/10*split.length);
+            }else {
+                sqs01.setGuiFeem(0d);
+            }
             //agentFee
+            sqs01.setAgentFee( sqs01.getPice()-sqs01.getGuiFee()-sqs01.getGuiFeem());
 
             LOGGER.debug(sqs01.toString());
-//            sqs01Server.update(Sqs01);
+            sqs01Server.update(sqs01);
             result.setSuccess(true);
             result.setMessage("修改成功！");
             return result;

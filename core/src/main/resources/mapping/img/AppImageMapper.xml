@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.img.mapper.AppImageMapper">
+    <resultMap id="BaseResultMap" type="com.gt.img.entity.AppImage">
+        <result column="guid" jdbcType="NVARCHAR" property="guid"/>
+        <result column="dlguid" jdbcType="NVARCHAR" property="dlguid"/>
+        <result column="appno" jdbcType="NVARCHAR" property="appno"/>
+        <result column="appguid" jdbcType="NVARCHAR" property="appguid"/>
+        <result column="agent_number" jdbcType="NVARCHAR" property="agentNumber"/>
+        <result column="zllb" jdbcType="NVARCHAR" property="zllb"/>
+        <result column="zlmc" jdbcType="NVARCHAR" property="zlmc"/>
+        <result column="zltp" jdbcType="LONGVARBINARY" property="zltp"/>
+        <result column="tpkj" jdbcType="NVARCHAR" property="tpkj"/>
+        <result column="make_op" jdbcType="NVARCHAR" property="makeOp"/>
+        <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
+        <result column="tpwjgs" jdbcType="NVARCHAR" property="tpwjgs"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    guid,dlguid,appno,appguid,agent_number,zllb,zlmc,zltp,tpkj,make_op,cjsj,tpwjgs
+  </sql>
+
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from app_image
+        WHERE
+        guid = #{guid}
+    </select>
+</mapper>

@@ -1,19 +1,14 @@
 package com.gt.ms.controller;
 
-import com.gt.ms.entity.admin.ActUser;
+import com.gt.img.service.AppImageService;
 import com.gt.ms.entity.admin.Op;
-import com.gt.ms.entity.admin.Role;
-import com.gt.ms.entity.common.Tspdm;
-import com.gt.ms.entity.sqs.App01More;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
-import com.gt.ms.service.common.TspdmService;
-import com.gt.ms.service.sqs.App01MoreService;
 import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +17,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,9 +45,7 @@ public class Sqs01Controller extends BaseController {
     @Autowired
     private OpService opService;
     @Autowired
-    private App01MoreService app01MoreService;
-    @Autowired
-    private TspdmService tspdmService;
+    private AppImageService appImageService;
 
     private static final String common_fax = "010-63347865";//传真
     private static final Double common_country_fei = 300.00;//规费
@@ -158,6 +154,69 @@ public class Sqs01Controller extends BaseController {
     }
 
     /**
+     * 标样上传接口，请使用ajaxFileUpload的方式上传
+     *
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "/picUpload")
+    @ResponseBody
+    public AjaxResult picUpload(HttpServletRequest request) throws IOException {
+        AjaxResult result = new AjaxResult();
+        try {
+            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+            MultipartFile file = multipartRequest.getFile("pic");
+            String guid = request.getParameter("guid");
+            byte[] pic = file.getBytes();
+            LOGGER.debug("--------" + file.getOriginalFilename());
+            Sqs01 sqs01 = new Sqs01();
+            sqs01.setGuid(guid);
+            sqs01.setPic(pic);
+            sqs01Server.update(sqs01);
+            result.setSuccess(true);
+            result.setMessage("上传成功！");
+        } catch (Exception e) {
+            LOGGER.debug("error:", e);
+            result.setSuccess(false);
+            result.setMessage("上传失败！");
+        }
+        return result;
+    }
+
+    /**
+     * 委托书上传接口，请使用ajaxFileUpload的方式上传
+     *
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "/wtsUpload")
+    @ResponseBody
+    public AjaxResult wtsUpload(HttpServletRequest request) throws IOException {
+        AjaxResult result = new AjaxResult();
+        try {
+            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+            MultipartFile file = multipartRequest.getFile("wts");
+            String guid = request.getParameter("guid");
+            byte[] pic = file.getBytes();
+            LOGGER.debug("--------" + file.getOriginalFilename());
+            Sqs01 sqs01 = new Sqs01();
+            sqs01.setGuid(guid);
+            sqs01.setPic(pic);
+//        sqs01Server.update(sqs01);
+            appImageService.get(guid);
+            result.setSuccess(true);
+            result.setMessage("上传成功！");
+        } catch (Exception e) {
+            LOGGER.debug("error:", e);
+            result.setSuccess(false);
+            result.setMessage("上传失败！");
+        }
+        return result;
+    }
+
+    /**
      * 编辑商标注册申请书
      *
      * @param sqs01
@@ -165,7 +224,8 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult edit(Sqs01 sqs01, byte[] wts) {
+    public AjaxResult edit(Sqs01 sqs01, byte[] wts, HttpServletRequest request) {
+
         AjaxResult result = new AjaxResult();
         try {
 
@@ -235,6 +295,7 @@ public class Sqs01Controller extends BaseController {
             }
 
             LOGGER.debug(sqs01.toString());
+            sqs01.setPic(null);//这里不修改pic
             sqs01Server.update(sqs01);
             result.setSuccess(true);
             result.setMessage("修改成功！");

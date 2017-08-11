@@ -24,9 +24,12 @@
                 clip.attr("src", path);
             }
             $("#pic_text").val($(this).val());
+
+            uploadInfo("pic",'${path }/sqs/01/picUpload');
         });
         $("#wts").change(function () {
             $("#wts_text").val($(this).val());
+            uploadInfo("wts",'${path }/sqs/01/wtsUpload');
         })
         $('#sqs01EditForm').form({
             url: '${path }/sqs/01/edit',
@@ -108,12 +111,66 @@
         });
 
     }
+
+    //导入文件
+    function uploadInfo(fileId,url) {
+        var f = document.getElementById(fileId).value;
+        var target = document.getElementById(fileId);
+        if (f == "") {
+            alert("请选择文件");
+            return false;
+        } else {
+            if (!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG|mp4|AVI|MP4|avi)$/.test(f)) {
+                alert("文件应该为gif、jpg、jpeg、png、GIF、JPG、PNG、mp4、AVI类型")
+                return false;
+            }
+        }
+
+        var fileSize = 0;
+        if (!target.files) {
+            var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+            var file = fileSystem.GetFile(f);
+            fileSize = file.Size;
+        } else {
+            fileSize = target.files[0].size;
+        }
+        if (fileSize > 2 * 1024 * 1024) {
+            alert("文件不能大于2M。");
+            return false;
+        }
+
+
+        $.ajaxFileUpload({
+            url: url,//用于文件上传的服务器端请求地址
+
+            secureuri: false,          //一般设置为false
+
+            fileElementId: fileId,     //文件上传空间的id属性
+            data: {
+                guid: $("#guid").val()
+            },
+            dataType: 'json',          //返回值类型 一般设置为json
+
+            type: 'POST',
+            success: function (data) {
+                if (data.success) {
+                    parent.$.messager.alert('提示', '上传成功', 'info');
+                } else {
+                    parent.$.messager.alert('提示', data.message, 'info');
+                }
+            },
+            error: function (data, status, e) {
+                alert(e);
+            }
+
+        });
+    }
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="商标注册申请书"
          style="overflow: hidden;padding: 3px;overflow-y:scroll ">
 
-        <form id="sqs01EditForm" method="post">
+        <form id="sqs01EditForm" method="post" enctype=”multipart/form-data”>
             <input type="hidden" name="sentState" value="${sqs01.sentState}"/>
             <input type="hidden" id="guid" name="guid" value="${sqs01.guid}"/>
             <input type="hidden" name="accountstate" value="${sqs01.accountstate}"/>
@@ -297,7 +354,7 @@
                     <
                     <td>类别</td>
                     <td><input id="class_" name="class_" type="text" class="easyui-numberbox"
-                               value="${sqs01.class_}" >
+                               value="${sqs01.class_}">
                         <a onclick="addItemFun();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择商品</a></td>
                     <td><a style="display: none;" href="javascript:void(0);" class="easyui-linkbutton"
@@ -337,7 +394,7 @@
                     <td><a onclick="selectPic();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
                         <input id="pic" type="file" name="pic" style="display: none;" accept=".jpg"/>
-                        <input type="text" readonly id="pic_text" />
+                        <input type="text" readonly id="pic_text"/>
                     </td>
                     <td>清除标样</td>
                     <td><a onclick="cleanPic();" href="javascript:void(0);" class="easyui-linkbutton"
@@ -353,7 +410,7 @@
                     <td><a onclick="selectWts();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
                         <input id="wts" type="file" name="wts" style="display: none;" accept=".jpg"/>
-                        <input type="text" readonly id="wts_text" />
+                        <input type="text" readonly id="wts_text"/>
                     </td>
                     <td>查看委托书</td>
                     <td><a onclick="downloadWts();" href="javascript:void(0);" class="easyui-linkbutton"

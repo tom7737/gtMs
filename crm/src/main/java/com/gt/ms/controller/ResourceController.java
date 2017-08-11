@@ -46,12 +46,17 @@ public class ResourceController extends BaseController {
         Tree tree = new Tree();
         tree.setId(1L);
         tree.setText("申请书管理");
+        tree.setState("open");
+        tree.setChecked(false);
         tree.setIconCls("icon-company");
         tree.setAttributes("");
         Tree tree1 = new Tree();
-        tree1.setId(2L);
+        tree1.setId(11L);
         tree1.setText("添加申请书");
+        tree1.setState("open");
+        tree1.setChecked(false);
         tree1.setIconCls("icon-add");
+        tree1.setChildren(null);
         tree1.setAttributes("/sqs/01/add");
         List<Tree> trees1 = new ArrayList<Tree>();
         trees1.add(tree1);

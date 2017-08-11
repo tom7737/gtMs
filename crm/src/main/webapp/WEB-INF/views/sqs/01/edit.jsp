@@ -23,8 +23,11 @@
                 }
                 clip.attr("src", path);
             }
+            $("#pic_text").val($(this).val());
         });
-
+        $("#wts").change(function () {
+            $("#wts_text").val($(this).val());
+        })
         $('#sqs01EditForm').form({
             url: '${path }/sqs/01/edit',
             onSubmit: function () {
@@ -59,6 +62,7 @@
             if (b) {
                 $("#pic").val(null);
                 $("#img_pic").attr("src", "");
+                $("#pic_text").val(null);
             }
         });
 
@@ -69,21 +73,40 @@
 
     //添加小类
     function addItemFun() {
+        if ($("#class_").val() == null || $("#class_").val() == "") {
+            parent.$.messager.alert('提示', '请输入小类', 'info');
+        } else {
+            parent.$.modalDialog({
+                title: '选择商品',
+                width: 500,
+                height: 510,
+                href: '${path }/sqs/01/addItem',
+                buttons: [{
+                    text: '添加',
+                    handler: function () {
+                        saveItem();
+//                    parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
+//                    var f = parent.$.modalDialog.handler.find('#sqs01AddItemForm');
+//                    f.submit();
+                    }
+                }]
+            });
+        }
+    }
+    function addMoreItemFun() {
         parent.$.modalDialog({
-            title: '选择商品',
+            title: '选择附加商品',
             width: 500,
             height: 510,
-            href: '${path }/sqs/01/addItem?class_=' + $("#class_").val() + "&appguid=" + $("#guid").val(),
+            href: '${path }/sqs/01/addMoreItem',
             buttons: [{
                 text: '添加',
                 handler: function () {
                     saveItem();
-//                    parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-//                    var f = parent.$.modalDialog.handler.find('#sqs01AddItemForm');
-//                    f.submit();
                 }
             }]
         });
+
     }
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
@@ -152,7 +175,7 @@
                 <
                 <tr>
                     <td>日期</td>
-                    <td><input name="makeDate" type="text" class="easyui-validatebox"
+                    <td><input name="makeDate" type="text" readonly class="easyui-validatebox"
                                value="${sqs01.makeDate}"></td>
                     <td>业务来源</td>
                     <td><input type="text" class="easyui-validatebox"
@@ -202,15 +225,15 @@
                     <td><input name="postCode" type="text" class="easyui-validatebox"
                                value="${sqs01.postCode}"></td>
                     <td>联系人</td>
-                    <td><input name="person" type="text" class="easyui-validatebox"
+                    <td><input name="person" readonly type="text" class="easyui-validatebox"
                                value="${sqs01.person}"></td>
                     <td>电话</td>
-                    <td><input name="phone" type="text" class="easyui-validatebox"
+                    <td><input name="phone" readonly type="text" class="easyui-validatebox"
                                value="${sqs01.phone}"></td>
                 </tr>
                 <tr>
                     <td>代理组织名称</td>
-                    <td colspan="3"><input name="agentName" type="text" class="easyui-validatebox"
+                    <td colspan="3"><input readonly name="agentName" type="text" class="easyui-validatebox"
                                            style="width: 100%;" value="${sqs01.agentName}">
                     </td>
                 </tr>
@@ -273,14 +296,14 @@
                 <tr>
                     <
                     <td>类别</td>
-                    <td><input id="class_" name="class_" type="text" class="easyui-validatebox"
-                               value="${sqs01.class_}">
+                    <td><input id="class_" name="class_" type="text" class="easyui-numberbox"
+                               value="${sqs01.class_}" >
                         <a onclick="addItemFun();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择商品</a></td>
-                    <td><a onclick="addOtherItemFun();" href="javascript:void(0);" class="easyui-linkbutton"
+                    <td><a style="display: none;" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择附加商品</a></td>
-                    <td><input name="addComm" type="text" class="easyui-validatebox"
-                               value="${sqs01.addComm}"></td>
+                    <td><input style="display: none;" type="text" class="easyui-validatebox"
+                               value=""></td>
                     <td>业务联系人</td>
                     <td><input name="ywyOp" type="text" class="easyui-validatebox"
                                value="${sqs01.ywyOp}"></td>
@@ -314,6 +337,7 @@
                     <td><a onclick="selectPic();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
                         <input id="pic" type="file" name="pic" style="display: none;" accept=".jpg"/>
+                        <input type="text" readonly id="pic_text" />
                     </td>
                     <td>清除标样</td>
                     <td><a onclick="cleanPic();" href="javascript:void(0);" class="easyui-linkbutton"
@@ -329,6 +353,7 @@
                     <td><a onclick="selectWts();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
                         <input id="wts" type="file" name="wts" style="display: none;" accept=".jpg"/>
+                        <input type="text" readonly id="wts_text" />
                     </td>
                     <td>查看委托书</td>
                     <td><a onclick="downloadWts();" href="javascript:void(0);" class="easyui-linkbutton"

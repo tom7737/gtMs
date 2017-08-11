@@ -143,24 +143,18 @@ public class Sqs01Controller extends BaseController {
      * @return
      */
     @RequestMapping(value = "/addItem", method = RequestMethod.GET)
-    public String addItem(Integer class_, String appguid, Model model) {
-//        List<Tspdm> tspdms = null;
-//        String classes_ = null;
-//        List<App01More> items = null;
-//        if (class_ < 10) {
-//            classes_ = "0" + class_;
-//        } else
-//            classes_ = "" + class_;
-//        tspdms = tspdmService.getListByClass(classes_);
-//        model.addAttribute("tspdms", tspdms);
-        model.addAttribute("class_", class_);
-//        Sqs01 sqs01 = sqs01Server.get(appguid);
-//        if (StringUtils.isNotBlank(appguid))
-//            items = app01MoreService.getByAppguid(appguid);
-//        else
-//            items = new ArrayList<App01More>();
-//        model.addAttribute("items", items);
+    public String addItem() {
         return "/sqs/01/addItem";
+    }
+
+    /**
+     * 添加商标注册申请书附加小类页
+     *
+     * @return
+     */
+    @RequestMapping(value = "/addMoreItem", method = RequestMethod.GET)
+    public String addMoreItem() {
+        return "/sqs/01/addMoreItem";
     }
 
     /**
@@ -215,24 +209,30 @@ public class Sqs01Controller extends BaseController {
             }
             sqs01.setDlguid(common_dlguid);
             //费用计算--费用在前端计算
-            if (sqs01.getTmKindJ() != null) {
+            if (sqs01.getTmKindJ() != null && !sqs01.getTmKindJ()) {
                 sqs01.setCountryFee(common_country_fei_jt);
-            } else if (sqs01.getTmKindT() != null) {
+            } else if (sqs01.getTmKindT() != null && !sqs01.getTmKindT()) {
                 sqs01.setCountryFee(common_country_fei_zm);
             } else {
                 sqs01.setCountryFee(common_country_fei);
             }
             String commServ = sqs01.getCommServ();
-            String addComm =  sqs01.getAddComm();
+            String addComm = sqs01.getAddComm();
             sqs01.setGuiFee(sqs01.getCountryFee());
-            if(com.gt.ms.utils.StringUtils.isNotBlank(addComm)){
+            if (com.gt.ms.utils.StringUtils.isNotBlank(addComm)) {
                 String[] split = addComm.split("。")[0].split("；");
-                sqs01.setGuiFeem(sqs01.getCountryFee()/10*split.length);
-            }else {
+                sqs01.setGuiFeem(sqs01.getCountryFee() / 10 * split.length);
+            } else {
                 sqs01.setGuiFeem(0d);
             }
             //agentFee
-            sqs01.setAgentFee( sqs01.getPice()-sqs01.getGuiFee()-sqs01.getGuiFeem());
+            if (sqs01.getPice() < sqs01.getGuiFee() + sqs01.getGuiFeem()) {
+                result.setSuccess(false);
+                result.setMessage("费用不足！");
+                return result;
+            } else {
+                sqs01.setAgentFee(sqs01.getPice() - sqs01.getGuiFee() - sqs01.getGuiFeem());
+            }
 
             LOGGER.debug(sqs01.toString());
             sqs01Server.update(sqs01);

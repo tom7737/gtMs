@@ -27,4 +27,13 @@ public class AppImageServiceImpl extends BaseServiceImpl<AppImage, String> imple
         this.appImageMapper = appImageMapper;
     }
 
+    public String getMaxGuid(){
+        return  appImageMapper.getMaxGuid();
+    }
+
+    @Override
+    public AppImage getByAppguid(String appguid) {
+        return appImageMapper.getByAppguid(appguid);
+    }
+
 }

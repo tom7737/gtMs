@@ -17,13 +17,13 @@ public class AppImage implements java.io.Serializable {
     private String appno;//申请书编号
     private String appguid;//申请书ID
     private String agentNumber;//代理编号
-    private String zllb;
-    private String zlmc;
+    private String zllb;//资料类别
+    private String zlmc;//资料名称
     private byte[] zltp; //图片
-    private String tpkj;
+    private String tpkj;//图片大小
     private String makeOp; //创建人
     private Timestamp cjsj;//创建时间
-    private String tpwjgs;
+    private String tpwjgs;//文件类型
 
 
     // Constructors

@@ -174,6 +174,7 @@ public class VerifyCodeUtils {
         }
 
         g2.dispose();
+        ImageIO.setUseCache(false);
         ImageIO.write(image, "jpg", os);
     }
 

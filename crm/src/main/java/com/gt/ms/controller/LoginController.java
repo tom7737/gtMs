@@ -183,7 +183,7 @@ public class LoginController extends BaseController {
             int w = 130, h = 33;
             VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);
         } catch (Exception e) {
-            LOGGER.info(" 获取验证码异常 ");
+            LOGGER.info(" 获取验证码异常 ",e);
         }
 
     }

@@ -19,19 +19,19 @@ public interface BaseMapper<T, K extends Serializable> {
      * @param obj
      * @return
      */
-    K save(T obj);
+    int save(T obj);
 
     /**
      * 修改对象
      *
      * @param object
      */
-    void update(T object);
+    int update(T object);
 
     /**
      * 根据ID删除对象
      */
-    void remove(K id);
+    int remove(K id);
 
     /**
      * 列表

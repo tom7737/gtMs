@@ -10,5 +10,17 @@ import java.util.List;
  * Created by admini on 2017/5/10.
  */
 public interface AppImageService extends BaseService<AppImage, String> {
+    /**
+     * 获取最大的GUID
+     *
+     * @return
+     */
+    String getMaxGuid();
 
+    /**
+     * 根据申请书ID获取图片
+     * @param appguid
+     * @return
+     */
+    AppImage getByAppguid(String appguid);
 }

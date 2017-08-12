@@ -25,11 +25,11 @@
             }
             $("#pic_text").val($(this).val());
 
-            uploadInfo("pic",'${path }/sqs/01/picUpload');
+            uploadInfo("pic", '${path }/sqs/01/picUpload');
         });
         $("#wts").change(function () {
             $("#wts_text").val($(this).val());
-            uploadInfo("wts",'${path }/sqs/01/wtsUpload');
+            uploadInfo("wts", '${path }/sqs/01/wtsUpload');
         })
         $('#sqs01EditForm').form({
             url: '${path }/sqs/01/edit',
@@ -113,7 +113,7 @@
     }
 
     //导入文件
-    function uploadInfo(fileId,url) {
+    function uploadInfo(fileId, url) {
         var f = document.getElementById(fileId).value;
         var target = document.getElementById(fileId);
         if (f == "") {
@@ -147,7 +147,8 @@
 
             fileElementId: fileId,     //文件上传空间的id属性
             data: {
-                guid: $("#guid").val()
+                guid: $("#guid").val(),
+                agentNumber: $("#agentNumber").val()
             },
             dataType: 'json',          //返回值类型 一般设置为json
 
@@ -211,7 +212,7 @@
                 </tr>
                 <tr>
                     <td>编号</td>
-                    <td><input name="agentNumber" type="text" readonly class="easyui-validatebox"
+                    <td><input id="agentNumber" name="agentNumber" type="text" readonly class="easyui-validatebox"
                                value="${sqs01.agentNumber}"></td>
                     <td>录入人</td>
                     <td>

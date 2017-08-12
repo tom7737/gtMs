@@ -53,7 +53,7 @@
     <bean id="mapperScannerConfigurerImg" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage"
                   value="com.gt.img.mapper"/>
-        <property name="sqlSessionFactoryBeanName" value="sessionFactory"/>
+        <property name="sqlSessionFactoryBeanName" value="sessionFactoryImg"/>
     </bean>
 
     <!-- (事务管理)transaction manager, use DataSourceTransactionManager for global tx -->

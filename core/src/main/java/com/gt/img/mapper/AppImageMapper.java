@@ -10,4 +10,17 @@ import java.util.List;
 
 @Repository
 public interface AppImageMapper extends BaseMapper<AppImage, String> {
+    /**
+     * 获取最大的guid
+     *
+     * @return
+     */
+    String getMaxGuid();
+
+    /**
+     * 根据申请书ID获取图片
+     * @param appguid
+     * @return
+     */
+    AppImage getByAppguid(String appguid);
 }

@@ -1,13 +1,14 @@
 package com.gt.ms.controller;
 
+import com.gt.img.entity.AppImage;
 import com.gt.img.service.AppImageService;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.sqs.Sqs01Service;
+import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
-import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +54,8 @@ public class Sqs01Controller extends BaseController {
     private static final Double common_country_fei_jt = 1500.00;//规费(集体)
     private static final Double common_country_fei_zm = 1500.00;//规费（证明）
     private static final String common_dlguid = "10000";//代理组织ID
+    private static final String common_appno = "01";//商标注册国内申请书编号
+    private static final String common_zllb = "1";//资料类别
 
     /**
      * 商标注册申请书管理页
@@ -169,11 +173,12 @@ public class Sqs01Controller extends BaseController {
             MultipartFile file = multipartRequest.getFile("pic");
             String guid = request.getParameter("guid");
             byte[] pic = file.getBytes();
+            request.getSession().setAttribute("session_pic", pic);
             LOGGER.debug("--------" + file.getOriginalFilename());
-            Sqs01 sqs01 = new Sqs01();
-            sqs01.setGuid(guid);
-            sqs01.setPic(pic);
-            sqs01Server.update(sqs01);
+//            Sqs01 sqs01 = new Sqs01();
+//            sqs01.setGuid(guid);
+//            sqs01.setPic(pic);
+//            sqs01Server.update(sqs01);
             result.setSuccess(true);
             result.setMessage("上传成功！");
         } catch (Exception e) {
@@ -198,14 +203,36 @@ public class Sqs01Controller extends BaseController {
         try {
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
             MultipartFile file = multipartRequest.getFile("wts");
-            String guid = request.getParameter("guid");
-            byte[] pic = file.getBytes();
             LOGGER.debug("--------" + file.getOriginalFilename());
-            Sqs01 sqs01 = new Sqs01();
-            sqs01.setGuid(guid);
-            sqs01.setPic(pic);
-//        sqs01Server.update(sqs01);
-            appImageService.get(guid);
+            String appguid = request.getParameter("guid");
+            String agentNumber = request.getParameter("agentNumber");
+            AppImage appImage = appImageService.getByAppguid(appguid);
+            if (appImage == null) {
+                appImage = new AppImage();
+//                String maxGuid = appImageService.getMaxGuid();
+//                String guid = StringUtils.incGuid(maxGuid);
+//                appImage.setGuid(guid);
+                appImage.setDlguid(common_dlguid);
+                appImage.setAppno(common_appno);
+                appImage.setAppguid(appguid);
+                appImage.setAgentNumber(agentNumber);
+                appImage.setZllb(common_zllb);
+                appImage.setZlmc(file.getOriginalFilename());
+                appImage.setZltp(file.getBytes());
+                appImage.setTpkj(String.valueOf(file.getSize()));
+                appImage.setMakeOp(getCurrentUser().getOpName());
+                appImage.setCjsj(new Timestamp(System.currentTimeMillis()));
+                appImage.setTpwjgs(file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1));
+//                appImageService.save(appImage);
+            } else {
+                appImage.setZlmc(file.getOriginalFilename());
+                appImage.setZltp(file.getBytes());
+                appImage.setTpkj(String.valueOf(file.getSize()));
+                appImage.setMakeOp(getCurrentUser().getOpName());
+                appImage.setTpwjgs(file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1));
+//                appImageService.update(appImage);
+            }
+            request.getSession().setAttribute("session_wts", appImage);
             result.setSuccess(true);
             result.setMessage("上传成功！");
         } catch (Exception e) {
@@ -216,6 +243,12 @@ public class Sqs01Controller extends BaseController {
         return result;
     }
 
+    public static void main(String[] args) {
+        String s = null;
+        System.out.println(StringUtils.incGuid(s));
+
+    }
+
     /**
      * 编辑商标注册申请书
      *
@@ -224,7 +257,7 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult edit(Sqs01 sqs01, byte[] wts, HttpServletRequest request) {
+    public AjaxResult edit(Sqs01 sqs01, HttpServletRequest request) {
 
         AjaxResult result = new AjaxResult();
         try {
@@ -269,14 +302,13 @@ public class Sqs01Controller extends BaseController {
             }
             sqs01.setDlguid(common_dlguid);
             //费用计算--费用在前端计算
-            if (sqs01.getTmKindJ() != null && !sqs01.getTmKindJ()) {
+            if (sqs01.getTmKindJ() != null && sqs01.getTmKindJ()) {
                 sqs01.setCountryFee(common_country_fei_jt);
-            } else if (sqs01.getTmKindT() != null && !sqs01.getTmKindT()) {
+            } else if (sqs01.getTmKindT() != null && sqs01.getTmKindT()) {
                 sqs01.setCountryFee(common_country_fei_zm);
             } else {
                 sqs01.setCountryFee(common_country_fei);
             }
-            String commServ = sqs01.getCommServ();
             String addComm = sqs01.getAddComm();
             sqs01.setGuiFee(sqs01.getCountryFee());
             if (com.gt.ms.utils.StringUtils.isNotBlank(addComm)) {
@@ -295,12 +327,29 @@ public class Sqs01Controller extends BaseController {
             }
 
             LOGGER.debug(sqs01.toString());
-            sqs01.setPic(null);//这里不修改pic
+            Object pic = request.getSession().getAttribute("session_pic");
+            if (pic != null)
+                sqs01.setPic((byte[]) pic);
+            else
+                sqs01.setPic(null);
             sqs01Server.update(sqs01);
+            //修改委托书
+            Object wts = request.getSession().getAttribute("session_wts");
+            if (wts != null) {
+                AppImage img = (AppImage) wts;
+                if (img.getGuid() == null) {
+                    String maxGuid = appImageService.getMaxGuid();
+                    String guid = StringUtils.incGuid(maxGuid);
+                    img.setGuid(guid);
+                    appImageService.save(img);
+                } else {
+                    appImageService.update(img);
+                }
+            }
             result.setSuccess(true);
             result.setMessage("修改成功！");
             return result;
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             LOGGER.error("修改商标注册申请书失败：{}", e);
             result.setMessage(e.getMessage());
             return result;

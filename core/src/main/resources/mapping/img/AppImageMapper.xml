@@ -18,7 +18,59 @@
     <sql id="Base_Column_List">
     guid,dlguid,appno,appguid,agent_number,zllb,zlmc,zltp,tpkj,make_op,cjsj,tpwjgs
   </sql>
+    <insert id="save" parameterType="com.gt.img.entity.AppImage">
+        INSERT into app_image
+        values(#{guid},#{dlguid},#{appno},#{appguid},#{agentNumber},#{zllb},#{zlmc},#{zltp},#{tpkj},
+        #{makeOp},#{cjsj},#{tpwjgs})
+    </insert>
 
+    <update id="update" parameterType="com.gt.img.entity.AppImage">
+        update app_image
+        <set>
+            <if test="dlguid != null">
+                dlguid = #{dlguid},
+            </if>
+            <if test="appno != null">
+                appno = #{appno},
+            </if>
+            <if test="appguid != null">
+                appguid = #{appguid},
+            </if>
+            <if test="agentNumber != null">
+                agent_number = #{agentNumber},
+            </if>
+            <if test="zllb != null">
+                zllb = #{zllb},
+            </if>
+            <if test="zlmc != null">
+                zlmc = #{zlmc},
+            </if>
+            <if test="zltp != null">
+                zltp = #{zltp},
+            </if>
+            <if test="tpkj != null">
+                tpkj = #{tpkj},
+            </if>
+            <if test="makeOp != null">
+                make_op = #{makeOp},
+            </if>
+            <if test="cjsj != null">
+                cjsj = #{cjsj},
+            </if>
+            <if test="tpwjgs != null">
+                tpwjgs = #{tpwjgs},
+            </if>
+        </set>
+        where guid  = #{guid}
+    </update>
+
+    <select id="getByAppguid" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from app_image
+        WHERE
+        appguid = #{appguid}
+    </select>
     <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
         SELECT
         <include refid="Base_Column_List"/>
@@ -26,4 +78,11 @@
         WHERE
         guid = #{guid}
     </select>
+    <select id="getMaxGuid" resultType="java.lang.String" >
+        SELECT
+        top 1 guid
+        from app_image
+        order by guid desc
+    </select>
+
 </mapper>

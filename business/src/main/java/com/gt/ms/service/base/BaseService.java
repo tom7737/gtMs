@@ -23,19 +23,19 @@ public interface BaseService<T, PK extends Serializable> {
      * @param obj
      * @return
      */
-    PK save(T obj);
+    int save(T obj);
 
     /**
      * 修改数据
      * @param object
      */
-    void update(T object);
+    int update(T object);
 
     /**
      * 根据ID删除信息
      * @param id
      */
-    void remove(PK id);
+    int remove(PK id);
 
     /**
      * 获取分页数据列表

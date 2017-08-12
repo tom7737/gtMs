@@ -29,16 +29,17 @@ public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<
         return dao.get(id);
     }
 
-    public PK save(T object) {
+    public int save(T object) {
         return dao.save(object);
     }
 
-    public void update(T object) {
-        dao.update(object);
+    public int update(T object) {
+       return dao.update(object);
     }
 
-    public void remove(PK id) {
-        dao.remove(id);
+    public int remove(PK id) {
+
+        return dao.remove(id);
     }
 
     @Transactional(readOnly = true)

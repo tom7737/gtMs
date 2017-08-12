@@ -356,7 +356,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
      * @return
      */
     public static String list2String(final List<String> crsList, final String arg) {
-        if(crsList==null||crsList.size()==0)
+        if (crsList == null || crsList.size() == 0)
             return "";
         StringBuffer bf = new StringBuffer();
         for (String str : crsList) {
@@ -379,6 +379,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
             return null;
         }
     }
+
     /**
      * 字符转Long，报错则返回null
      *
@@ -437,19 +438,19 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     /**
      * 身份证校验表
      */
-    public static Map getVerifyMap(){
+    public static Map getVerifyMap() {
         Map idCardV = new HashMap();
-        idCardV.put("0","1");
-        idCardV.put("1","0");
-        idCardV.put("2","X");
-        idCardV.put("3","9");
-        idCardV.put("4","8");
-        idCardV.put("5","7");
-        idCardV.put("6","6");
-        idCardV.put("7","5");
-        idCardV.put("8","4");
-        idCardV.put("9","3");
-        idCardV.put("10","2");
+        idCardV.put("0", "1");
+        idCardV.put("1", "0");
+        idCardV.put("2", "X");
+        idCardV.put("3", "9");
+        idCardV.put("4", "8");
+        idCardV.put("5", "7");
+        idCardV.put("6", "6");
+        idCardV.put("7", "5");
+        idCardV.put("8", "4");
+        idCardV.put("9", "3");
+        idCardV.put("10", "2");
         return idCardV;
     }
 
@@ -458,23 +459,24 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
      */
     public static Boolean idCardVerify(String idCard) {
         Boolean flag = false;
-        if(idCard.length()!=18)
+        if (idCard.length() != 18)
             return flag;
-        String card1 = idCard.substring(0,17);
+        String card1 = idCard.substring(0, 17);
         String verify = idCard.substring(17);
         char[] chars = card1.toCharArray();
-        Integer sum = 0 ;
-        for(int i = 0;i<chars.length;i++){
+        Integer sum = 0;
+        for (int i = 0; i < chars.length; i++) {
             Integer num = Integer.valueOf(String.valueOf(chars[i]));
-            Double sum_ = num*Math.pow(2,(17-i));
-            sum += sum_.intValue() ;
+            Double sum_ = num * Math.pow(2, (17 - i));
+            sum += sum_.intValue();
         }
-        Integer code = sum%11;
+        Integer code = sum % 11;
         String verifyCode = (String) getVerifyMap().get(code.toString());
         if (verify.toUpperCase().equals(verifyCode))
             flag = true;
         return flag;
     }
+
     /**
      * 正则表达式：验证用户名
      */
@@ -565,6 +567,15 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
      */
     public static boolean isIPAddr(String ipAddr) {
         return Pattern.matches(REGEX_IP_ADDR, ipAddr);
+    }
+
+    public static String incGuid(String maxGuid) {
+        if (maxGuid == null)
+            return "0000000001";
+        Long aLong = str2long(maxGuid);
+        if (aLong == null)
+            return maxGuid;
+        return fill(++aLong, 10);
     }
 
 }

@@ -64,7 +64,7 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
     public String manager() {
-        return "/sqs/01/list";
+        return "sqs/01/list";
     }
 
     /**
@@ -78,10 +78,22 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
     @ResponseBody
-    public PageInfo dataGrid(Integer page, Integer rows, String sort, String order) {
+    public PageInfo dataGrid(Sqs01 sqs01, Integer page, Integer rows, String sort, String order) {
         PageInfo pageInfo = new PageInfo(page, rows, sort, order);
         Map<String, Object> condition = new HashMap<String, Object>();
-
+        Op currentUser = getCurrentUser();
+        if ('0' == currentUser.getOpChenge().charAt(0)) {//权限
+            condition.put("makeOpQx", currentUser.getOpName());
+        }
+        if (StringUtils.isNotBlank(sqs01.getAppName())) {
+            condition.put("appName", sqs01.getAppName());
+        }
+        if (StringUtils.isNotBlank(sqs01.getTmName())) {
+            condition.put("tmName", sqs01.getTmName());
+        }
+        if (StringUtils.isNotBlank(sqs01.getAgentNumber())) {
+            condition.put("agentNumber", sqs01.getAgentNumber());
+        }
         pageInfo.setCondition(condition);
         sqs01Server.findDataGrid(pageInfo);
         return pageInfo;
@@ -94,7 +106,7 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addPage() {
-        return "/sqs/01/add";
+        return "sqs/01/add";
     }
 
     /**
@@ -128,13 +140,15 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editPage(String guid, Model model) {
+
+
         Sqs01 sqs01 = sqs01Server.get(guid);
         List<Op> ops = opService.getList();
 
         model.addAttribute("sqs01", sqs01);
         model.addAttribute("ops", ops);
 
-        return "/sqs/01/edit";
+        return "sqs/01/edit";
     }
 
     /**
@@ -144,7 +158,7 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/addItem", method = RequestMethod.GET)
     public String addItem() {
-        return "/sqs/01/addItem";
+        return "sqs/01/addItem";
     }
 
     /**
@@ -154,7 +168,7 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/addMoreItem", method = RequestMethod.GET)
     public String addMoreItem() {
-        return "/sqs/01/addMoreItem";
+        return "sqs/01/addMoreItem";
     }
 
     /**
@@ -250,6 +264,7 @@ public class Sqs01Controller extends BaseController {
     }
 
     /**
+     * /**
      * 编辑商标注册申请书
      *
      * @param sqs01
@@ -261,6 +276,14 @@ public class Sqs01Controller extends BaseController {
 
         AjaxResult result = new AjaxResult();
         try {
+            Op currentUser = getCurrentUser();
+            if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
+                    && !sqs01Server.get(sqs01.getGuid()).getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
+                    ) {
+                result.setSuccess(false);
+                result.setMessage("没有权限！");
+                return result;
+            }
 
             if (sqs01.getTmKindJ() == null) {//集体
                 sqs01.setTmKindJ(false);
@@ -357,7 +380,7 @@ public class Sqs01Controller extends BaseController {
     }
 
     /**
-     * 添加商标注册申请书页
+     * 商标注册申请书信息页
      *
      * @return
      */
@@ -368,11 +391,11 @@ public class Sqs01Controller extends BaseController {
         model.addAttribute("sqs01", sqs01);
         model.addAttribute("ops", ops);
 
-        return "/sqs/01/info";
+        return "sqs/01/info";
     }
 
     /**
-     * 添加商标注册申请书页
+     * 申请书标样
      *
      * @return
      */
@@ -381,7 +404,8 @@ public class Sqs01Controller extends BaseController {
         Sqs01 sqs01 = sqs01Server.get(guid);
         ServletOutputStream os = null;
         try {
-
+            if (sqs01 == null || sqs01.getPic() == null)
+                return;
             os = response.getOutputStream();
             os.write(sqs01.getPic());
         } catch (IOException e) {

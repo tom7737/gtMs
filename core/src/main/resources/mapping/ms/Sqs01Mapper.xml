@@ -1,93 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gt.ms.mapper.sqs.Sqs01Mapper">
-  <resultMap id="Sqs01ResultMap" type="com.gt.ms.entity.sqs.Sqs01">
-    <id column="guid" jdbcType="NVARCHAR" property="guid" />
-    <result column="app_name" jdbcType="NVARCHAR" property="appName" />
-    <result column="app_addr" jdbcType="NVARCHAR" property="appAddr" />
-    <result column="if_common0" jdbcType="BIT" property="ifCommon0" />
-    <result column="if_common1" jdbcType="BIT" property="ifCommon1" />
-    <result column="post_code" jdbcType="NVARCHAR" property="postCode" />
-    <result column="person" jdbcType="NVARCHAR" property="person" />
-    <result column="phone" jdbcType="NVARCHAR" property="phone" />
-    <result column="fax" jdbcType="NVARCHAR" property="fax" />
-    <result column="agent_name" jdbcType="NVARCHAR" property="agentName" />
-    <result column="tm_kind_y" jdbcType="BIT" property="tmKindY" />
-    <result column="tm_kind_j" jdbcType="BIT" property="tmKindJ" />
-    <result column="tm_kind_t" jdbcType="BIT" property="tmKindT" />
-    <result column="solid" jdbcType="BIT" property="solid" />
-    <result column="colour" jdbcType="BIT" property="colour" />
-    <result column="dgn_desc" jdbcType="LONGVARCHAR" property="dgnDesc" />
-    <result column="class" jdbcType="NVARCHAR" property="class_" />
-    <result column="comm_serv" jdbcType="LONGVARCHAR" property="commServ" />
-    <result column="attach" jdbcType="NVARCHAR" property="attach" />
-    <result column="common_app" jdbcType="LONGVARCHAR" property="commonApp" />
-    <result column="int_code" jdbcType="NVARCHAR" property="intCode" />
-    <result column="memo1" jdbcType="LONGVARCHAR" property="memo1" />
-    <result column="tm_name" jdbcType="NVARCHAR" property="tmName" />
-    <result column="add_comm" jdbcType="LONGVARCHAR" property="addComm" />
-    <result column="agent_number" jdbcType="NVARCHAR" property="agentNumber" />
-    <result column="pic" jdbcType="LONGVARBINARY" property="pic" />
-    <result column="ctm_code" jdbcType="NVARCHAR" property="ctmCode" />
-    <result column="make_date" jdbcType="NVARCHAR" property="makeDate" />
-    <result column="make_op" jdbcType="NVARCHAR" property="makeOp" />
-    <result column="sent_date" jdbcType="NVARCHAR" property="sentDate" />
-    <result column="sent_op" jdbcType="NVARCHAR" property="sentOp" />
-    <result column="sent_state" jdbcType="NVARCHAR" property="sentState" />
-    <result column="list_code" jdbcType="NVARCHAR" property="listCode" />
-    <result column="rtn_state" jdbcType="NVARCHAR" property="rtnState" />
-    <result column="reg_code" jdbcType="NVARCHAR" property="regCode" />
-    <result column="pice" jdbcType="DECIMAL" property="pice" />
-    <result column="counterman" jdbcType="NVARCHAR" property="counterman" />
-    <result column="archiveNO" jdbcType="NVARCHAR" property="archiveno" />
-    <result column="gui_fee" jdbcType="DECIMAL" property="guiFee" />
-    <result column="reg_type" jdbcType="NVARCHAR" property="regType" />
-    <result column="accountman" jdbcType="NVARCHAR" property="accountman" />
-    <result column="accountstate" jdbcType="NVARCHAR" property="accountstate" />
-    <result column="accountmemo" jdbcType="NVARCHAR" property="accountmemo" />
-    <result column="accountdate" jdbcType="NVARCHAR" property="accountdate" />
-    <result column="invoice" jdbcType="NVARCHAR" property="invoice" />
-    <result column="receiptcode" jdbcType="NVARCHAR" property="receiptcode" />
-    <result column="invoicedate" jdbcType="NVARCHAR" property="invoicedate" />
-    <result column="invoiceman" jdbcType="NVARCHAR" property="invoiceman" />
-    <result column="receivable" jdbcType="NVARCHAR" property="receivable" />
-    <result column="app_date" jdbcType="NVARCHAR" property="appDate" />
-    <result column="sqdate" jdbcType="NVARCHAR" property="sqdate" />
-    <result column="dlguid" jdbcType="NVARCHAR" property="dlguid" />
-    <result column="fpqx" jdbcType="NVARCHAR" property="fpqx" />
-    <result column="ztdm" jdbcType="NVARCHAR" property="ztdm" />
-    <result column="app_code" jdbcType="NVARCHAR" property="appCode" />
-    <result column="jkrq" jdbcType="NVARCHAR" property="jkrq" />
-    <result column="jkfs" jdbcType="NVARCHAR" property="jkfs" />
-    <result column="sjje" jdbcType="NVARCHAR" property="sjje" />
-    <result column="ywy_op" jdbcType="NVARCHAR" property="ywyOp" />
-    <result column="snwh" jdbcType="NVARCHAR" property="snwh" />
-    <result column="cjid" jdbcType="NVARCHAR" property="cjid" />
-    <result column="cjid_zb" jdbcType="NVARCHAR" property="cjidZb" />
-    <result column="agent_fee" jdbcType="DECIMAL" property="agentFee" />
-    <result column="gfcz" jdbcType="NVARCHAR" property="gfcz" />
-    <result column="country_fee" jdbcType="DECIMAL" property="countryFee" />
-    <result column="app_name_e" jdbcType="NVARCHAR" property="appNameE" />
-    <result column="app_addr_e" jdbcType="NVARCHAR" property="appAddrE" />
-    <result column="app_state" jdbcType="NVARCHAR" property="appState" />
-    <result column="gjid" jdbcType="NVARCHAR" property="gjid" />
-    <result column="app_new" jdbcType="NVARCHAR" property="appNew" />
-    <result column="class_more" jdbcType="INTEGER" property="classMore" />
-    <result column="sound" jdbcType="BIT" property="sound" />
-    <result column="priority_claim" jdbcType="INTEGER" property="priorityClaim" />
-    <result column="priority_prove" jdbcType="INTEGER" property="priorityProve" />
-    <result column="priority_state" jdbcType="NVARCHAR" property="priorityState" />
-    <result column="app_number" jdbcType="NVARCHAR" property="appNumber" />
-    <result column="app_jsr" jdbcType="NVARCHAR" property="appJsr" />
-    <result column="app_jsrdz" jdbcType="NVARCHAR" property="appJsrdz" />
-    <result column="app_jsryb" jdbcType="NVARCHAR" property="appJsryb" />
-    <result column="gui_feem" jdbcType="DECIMAL" property="guiFeem" />
-  </resultMap>
-
-  <sql id="Sqs01_List">
+    <resultMap id="Sqs01ResultMap" type="com.gt.ms.entity.sqs.Sqs01">
+        <id column="guid" jdbcType="NVARCHAR" property="guid"/>
+        <result column="app_name" jdbcType="NVARCHAR" property="appName"/>
+        <result column="app_addr" jdbcType="NVARCHAR" property="appAddr"/>
+        <result column="if_common0" jdbcType="BIT" property="ifCommon0"/>
+        <result column="if_common1" jdbcType="BIT" property="ifCommon1"/>
+        <result column="post_code" jdbcType="NVARCHAR" property="postCode"/>
+        <result column="person" jdbcType="NVARCHAR" property="person"/>
+        <result column="phone" jdbcType="NVARCHAR" property="phone"/>
+        <result column="fax" jdbcType="NVARCHAR" property="fax"/>
+        <result column="agent_name" jdbcType="NVARCHAR" property="agentName"/>
+        <result column="tm_kind_y" jdbcType="BIT" property="tmKindY"/>
+        <result column="tm_kind_j" jdbcType="BIT" property="tmKindJ"/>
+        <result column="tm_kind_t" jdbcType="BIT" property="tmKindT"/>
+        <result column="solid" jdbcType="BIT" property="solid"/>
+        <result column="colour" jdbcType="BIT" property="colour"/>
+        <result column="dgn_desc" jdbcType="LONGVARCHAR" property="dgnDesc"/>
+        <result column="class" jdbcType="NVARCHAR" property="class_"/>
+        <result column="comm_serv" jdbcType="LONGVARCHAR" property="commServ"/>
+        <result column="attach" jdbcType="NVARCHAR" property="attach"/>
+        <result column="common_app" jdbcType="LONGVARCHAR" property="commonApp"/>
+        <result column="int_code" jdbcType="NVARCHAR" property="intCode"/>
+        <result column="memo1" jdbcType="LONGVARCHAR" property="memo1"/>
+        <result column="tm_name" jdbcType="NVARCHAR" property="tmName"/>
+        <result column="add_comm" jdbcType="LONGVARCHAR" property="addComm"/>
+        <result column="agent_number" jdbcType="NVARCHAR" property="agentNumber"/>
+        <result column="pic" jdbcType="LONGVARBINARY" property="pic"/>
+        <result column="ctm_code" jdbcType="NVARCHAR" property="ctmCode"/>
+        <result column="make_date" jdbcType="NVARCHAR" property="makeDate"/>
+        <result column="make_op" jdbcType="NVARCHAR" property="makeOp"/>
+        <result column="sent_date" jdbcType="NVARCHAR" property="sentDate"/>
+        <result column="sent_op" jdbcType="NVARCHAR" property="sentOp"/>
+        <result column="sent_state" jdbcType="NVARCHAR" property="sentState"/>
+        <result column="list_code" jdbcType="NVARCHAR" property="listCode"/>
+        <result column="rtn_state" jdbcType="NVARCHAR" property="rtnState"/>
+        <result column="reg_code" jdbcType="NVARCHAR" property="regCode"/>
+        <result column="pice" jdbcType="DECIMAL" property="pice"/>
+        <result column="counterman" jdbcType="NVARCHAR" property="counterman"/>
+        <result column="archiveNO" jdbcType="NVARCHAR" property="archiveno"/>
+        <result column="gui_fee" jdbcType="DECIMAL" property="guiFee"/>
+        <result column="reg_type" jdbcType="NVARCHAR" property="regType"/>
+        <result column="accountman" jdbcType="NVARCHAR" property="accountman"/>
+        <result column="accountstate" jdbcType="NVARCHAR" property="accountstate"/>
+        <result column="accountmemo" jdbcType="NVARCHAR" property="accountmemo"/>
+        <result column="accountdate" jdbcType="NVARCHAR" property="accountdate"/>
+        <result column="invoice" jdbcType="NVARCHAR" property="invoice"/>
+        <result column="receiptcode" jdbcType="NVARCHAR" property="receiptcode"/>
+        <result column="invoicedate" jdbcType="NVARCHAR" property="invoicedate"/>
+        <result column="invoiceman" jdbcType="NVARCHAR" property="invoiceman"/>
+        <result column="receivable" jdbcType="NVARCHAR" property="receivable"/>
+        <result column="app_date" jdbcType="NVARCHAR" property="appDate"/>
+        <result column="sqdate" jdbcType="NVARCHAR" property="sqdate"/>
+        <result column="dlguid" jdbcType="NVARCHAR" property="dlguid"/>
+        <result column="fpqx" jdbcType="NVARCHAR" property="fpqx"/>
+        <result column="ztdm" jdbcType="NVARCHAR" property="ztdm"/>
+        <result column="app_code" jdbcType="NVARCHAR" property="appCode"/>
+        <result column="jkrq" jdbcType="NVARCHAR" property="jkrq"/>
+        <result column="jkfs" jdbcType="NVARCHAR" property="jkfs"/>
+        <result column="sjje" jdbcType="NVARCHAR" property="sjje"/>
+        <result column="ywy_op" jdbcType="NVARCHAR" property="ywyOp"/>
+        <result column="snwh" jdbcType="NVARCHAR" property="snwh"/>
+        <result column="cjid" jdbcType="NVARCHAR" property="cjid"/>
+        <result column="cjid_zb" jdbcType="NVARCHAR" property="cjidZb"/>
+        <result column="agent_fee" jdbcType="DECIMAL" property="agentFee"/>
+        <result column="gfcz" jdbcType="NVARCHAR" property="gfcz"/>
+        <result column="country_fee" jdbcType="DECIMAL" property="countryFee"/>
+        <result column="app_name_e" jdbcType="NVARCHAR" property="appNameE"/>
+        <result column="app_addr_e" jdbcType="NVARCHAR" property="appAddrE"/>
+        <result column="app_state" jdbcType="NVARCHAR" property="appState"/>
+        <result column="gjid" jdbcType="NVARCHAR" property="gjid"/>
+        <result column="app_new" jdbcType="NVARCHAR" property="appNew"/>
+        <result column="class_more" jdbcType="INTEGER" property="classMore"/>
+        <result column="sound" jdbcType="BIT" property="sound"/>
+        <result column="priority_claim" jdbcType="INTEGER" property="priorityClaim"/>
+        <result column="priority_prove" jdbcType="INTEGER" property="priorityProve"/>
+        <result column="priority_state" jdbcType="NVARCHAR" property="priorityState"/>
+        <result column="app_number" jdbcType="NVARCHAR" property="appNumber"/>
+        <result column="app_jsr" jdbcType="NVARCHAR" property="appJsr"/>
+        <result column="app_jsrdz" jdbcType="NVARCHAR" property="appJsrdz"/>
+        <result column="app_jsryb" jdbcType="NVARCHAR" property="appJsryb"/>
+        <result column="gui_feem" jdbcType="DECIMAL" property="guiFeem"/>
+    </resultMap>
+    <!-- pic,-->
+    <sql id="Sqs01_Info">
     guid, app_name, app_addr, if_common0, if_common1, post_code, person, phone, fax, 
     agent_name, tm_kind_y, tm_kind_j, tm_kind_t, solid, colour,dgn_desc, class,comm_serv, attach,common_app, int_code,memo1,
-    tm_name,add_comm, agent_number,pic, ctm_code, make_date, make_op, sent_date, sent_op, sent_state,
+    tm_name,add_comm, agent_number,ctm_code, make_date, make_op, sent_date, sent_op, sent_state,
     list_code, rtn_state, reg_code, pice, counterman, archiveNO, gui_fee, reg_type, accountman, 
     accountstate, accountmemo, accountdate, invoice, receiptcode, invoicedate, invoiceman, 
     receivable, app_date, sqdate, dlguid, fpqx, ztdm, app_code, jkrq, jkfs, sjje, ywy_op, 
@@ -95,314 +95,362 @@
     gjid, app_new, class_more, sound, priority_claim, priority_prove, priority_state, 
     app_number, app_jsr, app_jsrdz, app_jsryb, gui_feem
   </sql>
+    <sql id="Sqs01_List">
+        guid, app_name, tm_name,class ,agent_number
+    </sql>
+    <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="Sqs01ResultMap">
+        SELECT
+        <include refid="Sqs01_List"/>
+        FROM(
 
+        SELECT TOP ${size+from} ROW_NUMBER() OVER(ORDER BY guid ASC) AS ROWID,*
+
+        FROM [01]
+
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOp!=''">
+                make_op = #{condition.makeOpQx}
+            </if>
+            <if test="condition.appName!=null and condition.appName!=''">
+                and app_name like '%${condition.appName}%'
+            </if>
+            <if test="condition.tmName!=null and condition.tmName!=''">
+                and tm_name like '%${condition.tmName}%'
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and agent_number = #{condition.agentNumber}
+            </if>
+        </where>
+        ) AS TEMP1
+        WHERE ROWID> ${from}
+    </select>
+    <select id="findPageCount" parameterType="com.gt.ms.vo.PageInfo" resultType="java.lang.Integer">
+        SELECT COUNT (*)
+        FROM [01]
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOp!=''">
+                make_op = #{condition.makeOpQx}
+            </if>
+            <if test="condition.appName!=null and condition.appName!=''">
+                and app_name like '%${condition.appName}%'
+            </if>
+            <if test="condition.tmName!=null and condition.tmName!=''">
+                and tm_name like '%${condition.tmName}%'
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and agent_number = #{condition.agentNumber}
+            </if>
+        </where>
+    </select>
     <select id="get" parameterType="java.lang.String" resultMap="Sqs01ResultMap">
         select
-        <include refid="Sqs01_List" />
+        <include refid="Sqs01_Info"/>
         from [01]
         where guid = #{guid}
     </select>
-  <insert id="insert" parameterType="com.gt.ms.entity.sqs.Sqs01">
-    <selectKey keyProperty="guid" order="AFTER" resultType="java.lang.String">
-      SQL_Server
-    </selectKey>
-    insert into [01] (app_name, app_addr, if_common0,
-    if_common1, post_code, person,
-    phone, fax, agent_name,
-    tm_kind_y, tm_kind_j, tm_kind_t, solid,
-    colour, class, attach,
-    int_code, tm_name, agent_number,
-    ctm_code, make_date, make_op,
-    sent_date, sent_op, sent_state,
-    list_code, rtn_state, reg_code,
-    pice, counterman, archiveNO,
-    gui_fee, reg_type, accountman,
-    accountstate, accountmemo, accountdate,
-    invoice, receiptcode, invoicedate,
-    invoiceman, receivable, app_date,
-    sqdate, dlguid, fpqx,
-    ztdm, app_code, jkrq,
-    jkfs, sjje, ywy_op,
-    snwh, cjid, cjid_zb,
-    agent_fee, gfcz, country_fee,
-    app_name_e, app_addr_e, app_state,
-    gjid, app_new, class_more,
-    sound, priority_claim, priority_prove,
-    priority_state, app_number, app_jsr,
-    app_jsrdz, app_jsryb, gui_feem,
-    dgn_desc, comm_serv, common_app,
-    memo1, add_comm, pic
-    )
-    values (#{appName}, #{appAddr}, #{ifCommon0,jdbcType=BIT},
-    #{ifCommon1,jdbcType=BIT}, #{postCode}, #{person},
-    #{phone}, #{fax}, #{agentName},
-    #{tmKindY,jdbcType=BIT}, #{tmKindJ,jdbcType=BIT}, #{tmKindT,jdbcType=BIT}, #{solid,jdbcType=BIT},
-    #{colour,jdbcType=BIT}, #{class}, #{attach},
-    #{intCode}, #{tmName}, #{agentNumber},
-    #{ctmCode}, #{makeDate}, #{makeOp},
-    #{sentDate}, #{sentOp}, #{sentState},
-    #{listCode}, #{rtnState}, #{regCode},
-    #{pice}, #{counterman}, #{archiveno},
-    #{guiFee}, #{regType}, #{accountman},
-    #{accountstate}, #{accountmemo}, #{accountdate},
-    #{invoice}, #{receiptcode}, #{invoicedate},
-    #{invoiceman}, #{receivable}, #{appDate},
-    #{sqdate}, #{dlguid}, #{fpqx},
-    #{ztdm}, #{appCode}, #{jkrq},
-    #{jkfs}, #{sjje}, #{ywyOp},
-    #{snwh}, #{cjid}, #{cjidZb},
-    #{agentFee}, #{gfcz}, #{countryFee},
-    #{appNameE}, #{appAddrE}, #{appState},
-    #{gjid}, #{appNew}, #{classMore},
-    #{sound,jdbcType=BIT}, #{priorityClaim}, #{priorityProve},
-    #{priorityState}, #{appNumber}, #{appJsr},
-    #{appJsrdz}, #{appJsryb}, #{guiFeem},
-    #{dgnDesc}, #{commServ}, #{commonApp},
-    #{memo1}, #{addComm}, #{pic,jdbcType=LONGVARBINARY}
-    )
-  </insert>
+    <insert id="insert" parameterType="com.gt.ms.entity.sqs.Sqs01">
+        <selectKey keyProperty="guid" order="AFTER" resultType="java.lang.String">
+            SQL_Server
+        </selectKey>
+        insert into [01] (app_name, app_addr, if_common0,
+        if_common1, post_code, person,
+        phone, fax, agent_name,
+        tm_kind_y, tm_kind_j, tm_kind_t, solid,
+        colour, class, attach,
+        int_code, tm_name, agent_number,
+        ctm_code, make_date, make_op,
+        sent_date, sent_op, sent_state,
+        list_code, rtn_state, reg_code,
+        pice, counterman, archiveNO,
+        gui_fee, reg_type, accountman,
+        accountstate, accountmemo, accountdate,
+        invoice, receiptcode, invoicedate,
+        invoiceman, receivable, app_date,
+        sqdate, dlguid, fpqx,
+        ztdm, app_code, jkrq,
+        jkfs, sjje, ywy_op,
+        snwh, cjid, cjid_zb,
+        agent_fee, gfcz, country_fee,
+        app_name_e, app_addr_e, app_state,
+        gjid, app_new, class_more,
+        sound, priority_claim, priority_prove,
+        priority_state, app_number, app_jsr,
+        app_jsrdz, app_jsryb, gui_feem,
+        dgn_desc, comm_serv, common_app,
+        memo1, add_comm, pic
+        )
+        values (#{appName}, #{appAddr}, #{ifCommon0,jdbcType=BIT},
+        #{ifCommon1,jdbcType=BIT}, #{postCode}, #{person},
+        #{phone}, #{fax}, #{agentName},
+        #{tmKindY,jdbcType=BIT}, #{tmKindJ,jdbcType=BIT}, #{tmKindT,jdbcType=BIT}, #{solid,jdbcType=BIT},
+        #{colour,jdbcType=BIT}, #{class}, #{attach},
+        #{intCode}, #{tmName}, #{agentNumber},
+        #{ctmCode}, #{makeDate}, #{makeOp},
+        #{sentDate}, #{sentOp}, #{sentState},
+        #{listCode}, #{rtnState}, #{regCode},
+        #{pice}, #{counterman}, #{archiveno},
+        #{guiFee}, #{regType}, #{accountman},
+        #{accountstate}, #{accountmemo}, #{accountdate},
+        #{invoice}, #{receiptcode}, #{invoicedate},
+        #{invoiceman}, #{receivable}, #{appDate},
+        #{sqdate}, #{dlguid}, #{fpqx},
+        #{ztdm}, #{appCode}, #{jkrq},
+        #{jkfs}, #{sjje}, #{ywyOp},
+        #{snwh}, #{cjid}, #{cjidZb},
+        #{agentFee}, #{gfcz}, #{countryFee},
+        #{appNameE}, #{appAddrE}, #{appState},
+        #{gjid}, #{appNew}, #{classMore},
+        #{sound,jdbcType=BIT}, #{priorityClaim}, #{priorityProve},
+        #{priorityState}, #{appNumber}, #{appJsr},
+        #{appJsrdz}, #{appJsryb}, #{guiFeem},
+        #{dgnDesc}, #{commServ}, #{commonApp},
+        #{memo1}, #{addComm}, #{pic,jdbcType=LONGVARBINARY}
+        )
+    </insert>
 
-  <update id="update" parameterType="com.gt.ms.entity.sqs.Sqs01">
-    update [01]
-    <set>
-      <if test="appName != null">
-        app_name = #{appName},
-      </if>
-      <if test="appAddr != null">
-        app_addr = #{appAddr},
-      </if>
-      <if test="ifCommon0 != null">
-        if_common0 = #{ifCommon0},
-      </if>
-      <if test="ifCommon1 != null">
-        if_common1 = #{ifCommon1},
-      </if>
-      <if test="postCode != null">
-        post_code = #{postCode},
-      </if>
-      <if test="person != null">
-        person = #{person},
-      </if>
-      <if test="phone != null">
-        phone = #{phone},
-      </if>
-      <if test="fax != null">
-        fax = #{fax},
-      </if>
-      <if test="agentName != null">
-        agent_name = #{agentName},
-      </if>
-      <if test="tmKindY != null">
-        tm_kind_y = #{tmKindY},
-      </if>
-      <if test="tmKindJ != null">
-        tm_kind_j = #{tmKindJ},
-      </if>
-      <if test="tmKindT != null">
-        tm_kind_t = #{tmKindT},
-      </if>
-      <if test="solid != null">
-        solid = #{solid},
-      </if>
-      <if test="colour != null">
-        colour = #{colour},
-      </if>
-      <if test="class_ != null">
-        class = #{class_},
-      </if>
-      <if test="attach != null">
-        attach = #{attach},
-      </if>
-      <if test="intCode != null">
-        int_code = #{intCode},
-      </if>
-      <if test="tmName != null">
-        tm_name = #{tmName},
-      </if>
-      <if test="agentNumber != null">
-        agent_number = #{agentNumber},
-      </if>
-      <if test="ctmCode != null">
-        ctm_code = #{ctmCode},
-      </if>
-      <if test="makeDate != null">
-        make_date = #{makeDate},
-      </if>
-      <if test="makeOp != null">
-        make_op = #{makeOp},
-      </if>
-      <if test="sentDate != null">
-        sent_date = #{sentDate},
-      </if>
-      <if test="sentOp != null">
-        sent_op = #{sentOp},
-      </if>
-      <if test="sentState != null">
-        sent_state = #{sentState},
-      </if>
-      <if test="listCode != null">
-        list_code = #{listCode},
-      </if>
-      <if test="rtnState != null">
-        rtn_state = #{rtnState},
-      </if>
-      <if test="regCode != null">
-        reg_code = #{regCode},
-      </if>
-      <if test="pice != null">
-        pice = #{pice},
-      </if>
-      <if test="counterman != null">
-        counterman = #{counterman},
-      </if>
-      <if test="archiveNo != null">
-        archiveNO = #{archiveNo},
-      </if>
-      <if test="guiFee != null">
-        gui_fee = #{guiFee},
-      </if>
-      <if test="regType != null">
-        reg_type = #{regType},
-      </if>
-      <if test="accountman != null">
-        accountman = #{accountman},
-      </if>
-      <if test="accountstate != null">
-        accountstate = #{accountstate},
-      </if>
-      <if test="accountmemo != null">
-        accountmemo = #{accountmemo},
-      </if>
-      <if test="accountdate != null">
-        accountdate = #{accountdate},
-      </if>
-      <if test="invoice != null">
-        invoice = #{invoice},
-      </if>
-      <if test="receiptcode != null">
-        receiptcode = #{receiptcode},
-      </if>
-      <if test="invoicedate != null">
-        invoicedate = #{invoicedate},
-      </if>
-      <if test="invoiceman != null">
-        invoiceman = #{invoiceman},
-      </if>
-      <if test="receivable != null">
-        receivable = #{receivable},
-      </if>
-      <if test="appDate != null">
-        app_date = #{appDate},
-      </if>
-      <if test="sqdate != null">
-        sqdate = #{sqdate},
-      </if>
-      <if test="dlguid != null">
-        dlguid = #{dlguid},
-      </if>
-      <if test="fpqx != null">
-        fpqx = #{fpqx},
-      </if>
-      <if test="ztdm != null">
-        ztdm = #{ztdm},
-      </if>
-      <if test="appCode != null">
-        app_code = #{appCode},
-      </if>
-      <if test="jkrq != null">
-        jkrq = #{jkrq},
-      </if>
-      <if test="jkfs != null">
-        jkfs = #{jkfs},
-      </if>
-      <if test="sjje != null">
-        sjje = #{sjje},
-      </if>
-      <if test="ywyOp != null">
-        ywy_op = #{ywyOp},
-      </if>
-      <if test="snwh != null">
-        snwh = #{snwh},
-      </if>
-      <if test="cjid != null">
-        cjid = #{cjid},
-      </if>
-      <if test="cjidZb != null">
-        cjid_zb = #{cjidZb},
-      </if>
-      <if test="agentFee != null">
-        agent_fee = #{agentFee},
-      </if>
-      <if test="gfcz != null">
-        gfcz = #{gfcz},
-      </if>
-      <if test="countryFee != null">
-        country_fee = #{countryFee},
-      </if>
-      <if test="appNameE != null">
-        app_name_e = #{appNameE},
-      </if>
-      <if test="appAddrE != null">
-        app_addr_e = #{appAddrE},
-      </if>
-      <if test="appState != null">
-        app_state = #{appState},
-      </if>
-      <if test="gjid != null">
-        gjid = #{gjid},
-      </if>
-      <if test="appNew != null">
-        app_new = #{appNew},
-      </if>
-      <if test="classMore != null">
-        class_more = #{classMore},
-      </if>
-      <if test="sound != null">
-        sound = #{sound,jdbcType=BIT},
-      </if>
-      <if test="priorityClaim != null">
-        priority_claim = #{priorityClaim},
-      </if>
-      <if test="priorityProve != null">
-        priority_prove = #{priorityProve},
-      </if>
-      <if test="priorityState != null">
-        priority_state = #{priorityState},
-      </if>
-      <if test="appNumber != null">
-        app_number = #{appNumber},
-      </if>
-      <if test="appJsr != null">
-        app_jsr = #{appJsr},
-      </if>
-      <if test="appJsrdz != null">
-        app_jsrdz = #{appJsrdz},
-      </if>
-      <if test="appJsryb != null">
-        app_jsryb = #{appJsryb},
-      </if>
-      <if test="guiFeem != null">
-        gui_feem = #{guiFeem},
-      </if>
-      <if test="dgnDesc != null">
-        dgn_desc = #{dgnDesc},
-      </if>
-      <if test="commServ != null">
-        comm_serv = #{commServ},
-      </if>
-      <if test="commonApp != null">
-        common_app = #{commonApp},
-      </if>
-      <if test="memo1 != null">
-        memo1 = #{memo1},
-      </if>
-      <if test="addComm != null">
-        add_comm = #{addComm},
-      </if>
-      <if test="pic != null">
-        pic = #{pic},
-      </if>
-    </set>
-    where guid = #{guid}
-  </update>
+    <update id="update" parameterType="com.gt.ms.entity.sqs.Sqs01">
+        update [01]
+        <set>
+            <if test="appName != null">
+                app_name = #{appName},
+            </if>
+            <if test="appAddr != null">
+                app_addr = #{appAddr},
+            </if>
+            <if test="ifCommon0 != null">
+                if_common0 = #{ifCommon0},
+            </if>
+            <if test="ifCommon1 != null">
+                if_common1 = #{ifCommon1},
+            </if>
+            <if test="postCode != null">
+                post_code = #{postCode},
+            </if>
+            <if test="person != null">
+                person = #{person},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="fax != null">
+                fax = #{fax},
+            </if>
+            <if test="agentName != null">
+                agent_name = #{agentName},
+            </if>
+            <if test="tmKindY != null">
+                tm_kind_y = #{tmKindY},
+            </if>
+            <if test="tmKindJ != null">
+                tm_kind_j = #{tmKindJ},
+            </if>
+            <if test="tmKindT != null">
+                tm_kind_t = #{tmKindT},
+            </if>
+            <if test="solid != null">
+                solid = #{solid},
+            </if>
+            <if test="colour != null">
+                colour = #{colour},
+            </if>
+            <if test="class_ != null">
+                class = #{class_},
+            </if>
+            <if test="attach != null">
+                attach = #{attach},
+            </if>
+            <if test="intCode != null">
+                int_code = #{intCode},
+            </if>
+            <if test="tmName != null">
+                tm_name = #{tmName},
+            </if>
+            <if test="agentNumber != null">
+                agent_number = #{agentNumber},
+            </if>
+            <if test="ctmCode != null">
+                ctm_code = #{ctmCode},
+            </if>
+            <if test="makeDate != null">
+                make_date = #{makeDate},
+            </if>
+            <if test="makeOp != null">
+                make_op = #{makeOp},
+            </if>
+            <if test="sentDate != null">
+                sent_date = #{sentDate},
+            </if>
+            <if test="sentOp != null">
+                sent_op = #{sentOp},
+            </if>
+            <if test="sentState != null">
+                sent_state = #{sentState},
+            </if>
+            <if test="listCode != null">
+                list_code = #{listCode},
+            </if>
+            <if test="rtnState != null">
+                rtn_state = #{rtnState},
+            </if>
+            <if test="regCode != null">
+                reg_code = #{regCode},
+            </if>
+            <if test="pice != null">
+                pice = #{pice},
+            </if>
+            <if test="counterman != null">
+                counterman = #{counterman},
+            </if>
+            <if test="archiveNo != null">
+                archiveNO = #{archiveNo},
+            </if>
+            <if test="guiFee != null">
+                gui_fee = #{guiFee},
+            </if>
+            <if test="regType != null">
+                reg_type = #{regType},
+            </if>
+            <if test="accountman != null">
+                accountman = #{accountman},
+            </if>
+            <if test="accountstate != null">
+                accountstate = #{accountstate},
+            </if>
+            <if test="accountmemo != null">
+                accountmemo = #{accountmemo},
+            </if>
+            <if test="accountdate != null">
+                accountdate = #{accountdate},
+            </if>
+            <if test="invoice != null">
+                invoice = #{invoice},
+            </if>
+            <if test="receiptcode != null">
+                receiptcode = #{receiptcode},
+            </if>
+            <if test="invoicedate != null">
+                invoicedate = #{invoicedate},
+            </if>
+            <if test="invoiceman != null">
+                invoiceman = #{invoiceman},
+            </if>
+            <if test="receivable != null">
+                receivable = #{receivable},
+            </if>
+            <if test="appDate != null">
+                app_date = #{appDate},
+            </if>
+            <if test="sqdate != null">
+                sqdate = #{sqdate},
+            </if>
+            <if test="dlguid != null">
+                dlguid = #{dlguid},
+            </if>
+            <if test="fpqx != null">
+                fpqx = #{fpqx},
+            </if>
+            <if test="ztdm != null">
+                ztdm = #{ztdm},
+            </if>
+            <if test="appCode != null">
+                app_code = #{appCode},
+            </if>
+            <if test="jkrq != null">
+                jkrq = #{jkrq},
+            </if>
+            <if test="jkfs != null">
+                jkfs = #{jkfs},
+            </if>
+            <if test="sjje != null">
+                sjje = #{sjje},
+            </if>
+            <if test="ywyOp != null">
+                ywy_op = #{ywyOp},
+            </if>
+            <if test="snwh != null">
+                snwh = #{snwh},
+            </if>
+            <if test="cjid != null">
+                cjid = #{cjid},
+            </if>
+            <if test="cjidZb != null">
+                cjid_zb = #{cjidZb},
+            </if>
+            <if test="agentFee != null">
+                agent_fee = #{agentFee},
+            </if>
+            <if test="gfcz != null">
+                gfcz = #{gfcz},
+            </if>
+            <if test="countryFee != null">
+                country_fee = #{countryFee},
+            </if>
+            <if test="appNameE != null">
+                app_name_e = #{appNameE},
+            </if>
+            <if test="appAddrE != null">
+                app_addr_e = #{appAddrE},
+            </if>
+            <if test="appState != null">
+                app_state = #{appState},
+            </if>
+            <if test="gjid != null">
+                gjid = #{gjid},
+            </if>
+            <if test="appNew != null">
+                app_new = #{appNew},
+            </if>
+            <if test="classMore != null">
+                class_more = #{classMore},
+            </if>
+            <if test="sound != null">
+                sound = #{sound,jdbcType=BIT},
+            </if>
+            <if test="priorityClaim != null">
+                priority_claim = #{priorityClaim},
+            </if>
+            <if test="priorityProve != null">
+                priority_prove = #{priorityProve},
+            </if>
+            <if test="priorityState != null">
+                priority_state = #{priorityState},
+            </if>
+            <if test="appNumber != null">
+                app_number = #{appNumber},
+            </if>
+            <if test="appJsr != null">
+                app_jsr = #{appJsr},
+            </if>
+            <if test="appJsrdz != null">
+                app_jsrdz = #{appJsrdz},
+            </if>
+            <if test="appJsryb != null">
+                app_jsryb = #{appJsryb},
+            </if>
+            <if test="guiFeem != null">
+                gui_feem = #{guiFeem},
+            </if>
+            <if test="dgnDesc != null">
+                dgn_desc = #{dgnDesc},
+            </if>
+            <if test="commServ != null">
+                comm_serv = #{commServ},
+            </if>
+            <if test="commonApp != null">
+                common_app = #{commonApp},
+            </if>
+            <if test="memo1 != null">
+                memo1 = #{memo1},
+            </if>
+            <if test="addComm != null">
+                add_comm = #{addComm},
+            </if>
+            <if test="pic != null">
+                pic = #{pic},
+            </if>
+        </set>
+        where guid = #{guid}
+    </update>
+
+
 </mapper>

@@ -47,7 +47,7 @@
                 if (result.success) {
                     parent.$.messager.alert('提示', result.message, 'info');
 //                    $('#sqs01EditForm')[0].reset();
-                    location.href = "${path}/sqs/01/edit?guid=${sqs01.guid}";
+                    location.href = "${path}/sqs/01/manager";
                 } else {
                     parent.$.messager.alert('提示', result.message, 'warning');
                 }
@@ -298,7 +298,7 @@
                 <tr>
                     <td>商标申请声明</td>
                     <td colspan="5">
-                        <%--集体和证明只能选择一个--%>
+                        <%-- TODO 集体和证明只能选择一个--%>
                         <input type="checkbox" name="tmKindJ" value="1" <c:if test="${sqs01.tmKindJ}">checked</c:if>>集体商标
                         <input type="checkbox" name="tmKindT" value="1" <c:if test="${sqs01.tmKindT}">checked</c:if>>证明商标
                         <input type="checkbox" name="ifCommon0" value="1"
@@ -414,7 +414,8 @@
                         <input type="text" readonly id="wts_text"/>
                     </td>
                     <td>查看委托书</td>
-                    <td><a onclick="downloadWts();" href="javascript:void(0);" class="easyui-linkbutton"
+                    <td><a target="_blank"  href="${path}/appImage/img?guid=${sqs01.guid}"
+                           class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">点击下载</a></td>
                 </tr>
                 <tr>

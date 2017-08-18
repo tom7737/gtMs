@@ -3,9 +3,13 @@ package com.gt.ms.controller;
 import com.gt.img.entity.AppImage;
 import com.gt.img.service.AppImageService;
 import com.gt.ms.entity.admin.Op;
+import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
+import com.gt.ms.service.customer.CustomerService;
 import com.gt.ms.service.sqs.Sqs01Service;
+import com.gt.ms.utils.DateUtils;
+import com.gt.ms.utils.RandomUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
@@ -27,6 +31,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +54,8 @@ public class Sqs01Controller extends BaseController {
     private OpService opService;
     @Autowired
     private AppImageService appImageService;
-
+    @Autowired
+    private CustomerService customerService;
     private static final String common_fax = "010-63347510";//传真
     private static final Double common_country_fei = 300.00;//规费
     private static final Double common_country_fei_jt = 1500.00;//规费(集体)
@@ -105,8 +112,34 @@ public class Sqs01Controller extends BaseController {
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addPage() {
+    public String addPage(String ctmCode, Model model) {
+        //编号
+        //2017 0717 180754 140 567746 01
+        //2017071718075470038327001
+        //2017081822205790968527201
+        //201707171808008478901801
+        String guid = buildGuid();
+
+        List<Op> ops = opService.getList();
+        Customer customer = customerService.get(ctmCode);
+        model.addAttribute("currentUser", getCurrentUser());
+        model.addAttribute("ops", ops);
+        model.addAttribute("customer", customer);
         return "sqs/01/add";
+    }
+
+    private String buildGuid() {
+        return DateUtils.getCurrentFormatDate("yyyyMMddHHmmssSSS") + RandomUtils.generateNumString(6) + "01";
+    }
+    private String bulidAgentNumber(){
+        // TODO 获取agent_code
+        return  "GT";
+    }
+
+    public static void main(String[] args) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+
+        System.out.println();
     }
 
     /**
@@ -120,6 +153,7 @@ public class Sqs01Controller extends BaseController {
     public AjaxResult add(Sqs01 sqs01) {
         AjaxResult result = new AjaxResult();
         try {
+            // TODO 添加agent_code_his记录
             sqs01Server.save(sqs01);
             result.setSuccess(true);
             result.setMessage("添加成功");
@@ -288,11 +322,6 @@ public class Sqs01Controller extends BaseController {
         return result;
     }
 
-    public static void main(String[] args) {
-        String s = null;
-        System.out.println(StringUtils.incGuid(s));
-
-    }
 
     /**
      * /**

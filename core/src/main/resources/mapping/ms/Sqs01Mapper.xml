@@ -108,7 +108,7 @@
         FROM [01]
 
         <where>
-            <if test="condition.makeOpQx!=null and condition.makeOp!=''">
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
                 make_op = #{condition.makeOpQx}
             </if>
             <if test="condition.appName!=null and condition.appName!=''">
@@ -128,7 +128,7 @@
         SELECT COUNT (*)
         FROM [01]
         <where>
-            <if test="condition.makeOpQx!=null and condition.makeOp!=''">
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
                 make_op = #{condition.makeOpQx}
             </if>
             <if test="condition.appName!=null and condition.appName!=''">

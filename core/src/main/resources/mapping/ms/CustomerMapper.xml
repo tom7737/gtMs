@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gt.ms.mapper.customer.CustomerMapper" >
+<mapper namespace="com.gt.ms.mapper.customer.CustomersMapper" >
   <resultMap id="BaseResultMap" type="com.gt.ms.entity.customer.Customer" >
     <id column="ctm_code" property="ctmCode" jdbcType="NVARCHAR" />
     <result column="ctm_name" property="ctmName" jdbcType="NVARCHAR" />
@@ -47,67 +47,6 @@
     <result column="qdzid" property="qdzid" jdbcType="NVARCHAR" />
     <result column="ctm_wxh" property="ctmWxh" jdbcType="NVARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.gt.ms.entity.customer.Customer" extends="BaseResultMap" >
-    <result column="ctm_memo" property="ctmMemo" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
   <sql id="Base_Column_List" >
     ctm_code, ctm_name, ctm_tel, ctm_mobile, ctm_fax, ctm_http, ctm_email, ctm_addr, 
     ctm_post, ctm_class, ctm_regDate, ctm_lxr, ctm_jm, ctm_name_en, ctm_addr_en, make_op, 
@@ -115,56 +54,56 @@
     ctm_lxrqq, zjmc, ywy_op, qdid, cjid, cjid_zb, dlguid, lbid, ctm_name_jsr, ctm_name_jsrdz, 
     ctm_name_jsryb, qylxnew, qygj, sfzjmc, sfzjhm, qdzid, ctm_wxh
   </sql>
-  <sql id="Blob_Column_List" >
-    ctm_memo
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.gt.ms.entity.customer.CustomerExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from customer
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
+
+  <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM(
+
+    SELECT TOP ${size+from} ROW_NUMBER() OVER(ORDER BY ctm_code ASC) AS ROWID,*
+
+    FROM customer
+
+    <where>
+      <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+        make_op = #{condition.makeOpQx}
+      </if>
+      <if test="condition.ctmName!=null and condition.ctmName!=''">
+        and ctm_name like '%${condition.ctmName}%'
+      </if>
+      <if test="condition.ctmCode!=null and condition.ctmCode!=''">
+        and ctm_code = #{condition.ctmCode}
+      </if>
+    </where>
+    ) AS TEMP1
+    WHERE ROWID> ${from}
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gt.ms.entity.customer.CustomerExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from customer
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
+  <select id="findPageCount" parameterType="com.gt.ms.vo.PageInfo" resultType="java.lang.Integer">
+    SELECT COUNT (*)
+    FROM customer
+    <where>
+      <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+        make_op = #{condition.makeOpQx}
+      </if>
+      <if test="condition.ctmName!=null and condition.ctmName!=''">
+        and ctm_name like '%${condition.ctmName}%'
+      </if>
+      <if test="condition.ctmCode!=null and condition.ctmCode!=''">
+        and ctm_code = #{condition.ctmCode}
+      </if>
+    </where>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+
+
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from customer
     where ctm_code = #{ctmCode,jdbcType=NVARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="remove" parameterType="java.lang.String" >
     delete from customer
     where ctm_code = #{ctmCode,jdbcType=NVARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.gt.ms.entity.customer.CustomerExample" >
-    delete from customer
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
   </delete>
   <insert id="insert" parameterType="com.gt.ms.entity.customer.Customer" >
     insert into customer (ctm_code, ctm_name, ctm_tel, 
@@ -200,534 +139,7 @@
       #{qdzid,jdbcType=NVARCHAR}, #{ctmWxh,jdbcType=NVARCHAR}, #{ctmMemo,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.gt.ms.entity.customer.Customer" >
-    insert into customer
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="ctmCode != null" >
-        ctm_code,
-      </if>
-      <if test="ctmName != null" >
-        ctm_name,
-      </if>
-      <if test="ctmTel != null" >
-        ctm_tel,
-      </if>
-      <if test="ctmMobile != null" >
-        ctm_mobile,
-      </if>
-      <if test="ctmFax != null" >
-        ctm_fax,
-      </if>
-      <if test="ctmHttp != null" >
-        ctm_http,
-      </if>
-      <if test="ctmEmail != null" >
-        ctm_email,
-      </if>
-      <if test="ctmAddr != null" >
-        ctm_addr,
-      </if>
-      <if test="ctmPost != null" >
-        ctm_post,
-      </if>
-      <if test="ctmClass != null" >
-        ctm_class,
-      </if>
-      <if test="ctmRegdate != null" >
-        ctm_regDate,
-      </if>
-      <if test="ctmLxr != null" >
-        ctm_lxr,
-      </if>
-      <if test="ctmJm != null" >
-        ctm_jm,
-      </if>
-      <if test="ctmNameEn != null" >
-        ctm_name_en,
-      </if>
-      <if test="ctmAddrEn != null" >
-        ctm_addr_en,
-      </if>
-      <if test="makeOp != null" >
-        make_op,
-      </if>
-      <if test="zjhm != null" >
-        zjhm,
-      </if>
-      <if test="ztdm != null" >
-        ztdm,
-      </if>
-      <if test="lxguid != null" >
-        lxguid,
-      </if>
-      <if test="sdzid != null" >
-        sdzid,
-      </if>
-      <if test="cdzid != null" >
-        cdzid,
-      </if>
-      <if test="qylx != null" >
-        qylx,
-      </if>
-      <if test="qyzt != null" >
-        qyzt,
-      </if>
-      <if test="khgjlx != null" >
-        khgjlx,
-      </if>
-      <if test="gjid != null" >
-        gjid,
-      </if>
-      <if test="ctmAddrYj != null" >
-        ctm_addr_yj,
-      </if>
-      <if test="ctmQyfr != null" >
-        ctm_qyfr,
-      </if>
-      <if test="ctmLxrqq != null" >
-        ctm_lxrqq,
-      </if>
-      <if test="zjmc != null" >
-        zjmc,
-      </if>
-      <if test="ywyOp != null" >
-        ywy_op,
-      </if>
-      <if test="qdid != null" >
-        qdid,
-      </if>
-      <if test="cjid != null" >
-        cjid,
-      </if>
-      <if test="cjidZb != null" >
-        cjid_zb,
-      </if>
-      <if test="dlguid != null" >
-        dlguid,
-      </if>
-      <if test="lbid != null" >
-        lbid,
-      </if>
-      <if test="ctmNameJsr != null" >
-        ctm_name_jsr,
-      </if>
-      <if test="ctmNameJsrdz != null" >
-        ctm_name_jsrdz,
-      </if>
-      <if test="ctmNameJsryb != null" >
-        ctm_name_jsryb,
-      </if>
-      <if test="qylxnew != null" >
-        qylxnew,
-      </if>
-      <if test="qygj != null" >
-        qygj,
-      </if>
-      <if test="sfzjmc != null" >
-        sfzjmc,
-      </if>
-      <if test="sfzjhm != null" >
-        sfzjhm,
-      </if>
-      <if test="qdzid != null" >
-        qdzid,
-      </if>
-      <if test="ctmWxh != null" >
-        ctm_wxh,
-      </if>
-      <if test="ctmMemo != null" >
-        ctm_memo,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="ctmCode != null" >
-        #{ctmCode,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmName != null" >
-        #{ctmName,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmTel != null" >
-        #{ctmTel,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmMobile != null" >
-        #{ctmMobile,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmFax != null" >
-        #{ctmFax,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmHttp != null" >
-        #{ctmHttp,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmEmail != null" >
-        #{ctmEmail,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmAddr != null" >
-        #{ctmAddr,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmPost != null" >
-        #{ctmPost,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmClass != null" >
-        #{ctmClass,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmRegdate != null" >
-        #{ctmRegdate,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmLxr != null" >
-        #{ctmLxr,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmJm != null" >
-        #{ctmJm,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmNameEn != null" >
-        #{ctmNameEn,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmAddrEn != null" >
-        #{ctmAddrEn,jdbcType=NVARCHAR},
-      </if>
-      <if test="makeOp != null" >
-        #{makeOp,jdbcType=NVARCHAR},
-      </if>
-      <if test="zjhm != null" >
-        #{zjhm,jdbcType=NVARCHAR},
-      </if>
-      <if test="ztdm != null" >
-        #{ztdm,jdbcType=NVARCHAR},
-      </if>
-      <if test="lxguid != null" >
-        #{lxguid,jdbcType=NVARCHAR},
-      </if>
-      <if test="sdzid != null" >
-        #{sdzid,jdbcType=NVARCHAR},
-      </if>
-      <if test="cdzid != null" >
-        #{cdzid,jdbcType=NVARCHAR},
-      </if>
-      <if test="qylx != null" >
-        #{qylx,jdbcType=NVARCHAR},
-      </if>
-      <if test="qyzt != null" >
-        #{qyzt,jdbcType=NVARCHAR},
-      </if>
-      <if test="khgjlx != null" >
-        #{khgjlx,jdbcType=NVARCHAR},
-      </if>
-      <if test="gjid != null" >
-        #{gjid,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmAddrYj != null" >
-        #{ctmAddrYj,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmQyfr != null" >
-        #{ctmQyfr,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmLxrqq != null" >
-        #{ctmLxrqq,jdbcType=NVARCHAR},
-      </if>
-      <if test="zjmc != null" >
-        #{zjmc,jdbcType=NVARCHAR},
-      </if>
-      <if test="ywyOp != null" >
-        #{ywyOp,jdbcType=NVARCHAR},
-      </if>
-      <if test="qdid != null" >
-        #{qdid,jdbcType=NVARCHAR},
-      </if>
-      <if test="cjid != null" >
-        #{cjid,jdbcType=NVARCHAR},
-      </if>
-      <if test="cjidZb != null" >
-        #{cjidZb,jdbcType=NVARCHAR},
-      </if>
-      <if test="dlguid != null" >
-        #{dlguid,jdbcType=NVARCHAR},
-      </if>
-      <if test="lbid != null" >
-        #{lbid,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmNameJsr != null" >
-        #{ctmNameJsr,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmNameJsrdz != null" >
-        #{ctmNameJsrdz,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmNameJsryb != null" >
-        #{ctmNameJsryb,jdbcType=NVARCHAR},
-      </if>
-      <if test="qylxnew != null" >
-        #{qylxnew,jdbcType=NVARCHAR},
-      </if>
-      <if test="qygj != null" >
-        #{qygj,jdbcType=NVARCHAR},
-      </if>
-      <if test="sfzjmc != null" >
-        #{sfzjmc,jdbcType=NVARCHAR},
-      </if>
-      <if test="sfzjhm != null" >
-        #{sfzjhm,jdbcType=NVARCHAR},
-      </if>
-      <if test="qdzid != null" >
-        #{qdzid,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmWxh != null" >
-        #{ctmWxh,jdbcType=NVARCHAR},
-      </if>
-      <if test="ctmMemo != null" >
-        #{ctmMemo,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.gt.ms.entity.customer.CustomerExample" resultType="java.lang.Integer" >
-    select count(*) from customer
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update customer
-    <set >
-      <if test="record.ctmCode != null" >
-        ctm_code = #{record.ctmCode,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmName != null" >
-        ctm_name = #{record.ctmName,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmTel != null" >
-        ctm_tel = #{record.ctmTel,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmMobile != null" >
-        ctm_mobile = #{record.ctmMobile,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmFax != null" >
-        ctm_fax = #{record.ctmFax,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmHttp != null" >
-        ctm_http = #{record.ctmHttp,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmEmail != null" >
-        ctm_email = #{record.ctmEmail,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmAddr != null" >
-        ctm_addr = #{record.ctmAddr,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmPost != null" >
-        ctm_post = #{record.ctmPost,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmClass != null" >
-        ctm_class = #{record.ctmClass,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmRegdate != null" >
-        ctm_regDate = #{record.ctmRegdate,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmLxr != null" >
-        ctm_lxr = #{record.ctmLxr,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmJm != null" >
-        ctm_jm = #{record.ctmJm,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmNameEn != null" >
-        ctm_name_en = #{record.ctmNameEn,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmAddrEn != null" >
-        ctm_addr_en = #{record.ctmAddrEn,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.makeOp != null" >
-        make_op = #{record.makeOp,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.zjhm != null" >
-        zjhm = #{record.zjhm,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ztdm != null" >
-        ztdm = #{record.ztdm,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.lxguid != null" >
-        lxguid = #{record.lxguid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.sdzid != null" >
-        sdzid = #{record.sdzid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.cdzid != null" >
-        cdzid = #{record.cdzid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.qylx != null" >
-        qylx = #{record.qylx,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.qyzt != null" >
-        qyzt = #{record.qyzt,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.khgjlx != null" >
-        khgjlx = #{record.khgjlx,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.gjid != null" >
-        gjid = #{record.gjid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmAddrYj != null" >
-        ctm_addr_yj = #{record.ctmAddrYj,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmQyfr != null" >
-        ctm_qyfr = #{record.ctmQyfr,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmLxrqq != null" >
-        ctm_lxrqq = #{record.ctmLxrqq,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.zjmc != null" >
-        zjmc = #{record.zjmc,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ywyOp != null" >
-        ywy_op = #{record.ywyOp,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.qdid != null" >
-        qdid = #{record.qdid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.cjid != null" >
-        cjid = #{record.cjid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.cjidZb != null" >
-        cjid_zb = #{record.cjidZb,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.dlguid != null" >
-        dlguid = #{record.dlguid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.lbid != null" >
-        lbid = #{record.lbid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmNameJsr != null" >
-        ctm_name_jsr = #{record.ctmNameJsr,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmNameJsrdz != null" >
-        ctm_name_jsrdz = #{record.ctmNameJsrdz,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmNameJsryb != null" >
-        ctm_name_jsryb = #{record.ctmNameJsryb,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.qylxnew != null" >
-        qylxnew = #{record.qylxnew,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.qygj != null" >
-        qygj = #{record.qygj,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.sfzjmc != null" >
-        sfzjmc = #{record.sfzjmc,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.sfzjhm != null" >
-        sfzjhm = #{record.sfzjhm,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.qdzid != null" >
-        qdzid = #{record.qdzid,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmWxh != null" >
-        ctm_wxh = #{record.ctmWxh,jdbcType=NVARCHAR},
-      </if>
-      <if test="record.ctmMemo != null" >
-        ctm_memo = #{record.ctmMemo,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update customer
-    set ctm_code = #{record.ctmCode,jdbcType=NVARCHAR},
-      ctm_name = #{record.ctmName,jdbcType=NVARCHAR},
-      ctm_tel = #{record.ctmTel,jdbcType=NVARCHAR},
-      ctm_mobile = #{record.ctmMobile,jdbcType=NVARCHAR},
-      ctm_fax = #{record.ctmFax,jdbcType=NVARCHAR},
-      ctm_http = #{record.ctmHttp,jdbcType=NVARCHAR},
-      ctm_email = #{record.ctmEmail,jdbcType=NVARCHAR},
-      ctm_addr = #{record.ctmAddr,jdbcType=NVARCHAR},
-      ctm_post = #{record.ctmPost,jdbcType=NVARCHAR},
-      ctm_class = #{record.ctmClass,jdbcType=NVARCHAR},
-      ctm_regDate = #{record.ctmRegdate,jdbcType=NVARCHAR},
-      ctm_lxr = #{record.ctmLxr,jdbcType=NVARCHAR},
-      ctm_jm = #{record.ctmJm,jdbcType=NVARCHAR},
-      ctm_name_en = #{record.ctmNameEn,jdbcType=NVARCHAR},
-      ctm_addr_en = #{record.ctmAddrEn,jdbcType=NVARCHAR},
-      make_op = #{record.makeOp,jdbcType=NVARCHAR},
-      zjhm = #{record.zjhm,jdbcType=NVARCHAR},
-      ztdm = #{record.ztdm,jdbcType=NVARCHAR},
-      lxguid = #{record.lxguid,jdbcType=NVARCHAR},
-      sdzid = #{record.sdzid,jdbcType=NVARCHAR},
-      cdzid = #{record.cdzid,jdbcType=NVARCHAR},
-      qylx = #{record.qylx,jdbcType=NVARCHAR},
-      qyzt = #{record.qyzt,jdbcType=NVARCHAR},
-      khgjlx = #{record.khgjlx,jdbcType=NVARCHAR},
-      gjid = #{record.gjid,jdbcType=NVARCHAR},
-      ctm_addr_yj = #{record.ctmAddrYj,jdbcType=NVARCHAR},
-      ctm_qyfr = #{record.ctmQyfr,jdbcType=NVARCHAR},
-      ctm_lxrqq = #{record.ctmLxrqq,jdbcType=NVARCHAR},
-      zjmc = #{record.zjmc,jdbcType=NVARCHAR},
-      ywy_op = #{record.ywyOp,jdbcType=NVARCHAR},
-      qdid = #{record.qdid,jdbcType=NVARCHAR},
-      cjid = #{record.cjid,jdbcType=NVARCHAR},
-      cjid_zb = #{record.cjidZb,jdbcType=NVARCHAR},
-      dlguid = #{record.dlguid,jdbcType=NVARCHAR},
-      lbid = #{record.lbid,jdbcType=NVARCHAR},
-      ctm_name_jsr = #{record.ctmNameJsr,jdbcType=NVARCHAR},
-      ctm_name_jsrdz = #{record.ctmNameJsrdz,jdbcType=NVARCHAR},
-      ctm_name_jsryb = #{record.ctmNameJsryb,jdbcType=NVARCHAR},
-      qylxnew = #{record.qylxnew,jdbcType=NVARCHAR},
-      qygj = #{record.qygj,jdbcType=NVARCHAR},
-      sfzjmc = #{record.sfzjmc,jdbcType=NVARCHAR},
-      sfzjhm = #{record.sfzjhm,jdbcType=NVARCHAR},
-      qdzid = #{record.qdzid,jdbcType=NVARCHAR},
-      ctm_wxh = #{record.ctmWxh,jdbcType=NVARCHAR},
-      ctm_memo = #{record.ctmMemo,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update customer
-    set ctm_code = #{record.ctmCode,jdbcType=NVARCHAR},
-      ctm_name = #{record.ctmName,jdbcType=NVARCHAR},
-      ctm_tel = #{record.ctmTel,jdbcType=NVARCHAR},
-      ctm_mobile = #{record.ctmMobile,jdbcType=NVARCHAR},
-      ctm_fax = #{record.ctmFax,jdbcType=NVARCHAR},
-      ctm_http = #{record.ctmHttp,jdbcType=NVARCHAR},
-      ctm_email = #{record.ctmEmail,jdbcType=NVARCHAR},
-      ctm_addr = #{record.ctmAddr,jdbcType=NVARCHAR},
-      ctm_post = #{record.ctmPost,jdbcType=NVARCHAR},
-      ctm_class = #{record.ctmClass,jdbcType=NVARCHAR},
-      ctm_regDate = #{record.ctmRegdate,jdbcType=NVARCHAR},
-      ctm_lxr = #{record.ctmLxr,jdbcType=NVARCHAR},
-      ctm_jm = #{record.ctmJm,jdbcType=NVARCHAR},
-      ctm_name_en = #{record.ctmNameEn,jdbcType=NVARCHAR},
-      ctm_addr_en = #{record.ctmAddrEn,jdbcType=NVARCHAR},
-      make_op = #{record.makeOp,jdbcType=NVARCHAR},
-      zjhm = #{record.zjhm,jdbcType=NVARCHAR},
-      ztdm = #{record.ztdm,jdbcType=NVARCHAR},
-      lxguid = #{record.lxguid,jdbcType=NVARCHAR},
-      sdzid = #{record.sdzid,jdbcType=NVARCHAR},
-      cdzid = #{record.cdzid,jdbcType=NVARCHAR},
-      qylx = #{record.qylx,jdbcType=NVARCHAR},
-      qyzt = #{record.qyzt,jdbcType=NVARCHAR},
-      khgjlx = #{record.khgjlx,jdbcType=NVARCHAR},
-      gjid = #{record.gjid,jdbcType=NVARCHAR},
-      ctm_addr_yj = #{record.ctmAddrYj,jdbcType=NVARCHAR},
-      ctm_qyfr = #{record.ctmQyfr,jdbcType=NVARCHAR},
-      ctm_lxrqq = #{record.ctmLxrqq,jdbcType=NVARCHAR},
-      zjmc = #{record.zjmc,jdbcType=NVARCHAR},
-      ywy_op = #{record.ywyOp,jdbcType=NVARCHAR},
-      qdid = #{record.qdid,jdbcType=NVARCHAR},
-      cjid = #{record.cjid,jdbcType=NVARCHAR},
-      cjid_zb = #{record.cjidZb,jdbcType=NVARCHAR},
-      dlguid = #{record.dlguid,jdbcType=NVARCHAR},
-      lbid = #{record.lbid,jdbcType=NVARCHAR},
-      ctm_name_jsr = #{record.ctmNameJsr,jdbcType=NVARCHAR},
-      ctm_name_jsrdz = #{record.ctmNameJsrdz,jdbcType=NVARCHAR},
-      ctm_name_jsryb = #{record.ctmNameJsryb,jdbcType=NVARCHAR},
-      qylxnew = #{record.qylxnew,jdbcType=NVARCHAR},
-      qygj = #{record.qygj,jdbcType=NVARCHAR},
-      sfzjmc = #{record.sfzjmc,jdbcType=NVARCHAR},
-      sfzjhm = #{record.sfzjhm,jdbcType=NVARCHAR},
-      qdzid = #{record.qdzid,jdbcType=NVARCHAR},
-      ctm_wxh = #{record.ctmWxh,jdbcType=NVARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gt.ms.entity.customer.Customer" >
+  <update id="update" parameterType="com.gt.ms.entity.customer.Customer" >
     update customer
     <set >
       <if test="ctmName != null" >
@@ -863,101 +275,6 @@
         ctm_memo = #{ctmMemo,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where ctm_code = #{ctmCode,jdbcType=NVARCHAR}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gt.ms.entity.customer.Customer" >
-    update customer
-    set ctm_name = #{ctmName,jdbcType=NVARCHAR},
-      ctm_tel = #{ctmTel,jdbcType=NVARCHAR},
-      ctm_mobile = #{ctmMobile,jdbcType=NVARCHAR},
-      ctm_fax = #{ctmFax,jdbcType=NVARCHAR},
-      ctm_http = #{ctmHttp,jdbcType=NVARCHAR},
-      ctm_email = #{ctmEmail,jdbcType=NVARCHAR},
-      ctm_addr = #{ctmAddr,jdbcType=NVARCHAR},
-      ctm_post = #{ctmPost,jdbcType=NVARCHAR},
-      ctm_class = #{ctmClass,jdbcType=NVARCHAR},
-      ctm_regDate = #{ctmRegdate,jdbcType=NVARCHAR},
-      ctm_lxr = #{ctmLxr,jdbcType=NVARCHAR},
-      ctm_jm = #{ctmJm,jdbcType=NVARCHAR},
-      ctm_name_en = #{ctmNameEn,jdbcType=NVARCHAR},
-      ctm_addr_en = #{ctmAddrEn,jdbcType=NVARCHAR},
-      make_op = #{makeOp,jdbcType=NVARCHAR},
-      zjhm = #{zjhm,jdbcType=NVARCHAR},
-      ztdm = #{ztdm,jdbcType=NVARCHAR},
-      lxguid = #{lxguid,jdbcType=NVARCHAR},
-      sdzid = #{sdzid,jdbcType=NVARCHAR},
-      cdzid = #{cdzid,jdbcType=NVARCHAR},
-      qylx = #{qylx,jdbcType=NVARCHAR},
-      qyzt = #{qyzt,jdbcType=NVARCHAR},
-      khgjlx = #{khgjlx,jdbcType=NVARCHAR},
-      gjid = #{gjid,jdbcType=NVARCHAR},
-      ctm_addr_yj = #{ctmAddrYj,jdbcType=NVARCHAR},
-      ctm_qyfr = #{ctmQyfr,jdbcType=NVARCHAR},
-      ctm_lxrqq = #{ctmLxrqq,jdbcType=NVARCHAR},
-      zjmc = #{zjmc,jdbcType=NVARCHAR},
-      ywy_op = #{ywyOp,jdbcType=NVARCHAR},
-      qdid = #{qdid,jdbcType=NVARCHAR},
-      cjid = #{cjid,jdbcType=NVARCHAR},
-      cjid_zb = #{cjidZb,jdbcType=NVARCHAR},
-      dlguid = #{dlguid,jdbcType=NVARCHAR},
-      lbid = #{lbid,jdbcType=NVARCHAR},
-      ctm_name_jsr = #{ctmNameJsr,jdbcType=NVARCHAR},
-      ctm_name_jsrdz = #{ctmNameJsrdz,jdbcType=NVARCHAR},
-      ctm_name_jsryb = #{ctmNameJsryb,jdbcType=NVARCHAR},
-      qylxnew = #{qylxnew,jdbcType=NVARCHAR},
-      qygj = #{qygj,jdbcType=NVARCHAR},
-      sfzjmc = #{sfzjmc,jdbcType=NVARCHAR},
-      sfzjhm = #{sfzjhm,jdbcType=NVARCHAR},
-      qdzid = #{qdzid,jdbcType=NVARCHAR},
-      ctm_wxh = #{ctmWxh,jdbcType=NVARCHAR},
-      ctm_memo = #{ctmMemo,jdbcType=LONGVARCHAR}
-    where ctm_code = #{ctmCode,jdbcType=NVARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.gt.ms.entity.customer.Customer" >
-    update customer
-    set ctm_name = #{ctmName,jdbcType=NVARCHAR},
-      ctm_tel = #{ctmTel,jdbcType=NVARCHAR},
-      ctm_mobile = #{ctmMobile,jdbcType=NVARCHAR},
-      ctm_fax = #{ctmFax,jdbcType=NVARCHAR},
-      ctm_http = #{ctmHttp,jdbcType=NVARCHAR},
-      ctm_email = #{ctmEmail,jdbcType=NVARCHAR},
-      ctm_addr = #{ctmAddr,jdbcType=NVARCHAR},
-      ctm_post = #{ctmPost,jdbcType=NVARCHAR},
-      ctm_class = #{ctmClass,jdbcType=NVARCHAR},
-      ctm_regDate = #{ctmRegdate,jdbcType=NVARCHAR},
-      ctm_lxr = #{ctmLxr,jdbcType=NVARCHAR},
-      ctm_jm = #{ctmJm,jdbcType=NVARCHAR},
-      ctm_name_en = #{ctmNameEn,jdbcType=NVARCHAR},
-      ctm_addr_en = #{ctmAddrEn,jdbcType=NVARCHAR},
-      make_op = #{makeOp,jdbcType=NVARCHAR},
-      zjhm = #{zjhm,jdbcType=NVARCHAR},
-      ztdm = #{ztdm,jdbcType=NVARCHAR},
-      lxguid = #{lxguid,jdbcType=NVARCHAR},
-      sdzid = #{sdzid,jdbcType=NVARCHAR},
-      cdzid = #{cdzid,jdbcType=NVARCHAR},
-      qylx = #{qylx,jdbcType=NVARCHAR},
-      qyzt = #{qyzt,jdbcType=NVARCHAR},
-      khgjlx = #{khgjlx,jdbcType=NVARCHAR},
-      gjid = #{gjid,jdbcType=NVARCHAR},
-      ctm_addr_yj = #{ctmAddrYj,jdbcType=NVARCHAR},
-      ctm_qyfr = #{ctmQyfr,jdbcType=NVARCHAR},
-      ctm_lxrqq = #{ctmLxrqq,jdbcType=NVARCHAR},
-      zjmc = #{zjmc,jdbcType=NVARCHAR},
-      ywy_op = #{ywyOp,jdbcType=NVARCHAR},
-      qdid = #{qdid,jdbcType=NVARCHAR},
-      cjid = #{cjid,jdbcType=NVARCHAR},
-      cjid_zb = #{cjidZb,jdbcType=NVARCHAR},
-      dlguid = #{dlguid,jdbcType=NVARCHAR},
-      lbid = #{lbid,jdbcType=NVARCHAR},
-      ctm_name_jsr = #{ctmNameJsr,jdbcType=NVARCHAR},
-      ctm_name_jsrdz = #{ctmNameJsrdz,jdbcType=NVARCHAR},
-      ctm_name_jsryb = #{ctmNameJsryb,jdbcType=NVARCHAR},
-      qylxnew = #{qylxnew,jdbcType=NVARCHAR},
-      qygj = #{qygj,jdbcType=NVARCHAR},
-      sfzjmc = #{sfzjmc,jdbcType=NVARCHAR},
-      sfzjhm = #{sfzjhm,jdbcType=NVARCHAR},
-      qdzid = #{qdzid,jdbcType=NVARCHAR},
-      ctm_wxh = #{ctmWxh,jdbcType=NVARCHAR}
     where ctm_code = #{ctmCode,jdbcType=NVARCHAR}
   </update>
 </mapper>

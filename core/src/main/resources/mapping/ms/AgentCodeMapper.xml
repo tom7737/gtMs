@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gt.ms.mapper.customer.AgentCodeMapper" >
+  <resultMap id="BaseResultMap" type="com.gt.ms.entity.agent.AgentCode" >
+    <id column="guid" property="guid" jdbcType="NVARCHAR" />
+    <result column="apptype" property="apptype" jdbcType="NVARCHAR" />
+    <result column="app_name" property="appName" jdbcType="NVARCHAR" />
+    <result column="agent_number" property="agentNumber" jdbcType="NVARCHAR" />
+    <result column="appguid" property="appguid" jdbcType="NVARCHAR" />
+    <result column="dlguid" property="dlguid" jdbcType="NVARCHAR" />
+    <result column="make_op" property="makeOp" jdbcType="NVARCHAR" />
+    <result column="cjsj" property="cjsj" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    guid, apptype, app_name, agent_number, appguid, dlguid, make_op, cjsj
+  </sql>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from agent_code
+    where guid = #{guid,jdbcType=NVARCHAR}
+  </select>
+  <delete id="remove" parameterType="java.lang.String" >
+    delete from agent_code
+    where guid = #{guid,jdbcType=NVARCHAR}
+  </delete>
+  <insert id="save" parameterType="com.gt.ms.entity.agent.AgentCode" >
+    insert into agent_code (guid, apptype, app_name, 
+      agent_number, appguid, dlguid, 
+      make_op, cjsj)
+    values (#{guid,jdbcType=NVARCHAR}, #{apptype,jdbcType=NVARCHAR}, #{appName,jdbcType=NVARCHAR}, 
+      #{agentNumber,jdbcType=NVARCHAR}, #{appguid,jdbcType=NVARCHAR}, #{dlguid,jdbcType=NVARCHAR}, 
+      #{makeOp,jdbcType=NVARCHAR}, #{cjsj,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="update" parameterType="com.gt.ms.entity.agent.AgentCode" >
+    update agent_code
+    <set >
+      <if test="apptype != null" >
+        apptype = #{apptype,jdbcType=NVARCHAR},
+      </if>
+      <if test="appName != null" >
+        app_name = #{appName,jdbcType=NVARCHAR},
+      </if>
+      <if test="agentNumber != null" >
+        agent_number = #{agentNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="appguid != null" >
+        appguid = #{appguid,jdbcType=NVARCHAR},
+      </if>
+      <if test="dlguid != null" >
+        dlguid = #{dlguid,jdbcType=NVARCHAR},
+      </if>
+      <if test="makeOp != null" >
+        make_op = #{makeOp,jdbcType=NVARCHAR},
+      </if>
+      <if test="cjsj != null" >
+        cjsj = #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where guid = #{guid,jdbcType=NVARCHAR}
+  </update>
+</mapper>

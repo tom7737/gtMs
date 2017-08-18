@@ -1,95 +1,98 @@
 package com.gt.ms.entity.customer;
 
-public class Customer {
-    private String ctmCode;
+/**
+ * 客户
+ */
+public class Customer implements java.io.Serializable  {
+    private String ctmCode;//申请人编号
 
-    private String ctmName;
+    private String ctmName;//客户名称
 
-    private String ctmTel;
+    private String ctmTel;//客户电话
 
-    private String ctmMobile;
+    private String ctmMobile;//手机号码
 
-    private String ctmFax;
+    private String ctmFax;//传真
 
-    private String ctmHttp;
+    private String ctmHttp;//公司网址
 
-    private String ctmEmail;
+    private String ctmEmail;//电子邮箱
 
-    private String ctmAddr;
+    private String ctmAddr;//客户地址
 
-    private String ctmPost;
+    private String ctmPost;//邮政编码
 
-    private String ctmClass;
+    private String ctmClass;//客户等级
 
-    private String ctmRegdate;
+    private String ctmRegdate;//添加日期
 
-    private String ctmLxr;
+    private String ctmLxr;//客户联系人
 
-    private String ctmJm;
+    private String ctmJm;//
 
-    private String ctmNameEn;
+    private String ctmNameEn;//客户英文名称
 
-    private String ctmAddrEn;
+    private String ctmAddrEn;//客户英文地址
 
-    private String makeOp;
+    private String makeOp;//代理人
 
     private String zjhm;
 
-    private String ztdm;
+    private String ztdm;//状态代码
 
-    private String lxguid;
+    private String lxguid;//客户类型ID
 
-    private String sdzid;
+    private String sdzid;//省地址ID
 
-    private String cdzid;
+    private String cdzid;//城地址ID
 
     private String qylx;
 
     private String qyzt;
 
-    private String khgjlx;
+    private String khgjlx;//客户国籍类型，0中国/1外国
 
-    private String gjid;
+    private String gjid;//国籍ID
 
-    private String ctmAddrYj;
+    private String ctmAddrYj;//客户邮寄地址
 
-    private String ctmQyfr;
+    private String ctmQyfr;//企业法人
 
-    private String ctmLxrqq;
+    private String ctmLxrqq;//联系人QQ
 
-    private String zjmc;
+    private String zjmc;//证件名称
 
-    private String ywyOp;
+    private String ywyOp;//业务联系人
 
-    private String qdid;
+    private String qdid;//客户来源
 
-    private String cjid;
+    private String cjid;//创建人ID
 
     private String cjidZb;
 
-    private String dlguid;
+    private String dlguid;//代理机构编号
 
-    private String lbid;
+    private String lbid;//客户类别ID
 
-    private String ctmNameJsr;
+    private String ctmNameJsr;//国内接收人
 
-    private String ctmNameJsrdz;
+    private String ctmNameJsrdz;//国内接收人地址
 
-    private String ctmNameJsryb;
+    private String ctmNameJsryb;//国内接收人邮编
 
-    private String qylxnew;
+    private String qylxnew;//企业类型
 
-    private String qygj;
+    private String qygj;//
 
-    private String sfzjmc;
+    private String sfzjmc;//身份证件名称
 
-    private String sfzjhm;
+    private String sfzjhm;//身份证件号码
 
-    private String qdzid;
+    private String qdzid;//区地址ID
 
-    private String ctmWxh;
+    private String ctmWxh;//微信号
 
-    private String ctmMemo;
+    private String ctmMemo;//备注
 
     public String getCtmCode() {
         return ctmCode;

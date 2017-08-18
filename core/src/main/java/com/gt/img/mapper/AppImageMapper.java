@@ -19,8 +19,17 @@ public interface AppImageMapper extends BaseMapper<AppImage, String> {
 
     /**
      * 根据申请书ID获取图片
+     *
      * @param appguid
      * @return
      */
     AppImage getByAppguid(String appguid);
+
+    /**
+     * 根据申请书ID删除图片
+     *
+     * @param guid
+     * @return
+     */
+    int removeByAppguid(String guid);
 }

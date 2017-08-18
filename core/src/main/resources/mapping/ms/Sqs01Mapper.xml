@@ -452,5 +452,8 @@
         where guid = #{guid}
     </update>
 
-
+    <delete id="remove" parameterType="java.lang.String">
+        delete from [01]
+        where guid = #{guid}
+    </delete>
 </mapper>

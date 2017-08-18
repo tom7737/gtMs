@@ -49,7 +49,7 @@ public class Sqs01Controller extends BaseController {
     @Autowired
     private AppImageService appImageService;
 
-    private static final String common_fax = "010-63347865";//传真
+    private static final String common_fax = "010-63347510";//传真
     private static final Double common_country_fei = 300.00;//规费
     private static final Double common_country_fei_jt = 1500.00;//规费(集体)
     private static final Double common_country_fei_zm = 1500.00;//规费（证明）
@@ -126,6 +126,37 @@ public class Sqs01Controller extends BaseController {
             return result;
         } catch (RuntimeException e) {
             LOGGER.error("添加商标注册申请书失败：{}", e);
+            result.setMessage(e.getMessage());
+            return result;
+        }
+    }
+
+    /**
+     * 删除商标注册申请书
+     *
+     * @param guid
+     * @return
+     */
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult delete(String guid) {
+        AjaxResult result = new AjaxResult();
+        try {
+            Op currentUser = getCurrentUser();
+            if ('1' != currentUser.getOpChenge().charAt(2)//没有修改所有数据的权限
+                    && !sqs01Server.get(guid).getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
+                    ) {
+                result.setSuccess(false);
+                result.setMessage("没有权限！");
+                return result;
+            }
+            appImageService.removeByAppguid(guid);
+            sqs01Server.remove(guid);
+            result.setSuccess(true);
+            result.setMessage("添加成功");
+            return result;
+        } catch (RuntimeException e) {
+            LOGGER.error("删除商标注册申请书失败：{}", e);
             result.setMessage(e.getMessage());
             return result;
         }

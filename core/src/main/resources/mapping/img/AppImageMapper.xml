@@ -84,5 +84,8 @@
         from app_image
         order by guid desc
     </select>
-
+    <delete id="removeByAppguid" parameterType="java.lang.String">
+        delete from app_image
+        where appguid = #{guid}
+    </delete>
 </mapper>

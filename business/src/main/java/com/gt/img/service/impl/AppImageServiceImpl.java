@@ -36,4 +36,9 @@ public class AppImageServiceImpl extends BaseServiceImpl<AppImage, String> imple
         return appImageMapper.getByAppguid(appguid);
     }
 
+    @Override
+    public int removeByAppguid(String guid) {
+        return appImageMapper.removeByAppguid(guid);
+    }
+
 }

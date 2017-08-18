@@ -23,4 +23,10 @@ public interface AppImageService extends BaseService<AppImage, String> {
      * @return
      */
     AppImage getByAppguid(String appguid);
+    /**
+     * 根据申请书ID删除图片
+     * @param guid
+     * @return
+     */
+     int removeByAppguid(String guid);
 }

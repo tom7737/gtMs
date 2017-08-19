@@ -1,39 +1,39 @@
-package com.gt.ms.entity.agent;
+package com.gt.ms.entity.customer;
 
 import java.util.Date;
 
 public class Agent {
-    private String agentName;//代理组织名称
+    private String agentName;
 
-    private String agentCodehead;//申请书头编码
+    private String agentCodehead;
 
-    private String agentCode;//当前编码
+    private String agentCode;
 
-    private String agentLinkman;//联系人
+    private String agentLinkman;
 
-    private String agentTel;//电话
+    private String agentTel;
 
-    private String agentFax;//传真
+    private String agentFax;
 
-    private String agentEmail;//邮箱
+    private String agentEmail;
 
-    private String agentAdd;//地址
+    private String agentAdd;
 
-    private String agentPost;//邮编
+    private String agentPost;
 
-    private String agentMemo;//备注
+    private String agentMemo;
 
     private String numAdd;
 
-    private String guid;//代理组织编号
+    private String guid;
 
-    private String makeOp;//添加记录人
+    private String makeOp;
 
-    private Date cjsj;//创建时间
+    private Date cjsj;
 
-    private String gszh;//公司字号
+    private String gszh;
 
-    private String agentMobile;//手机
+    private String agentMobile;
 
     public String getAgentName() {
         return agentName;

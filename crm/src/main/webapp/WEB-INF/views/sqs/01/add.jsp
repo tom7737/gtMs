@@ -173,6 +173,7 @@
 
         <form id="sqs01EditForm" method="post" enctype=”multipart/form-data”>
             <input type="hidden" name="ctmCode" value="${customer.ctmCode}"/>
+            <input type="hidden" name="guid" value="${guid}"/>
             <table class="grid">
                 <tr>
                     <td>申请状态</td>
@@ -189,10 +190,10 @@
                 <tr>
                     <td>编号</td>
                     <td><input id="agentNumber" name="agentNumber" type="text" readonly class="easyui-validatebox"
-                               value="${sqs01.agentNumber}"></td>
+                               value="${agentCode}"></td>
                     <td>录入人</td>
                     <td>
-                           ${currentUser.opTruename}
+                        ${currentUser.opTruename}
                     </td>
                     <td>代理人</td>
                     <td>
@@ -208,7 +209,7 @@
                 <tr>
                     <td>日期</td>
                     <td><input name="makeDate" type="text" readonly class="easyui-validatebox"
-                               value=""></td>
+                               value="${makeDate}"></td>
                     <td>业务来源</td>
                     <td><input type="text" class="easyui-validatebox"
                                value="本部" readonly></td>
@@ -220,13 +221,13 @@
                 <tr>
                     <td>申请人名称（中文）</td>
                     <td colspan="3"><input name="appName" type="text" class="easyui-validatebox"
-                                           style="width: 100%" value="${customer.ctmName}"></td>
+                                           style="width: 100%" value="${customer.ctmName}${customer.sfzjhm}"></td>
                     <td>申请方式</td>
                     <td>
                         <select name="regType" class="easyui-validatebox">
-                            <option value="0" >普通申请</option>
-                            <option value="1" >网上申请</option>
-                            <option value="2" >网上特惠申请</option>
+                            <option value="0">普通申请</option>
+                            <option value="1">网上申请</option>
+                            <option value="2">网上特惠申请</option>
                         </select>
                     </td>
                 </tr>
@@ -236,7 +237,7 @@
                                            value="${customer.ctmNameEn}"></td>
                     <td>申请人国籍/地区</td>
                     <td><input name="appState" type="text" class="easyui-validatebox"
-                               value="${sqs01.appState}"></td>
+                               value="${customer.gjid}"></td>
                 </tr>
                 <tr>
                     <td>申请人地址（中文）</td>
@@ -255,10 +256,10 @@
                 <tr>
                     <td>邮政编码</td>
                     <td><input name="postCode" type="text" class="easyui-validatebox"
-                               value="${customer.ctmPost}"></td>
+                               value="100007"></td>
                     <td>联系人</td>
                     <td><input name="person" readonly type="text" class="easyui-validatebox"
-                               value="${customer.ctmLxr}"></td>
+                               value="文新星"></td>
                     <td>电话</td>
                     <td><input name="phone" readonly type="text" class="easyui-validatebox"
                                value="010-63347865"></td>
@@ -266,62 +267,59 @@
                 <tr>
                     <td>代理组织名称</td>
                     <td colspan="3"><input readonly name="agentName" type="text" class="easyui-validatebox"
-                                           style="width: 100%;" value="${sqs01.agentName}">
+                                           style="width: 100%;" value="北京共腾知识产权代理有限公司">
                     </td>
                 </tr>
                 <tr>
                     <td>商标申请声明</td>
                     <td colspan="5">
                         <%-- TODO 集体和证明只能选择一个--%>
-                        <input type="checkbox" name="tmKindJ" value="1" <c:if test="${sqs01.tmKindJ}">checked</c:if>>集体商标
-                        <input type="checkbox" name="tmKindT" value="1" <c:if test="${sqs01.tmKindT}">checked</c:if>>证明商标
+                        <input type="checkbox" name="tmKindJ" value="1">集体商标
+                        <input type="checkbox" name="tmKindT" value="1">证明商标
                         <input type="checkbox" name="ifCommon0" value="1"
-                               <c:if test="${sqs01.ifCommon0}">checked</c:if> >两个以上申请人共同申请注册同一商标
+                        >两个以上申请人共同申请注册同一商标
                         <input type="checkbox" name="solid" value="1"
-                               <c:if test="${sqs01.solid}">checked</c:if> >以三维标志申请
-                        <input type="checkbox" name="colour" value="1" <c:if test="${sqs01.colour}">checked</c:if>>以颜色组合申请
-                        <input type="checkbox" name="sound" value="1" <c:if test="${sqs01.sound}">checked</c:if>>以声音标志申请
+                        >以三维标志申请
+                        <input type="checkbox" name="colour" value="1">以颜色组合申请
+                        <input type="checkbox" name="sound" value="1">以声音标志申请
 
                     </td>
                 </tr>
                 <tr>
                     <td>申请人的国内接收人</td>
                     <td><input name="appJsr" type="text" class="easyui-validatebox"
-                               value="${sqs01.appJsr}"></td>
+                               value="${customer.ctmNameJsr}"></td>
                     <td>邮政编码</td>
                     <td><input name="appJsryb" type="text" class="easyui-validatebox"
-                               value="${sqs01.appJsryb}"></td>
+                               value="${customer.ctmNameJsryb}"></td>
                     <td>国内接收地址</td>
                     <td><input name="appJsrdz" type="text" class="easyui-validatebox"
-                               value="${sqs01.appJsrdz}"></td>
+                               value="${customer.ctmNameJsrdz}"></td>
                 </tr>
                 <tr>
                     <td>要求优先权声明</td>
                     <td colspan="5">
-                        <input type="checkbox" name="priorityClaim" value="1"
-                               <c:if test="${sqs01.priorityClaim=='1'}">checked</c:if>>基于第一次申请
-                        <input type="checkbox" name="priorityClaim" value="2"
-                               <c:if test="${sqs01.priorityClaim=='2'}">checked</c:if>>基于展会
-                        <input type="checkbox" name="priorityProve" value="-1"
-                               <c:if test="${sqs01.priorityProve=='-1'}">checked</c:if>>优先权证明文件后补
+                        <input type="checkbox" name="priorityClaim" value="1">基于第一次申请
+                        <input type="checkbox" name="priorityClaim" value="2">基于展会
+                        <input type="checkbox" name="priorityProve" value="-1">优先权证明文件后补
 
                     </td>
                 </tr>
                 <tr>
                     <td>申请/展出国家/地区</td>
                     <td><input name="priorityState" type="text" class="easyui-validatebox"
-                               value="${sqs01.priorityState}"></td>
+                               value=""></td>
                     <td>申请/展出日期</td>
                     <td><input name="appDate" type="text" class="easyui-validatebox"
-                               value="${sqs01.appDate}"></td>
+                               value=""></td>
                     <td>申请号</td>
                     <td><input name="appNumber" type="text" class="easyui-validatebox"
-                               value="${sqs01.appNumber}"></td>
+                               value=""></td>
                 </tr>
                 <tr>
                     <td>商标说明</td>
                     <td colspan="3"><input name="dgnDesc" type="text" class="easyui-validatebox"
-                                           value="${sqs01.dgnDesc}" style="width: 100%"></td>
+                                           value="" style="width: 100%"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -329,7 +327,7 @@
                     <
                     <td>类别</td>
                     <td><input id="class_" name="class_" type="text" class="easyui-numberbox"
-                               value="${sqs01.class_}">
+                               value="">
                         <a onclick="addItemFun();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择商品</a></td>
                     <td><a style="display: none;" href="javascript:void(0);" class="easyui-linkbutton"
@@ -338,31 +336,31 @@
                                value=""></td>
                     <td>业务联系人</td>
                     <td><input name="ywyOp" type="text" class="easyui-validatebox"
-                               value="${sqs01.ywyOp}"></td>
+                               value=""></td>
                 </tr>
                 <tr>
                     <td>商品/服务项目</td>
                     <td colspan="5"><textarea id="commServ" style="width: 100%;height: 50px;"
-                                              name="commServ">${sqs01.commServ}</textarea></td>
+                                              name="commServ"></textarea></td>
                 </tr>
                 <tr>
                     <td>增加商品/服务项目</td>
                     <td colspan="5"><textarea id="addComm" style="width: 100%;height: 50px;"
-                                              name="addComm">${sqs01.addComm}</textarea></td>
+                                              name="addComm"></textarea></td>
                 </tr>
                 <tr>
                     <td>商标名称</td>
                     <td><input name="tmName" type="text" class="easyui-validatebox"
-                               value="${sqs01.tmName}">
+                               value="">
                         <input type="checkbox" checked>检查
                         <input type="checkbox">监测
                     </td>
                     <td>注册号</td>
                     <td><input name="regCode" type="text" class="easyui-validatebox"
-                               value="${sqs01.regCode}"></td>
+                               value=""></td>
                     <td>申请日期</td>
                     <td><input name="sqdate" type="text" class="easyui-validatebox"
-                               value="${sqs01.sqdate}"></td>
+                               value=""></td>
                 </tr>
                 <tr>
                     <td>上传标样</td>
@@ -394,9 +392,9 @@
                 </tr>
                 <tr>
                     <td>其他共同申请人</td>
-                    <td><textarea name="commonApp" style="width: 100%;height: 80px;">${sqs01.commonApp}</textarea></td>
+                    <td><textarea name="commonApp" style="width: 100%;height: 80px;"></textarea></td>
                     <td>备注信息</td>
-                    <td><textarea name="memo1" style="width: 100%;height: 80px;">${sqs01.memo1}</textarea></td>
+                    <td><textarea name="memo1" style="width: 100%;height: 80px;"></textarea></td>
                 </tr>
                 <tr>
                     <td colspan="6"><a onclick=" $('#sqs01EditForm').submit();" href="javascript:void(0);"

@@ -3,9 +3,11 @@ package com.gt.ms.controller;
 import com.gt.img.entity.AppImage;
 import com.gt.img.service.AppImageService;
 import com.gt.ms.entity.admin.Op;
+import com.gt.ms.entity.agent.Agent;
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
+import com.gt.ms.service.agent.AgentService;
 import com.gt.ms.service.customer.CustomerService;
 import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.utils.DateUtils;
@@ -14,6 +16,7 @@ import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
+import org.jsoup.helper.DataUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +59,9 @@ public class Sqs01Controller extends BaseController {
     private AppImageService appImageService;
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private AgentService agentService;
+
     private static final String common_fax = "010-63347510";//传真
     private static final Double common_country_fei = 300.00;//规费
     private static final Double common_country_fei_jt = 1500.00;//规费(集体)
@@ -119,22 +125,22 @@ public class Sqs01Controller extends BaseController {
         //2017081822205790968527201
         //201707171808008478901801
         String guid = buildGuid();
-
+        String agentCode = agentService.getAgentCode(common_dlguid);
         List<Op> ops = opService.getList();
         Customer customer = customerService.get(ctmCode);
         model.addAttribute("currentUser", getCurrentUser());
         model.addAttribute("ops", ops);
         model.addAttribute("customer", customer);
+        model.addAttribute("agentCode", agentCode);
+        model.addAttribute("guid", guid);
+        model.addAttribute("makeDate", DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd));
         return "sqs/01/add";
     }
 
     private String buildGuid() {
         return DateUtils.getCurrentFormatDate("yyyyMMddHHmmssSSS") + RandomUtils.generateNumString(6) + "01";
     }
-    private String bulidAgentNumber(){
-        // TODO 获取agent_code
-        return  "GT";
-    }
+
 
     public static void main(String[] args) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");

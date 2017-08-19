@@ -1,23 +1,23 @@
-package com.gt.ms.entity.agent;
+package com.gt.ms.entity.customer;
 
 import java.util.Date;
 
 public class AgentCode {
-    private String guid;//唯一编号，主键
+    private String guid;
 
-    private String apptype;//申请书类型
+    private String apptype;
 
-    private String appName;//申请人名称
+    private String appName;
 
-    private String agentNumber;//申请书编号
+    private String agentNumber;
 
-    private String appguid;//申请书ID
+    private String appguid;
 
-    private String dlguid;//代理机构编号
+    private String dlguid;
 
-    private String makeOp;//添加记录人
+    private String makeOp;
 
-    private Date cjsj;//创建时间
+    private Date cjsj;
 
     public String getGuid() {
         return guid;

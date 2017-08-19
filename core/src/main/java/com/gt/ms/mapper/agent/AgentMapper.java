@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AgentMapper extends BaseMapper<Agent, String> {
 
+    int updateAgentCode(Agent agent);
 }

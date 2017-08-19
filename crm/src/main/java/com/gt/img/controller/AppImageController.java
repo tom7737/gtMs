@@ -2,24 +2,17 @@ package com.gt.img.controller;
 
 import com.gt.img.entity.AppImage;
 import com.gt.img.service.AppImageService;
-import com.gt.ms.controller.BaseController;
-import com.gt.ms.entity.admin.Op;
-import com.gt.ms.entity.common.Tspdm;
-import com.gt.ms.entity.sqs.Sqs01;
-import com.gt.ms.service.common.TspdmService;
+import com.gt.ms.controller.base.BaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @description：申请书文件管理

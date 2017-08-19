@@ -1,9 +1,9 @@
-package com.gt.ms.controller;
+package com.gt.ms.controller.admin;
 
+import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.service.admin.ResourceService;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.Tree;
-import com.gt.ms.entity.admin.ActUser;
 import com.gt.ms.entity.admin.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.common.SysAreaCityMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.common.SysAreaCity">
+        <result column="dzid" jdbcType="NVARCHAR" property="dzid"/>
+        <result column="dzpy" jdbcType="NVARCHAR" property="dzpy"/>
+        <result column="sdzid" jdbcType="NVARCHAR" property="sdzid"/>
+        <result column="dzmc" jdbcType="VARBINARY" property="dzmc"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    dzid, dzpy, sdzid, dzmc
+  </sql>
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_area_city
+        WHERE dzid = #{dzid}
+    </select>
+    <delete id="remove" parameterType="java.lang.String">
+        delete from sys_area_city
+       WHERE dzid = #{dzid}
+    </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.common.SysAreaCity">
+    insert into sys_area_city (dzid, dzpy, sdzid, 
+      dzmc)
+    values (#{dzid,jdbcType=NVARCHAR}, #{dzpy,jdbcType=NVARCHAR}, #{sdzid,jdbcType=NVARCHAR}, 
+      #{dzmc,jdbcType=VARBINARY})
+  </insert>
+    <update id="updateByExampleSelective" parameterType="com.gt.ms.entity.common.SysAreaCity">
+        update sys_area_city
+        <set>
+            <if test="record.dzpy != null">
+                dzpy = #{record.dzpy,jdbcType=NVARCHAR},
+            </if>
+            <if test="record.sdzid != null">
+                sdzid = #{record.sdzid,jdbcType=NVARCHAR},
+            </if>
+            <if test="record.dzmc != null">
+                dzmc = #{record.dzmc,jdbcType=VARBINARY},
+            </if>
+        </set>
+        WHERE dzid = #{dzid}
+    </update>
+</mapper>

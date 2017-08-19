@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.agent.AgentMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.agent.Agent">
+        <result column="agent_name" jdbcType="NVARCHAR" property="agentName"/>
+        <result column="agent_codeHead" jdbcType="NVARCHAR" property="agentCodehead"/>
+        <result column="agent_code" jdbcType="NVARCHAR" property="agentCode"/>
+        <result column="agent_linkman" jdbcType="NVARCHAR" property="agentLinkman"/>
+        <result column="agent_tel" jdbcType="NVARCHAR" property="agentTel"/>
+        <result column="agent_fax" jdbcType="NVARCHAR" property="agentFax"/>
+        <result column="agent_email" jdbcType="NVARCHAR" property="agentEmail"/>
+        <result column="agent_add" jdbcType="NVARCHAR" property="agentAdd"/>
+        <result column="agent_post" jdbcType="NVARCHAR" property="agentPost"/>
+        <result column="agent_memo" jdbcType="LONGNVARCHAR" property="agentMemo"/>
+        <result column="num_add" jdbcType="NVARCHAR" property="numAdd"/>
+        <result column="guid" jdbcType="NVARCHAR" property="guid"/>
+        <result column="make_op" jdbcType="NVARCHAR" property="makeOp"/>
+        <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
+        <result column="gszh" jdbcType="NVARCHAR" property="gszh"/>
+        <result column="agent_mobile" jdbcType="NVARCHAR" property="agentMobile"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    agent_name, agent_codeHead, agent_code, agent_linkman, agent_tel, agent_fax, agent_email, 
+    agent_add, agent_post, agent_memo, num_add, guid, make_op, cjsj, gszh, agent_mobile
+  </sql>
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from agent
+        where
+        guid = #{guid}
+    </select>
+    <delete id="remove" parameterType="java.lang.String">
+    delete from agent
+    where guid = #{guid}
+  </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.agent.Agent">
+    insert into agent (agent_name, agent_codeHead, agent_code, 
+      agent_linkman, agent_tel, agent_fax, 
+      agent_email, agent_add, agent_post, 
+      agent_memo, num_add, guid, 
+      make_op, cjsj, gszh, 
+      agent_mobile)
+    values (#{agentName,jdbcType=NVARCHAR}, #{agentCodehead,jdbcType=NVARCHAR}, #{agentCode,jdbcType=NVARCHAR}, 
+      #{agentLinkman,jdbcType=NVARCHAR}, #{agentTel,jdbcType=NVARCHAR}, #{agentFax,jdbcType=NVARCHAR}, 
+      #{agentEmail,jdbcType=NVARCHAR}, #{agentAdd,jdbcType=NVARCHAR}, #{agentPost,jdbcType=NVARCHAR}, 
+      #{agentMemo,jdbcType=LONGNVARCHAR}, #{numAdd,jdbcType=NVARCHAR}, #{guid,jdbcType=NVARCHAR}, 
+      #{makeOp,jdbcType=NVARCHAR}, #{cjsj,jdbcType=TIMESTAMP}, #{gszh,jdbcType=NVARCHAR}, 
+      #{agentMobile,jdbcType=NVARCHAR})
+  </insert>
+    <update id="update" parameterType="com.gt.ms.entity.agent.Agent">
+        update agent
+        <set>
+            <if test="agentName != null">
+                agent_name = #{agentName,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentCodehead != null">
+                agent_codeHead = #{agentCodehead,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentCode != null">
+                agent_code = #{agentCode,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentLinkman != null">
+                agent_linkman = #{agentLinkman,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentTel != null">
+                agent_tel = #{agentTel,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentFax != null">
+                agent_fax = #{agentFax,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentEmail != null">
+                agent_email = #{agentEmail,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentAdd != null">
+                agent_add = #{agentAdd,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentPost != null">
+                agent_post = #{agentPost,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentMemo != null">
+                agent_memo = #{agentMemo,jdbcType=LONGNVARCHAR},
+            </if>
+            <if test="numAdd != null">
+                num_add = #{numAdd,jdbcType=NVARCHAR},
+            </if>
+            <if test="makeOp != null">
+                make_op = #{makeOp,jdbcType=NVARCHAR},
+            </if>
+            <if test="cjsj != null">
+                cjsj = #{cjsj,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gszh != null">
+                gszh = #{gszh,jdbcType=NVARCHAR},
+            </if>
+            <if test="agentMobile != null">
+                agent_mobile = #{agentMobile,jdbcType=NVARCHAR},
+            </if>
+        </set>
+        WHERE guid = #{guid}
+    </update>
+    <update id="updateAgentCode" parameterType="com.gt.ms.entity.agent.Agent">
+        update agent
+        <set>
+            <if test="agentCode != null">
+                agent_code = #{agentCode,jdbcType=NVARCHAR},
+            </if>
+        </set>
+        WHERE guid = #{guid}
+    </update>
+</mapper>

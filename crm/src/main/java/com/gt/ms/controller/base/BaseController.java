@@ -1,4 +1,4 @@
-package com.gt.ms.controller;
+package com.gt.ms.controller.base;
 
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.service.admin.IActUserService;

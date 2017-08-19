@@ -1,7 +1,8 @@
-package com.gt.ms.controller;
+package com.gt.ms.controller.common;
 
-import com.gt.ms.entity.common.Sbfz;
-import com.gt.ms.service.common.SbfzService;
+import com.gt.ms.controller.base.BaseController;
+import com.gt.ms.entity.common.Tspdm;
+import com.gt.ms.service.common.TspdmService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +18,29 @@ import java.util.List;
  * @date：2015/10/1 14:51
  */
 @Controller
-@RequestMapping("/sbfz")
-public class SbfzController extends BaseController {
+@RequestMapping("/tspdm")
+public class TspdmController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SbfzController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TspdmController.class);
 
     @Autowired
-    private SbfzService sbfzService;
+    private TspdmService tspdmService;
 
     /**
-     * 获取商标分组列表
+     * 获取商品分类
      *
      * @return
      */
     @RequestMapping("/getListByClass")
     @ResponseBody
-    public List<Sbfz> getListByClass(Integer class_) {
+    public List<Tspdm> getListByClass(Integer class_) {
         String classes_ = null;
         if (class_ < 10) {
             classes_ = "0" + class_;
         } else {
             classes_ = "" + class_;
         }
-        return sbfzService.getListByClass(classes_);
+        return tspdmService.getListByClass(classes_);
     }
 
 }

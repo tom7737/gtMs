@@ -1,6 +1,7 @@
-package com.gt.ms.controller;
+package com.gt.ms.controller.admin;
 
 import com.google.common.collect.Maps;
+import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Role;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;

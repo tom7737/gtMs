@@ -1,5 +1,6 @@
-package com.gt.ms.controller;
+package com.gt.ms.controller.admin;
 
+import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.utils.MD5Util;
 import com.gt.ms.utils.VerifyCodeUtils;
 import com.gt.ms.vo.AjaxResult;

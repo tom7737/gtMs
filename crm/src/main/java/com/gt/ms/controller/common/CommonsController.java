@@ -1,4 +1,4 @@
-package com.gt.ms.controller;
+package com.gt.ms.controller.common;
 
 import com.gt.ms.ueditor.IUeditorService;
 import com.gt.ms.ueditor.UeditorService;

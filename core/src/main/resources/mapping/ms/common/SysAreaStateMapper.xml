@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.common.SysAreaStateMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.common.SysAreaState">
+        <result column="dzid" jdbcType="NVARCHAR" property="dzid"/>
+        <result column="dzmc" jdbcType="NVARCHAR" property="dzmc"/>
+        <result column="dzpy" jdbcType="NVARCHAR" property="dzpy"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    dzid, dzmc, dzpy
+  </sql>
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_area_state
+        where dzid = #{dzid}
+    </select>
+    <delete id="remove" parameterType="java.lang.String">
+        delete from sys_area_state
+        where dzid = #{dzid}
+    </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.common.SysAreaState">
+    insert into sys_area_state (dzid, dzmc, dzpy
+      )
+    values (#{dzid,jdbcType=NVARCHAR}, #{dzmc,jdbcType=NVARCHAR}, #{dzpy,jdbcType=NVARCHAR}
+      )
+  </insert>
+    <update id="update" parameterType="com.gt.ms.entity.common.SysAreaState">
+        update sys_area_state
+        <set>
+            <if test="record.dzmc != null">
+                dzmc = #{record.dzmc,jdbcType=NVARCHAR},
+            </if>
+            <if test="record.dzpy != null">
+                dzpy = #{record.dzpy,jdbcType=NVARCHAR},
+            </if>
+        </set>
+        where dzid = #{dzid}
+    </update>
+</mapper>

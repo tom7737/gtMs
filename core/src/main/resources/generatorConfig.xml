@@ -43,12 +43,11 @@
         <!-- targetPackage：mapper接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.gt.ms.mapper.customer"
-                             targetProject="core/src/main/java">
+                             targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="" tableName="agent"></table>
-        <table schema="" tableName="agent_code"></table>
+        <!--<table schema="" tableName="sys_area_state"></table>-->
     </context>
 </generatorConfiguration>

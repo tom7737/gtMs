@@ -1,9 +1,9 @@
-package com.gt.ms.controller;
+package com.gt.ms.controller.sqs;
 
 import com.gt.img.entity.AppImage;
 import com.gt.img.service.AppImageService;
+import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Op;
-import com.gt.ms.entity.agent.Agent;
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
@@ -15,8 +15,6 @@ import com.gt.ms.utils.RandomUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
-import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
-import org.jsoup.helper.DataUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +32,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

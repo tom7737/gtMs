@@ -21,8 +21,8 @@
                 pagination: true,
                 singleSelect: true,
                 idField: 'id',
-                sortName: 'guid',
-                sortOrder: 'asc',
+                sortName: 'agent_number',
+                sortOrder: 'desc',
                 pageSize: 20,
                 pageList: [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
                 columns: [[{

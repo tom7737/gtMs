@@ -31,8 +31,8 @@
             $("#wts_text").val($(this).val());
             uploadInfo("wts", '${path }/sqs/01/wtsUpload');
         })
-        $('#sqs01EditForm').form({
-            url: '${path }/sqs/01/edit',
+        $('#sqs01AddForm').form({
+            url: '${path }/sqs/01/add',
             onSubmit: function () {
                 progressLoad();
                 var isValid = $(this).form('validate');
@@ -46,7 +46,7 @@
                 result = $.parseJSON(result);
                 if (result.success) {
                     parent.$.messager.alert('提示', result.message, 'info');
-//                    $('#sqs01EditForm')[0].reset();
+//                    $('#sqs01AddForm')[0].reset();
                     location.href = "${path}/sqs/01/manager";
                 } else {
                     parent.$.messager.alert('提示', result.message, 'warning');
@@ -79,6 +79,9 @@
         if ($("#class_").val() == null || $("#class_").val() == "") {
             parent.$.messager.alert('提示', '请输入小类', 'info');
         } else {
+            parent.$.modalDialog.class_ = $("#class_");
+            parent.$.modalDialog.commServ =  $("#commServ");
+            parent.$.modalDialog.addComm =  $("#addComm");
             parent.$.modalDialog({
                 title: '选择商品',
                 width: 500,
@@ -87,9 +90,10 @@
                 buttons: [{
                     text: '添加',
                     handler: function () {
-                        saveItem();
 //                    parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
 //                    var f = parent.$.modalDialog.handler.find('#sqs01AddItemForm');
+                      var saveItem =   parent.$.modalDialog.saveItem;
+                        saveItem();
 //                    f.submit();
                     }
                 }]
@@ -139,7 +143,7 @@
             return false;
         }
 
-
+        console.log($("#guid").val());
         $.ajaxFileUpload({
             url: url,//用于文件上传的服务器端请求地址
 
@@ -171,9 +175,9 @@
     <div data-options="region:'center',border:false" title="商标注册申请书"
          style="overflow: hidden;padding: 3px;overflow-y:scroll ">
 
-        <form id="sqs01EditForm" method="post" enctype=”multipart/form-data”>
+        <form id="sqs01AddForm" method="post" enctype=”multipart/form-data”>
             <input type="hidden" name="ctmCode" value="${customer.ctmCode}"/>
-            <input type="hidden" name="guid" value="${guid}"/>
+            <input type="hidden" id="guid" name="guid" value="${guid}"/>
             <table class="grid">
                 <tr>
                     <td>申请状态</td>
@@ -214,7 +218,7 @@
                     <td><input type="text" class="easyui-validatebox"
                                value="本部" readonly></td>
                     <td>费用</td>
-                    <td><input name="pice" type="text" class="easyui-validatebox"
+                    <td><input name="pice" type="text" class="easyui-validatebox" data-options="required:true"
                                value=""></td>
 
                 </tr>
@@ -226,7 +230,7 @@
                     <td>
                         <select name="regType" class="easyui-validatebox">
                             <option value="0">普通申请</option>
-                            <option value="1">网上申请</option>
+                            <option value="1" selected>网上申请</option>
                             <option value="2">网上特惠申请</option>
                         </select>
                     </td>
@@ -237,7 +241,7 @@
                                            value="${customer.ctmNameEn}"></td>
                     <td>申请人国籍/地区</td>
                     <td><input name="appState" type="text" class="easyui-validatebox"
-                               value="${customer.gjid}"></td>
+                               value="${country}"></td>
                 </tr>
                 <tr>
                     <td>申请人地址（中文）</td>
@@ -255,7 +259,7 @@
                 </tr>
                 <tr>
                     <td>邮政编码</td>
-                    <td><input name="postCode" type="text" class="easyui-validatebox"
+                    <td><input name="postCode" readonly type="text" class="easyui-validatebox"
                                value="100007"></td>
                     <td>联系人</td>
                     <td><input name="person" readonly type="text" class="easyui-validatebox"
@@ -319,7 +323,7 @@
                 <tr>
                     <td>商标说明</td>
                     <td colspan="3"><input name="dgnDesc" type="text" class="easyui-validatebox"
-                                           value="" style="width: 100%"></td>
+                                           data-options="required:true" value="" style="width: 100%"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -341,7 +345,7 @@
                 <tr>
                     <td>商品/服务项目</td>
                     <td colspan="5"><textarea id="commServ" style="width: 100%;height: 50px;"
-                                              name="commServ"></textarea></td>
+                                              data-options="required:true" name="commServ"></textarea></td>
                 </tr>
                 <tr>
                     <td>增加商品/服务项目</td>
@@ -351,9 +355,9 @@
                 <tr>
                     <td>商标名称</td>
                     <td><input name="tmName" type="text" class="easyui-validatebox"
-                               value="">
-                        <input type="checkbox" checked>检查
-                        <input type="checkbox">监测
+                               data-options="required:true" value="">
+                        <%--<input type="checkbox" checked>检查--%>
+                        <%--<input type="checkbox">监测--%>
                     </td>
                     <td>注册号</td>
                     <td><input name="regCode" type="text" class="easyui-validatebox"
@@ -373,7 +377,7 @@
                     <td><a onclick="cleanPic();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">点击清除</a></td>
                     <td colspan="2" rowspan="3" style="text-align: center;"><img
-                            src="${path}/sqs/01/img?guid=${sqs01.guid}" id="img_pic"
+                            src="" id="img_pic"
                             style="width: 270px;height:175px;border: 1px solid;"></td>
                 </tr>
 
@@ -386,7 +390,7 @@
                         <input type="text" readonly id="wts_text"/>
                     </td>
                     <td>查看委托书</td>
-                    <td><a target="_blank" href="${path}/appImage/img?guid=${sqs01.guid}"
+                    <td><a target="_blank" href="#"
                            class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">点击下载</a></td>
                 </tr>
@@ -397,10 +401,10 @@
                     <td><textarea name="memo1" style="width: 100%;height: 80px;"></textarea></td>
                 </tr>
                 <tr>
-                    <td colspan="6"><a onclick=" $('#sqs01EditForm').submit();" href="javascript:void(0);"
+                    <td colspan="6"><a onclick=" $('#sqs01AddForm').submit();" href="javascript:void(0);"
                                        class="easyui-linkbutton" style="width: 100px;"
                                        data-options="plain:true,iconCls:'icon-save'">保存</a>
-                        <a onclick=" $('#sqs01EditForm')[0].reset();" href="javascript:void(0);"
+                        <a onclick=" $('#sqs01AddForm')[0].reset();" href="javascript:void(0);"
                            class="easyui-linkbutton" style="width: 100px;"
                            data-options="plain:true,iconCls:'icon-reload'">重置</a>
                     </td>

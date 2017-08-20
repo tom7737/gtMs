@@ -4,10 +4,12 @@ import com.gt.img.entity.AppImage;
 import com.gt.img.service.AppImageService;
 import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Op;
+import com.gt.ms.entity.common.SysAreaCountry;
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.agent.AgentService;
+import com.gt.ms.service.common.SysAreaCountryService;
 import com.gt.ms.service.customer.CustomerService;
 import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.utils.DateUtils;
@@ -57,6 +59,8 @@ public class Sqs01Controller extends BaseController {
     private CustomerService customerService;
     @Autowired
     private AgentService agentService;
+    @Autowired
+    private SysAreaCountryService sysAreaCountryService;
 
     private static final String common_fax = "010-63347510";//传真
     private static final Double common_country_fei = 300.00;//规费
@@ -130,6 +134,18 @@ public class Sqs01Controller extends BaseController {
         model.addAttribute("agentCode", agentCode);
         model.addAttribute("guid", guid);
         model.addAttribute("makeDate", DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd));
+        String country = null;
+        if (StringUtils.isNotBlank(customer.getGjid())) {
+            SysAreaCountry sysAreaCountry = sysAreaCountryService.get(customer.getGjid());
+            if (sysAreaCountry == null || !StringUtils.isNotBlank(sysAreaCountry.getGjmc())) {
+                country = "中";
+            } else {
+                country = sysAreaCountry.getGjmc();
+            }
+        } else {
+            country = "中";
+        }
+        model.addAttribute("country", country);
         return "sqs/01/add";
     }
 
@@ -152,15 +168,108 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult add(Sqs01 sqs01) {
+    public AjaxResult add(Sqs01 sqs01, HttpServletRequest request) {
         AjaxResult result = new AjaxResult();
         try {
-            // TODO 添加agent_code_his记录
+            Op currentUser = getCurrentUser();
+            if ('1' != currentUser.getOpChenge().charAt(3)//没有添加申请及案件的权限
+                    && !sqs01.getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
+                    ) {
+                result.setSuccess(false);
+                result.setMessage("没有权限！");
+                return result;
+            }
+
+            if (sqs01.getTmKindJ() == null) {//集体
+                sqs01.setTmKindJ(false);
+            }
+            if (sqs01.getTmKindT() == null) {//证明
+                sqs01.setTmKindT(false);
+            }
+            if (sqs01.getIfCommon0() == null) {//是否共同申请
+                sqs01.setIfCommon0(false);
+                sqs01.setIfCommon1(true);
+            } else {
+                sqs01.setIfCommon0(true);
+                sqs01.setIfCommon1(false);
+            }
+            if (sqs01.getSolid() == null) {//三维
+                sqs01.setSolid(false);
+            }
+            if (sqs01.getColour() == null) {//颜色
+                sqs01.setColour(false);
+            }
+            if (sqs01.getSound() == null) {//声音
+                sqs01.setSound(false);
+            }
+
+            if (sqs01.getTmKindJ() || sqs01.getTmKindT() || sqs01.getIfCommon0() ||
+                    sqs01.getSolid() || sqs01.getColour() || sqs01.getSound()) {
+                sqs01.setTmKindY(false);//有商标申请声明
+            } else {
+                sqs01.setTmKindY(true);//无商标申请声明
+            }
+
+            // fax
+            sqs01.setFax(common_fax);
+            //attach
+            if (StringUtils.isNotBlank(sqs01.getAddComm())) {
+                sqs01.setAttach("1");
+            } else {
+                sqs01.setAttach("0");
+            }
+            sqs01.setDlguid(common_dlguid);
+            //费用计算
+            if (sqs01.getTmKindJ() != null && sqs01.getTmKindJ()) {
+                sqs01.setCountryFee(common_country_fei_jt);
+            } else if (sqs01.getTmKindT() != null && sqs01.getTmKindT()) {
+                sqs01.setCountryFee(common_country_fei_zm);
+            } else {
+                sqs01.setCountryFee(common_country_fei);
+            }
+            String addComm = sqs01.getAddComm();
+            sqs01.setGuiFee(sqs01.getCountryFee());
+            if (com.gt.ms.utils.StringUtils.isNotBlank(addComm)) {
+                String[] split = addComm.split("。")[0].split("；");
+                sqs01.setGuiFeem(sqs01.getCountryFee() / 10 * split.length);
+            } else {
+                sqs01.setGuiFeem(0d);
+            }
+            //agentFee
+            if (sqs01.getPice() < sqs01.getGuiFee() + sqs01.getGuiFeem()) {
+                result.setSuccess(false);
+                result.setMessage("费用不足！");
+                return result;
+            } else {
+                sqs01.setAgentFee(sqs01.getPice() - sqs01.getGuiFee() - sqs01.getGuiFeem());
+            }
+
+            LOGGER.debug(sqs01.toString());
+            Object pic = request.getSession().getAttribute("session_pic");
+            request.getSession().removeAttribute("session_pic");
+            if (pic != null)
+                sqs01.setPic((byte[]) pic);
+            else
+                sqs01.setPic(null);
             sqs01Server.save(sqs01);
+            //修改委托书
+            Object wts = request.getSession().getAttribute("session_wts");
+            request.getSession().removeAttribute("session_wts");
+            if (wts != null) {
+                AppImage img = (AppImage) wts;
+                if (img.getGuid() == null) {
+                    String maxGuid = appImageService.getMaxGuid();
+                    String guid = StringUtils.incGuid(maxGuid);
+                    img.setGuid(guid);
+                    appImageService.save(img);
+                } else {
+                    appImageService.update(img);
+                }
+            }
             result.setSuccess(true);
-            result.setMessage("添加成功");
+            result.setMessage("添加成功！");
             return result;
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             LOGGER.error("添加商标注册申请书失败：{}", e);
             result.setMessage(e.getMessage());
             return result;
@@ -413,6 +522,7 @@ public class Sqs01Controller extends BaseController {
 
             LOGGER.debug(sqs01.toString());
             Object pic = request.getSession().getAttribute("session_pic");
+            request.getSession().removeAttribute("session_pic");
             if (pic != null)
                 sqs01.setPic((byte[]) pic);
             else
@@ -420,6 +530,7 @@ public class Sqs01Controller extends BaseController {
             sqs01Server.update(sqs01);
             //修改委托书
             Object wts = request.getSession().getAttribute("session_wts");
+            request.getSession().removeAttribute("session_wts");
             if (wts != null) {
                 AppImage img = (AppImage) wts;
                 if (img.getGuid() == null) {

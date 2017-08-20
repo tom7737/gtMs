@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/commons/global.jsp" %>
 <script type="text/javascript">
+    /**
+     * Created by tom on 2017/8/20.
+     */
     var dataGrid;
     var commServerList = [];
     /**
@@ -10,6 +13,8 @@
      */
     function split_commServers(commServers) {
         var rv = [];
+        if (commServers == null || commServers == "")
+            return rv;
         commServers = commServers.split("。");
         commServers = commServers[0].split("；");
         commServers.forEach(function (e, i, my) {
@@ -20,7 +25,7 @@
                     obj.index = temp_[0];
                     obj.v = temp_[1];
                 } else {
-                    obj.index = rv.length+1;
+                    obj.index = rv.length + 1;
                     obj.v = temp_[0];
                 }
                 rv.push(obj);
@@ -93,19 +98,47 @@
     }
 
     $(function () {
+        /**
+         * 保存所选商品
+         */
+        parent.$.modalDialog.saveItem = function () {
+            console.log("saveItem()");
+            commServerList = split_commServers($("#commServers").val());
+            var flag = $("#refreshNo").is(":checked");//是否需要重新编号
+            console.log(flag)
+            var commServ = "";
+            var addComm = "";
+            commServerList.forEach(function (e, i, my) {
+                if (i < 10) {
+                    commServ += (flag ? (i + 1) : e.index) + "." + e.v + "；";
+                } else {
+                    addComm += (flag ? (i + 1) : e.index) + "." + e.v + "；";
+                }
 
-        var class_ = $("#class_").val();
+            });
+            if (addComm != "") {
+                addComm = addComm.substr(0, addComm.length - 1) + "。（截止）";
+            } else if (commServ != "") {
+                commServ = commServ.substr(0, commServ.length - 1) + "。（截止）";
+            }
+            // 商品分类显示值
+            parent.$.modalDialog.commServ.val(commServ);
+            parent.$.modalDialog.addComm.val(addComm);
+            //FIXME twt 金额计算
+            parent.$.modalDialog.handler.dialog('close');
+        }
+        var class_ = parent.$.modalDialog.class_.val();
+        console.log(class_);
         var tspdms;
-        var commServers = $("#commServ").val() + $("#addComm").val();
+        var commServers = parent.$.modalDialog.commServ.val() + parent.$.modalDialog.addComm.val();
         commServerList = split_commServers(commServers);
-//        console.log(commServerList);
         $("#commServers").val(show_commServerList());
         //获取数据
-        $.post('${path }/tspdm/getListByClass?class_=' + class_,
+        $.post('${path}/tspdm/getListByClass?class_=' + class_,
                 function (data) {
                     tspdms = data;
 //                    alert(data);
-//                    console.log(new Date().getTime());
+                    console.log(new Date().getTime());
                     data.forEach(function (element, index, array) {
                         // element: 指向当前元素的值
                         // index: 指向当前索引
@@ -197,40 +230,7 @@
 
 
     }
-    /**
-     * 保存所选商品
-     */
-    function saveItem() {
-        console.log("saveItem()");
-        commServerList = split_commServers($("#commServers").val());
-        var flag = $("#refreshNo").is(":checked");//是否需要重新编号
-        console.log(flag)
-        var commServ = "";
-        var addComm = "";
-        commServerList.forEach(function (e, i, my) {
-            if (i < 10) {
-                commServ += (flag ? (i + 1) : e.index) + "." + e.v + "；";
-            } else {
-                addComm += (flag ? (i + 1) : e.index) + "." + e.v + "；";
-            }
 
-        });
-        if (addComm != "") {
-            addComm = addComm.substr(0, addComm.length - 1) + "。（截止）";
-        } else if (commServ != "") {
-            commServ = commServ.substr(0, commServ.length - 1) + "。（截止）";
-        }
-        // 商品分类显示值
-        $("#commServ").val(commServ);
-        $("#addComm").val(addComm);
-        //FIXME twt 金额计算
-        parent.$.modalDialog.handler.dialog('close');
-    }
-
-
-</script>
-
-<script>
 
 
 </script>

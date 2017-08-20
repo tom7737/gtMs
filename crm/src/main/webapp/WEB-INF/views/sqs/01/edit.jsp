@@ -79,6 +79,9 @@
         if ($("#class_").val() == null || $("#class_").val() == "") {
             parent.$.messager.alert('提示', '请输入小类', 'info');
         } else {
+            parent.$.modalDialog.class_ = $("#class_");
+            parent.$.modalDialog.commServ =  $("#commServ");
+            parent.$.modalDialog.addComm =  $("#addComm");
             parent.$.modalDialog({
                 title: '选择商品',
                 width: 500,
@@ -87,6 +90,7 @@
                 buttons: [{
                     text: '添加',
                     handler: function () {
+                        var saveItem =   parent.$.modalDialog.saveItem;
                         saveItem();
 //                    parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
 //                    var f = parent.$.modalDialog.handler.find('#sqs01AddItemForm');
@@ -239,7 +243,7 @@
                     <td><input type="text" class="easyui-validatebox"
                                value="本部" readonly></td>
                     <td>费用</td>
-                    <td><input name="pice" type="text" class="easyui-validatebox"
+                    <td><input name="pice" type="text" class="easyui-validatebox" data-options="required:true"
                                value="${sqs01.pice}"></td>
 
                 </tr>
@@ -280,7 +284,7 @@
                 </tr>
                 <tr>
                     <td>邮政编码</td>
-                    <td><input name="postCode" type="text" class="easyui-validatebox"
+                    <td><input name="postCode" readonly type="text" class="easyui-validatebox"
                                value="${sqs01.postCode}"></td>
                     <td>联系人</td>
                     <td><input name="person" readonly type="text" class="easyui-validatebox"
@@ -347,7 +351,7 @@
                 <tr>
                     <td>商标说明</td>
                     <td colspan="3"><input name="dgnDesc" type="text" class="easyui-validatebox"
-                                           value="${sqs01.dgnDesc}" style="width: 100%"></td>
+                                           data-options="required:true" value="${sqs01.dgnDesc}" style="width: 100%"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -369,7 +373,7 @@
                 <tr>
                     <td>商品/服务项目</td>
                     <td colspan="5"><textarea id="commServ" style="width: 100%;height: 50px;"
-                                              name="commServ">${sqs01.commServ}</textarea></td>
+                                              data-options="required:true"    name="commServ">${sqs01.commServ}</textarea></td>
                 </tr>
                 <tr>
                     <td>增加商品/服务项目</td>
@@ -379,9 +383,9 @@
                 <tr>
                     <td>商标名称</td>
                     <td><input name="tmName" type="text" class="easyui-validatebox"
-                               value="${sqs01.tmName}">
-                        <input type="checkbox" checked>检查
-                        <input type="checkbox">监测
+                               data-options="required:true"  value="${sqs01.tmName}">
+                        <%--<input type="checkbox" checked>检查--%>
+                        <%--<input type="checkbox">监测--%>
                     </td>
                     <td>注册号</td>
                     <td><input name="regCode" type="text" class="easyui-validatebox"

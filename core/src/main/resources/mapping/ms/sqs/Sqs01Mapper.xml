@@ -39,7 +39,7 @@
         <result column="reg_code" jdbcType="NVARCHAR" property="regCode"/>
         <result column="pice" jdbcType="DECIMAL" property="pice"/>
         <result column="counterman" jdbcType="NVARCHAR" property="counterman"/>
-        <result column="archiveNO" jdbcType="NVARCHAR" property="archiveno"/>
+        <result column="archiveNO" jdbcType="NVARCHAR" property="archiveNo"/>
         <result column="gui_fee" jdbcType="DECIMAL" property="guiFee"/>
         <result column="reg_type" jdbcType="NVARCHAR" property="regType"/>
         <result column="accountman" jdbcType="NVARCHAR" property="accountman"/>
@@ -87,7 +87,7 @@
     <sql id="Sqs01_Info">
     guid, app_name, app_addr, if_common0, if_common1, post_code, person, phone, fax, 
     agent_name, tm_kind_y, tm_kind_j, tm_kind_t, solid, colour,dgn_desc, class,comm_serv, attach,common_app, int_code,memo1,
-    tm_name,add_comm, agent_number,ctm_code, make_date, make_op, sent_date, sent_op, sent_state,
+    tm_name,add_comm, agent_number,pic,ctm_code, make_date, make_op, sent_date, sent_op, sent_state,
     list_code, rtn_state, reg_code, pice, counterman, archiveNO, gui_fee, reg_type, accountman, 
     accountstate, accountmemo, accountdate, invoice, receiptcode, invoicedate, invoiceman, 
     receivable, app_date, sqdate, dlguid, fpqx, ztdm, app_code, jkrq, jkfs, sjje, ywy_op, 
@@ -121,6 +121,9 @@
                 and agent_number = #{condition.agentNumber}
             </if>
         </where>
+        <if test="sort!=null and sort!='seq'">
+          order by ${sort} ${order}
+        </if>
         ) AS TEMP1
         WHERE ROWID> ${from}
     </select>
@@ -148,10 +151,7 @@
         from [01]
         where guid = #{guid}
     </select>
-    <insert id="insert" parameterType="com.gt.ms.entity.sqs.Sqs01">
-        <selectKey keyProperty="guid" order="AFTER" resultType="java.lang.String">
-            SQL_Server
-        </selectKey>
+    <insert id="save" parameterType="com.gt.ms.entity.sqs.Sqs01">
         insert into [01] (app_name, app_addr, if_common0,
         if_common1, post_code, person,
         phone, fax, agent_name,
@@ -177,18 +177,18 @@
         priority_state, app_number, app_jsr,
         app_jsrdz, app_jsryb, gui_feem,
         dgn_desc, comm_serv, common_app,
-        memo1, add_comm, pic
+        memo1, add_comm, pic,guid
         )
         values (#{appName}, #{appAddr}, #{ifCommon0,jdbcType=BIT},
         #{ifCommon1,jdbcType=BIT}, #{postCode}, #{person},
         #{phone}, #{fax}, #{agentName},
         #{tmKindY,jdbcType=BIT}, #{tmKindJ,jdbcType=BIT}, #{tmKindT,jdbcType=BIT}, #{solid,jdbcType=BIT},
-        #{colour,jdbcType=BIT}, #{class}, #{attach},
+        #{colour,jdbcType=BIT}, #{class_}, #{attach},
         #{intCode}, #{tmName}, #{agentNumber},
         #{ctmCode}, #{makeDate}, #{makeOp},
         #{sentDate}, #{sentOp}, #{sentState},
         #{listCode}, #{rtnState}, #{regCode},
-        #{pice}, #{counterman}, #{archiveno},
+        #{pice}, #{counterman}, #{archiveNo},
         #{guiFee}, #{regType}, #{accountman},
         #{accountstate}, #{accountmemo}, #{accountdate},
         #{invoice}, #{receiptcode}, #{invoicedate},
@@ -204,7 +204,7 @@
         #{priorityState}, #{appNumber}, #{appJsr},
         #{appJsrdz}, #{appJsryb}, #{guiFeem},
         #{dgnDesc}, #{commServ}, #{commonApp},
-        #{memo1}, #{addComm}, #{pic,jdbcType=LONGVARBINARY}
+        #{memo1}, #{addComm}, #{pic,jdbcType=LONGVARBINARY},#{guid}
         )
     </insert>
 

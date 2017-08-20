@@ -13,10 +13,12 @@ import com.gt.ms.service.common.SysAreaCountryService;
 import com.gt.ms.service.customer.CustomerService;
 import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.utils.DateUtils;
+import com.gt.ms.utils.DocUtil;
 import com.gt.ms.utils.RandomUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -69,6 +72,75 @@ public class Sqs01Controller extends BaseController {
     private static final String common_dlguid = "10000";//代理组织ID
     private static final String common_appno = "01";//商标注册国内申请书编号
     private static final String common_zllb = "1";//资料类别
+
+    /**
+     * 输出商标注册申请书
+     *
+     * @return
+     */
+    @RequestMapping(value = "/outSqs", method = RequestMethod.GET)
+    public void outSqs(HttpServletResponse response) {
+        DocUtil doc = new DocUtil();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("username", "tom");
+        PrintWriter writer = null;
+        try {
+            writer = response.getWriter();
+            doc.createDoc(map, "sqs01", writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            writer.close();
+        }
+    }
+
+    /**
+     * 输出商标注册委托书
+     *
+     * @return
+     */
+    @RequestMapping(value = "/outWts", method = RequestMethod.GET)
+    public void outWts(String guid, HttpServletResponse response) throws IOException {
+        LOGGER.debug("outWts:" + guid);
+        DocUtil doc = new DocUtil();
+        Map<String, Object> map = new HashMap<String, Object>();
+        Sqs01 sqs01 = sqs01Server.get(guid);
+        map.put("agentNumber", sqs01.getAgentNumber());
+        map.put("appName", (sqs01.getAppName() == null ? "" : sqs01.getAppName()) + (sqs01.getAppNameE() == null ? "" : sqs01.getAppNameE()));
+        map.put("appState", sqs01.getAppState());
+        map.put("agentName", sqs01.getAgentName());
+        map.put("tmName", sqs01.getTmName());
+        map.put("appAddr", (sqs01.getAppAddr() == null ? "" : sqs01.getAppAddr()) + (sqs01.getAppAddrE() == null ? "" : sqs01.getAppAddrE()));
+        map.put("makeOp", opService.getByOpName(sqs01.getMakeOp()).getOpTruename());
+        map.put("thisDate", DateUtils.getCurrentFormatDate("yyyy年MM月dd日"));
+        PrintWriter writer = null;
+//        ServletOutputStream outputStream = null;
+        try {
+            String fileName = (sqs01.getAppName() == null ? "" : sqs01.getAppName());
+            fileName += (sqs01.getAppNameE() == null ? "" : sqs01.getAppNameE());
+            fileName += "-";
+            fileName += (sqs01.getTmName() == null ? "" : sqs01.getTmName());
+            fileName += ".doc";
+            response.setCharacterEncoding("UTF-8");
+            response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
+            writer = response.getWriter();
+//            String filepath = this.getClass().getResource("").getPath() + File.separator + fileName;
+            doc.createDoc(map, "wts01", writer);
+//            outputStream = response.getOutputStream();
+//            File file = new File(filepath);
+//            outputStream.write(FileUtils.readFileToByteArray(file));
+//            file.delete();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (writer != null)
+                writer.close();
+//            if (outputStream != null) {
+//                outputStream.flush();
+//                outputStream.close();
+//            }
+        }
+    }
 
     /**
      * 商标注册申请书管理页

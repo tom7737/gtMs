@@ -1898,7 +1898,7 @@
                                             <w:szCs w:val="84"/>
                                             <w:lang w:bidi="ar"/>
                                         </w:rPr>
-                                        <!-- <w:t>${sqs01.tmName}</w:t>-->
+                                        <!-- --><#if ispic == "0"><w:t>${sqs01.tmName}</w:t><#else>
                                          <w:pict>
                                              <v:shapetype id="_x0000_t75" coordsize="21600,21600" o:spt="75"
                                                           o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
@@ -1925,7 +1925,7 @@
                                                       style="width:280.2pt;height:${height!}pt;">
                                                  <v:imagedata r:id="rId9" r:href="rId10"/>
                                              </v:shape>
-                                         </w:pict>
+                                         </w:pict></#if>
                                     </w:r>
                                     <w:r w:rsidRPr="00CB4399">
                                         <w:rPr>

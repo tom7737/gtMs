@@ -55,7 +55,7 @@ public class DocUtil {
      *
      * @param dataMap      需要填入模板的数据
      * @param downloadType 文件名称
-     * @param out    输出对象
+     * @param out          输出对象
      */
     public void createDoc(Map<String, Object> dataMap, String downloadType, Writer out) {
         try {
@@ -97,6 +97,12 @@ public class DocUtil {
         BASE64Encoder encoder = new BASE64Encoder();
         return encoder.encode(data);
     }
+
+    public String getImageBytes(byte[] data) {
+        BASE64Encoder encoder = new BASE64Encoder();
+        return encoder.encode(data);
+    }
+
 
     public static void main(String[] args) {
 

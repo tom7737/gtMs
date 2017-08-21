@@ -12,12 +12,10 @@ import com.gt.ms.service.agent.AgentService;
 import com.gt.ms.service.common.SysAreaCountryService;
 import com.gt.ms.service.customer.CustomerService;
 import com.gt.ms.service.sqs.Sqs01Service;
-import com.gt.ms.utils.DateUtils;
-import com.gt.ms.utils.DocUtil;
-import com.gt.ms.utils.RandomUtils;
-import com.gt.ms.utils.StringUtils;
+import com.gt.ms.utils.*;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
+import org.apache.commons.beanutils.converters.DoubleConverter;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +28,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.imageio.ImageIO;
+import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URLEncoder;
 import java.sql.Timestamp;
@@ -79,20 +81,62 @@ public class Sqs01Controller extends BaseController {
      * @return
      */
     @RequestMapping(value = "/outSqs", method = RequestMethod.GET)
-    public void outSqs(HttpServletResponse response) {
+    public void outSqs(String guid, HttpServletResponse response) throws IOException {
+        LOGGER.debug("outWts:" + guid);
         DocUtil doc = new DocUtil();
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("username", "tom");
+        Sqs01 sqs01 = sqs01Server.get(guid);
+        map.put("sqs01", sqs01);
+//        map.put("agentNumber", sqs01.getAgentNumber());
+//        map.put("appName", sqs01.getAppName());
+//        map.put("appNameE", sqs01.getAppNameE());
+//        map.put("appState", sqs01.getAppState());
+//        map.put("agentName", sqs01.getAgentName());
+//        map.put("tmName", sqs01.getTmName());
+//        map.put("appAddr", sqs01.getAppAddr());
+//        map.put("appAddrE", sqs01.getAppAddrE());
+        map.put("makeOp", opService.getByOpName(sqs01.getMakeOp()).getOpTruename());
+        map.put("thisDate", DateUtils.getCurrentFormatDate("yyyy年MM月dd日"));
+//        map.put("appJsr", sqs01.getAppJsr());
+
+        if (sqs01.getPic() != null) {
+            double heights = ImageUtil.BytToImg(sqs01.getPic());
+            map.put("height", heights);
+            map.put("biaoyang", doc.getImageBytes(sqs01.getPic()));
+            map.put("ispic", "1");
+        } else {
+            map.put("ispic", "0");
+        }
         PrintWriter writer = null;
+//        ServletOutputStream outputStream = null;
         try {
+            String fileName = "申请书-";
+            fileName += (sqs01.getAppName() == null ? "" : sqs01.getAppName());
+            fileName += (sqs01.getAppNameE() == null ? "" : sqs01.getAppNameE());
+            fileName += "-";
+            fileName += (sqs01.getTmName() == null ? "" : sqs01.getTmName());
+            fileName += ".doc";
+            response.setCharacterEncoding("UTF-8");
+            response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
             writer = response.getWriter();
+//            String filepath = this.getClass().getResource("").getPath() + File.separator + fileName;
             doc.createDoc(map, "sqs01", writer);
+//            outputStream = response.getOutputStream();
+//            File file = new File(filepath);
+//            outputStream.write(FileUtils.readFileToByteArray(file));
+//            file.delete();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            writer.close();
+            if (writer != null)
+                writer.close();
+//            if (outputStream != null) {
+//                outputStream.flush();
+//                outputStream.close();
+//            }
         }
     }
+
 
     /**
      * 输出商标注册委托书
@@ -116,7 +160,8 @@ public class Sqs01Controller extends BaseController {
         PrintWriter writer = null;
 //        ServletOutputStream outputStream = null;
         try {
-            String fileName = (sqs01.getAppName() == null ? "" : sqs01.getAppName());
+            String fileName = "委托书-";
+            fileName += (sqs01.getAppName() == null ? "" : sqs01.getAppName());
             fileName += (sqs01.getAppNameE() == null ? "" : sqs01.getAppNameE());
             fileName += "-";
             fileName += (sqs01.getTmName() == null ? "" : sqs01.getTmName());

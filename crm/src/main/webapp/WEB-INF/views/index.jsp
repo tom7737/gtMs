@@ -208,7 +208,9 @@
         <div id="index_tabs" style="overflow: hidden;">
             <div title="首页" data-options="border:false" style="overflow: hidden;">
                 <%--<script src='https://git.oschina.net/wangzhixuan/spring-shiro-training/widget_preview'></script>--%>
-                <img src="${staticPath }/static/style/images/index.png" style="width: 100%;height: 100%;"  />
+                <%--<img src="${staticPath }/static/style/images/index.png" style="width: 100%;height: 100%;"  />--%>
+                    <p style="text-align: center;font-size: 45px;padding-top: 20px;">欢迎使用</p>
+                    <p style="text-align: center;font-size: 45px;">共腾客户管理系统</p>
                 <style>
                     .pro_name a{color: #4183c4;}
                     .osc_git_title{background-color: #d8e5f1;}
@@ -220,7 +222,7 @@
             </div>
         </div>
     </div>
-    <div data-options="region:'south',border:false" style="height: 30px;line-height:30px; overflow: hidden;text-align: center;background-color: #eee" >Copyright © 2017 power by <a href="http://www.jinyuncai.cn/" target="_blank">金云彩</a></div>
+    <div data-options="region:'south',border:false" style="height: 30px;line-height:30px; overflow: hidden;text-align: center;background-color: #eee" >Copyright © 2017 power by <a href="http://www.igongteng.com/" target="_blank">共腾</a></div>
 </div>
 
 <!--[if lte IE 7]>

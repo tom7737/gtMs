@@ -289,7 +289,7 @@
                                             <w:sz w:val="24"/>
                                             <w:szCs w:val="28"/>
                                         </w:rPr>
-                                        <w:t xml:space="preserve">${sqs01.appNameE}</w:t>
+                                        <w:t xml:space="preserve">${sqs01.appNameE!}</w:t>
                                     </w:pPr>
                                 </w:p>
                             </w:tc>
@@ -443,7 +443,7 @@
                                             <w:sz w:val="24"/>
                                             <w:szCs w:val="28"/>
                                         </w:rPr>
-                                        <w:t>${sqs01.appAddr}</w:t>
+                                        <w:t>${sqs01.appAddr!}</w:t>
                                     </w:r>
                                 </w:p>
                             </w:tc>
@@ -1898,7 +1898,7 @@
                                             <w:szCs w:val="84"/>
                                             <w:lang w:bidi="ar"/>
                                         </w:rPr>
-                                        <!-- --><#if ispic == "0"><w:t>${sqs01.tmName}</w:t><#else>
+                                        <!-- --><#if ispic == "0"><w:t>${sqs01.tmName!}</w:t><#else>
                                          <w:pict>
                                              <v:shapetype id="_x0000_t75" coordsize="21600,21600" o:spt="75"
                                                           o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"

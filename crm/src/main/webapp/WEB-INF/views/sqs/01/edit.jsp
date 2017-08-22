@@ -185,7 +185,7 @@
     <div data-options="region:'center',border:false" title="商标注册申请书"
          style="overflow: hidden;padding: 3px;overflow-y:scroll ">
 
-        <form id="sqs01EditForm" method="post" enctype=”multipart/form-data”>
+        <form id="sqs01EditForm" method="post" enctype="multipart/form-data">
             <input type="hidden" name="sentState" value="${sqs01.sentState}"/>
             <input type="hidden" id="guid" name="guid" value="${sqs01.guid}"/>
             <input type="hidden" name="accountstate" value="${sqs01.accountstate}"/>
@@ -446,10 +446,8 @@
                            class="easyui-linkbutton" style="width: 100px;"
                            data-options="plain:true,iconCls:'icon-reload'">重置</a>
                     </td>
-                <tr>
+                </tr>
             </table>
-
-
         </form>
     </div>
 </div>

@@ -31,7 +31,7 @@
                     field: 'appName',
                     sortable: true,
                     formatter: function (value, row, index) {
-                        return (row.appName==null?"":row.appName) + (row.appNameE==null?"":row.appNameE);
+                        return (row.appName == null ? "" : row.appName) + (row.appNameE == null ? "" : row.appNameE);
                     }
                 }, {
                     width: '150',
@@ -54,17 +54,20 @@
                     width: 400,
                     formatter: function (value, row, index) {
                         var str = '';
-                            str += $.formatString('<a href="${path}/sqs/01/outSqs?guid={0}" class="user-easyui-linkbutton-outSqs" data-options="plain:true,iconCls:\'icon-add\'"  >生成申请书</a>', row.guid);
-                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                            str += $.formatString('<a href="${path}/sqs/01/outWts?guid={0}" class="user-easyui-linkbutton-outWts" data-options="plain:true,iconCls:\'icon-add\'"  >生成委托书</a>', row.guid);
-                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                            str += $.formatString('<a href="${path}/sqs/01/edit?guid={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.guid);
-                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.guid);
+                        str += $.formatString('<a href="${path}/sqs/01/info?guid={0}" class="user-easyui-linkbutton-info" data-options="plain:true,iconCls:\'icon-info\'"  >查看</a>', row.guid);
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                        str += $.formatString('<a href="${path}/sqs/01/outSqs?guid={0}" class="user-easyui-linkbutton-outSqs" data-options="plain:true,iconCls:\'icon-add\'"  >生成申请书</a>', row.guid);
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                        str += $.formatString('<a href="${path}/sqs/01/outWts?guid={0}" class="user-easyui-linkbutton-outWts" data-options="plain:true,iconCls:\'icon-add\'"  >生成委托书</a>', row.guid);
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                        str += $.formatString('<a href="${path}/sqs/01/edit?guid={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.guid);
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                        str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.guid);
                         return str;
                     }
                 }]],
                 onLoadSuccess: function (data) {
+                    $('.user-easyui-linkbutton-info').linkbutton({text: '查看', plain: true, iconCls: 'icon-search'});
                     $('.user-easyui-linkbutton-outSqs').linkbutton({text: '生成申请书', plain: true, iconCls: 'icon-add'});
                     $('.user-easyui-linkbutton-outWts').linkbutton({text: '生成委托书', plain: true, iconCls: 'icon-add'});
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
@@ -100,16 +103,16 @@
             }
             parent.$.messager.confirm('询问', '您是否要删除当前数据？', function (b) {
                 if (b) {
-                        progressLoad();
-                        $.post('${path }/sqs/01/delete', {
-                            guid: id
-                        }, function (result) {
-                            if (result.success) {
-                                parent.$.messager.alert('提示', result.message, 'info');
-                                dataGrid.datagrid('reload');
-                            }
-                            progressClose();
-                        }, 'JSON');
+                    progressLoad();
+                    $.post('${path }/sqs/01/delete', {
+                        guid: id
+                    }, function (result) {
+                        if (result.success) {
+                            parent.$.messager.alert('提示', result.message, 'info');
+                            dataGrid.datagrid('reload');
+                        }
+                        progressClose();
+                    }, 'JSON');
                 }
             });
         }

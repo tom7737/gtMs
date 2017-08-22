@@ -416,7 +416,7 @@ public class Sqs01Controller extends BaseController {
             appImageService.removeByAppguid(guid);
             sqs01Server.remove(guid);
             result.setSuccess(true);
-            result.setMessage("添加成功");
+            result.setMessage("删除成功");
             return result;
         } catch (RuntimeException e) {
             LOGGER.error("删除商标注册申请书失败：{}", e);
@@ -702,6 +702,7 @@ public class Sqs01Controller extends BaseController {
     public String infoPage(String guid, Model model) {
         Sqs01 sqs01 = sqs01Server.get(guid);
         List<Op> ops = opService.getList();
+
         model.addAttribute("sqs01", sqs01);
         model.addAttribute("ops", ops);
 

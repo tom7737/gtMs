@@ -66,10 +66,17 @@
                 $("#pic").val(null);
                 $("#img_pic").attr("src", "");
                 $("#pic_text").val(null);
+                $.post('${path }/sqs/01/picClean', {
+                }, function (result) {
+                    if (result.success) {
+                        parent.$.messager.alert('提示', result.message, 'info');
+                    }
+                }, 'JSON');
             }
         });
 
-    }//选择委托书
+    }
+    //选择委托书
     function selectWts() {
         $("#wts").click();
     }
@@ -393,9 +400,9 @@
                         <input type="text" readonly id="wts_text"/>
                     </td>
                     <td>查看委托书</td>
-                    <td><a target="_blank" href="#"
-                           class="easyui-linkbutton"
-                           data-options="plain:true,iconCls:'icon-add'">点击下载</a></td>
+                        <td><a href="${path}/sqs/01/wts?guid=${sqs01.guid}"
+                               class="easyui-linkbutton"
+                               data-options="plain:true,iconCls:'icon-add'">点击下载</a></td></a></td>
                 </tr>
                 <tr>
                     <td>其他共同申请人</td>

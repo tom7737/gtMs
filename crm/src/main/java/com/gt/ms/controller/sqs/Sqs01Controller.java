@@ -42,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @description：商标注册申请书管理
@@ -736,7 +737,7 @@ public class Sqs01Controller extends BaseController {
     }
 
     /**
-     *  委托书下载
+     * 委托书下载
      *
      * @return
      */
@@ -751,10 +752,19 @@ public class Sqs01Controller extends BaseController {
             } else {
                 appImage = appImageService.getByAppguid(guid);
             }
-            if (appImage == null || appImage.getZltp() == null)
-                return;
+            String filaName = null;
+            byte[] date = null;
+            if (appImage == null || appImage.getZltp() == null) {
+                filaName = "无文件";
+                date = new byte[1];
+            } else {
+                filaName = (appImage.getAgentNumber() == null ? UUID.randomUUID().toString() : appImage.getAgentNumber()) + "." + (appImage.getTpwjgs() == null ? "jpg" : appImage.getTpwjgs());
+                date = appImage.getZltp();
+            }
+            response.setCharacterEncoding("UTF-8");
+            response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(filaName, "UTF-8"));
             os = response.getOutputStream();
-            os.write(appImage.getZltp());
+            os.write(date);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -769,3 +779,4 @@ public class Sqs01Controller extends BaseController {
         }
     }
 }
+

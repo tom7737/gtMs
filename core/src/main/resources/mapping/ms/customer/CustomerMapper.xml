@@ -60,7 +60,7 @@
     <include refid="Base_Column_List"/>
     FROM(
 
-    SELECT TOP ${size+from} ROW_NUMBER() OVER(ORDER BY ctm_code ASC) AS ROWID,*
+    SELECT TOP ${size+from} ROW_NUMBER() OVER(ORDER BY ctm_code desc) AS ROWID,*
 
     FROM customer
 

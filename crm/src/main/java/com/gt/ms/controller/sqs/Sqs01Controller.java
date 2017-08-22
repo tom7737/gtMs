@@ -465,6 +465,29 @@ public class Sqs01Controller extends BaseController {
     }
 
     /**
+     * 清除标样
+     *
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "/picClean")
+    @ResponseBody
+    public AjaxResult picClean(HttpServletRequest request) throws IOException {
+        AjaxResult result = new AjaxResult();
+        try {
+            request.getSession().removeAttribute("session_pic");
+            result.setSuccess(true);
+            result.setMessage("操作成功！");
+        } catch (Exception e) {
+            LOGGER.debug("error:", e);
+            result.setSuccess(false);
+            result.setMessage("操作失败！");
+        }
+        return result;
+    }
+
+    /**
      * 标样上传接口，请使用ajaxFileUpload的方式上传
      *
      * @param request
@@ -698,6 +721,40 @@ public class Sqs01Controller extends BaseController {
                 return;
             os = response.getOutputStream();
             os.write(sqs01.getPic());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (os != null) {
+                try {
+                    os.flush();
+                    os.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     *  委托书下载
+     *
+     * @return
+     */
+    @RequestMapping(value = "/wts", method = RequestMethod.GET)
+    public void wts(String guid, HttpServletRequest request, HttpServletResponse response) {
+        ServletOutputStream os = null;
+        AppImage appImage = null;
+        try {
+            Object session_wts = request.getSession().getAttribute("session_wts");
+            if (session_wts != null) {
+                appImage = (AppImage) session_wts;
+            } else {
+                appImage = appImageService.getByAppguid(guid);
+            }
+            if (appImage == null || appImage.getZltp() == null)
+                return;
+            os = response.getOutputStream();
+            os.write(appImage.getZltp());
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

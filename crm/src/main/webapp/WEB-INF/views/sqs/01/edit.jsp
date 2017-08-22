@@ -76,9 +76,11 @@
 
     //添加小类
     function addItemFun() {
-        if ($("#class_").val() == null || $("#class_").val() == "") {
+        if ($("#class_").val() == null || $("#class_").val() == ""||isNaN($("#class_").val())) {
             parent.$.messager.alert('提示', '请输入小类', 'info');
-        } else {
+        } else if (parseInt($("#class_").val()) < 1 || parseInt($("#class_").val()) > 45) {
+            parent.$.messager.alert('提示', '没有这个类别', 'info');
+        }else {
             parent.$.modalDialog.class_ = $("#class_");
             parent.$.modalDialog.commServ =  $("#commServ");
             parent.$.modalDialog.addComm =  $("#addComm");
@@ -115,7 +117,7 @@
         });
 
     }
-
+    // FIXME add.jsp  edit.jsp 添加清除标样功能调用，添加委托书下载功能调用
     //导入文件
     function uploadInfo(fileId, url) {
         var f = document.getElementById(fileId).value;
@@ -358,7 +360,7 @@
                 <tr>
                     <
                     <td>类别</td>
-                    <td><input id="class_" name="class_" type="text" class="easyui-numberbox"
+                    <td><input id="class_" name="class_" type="text" class="easyui-numberbox"  data-options="required:true"
                                value="${sqs01.class_}">
                         <a onclick="addItemFun();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择商品</a></td>

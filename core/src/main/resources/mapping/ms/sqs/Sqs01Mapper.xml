@@ -103,7 +103,16 @@
         <include refid="Sqs01_List"/>
         FROM(
 
-        SELECT TOP ${size+from} ROW_NUMBER() OVER(ORDER BY guid ASC) AS ROWID,*
+        SELECT TOP ${size+from} ROW_NUMBER() OVER(
+        <choose>
+            <when  test="sort!=null and sort!='seq'">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                ORDER BY guid ASC
+            </otherwise>
+        </choose>
+        ) AS ROWID,*
 
         FROM [01]
 
@@ -121,9 +130,7 @@
                 and agent_number = #{condition.agentNumber}
             </if>
         </where>
-        <if test="sort!=null and sort!='seq'">
-          order by ${sort} ${order}
-        </if>
+
         ) AS TEMP1
         WHERE ROWID> ${from}
     </select>

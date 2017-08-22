@@ -76,12 +76,14 @@
 
     //添加小类
     function addItemFun() {
-        if ($("#class_").val() == null || $("#class_").val() == "") {
+        if ($("#class_").val() == null || $("#class_").val() == ""||isNaN($("#class_").val())) {
             parent.$.messager.alert('提示', '请输入小类', 'info');
+        } else if (parseInt($("#class_").val()) < 1 || parseInt($("#class_").val()) > 45) {
+            parent.$.messager.alert('提示', '没有这个类别', 'info');
         } else {
             parent.$.modalDialog.class_ = $("#class_");
-            parent.$.modalDialog.commServ =  $("#commServ");
-            parent.$.modalDialog.addComm =  $("#addComm");
+            parent.$.modalDialog.commServ = $("#commServ");
+            parent.$.modalDialog.addComm = $("#addComm");
             parent.$.modalDialog({
                 title: '选择商品',
                 width: 500,
@@ -92,7 +94,7 @@
                     handler: function () {
 //                    parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
 //                    var f = parent.$.modalDialog.handler.find('#sqs01AddItemForm');
-                      var saveItem =   parent.$.modalDialog.saveItem;
+                        var saveItem = parent.$.modalDialog.saveItem;
                         saveItem();
 //                    f.submit();
                     }
@@ -331,6 +333,7 @@
                     <
                     <td>类别</td>
                     <td><input id="class_" name="class_" type="text" class="easyui-numberbox"
+                               data-options="required:true"
                                value="">
                         <a onclick="addItemFun();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择商品</a></td>

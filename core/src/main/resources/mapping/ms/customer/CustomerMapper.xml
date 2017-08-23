@@ -60,7 +60,14 @@
     <include refid="Base_Column_List"/>
     FROM(
 
-    SELECT TOP ${size+from} ROW_NUMBER() OVER(ORDER BY ctm_code desc) AS ROWID,*
+    SELECT TOP ${size+from} ROW_NUMBER() OVER(<choose>
+    <when  test="sort!=null and sort!='seq'">
+      order by ${sort} ${order}
+    </when>
+    <otherwise>
+      ORDER BY ctm_code DESC
+    </otherwise>
+  </choose>) AS ROWID,*
 
     FROM customer
 

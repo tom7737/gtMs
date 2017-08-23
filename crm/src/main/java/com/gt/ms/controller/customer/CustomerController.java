@@ -52,6 +52,25 @@ public class CustomerController extends BaseController {
     @RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
     @ResponseBody
     public PageInfo dataGrid(Customer customer, Integer page, Integer rows, String sort, String order) {
+        // 对排序字段进行处理
+        if (StringUtils.isNotBlank(sort) && !"seq".equals(sort)) {
+            switch (sort) {
+                case "ctmCode":
+                    sort = "ctm_code";
+                    break;
+                case "ctmName":
+                    sort = "ctm_name";
+                    break;
+                case "ctmNameEn":
+                    sort = "ctm_name_en";
+                    break;
+                case "ctmRegdate":
+                    sort = "ctm_regdate";
+                    break;
+                default:
+                    break;
+            }
+        }
         PageInfo pageInfo = new PageInfo(page, rows, sort, order);
         Map<String, Object> condition = new HashMap<String, Object>();
         Op currentUser = getCurrentUser();

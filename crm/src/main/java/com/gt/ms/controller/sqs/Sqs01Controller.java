@@ -210,6 +210,25 @@ public class Sqs01Controller extends BaseController {
     @RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
     @ResponseBody
     public PageInfo dataGrid(Sqs01 sqs01, Integer page, Integer rows, String sort, String order) {
+        // 对排序字段进行处理
+        if (StringUtils.isNotBlank(sort) && !"seq".equals(sort)) {
+            switch (sort) {
+                case "appName":
+                    sort = "app_name";
+                    break;
+                case "tmName":
+                    sort = "tm_name";
+                    break;
+                case "class_":
+                    sort = "class";
+                    break;
+                case "agentNumber":
+                    sort = "agent_number";
+                    break;
+                default:
+                    break;
+            }
+        }
         PageInfo pageInfo = new PageInfo(page, rows, sort, order);
         Map<String, Object> condition = new HashMap<String, Object>();
         Op currentUser = getCurrentUser();

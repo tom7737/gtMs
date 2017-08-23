@@ -83,7 +83,7 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/outSqs", method = RequestMethod.GET)
     public void outSqs(String guid, HttpServletResponse response) throws IOException {
-        LOGGER.debug("outWts:" + guid);
+        LOGGER.debug("outSqs:" + guid);
         DocUtil doc = new DocUtil();
         Map<String, Object> map = new HashMap<String, Object>();
         Sqs01 sqs01 = sqs01Server.get(guid);
@@ -116,6 +116,8 @@ public class Sqs01Controller extends BaseController {
             fileName += (sqs01.getAppNameE() == null ? "" : sqs01.getAppNameE());
             fileName += "-";
             fileName += (sqs01.getTmName() == null ? "" : sqs01.getTmName());
+            fileName += "-";
+            fileName += (sqs01.getClass_() == null ? "" : sqs01.getClass_());
             fileName += ".doc";
             response.setCharacterEncoding("UTF-8");
             response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
@@ -166,6 +168,8 @@ public class Sqs01Controller extends BaseController {
             fileName += (sqs01.getAppNameE() == null ? "" : sqs01.getAppNameE());
             fileName += "-";
             fileName += (sqs01.getTmName() == null ? "" : sqs01.getTmName());
+            fileName += "-";
+            fileName += (sqs01.getClass_() == null ? "" : sqs01.getClass_());
             fileName += ".doc";
             response.setCharacterEncoding("UTF-8");
             response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
@@ -496,7 +500,7 @@ public class Sqs01Controller extends BaseController {
     public AjaxResult picClean(HttpServletRequest request) throws IOException {
         AjaxResult result = new AjaxResult();
         try {
-            request.getSession().removeAttribute("session_pic");
+            request.getSession().setAttribute("session_pic", new byte[0]);
             result.setSuccess(true);
             result.setMessage("操作成功！");
         } catch (Exception e) {
@@ -520,7 +524,7 @@ public class Sqs01Controller extends BaseController {
         AjaxResult result = new AjaxResult();
         try {
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-            MultipartFile file = multipartRequest.getFile("pic");
+            MultipartFile file = multipartRequest.getFile("upload_pic");
             String guid = request.getParameter("guid");
             byte[] pic = file.getBytes();
             request.getSession().setAttribute("session_pic", pic);
@@ -552,7 +556,7 @@ public class Sqs01Controller extends BaseController {
         AjaxResult result = new AjaxResult();
         try {
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-            MultipartFile file = multipartRequest.getFile("wts");
+            MultipartFile file = multipartRequest.getFile("upload_wts");
             LOGGER.debug("--------" + file.getOriginalFilename());
             String appguid = request.getParameter("guid");
             String agentNumber = request.getParameter("agentNumber");

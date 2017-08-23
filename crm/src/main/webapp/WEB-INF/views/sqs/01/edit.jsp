@@ -407,7 +407,7 @@
                     <td>上传标样</td>
                     <td><a onclick="selectPic();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
-                        <input id="pic" type="file" name="pic" style="display: none;" accept=".jpg"/>
+                        <input id="pic" type="file" name="upload_pic" style="display: none;" accept=".jpg"/>
                         <input type="text" readonly id="pic_text"/>
                     </td>
                     <td>清除标样</td>
@@ -423,7 +423,7 @@
                     <td>上传委托书</td>
                     <td><a onclick="selectWts();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
-                        <input id="wts" type="file" name="wts" style="display: none;" accept=".jpg"/>
+                        <input id="wts" type="file" name="upload_wts" style="display: none;" accept=".jpg"/>
                         <input type="text" readonly id="wts_text"/>
                     </td>
                     <td>查看委托书</td>

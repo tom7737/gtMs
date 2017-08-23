@@ -14,8 +14,8 @@ import java.util.List;
 
 /**
  * @description：商品代码管理
- * @author：zhixuan.wang
- * @date：2015/10/1 14:51
+ * @author：twt
+ * @date：2017年8月23日 22:17:08
  */
 @Controller
 @RequestMapping("/sbfz")

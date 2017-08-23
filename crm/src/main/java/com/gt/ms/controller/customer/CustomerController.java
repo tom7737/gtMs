@@ -2,8 +2,14 @@ package com.gt.ms.controller.customer;
 
 import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Op;
+import com.gt.ms.entity.common.SysAreaCity;
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.entity.sqs.Sqs01;
+import com.gt.ms.service.admin.OpService;
+import com.gt.ms.service.common.SysAreaCityService;
+import com.gt.ms.service.common.SysAreaCountryService;
+import com.gt.ms.service.common.SysAreaService;
+import com.gt.ms.service.common.SysAreaStateService;
 import com.gt.ms.service.customer.CustomerService;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.PageInfo;
@@ -32,7 +38,8 @@ public class CustomerController extends BaseController {
 
     @Autowired
     private CustomerService customerService;
-
+    @Autowired
+    private OpService opService;
     /**
      * 客户管理
      *
@@ -99,6 +106,8 @@ public class CustomerController extends BaseController {
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     public String infoPage(String guid, Model model) {
         Customer customer = customerService.get(guid);
+        List<Op> ops = opService.getList();
+        model.addAttribute("ops", ops);
         model.addAttribute("ctm", customer);
         return "customer/info";
     }

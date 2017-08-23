@@ -17,8 +17,8 @@ import java.util.List;
 
 /**
  * @description：区县管理
- * @author：zhixuan.wang
- * @date：2015/10/1 14:51
+ * @author：twt
+ * @date：2017年8月23日 22:16:54
  */
 @Controller
 @RequestMapping("/area")
@@ -30,7 +30,7 @@ public class AreaController extends BaseController {
     private SysAreaService sysAreaService;
 
     /**
-     * 获取商标分组列表
+     * 根据市地址ID获取区县列表
      *
      * @return
      */
@@ -47,17 +47,17 @@ public class AreaController extends BaseController {
 //            LOGGER.debug(new String(dzmc, "iso-8859-1"));
 //        }
 
-        byte[] dzmc = listBySdzid.get(0).getDzmc();
-        byte x = 1;
-        for (int i = 0; i < 256; i++) {
-            for (int j = 0; j < dzmc.length; j++) {
-                dzmc[j] = (byte) (dzmc[j] >> 1);
-            }
-            LOGGER.debug(new String(dzmc));
-            LOGGER.debug(new String(dzmc, "utf-8"));
-            LOGGER.debug(new String(dzmc, "gbk"));
-            LOGGER.debug(new String(dzmc, "iso-8859-1"));
-        }
+//        byte[] dzmc = listBySdzid.get(0).getDzmc();
+//        byte x = 1;
+//        for (int i = 0; i < 256; i++) {
+//            for (int j = 0; j < dzmc.length; j++) {
+//                dzmc[j] = (byte) (dzmc[j] >> 1);
+//            }
+//            LOGGER.debug(new String(dzmc));
+//            LOGGER.debug(new String(dzmc, "utf-8"));
+//            LOGGER.debug(new String(dzmc, "gbk"));
+//            LOGGER.debug(new String(dzmc, "iso-8859-1"));
+//        }
         return listBySdzid;
     }
 

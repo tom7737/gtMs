@@ -7,6 +7,8 @@ import com.gt.ms.service.common.SysAreaCityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * 城市
  * Created by admini on 2017/5/10.
@@ -23,4 +25,8 @@ public class SysAreaCityServiceImpl extends BaseServiceImpl<SysAreaCity, String>
         this.sysAreaCityMapper = sysAreaCityMapper;
     }
 
+    @Override
+    public List<SysAreaCity> getListBySdzid(String sdzid) {
+        return sysAreaCityMapper.getListBySdzid(sdzid);
+    }
 }

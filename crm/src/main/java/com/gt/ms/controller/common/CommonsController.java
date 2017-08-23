@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 通用的控制器
- * @author L.cm
+ * @author twt
  *
  */
 @Controller

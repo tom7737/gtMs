@@ -16,6 +16,13 @@
         from sys_area_city
         WHERE dzid = #{dzid}
     </select>
+    <select id="getListBySdzid" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_area_city
+        where sdzid = #{sdzid}
+    </select>
     <delete id="remove" parameterType="java.lang.String">
         delete from sys_area_city
        WHERE dzid = #{dzid}

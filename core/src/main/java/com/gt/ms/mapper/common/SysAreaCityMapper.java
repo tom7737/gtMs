@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SysAreaCityMapper extends BaseMapper<SysAreaCity, String> {
+    List<SysAreaCity> getListBySdzid(String sdzid);
 }

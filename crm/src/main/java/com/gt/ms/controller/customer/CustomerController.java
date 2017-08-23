@@ -3,6 +3,7 @@ package com.gt.ms.controller.customer;
 import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.customer.Customer;
+import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.customer.CustomerService;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.PageInfo;
@@ -10,11 +11,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -88,5 +91,15 @@ public class CustomerController extends BaseController {
         return pageInfo;
     }
 
-
+    /**
+     * 商标注册申请书信息页
+     *
+     * @return
+     */
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    public String infoPage(String guid, Model model) {
+        Customer customer = customerService.get(guid);
+        model.addAttribute("ctm", customer);
+        return "customer/info";
+    }
 }

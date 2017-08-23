@@ -51,7 +51,7 @@
                     width:230,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += $.formatString('<a href="${path}/customer/info?guid={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);
+                        str += $.formatString('<a href="${path}/customer/info?guid={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
                         str += $.formatString('<a href="${path}/sqs/01/add?ctmCode={0}" class="user-easyui-linkbutton-addSqs" data-options="plain:true,iconCls:\'icon-add\'"  >添加申请书</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
@@ -62,6 +62,7 @@
                     }
                 }]],
                 onLoadSuccess: function (data) {
+                    $('.user-easyui-linkbutton-search').linkbutton({text: '查看', plain: true, iconCls: 'icon-search'});
                     $('.user-easyui-linkbutton-addSqs').linkbutton({text: '添加申请书', plain: true, iconCls: 'icon-add'});
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
                     $('.user-easyui-linkbutton-del').linkbutton({text: '删除', plain: true, iconCls: 'icon-del'});

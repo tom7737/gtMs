@@ -25,13 +25,11 @@ public class ActUser implements Serializable {
      */
     public static final Integer USER_TYPE_ADMIN  = 1;
     /**
-     *  TODO setting
      * 用户类型 - 商户
      * 系统根据这里配置的商户用户类型来判断哪些用户是商户用户
      */
     public static final Integer USER_TYPE_MERCHANTS = 2;
     /**
-     * TODO setting
      * 默认的商户角色ID
      * 系统根据此配置赋予商户的角色ID
      */

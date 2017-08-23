@@ -223,7 +223,6 @@
         // 商品分类显示值
         $("#commServ").val(commServ);
         $("#addComm").val(addComm);
-        //FIXME twt 金额计算
         parent.$.modalDialog.handler.dialog('close');
     }
 

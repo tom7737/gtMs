@@ -125,7 +125,6 @@
         });
 
     }
-    // FIXME add.jsp  edit.jsp 添加清除标样功能调用，添加委托书下载功能调用
     //导入文件
     function uploadInfo(fileId, url) {
         var f = document.getElementById(fileId).value;

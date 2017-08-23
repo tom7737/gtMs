@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
  *
  * @author 作者： wcy 
  * @version 创建时间：Mar 20, 2015 3:27:39 PM
- * @Description: TODO(用于序列化键值对)
+ * @Description:
  */
 public class SerializeUtil {
  

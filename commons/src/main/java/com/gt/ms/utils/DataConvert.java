@@ -257,7 +257,7 @@ public class DataConvert {
     }
 
     /**
-     * request2Map TODO(将request中的参数转换为map)
+     * request2Map 将request中的参数转换为map
      *
      * @param request
      * @return

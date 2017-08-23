@@ -18,9 +18,6 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class AjaxResult implements Serializable {
-	/**
-	 * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
-	 */
 	private static final long serialVersionUID = 1L;
 	/* 处理成功标志 */
 	private boolean success;

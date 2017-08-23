@@ -40,6 +40,7 @@ public class CustomerController extends BaseController {
     private CustomerService customerService;
     @Autowired
     private OpService opService;
+
     /**
      * 客户管理
      *
@@ -105,8 +106,14 @@ public class CustomerController extends BaseController {
      */
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     public String infoPage(String guid, Model model) {
+
         Customer customer = customerService.get(guid);
         List<Op> ops = opService.getList();
+        Op op = getCurrentUser();
+        //查看手机号权限
+        if (!customer.getMakeOp().equals(op.getOpName()) && '0' == op.getOpExport().charAt(3)) {//权限
+            customer.setCtmMobile("***");
+        }
         model.addAttribute("ops", ops);
         model.addAttribute("ctm", customer);
         return "customer/info";

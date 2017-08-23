@@ -51,6 +51,8 @@
                     width:230,
                     formatter: function (value, row, index) {
                         var str = '';
+                        str += $.formatString('<a href="${path}/customer/info?guid={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
                         str += $.formatString('<a href="${path}/sqs/01/add?ctmCode={0}" class="user-easyui-linkbutton-addSqs" data-options="plain:true,iconCls:\'icon-add\'"  >添加申请书</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                         str += $.formatString('<a href="${path}/sqs/01/edit?guid={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);

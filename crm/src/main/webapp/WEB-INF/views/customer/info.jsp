@@ -7,26 +7,26 @@
         var sdzid = '${ctm.sdzid}';
         var cdzid = '${ctm.cdzid}';
         var qdzid = '${ctm.qdzid}';
-        $.post("/country/getList", {}, function (data) {
+        $.post("${path}/country/getList", {}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.gjid + '" ' + (v.gjid == gjid ? 'selected' : '') + ' >' + v.gjpy + v.gjmc + '</option>';
                 $("#gjid").append(option);
             });
         })
-        $.post("/state/getList", {}, function (data) {
+        $.post("${path}/state/getList", {}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.dzid + '" ' + (v.dzid == sdzid ? 'selected' : '') + ' >' + v.dzpy + v.dzmc + '</option>';
                 $("#sdzid").append(option);
             });
         })
-        $.post("/city/getListBySdzid", {sdzid:sdzid}, function (data) {
+        $.post("${path}/city/getListBySdzid", {sdzid:sdzid}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.dzid + '" ' + (v.dzid == cdzid ? 'selected' : '') + ' >' + v.dzpy + '</option>';
 //                console.log( v.dzmc)
                 $("#cdzid").append(option);
             });
         })
-        $.post("/area/getListBySdzid", {sdzid:cdzid}, function (data) {
+        $.post("${path}/area/getListBySdzid", {sdzid:cdzid}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.dzid + '" ' + (v.dzid == qdzid ? 'selected' : '') + ' >' + v.dzpy + '</option>';
 //                console.log( v.dzmc)
@@ -85,22 +85,28 @@
                 <tr>
                     <td>申请人类型</td>
                     <td>
-                        <select name="lxguid" class="easyui-validatebox">
-                            <option <c:if test="${ctm.lxguid==''}">selected</c:if>>自然人</option>
-                            <option <c:if test="${ctm.lxguid==null}">selected</c:if>>企业</option>
+                        <select name="qylxnew" class="easyui-validatebox">
+                            <option>---请选择---</option>
+                            <option <c:if test="${ctm.qylxnew=='100012000000000001'}">selected</c:if>>法人或其它组织</option>
+                            <option <c:if test="${ctm.qylxnew=='100012000000000002'}">selected</c:if>>自然人</option>
                         </select>
                     </td>
                     <td>申请人国籍</td>
                     <td>
                         <select name="khgjlx" class="easyui-validatebox">
-                            <option <c:if test="${ctm.khgjlx=='0'}">selected</c:if>>中国大陆</option>
-                            <option <c:if test="${ctm.khgjlx=='1'}">selected</c:if>>国外</option>
+                            <option>---请选择---</option>
+                            <option <c:if test="${ctm.khgjlx=='100011000000000001'}">selected</c:if>>中国大陆</option>
+                            <option <c:if test="${ctm.khgjlx=='100011000000000002'}">selected</c:if>>国外</option>
+                            <option <c:if test="${ctm.khgjlx=='100011000000000003'}">selected</c:if>>中国台湾</option>
+                            <option <c:if test="${ctm.khgjlx=='100011000000000004'}">selected</c:if>>中国香港</option>
+                            <option <c:if test="${ctm.khgjlx=='100011000000000005'}">selected</c:if>>中国澳门</option>
                         </select>
                     </td>
                     <td>国家地区</td>
                     <td>
                         <select id="gjid" name="gjid" class="easyui-validatebox">
-                            <%--<option <c:if test="${ctm.sfzjmc=='身份证'}">selected</c:if>>${ctm.gjid}</option>--%>
+                            <option>---请选择---</option>
+                            <%--<option>${ctm.gjid}</option>--%>
                         </select>
                     </td>
                 </tr>
@@ -108,7 +114,10 @@
                     <td>身份证件名称</td>
                     <td>
                         <select name="sfzjmc" class="easyui-validatebox">
-                            <option <c:if test="${ctm.sfzjmc=='身份证'}">selected</c:if>>身份证</option>
+                            <option>---请选择---</option>
+                            <option <c:if test="${ctm.sfzjmc=='200005000400000000'}">selected</c:if>>身份证</option>
+                            <option <c:if test="${ctm.sfzjmc=='200005000500000000'}">selected</c:if>>护照</option>
+                            <option <c:if test="${ctm.sfzjmc=='200005002100000000'}">selected</c:if>>其他</option>
                         </select>
                     </td>
                     <td>身份证件号码</td>
@@ -123,19 +132,19 @@
                     <td>所属省份</td>
                     <td>
                         <select id="sdzid" name="sdzid" class="easyui-validatebox">
-                            <%--<option <c:if test="${ctm.sfzjmc=='身份证'}">selected</c:if>>${ctm.sdzid}</option>--%>
+                            <option>---请选择---</option>
                         </select>
                     </td>
                     <td>所属市县</td>
                     <td>
                         <select id="cdzid" name="cdzid" class="easyui-validatebox">
-                            <%--<option <c:if test="${ctm.sfzjmc=='身份证'}">selected</c:if>>${ctm.cdzid}</option>--%>
+                            <option>---请选择---</option>
                         </select>
                     </td>
                     <td>所属区县</td>
                     <td>
                         <select id="qdzid" name="qdzid" class="easyui-validatebox">
-                            <%--<option <c:if test="${ctm.sfzjmc=='身份证'}">selected</c:if>>${ctm.qdzid}</option>--%>
+                            <option>---请选择---</option>
                         </select>
                     </td>
                 </tr>
@@ -269,7 +278,11 @@
                 <tr>
                     <td>客户类别</td>
                     <td>
-                        ${ctm.lbid}
+                        <select id="ctm.lbid" name="qdzid" class="easyui-validatebox">
+                            <option <c:if test="${ctm.lbid=='1010201'}">selected</c:if>>正式客户</option>
+                            <option <c:if test="${ctm.lbid=='1010202'}">selected</c:if>>意向客户</option>
+                        </select>
+
                     </td>
                     <td>主体资料</td>
                     <td><a href="javascript:void(0);" class="easyui-linkbutton"

@@ -80,11 +80,18 @@ public class Customer implements java.io.Serializable  {
 
     private String ctmNameJsryb;//国内接收人邮编
 
-    private String qylxnew;//企业类型
+    private String qylxnew;//申请人类型 100012000000000001法人或其它组织/100012000000000002自然人
+    /**
+     * 申请人国籍
+     * 100011000000000001中国大陆
+     * 100011000000000002国外
+     * 100011000000000003中国台湾
+     * 100011000000000004中国香港
+     * 100011000000000005中国澳门
+     */
+    private String qygj;
 
-    private String qygj;//
-
-    private String sfzjmc;//身份证件名称
+    private String sfzjmc;//身份证件名称 200005000400000000身份证/200005000500000000护照/200005002100000000其他
 
     private String sfzjhm;//身份证件号码
 

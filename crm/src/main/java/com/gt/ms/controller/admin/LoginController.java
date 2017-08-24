@@ -3,6 +3,7 @@ package com.gt.ms.controller.admin;
 import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.utils.MD5Util;
 import com.gt.ms.utils.VerifyCodeUtils;
+import com.gt.ms.utils.ms.EncryptionUtil;
 import com.gt.ms.vo.AjaxResult;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -109,7 +110,7 @@ public class LoginController extends BaseController {
             return result;
         }
         Subject user = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username, DigestUtils.md5Hex(password).toCharArray());
+        UsernamePasswordToken token = new UsernamePasswordToken(username, DigestUtils.md5Hex(EncryptionUtil.encryption(password)).toCharArray());
         token.setRememberMe(true);
         try {
             user.login(token);

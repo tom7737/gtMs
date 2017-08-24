@@ -461,7 +461,7 @@ public class Sqs01Controller extends BaseController {
 
         Sqs01 sqs01 = sqs01Server.get(guid);
         List<Op> ops = opService.getList();
-
+        sqs01.setPic(null);
         model.addAttribute("sqs01", sqs01);
         model.addAttribute("ops", ops);
 
@@ -725,7 +725,7 @@ public class Sqs01Controller extends BaseController {
     public String infoPage(String guid, Model model) {
         Sqs01 sqs01 = sqs01Server.get(guid);
         List<Op> ops = opService.getList();
-
+        sqs01.setPic(null);
         model.addAttribute("sqs01", sqs01);
         model.addAttribute("ops", ops);
 

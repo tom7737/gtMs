@@ -158,6 +158,13 @@
         from [01]
         where guid = #{guid}
     </select>
+    <select id="getCountByTmName" parameterType="com.gt.ms.entity.sqs.Sqs01" resultType="java.lang.Integer">
+        select
+        count(*)
+        from [01]
+        where class = #{class_}
+        and tm_name = #{tmName}
+    </select>
     <insert id="save" parameterType="com.gt.ms.entity.sqs.Sqs01">
         insert into [01] (app_name, app_addr, if_common0,
         if_common1, post_code, person,
@@ -459,8 +466,9 @@
         where guid = #{guid}
     </update>
 
-    <delete id="remove" parameterType="java.lang.String">
-        delete from [01]
+    <update id="remove" parameterType="java.lang.String">
+        UPDATE [01]
+        set ztdm = '1'
         where guid = #{guid}
-    </delete>
+    </update>
 </mapper>

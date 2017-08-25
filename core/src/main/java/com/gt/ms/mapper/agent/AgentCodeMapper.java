@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AgentCodeMapper extends BaseMapper<AgentCode, String> {
 
+    String getMaxGuid();
+
+    int removeByAppguid(String id);
 }

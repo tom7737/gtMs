@@ -309,7 +309,7 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult add(Sqs01 sqs01, HttpServletRequest request) {
+    public AjaxResult add(Sqs01 sqs01, HttpServletRequest request, String checkTmName) {
         AjaxResult result = new AjaxResult();
         try {
             Op currentUser = getCurrentUser();
@@ -320,7 +320,15 @@ public class Sqs01Controller extends BaseController {
                 result.setMessage("没有权限！");
                 return result;
             }
-
+            if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1) {
+                //判断商标名称是否唯一
+                int count = sqs01Server.getCountByTmName(sqs01);
+                if (count > 0) {
+                    result.setSuccess(false);
+                    result.setMessage("商标名称重复！");
+                    return result;
+                }
+            }
             if (sqs01.getTmKindJ() == null) {//集体
                 sqs01.setTmKindJ(false);
             }
@@ -392,6 +400,7 @@ public class Sqs01Controller extends BaseController {
                 sqs01.setPic((byte[]) pic);
             else
                 sqs01.setPic(null);
+            sqs01.setZtdm("0");
             sqs01Server.save(sqs01);
             //修改委托书
             Object wts = request.getSession().getAttribute("session_wts");
@@ -436,7 +445,7 @@ public class Sqs01Controller extends BaseController {
                 result.setMessage("没有权限！");
                 return result;
             }
-            appImageService.removeByAppguid(guid);
+
             sqs01Server.remove(guid);
             result.setSuccess(true);
             result.setMessage("删除成功");

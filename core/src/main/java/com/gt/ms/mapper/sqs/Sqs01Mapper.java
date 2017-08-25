@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface Sqs01Mapper extends BaseMapper<Sqs01, String> {
 
 
+    int getCountByTmName(Sqs01 sqs01);
 }

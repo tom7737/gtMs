@@ -63,7 +63,7 @@ public class Sqs01 implements java.io.Serializable {
     private String sqdate;//申请日期
     private String dlguid;//代理组织编号
     private String fpqx;//发票去向，1邮寄/2自取
-    private String ztdm;//状态代码
+    private String ztdm;//状态代码 0有效1删除
     private String appCode;
     private String jkrq;
     private String jkfs;

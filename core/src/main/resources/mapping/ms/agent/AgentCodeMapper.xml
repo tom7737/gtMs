@@ -14,6 +14,12 @@
     <sql id="Base_Column_List">
     guid, apptype, app_name, agent_number, appguid, dlguid, make_op, cjsj
   </sql>
+    <select id="getMaxGuid" resultType="java.lang.String" >
+        SELECT
+        top 1 guid
+        from agent_code
+        order by guid desc
+    </select>
     <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -24,6 +30,10 @@
     delete from agent_code
     where guid = #{guid,jdbcType=NVARCHAR}
   </delete>
+    <delete id="removeByAppguid" parameterType="java.lang.String">
+        delete from agent_code
+        where appguid = #{id,jdbcType=NVARCHAR}
+    </delete>
     <insert id="save" parameterType="com.gt.ms.entity.agent.AgentCode">
     insert into agent_code (guid, apptype, app_name, 
       agent_number, appguid, dlguid, 

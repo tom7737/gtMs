@@ -19,14 +19,14 @@
                 $("#sdzid").append(option);
             });
         })
-        $.post("${path}/city/getListBySdzid", {sdzid:sdzid}, function (data) {
+        $.post("${path}/city/getListBySdzid", {sdzid: sdzid}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.dzid + '" ' + (v.dzid == cdzid ? 'selected' : '') + ' >' + v.dzpy + '</option>';
 //                console.log( v.dzmc)
                 $("#cdzid").append(option);
             });
         })
-        $.post("${path}/area/getListBySdzid", {sdzid:cdzid}, function (data) {
+        $.post("${path}/area/getListBySdzid", {sdzid: cdzid}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.dzid + '" ' + (v.dzid == qdzid ? 'selected' : '') + ' >' + v.dzpy + '</option>';
 //                console.log( v.dzmc)
@@ -39,7 +39,10 @@
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="客户信息"
          style="overflow: hidden;padding: 3px;overflow-y:scroll ">
-
+        <div id="toolbar">
+            <a onclick="location.href='${path}/sqs/01/add?ctmCode=${ctm.ctmCode}';" href="javascript:void(0);" class="easyui-linkbutton"
+               data-options="plain:true,iconCls:'icon-add'">添加申请书</a>
+        </div>
         <form id="sqs01EditForm" method="post" enctype=”multipart/form-data”>
             <table class="grid">
                 <tr>

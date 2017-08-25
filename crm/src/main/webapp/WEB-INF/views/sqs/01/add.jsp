@@ -232,7 +232,7 @@
                 </tr>
                 <tr>
                     <td>申请人名称（中文）</td>
-                    <td colspan="3"><input name="appName" type="text" class="easyui-validatebox"
+                    <td colspan="3"><input name="appName" readonly type="text" class="easyui-validatebox"
                                            style="width: 100%" value="${customer.ctmName}${customer.sfzjhm}"></td>
                     <td>申请方式</td>
                     <td>
@@ -245,7 +245,7 @@
                 </tr>
                 <tr>
                     <td>申请人名称（英文）</td>
-                    <td colspan="3"><input name="appNameE" type="text" class="easyui-validatebox" style="width: 100%;"
+                    <td colspan="3"><input name="appNameE" readonly type="text" class="easyui-validatebox" style="width: 100%;"
                                            value="${customer.ctmNameEn}"></td>
                     <td>申请人国籍/地区</td>
                     <td><input name="appState" type="text" class="easyui-validatebox"

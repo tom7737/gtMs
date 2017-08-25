@@ -34,6 +34,14 @@
         $('#sqs01AddForm').form({
             url: '${path }/sqs/01/add',
             onSubmit: function () {
+                if($("#pic_text").val()==null||$("#pic_text").val()==""){
+                    parent.$.messager.alert('提示', "请上传标样", 'info');
+                    return false;
+                }
+                if($("#commServ").val()==null||$("#commServ").val()==""){
+                    parent.$.messager.alert('提示', "请选择商品/服务项目", 'info');
+                    return false;
+                }
                 progressLoad();
                 var isValid = $(this).form('validate');
                 if (!isValid) {
@@ -365,7 +373,7 @@
                     <td>商标名称</td>
                     <td><input name="tmName" type="text" class="easyui-validatebox"
                                data-options="required:true" value="">
-                        <%--<input type="checkbox" checked>检查--%>
+                        <input type="checkbox" checked name="checkTmName" value="1" >检查
                         <%--<input type="checkbox">监测--%>
                     </td>
                     <td>注册号</td>

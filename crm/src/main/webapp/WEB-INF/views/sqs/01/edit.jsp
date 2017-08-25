@@ -34,6 +34,10 @@
         $('#sqs01EditForm').form({
             url: '${path }/sqs/01/edit',
             onSubmit: function () {
+                if($("#commServ").val()==null||$("#commServ").val()==""){
+                    parent.$.messager.alert('提示', "请选择商品/服务项目", 'info');
+                    return false;
+                }
                 progressLoad();
                 var isValid = $(this).form('validate');
                 if (!isValid) {
@@ -393,7 +397,7 @@
                     <td>商标名称</td>
                     <td><input name="tmName" type="text" class="easyui-validatebox"
                                data-options="required:true"  value="${sqs01.tmName}">
-                        <%--<input type="checkbox" checked>检查--%>
+                        <input type="checkbox" checked name="checkTmName" value="1" >检查
                         <%--<input type="checkbox">监测--%>
                     </td>
                     <td>注册号</td>

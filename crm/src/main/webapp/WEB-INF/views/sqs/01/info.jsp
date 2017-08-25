@@ -412,9 +412,9 @@
                             src="${path}/sqs/01/img?guid=${sqs01.guid}" id="img_pic"
                             style="width: 270px;height:175px;border: 1px solid;"></td>
                 </tr>
+                <%--存储在LMGImage库app_image表中
+                                <tr>
 
-                <tr>
-                    <%--存储在LMGImage库app_image表中--%>
                     <td>上传委托书</td>
                     <td><a  href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
@@ -425,7 +425,7 @@
                     <td><a href="${path}/sqs/01/wts?guid=${sqs01.guid}"
                            class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">点击下载</a></td>
-                </tr>
+                </tr>    --%>
                 <tr>
                     <td>其他共同申请人</td>
                     <td><textarea name="commonApp" readonly style="width: 100%;height: 80px;">${sqs01.commonApp}</textarea></td>

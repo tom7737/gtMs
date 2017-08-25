@@ -66,8 +66,7 @@
                 $("#pic").val(null);
                 $("#img_pic").attr("src", "");
                 $("#pic_text").val(null);
-                $.post('${path }/sqs/01/picClean', {
-                }, function (result) {
+                $.post('${path }/sqs/01/picClean', {}, function (result) {
                     if (result.success) {
                         parent.$.messager.alert('提示', result.message, 'info');
                     }
@@ -83,7 +82,7 @@
 
     //添加小类
     function addItemFun() {
-        if ($("#class_").val() == null || $("#class_").val() == ""||isNaN($("#class_").val())) {
+        if ($("#class_").val() == null || $("#class_").val() == "" || isNaN($("#class_").val())) {
             parent.$.messager.alert('提示', '请输入小类', 'info');
         } else if (parseInt($("#class_").val()) < 1 || parseInt($("#class_").val()) > 45) {
             parent.$.messager.alert('提示', '没有这个类别', 'info');
@@ -390,9 +389,9 @@
                             src="" id="img_pic"
                             style="width: 270px;height:175px;border: 1px solid;"></td>
                 </tr>
+                <%-- 存储在LMGImage库app_image表中
+                 <tr>
 
-                <tr>
-                    <%--存储在LMGImage库app_image表中--%>
                     <td>上传委托书</td>
                     <td><a onclick="selectWts();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
@@ -404,6 +403,7 @@
                                class="easyui-linkbutton"
                                data-options="plain:true,iconCls:'icon-add'">点击下载</a></td></a></td>
                 </tr>
+                --%>
                 <tr>
                     <td>其他共同申请人</td>
                     <td><textarea name="commonApp" style="width: 100%;height: 80px;"></textarea></td>

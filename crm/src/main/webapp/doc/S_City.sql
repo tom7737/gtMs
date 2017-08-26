@@ -11,7 +11,7 @@ Target Server Type    : SQL Server
 Target Server Version : 105000
 File Encoding         : 65001
 
-Date: 2017-08-26 12:37:04
+Date: 2017-08-26 12:56:28
 */
 
 
@@ -39,1303 +39,1303 @@ GO
 -- ----------------------------
 SET IDENTITY_INSERT [dbo].[S_City] ON
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000003', N'石家庄市', N'050000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000003', N'石家庄市', N'050000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000004', N'唐山市', N'063000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000004', N'唐山市', N'063000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000005', N'秦皇岛市', N'066000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000005', N'秦皇岛市', N'066000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000006', N'邯郸市', N'056000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000006', N'邯郸市', N'056000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000007', N'邢台市', N'054000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000007', N'邢台市', N'054000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000008', N'保定市', N'071000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000008', N'保定市', N'071000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000009', N'张家口市', N'075000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000009', N'张家口市', N'075000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000010', N'承德市', N'067000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000010', N'承德市', N'067000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000011', N'沧州市', N'061000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000011', N'沧州市', N'061000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000012', N'廊坊市', N'065000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000012', N'廊坊市', N'065000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000013', N'衡水市', N'053000', N'1000003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000013', N'衡水市', N'053000', N'100003', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000014', N'太原市', N'030000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000014', N'太原市', N'030000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000015', N'大同市', N'037000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000015', N'大同市', N'037000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000016', N'阳泉市', N'045000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000016', N'阳泉市', N'045000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000017', N'长治市', N'046000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000017', N'长治市', N'046000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000018', N'晋城市', N'048000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000018', N'晋城市', N'048000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000019', N'朔州市', N'036000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000019', N'朔州市', N'036000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000020', N'晋中市', N'030600', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000020', N'晋中市', N'030600', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000021', N'运城市', N'044000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000021', N'运城市', N'044000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000022', N'忻州市', N'034000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000022', N'忻州市', N'034000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000023', N'临汾市', N'041000', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000023', N'临汾市', N'041000', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000024', N'吕梁市', N'030500', N'1000004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000024', N'吕梁市', N'030500', N'100004', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000025', N'呼和浩特市', N'010000', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000025', N'呼和浩特市', N'010000', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000026', N'包头市', N'014000', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000026', N'包头市', N'014000', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000027', N'乌海市', N'016000', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000027', N'乌海市', N'016000', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000028', N'赤峰市', N'024000', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000028', N'赤峰市', N'024000', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000029', N'通辽市', N'028000', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000029', N'通辽市', N'028000', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000030', N'鄂尔多斯市', N'010300', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000030', N'鄂尔多斯市', N'010300', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000031', N'呼伦贝尔市', N'021000', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000031', N'呼伦贝尔市', N'021000', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000032', N'巴彦淖尔市', N'014400', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000032', N'巴彦淖尔市', N'014400', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000033', N'乌兰察布市', N'011800', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000033', N'乌兰察布市', N'011800', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000034', N'兴安盟', N'137500', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000034', N'兴安盟', N'137500', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000035', N'锡林郭勒盟', N'011100', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000035', N'锡林郭勒盟', N'011100', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000036', N'阿拉善盟', N'016000', N'1000005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000036', N'阿拉善盟', N'016000', N'100005', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000037', N'沈阳市', N'110000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000037', N'沈阳市', N'110000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000038', N'大连市', N'116000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000038', N'大连市', N'116000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000039', N'鞍山市', N'114000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000039', N'鞍山市', N'114000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000040', N'抚顺市', N'113000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000040', N'抚顺市', N'113000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000041', N'本溪市', N'117000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000041', N'本溪市', N'117000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000042', N'丹东市', N'118000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000042', N'丹东市', N'118000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000043', N'锦州市', N'121000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000043', N'锦州市', N'121000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000044', N'营口市', N'115000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000044', N'营口市', N'115000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000045', N'阜新市', N'123000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000045', N'阜新市', N'123000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000046', N'辽阳市', N'111000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000046', N'辽阳市', N'111000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000047', N'盘锦市', N'124000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000047', N'盘锦市', N'124000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000048', N'铁岭市', N'112000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000048', N'铁岭市', N'112000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000049', N'朝阳市', N'122000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000049', N'朝阳市', N'122000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000050', N'葫芦岛市', N'125000', N'1000006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000050', N'葫芦岛市', N'125000', N'100006', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000051', N'长春市', N'130000', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000051', N'长春市', N'130000', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000052', N'吉林市', N'132000', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000052', N'吉林市', N'132000', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000053', N'四平市', N'136000', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000053', N'四平市', N'136000', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000054', N'辽源市', N'136200', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000054', N'辽源市', N'136200', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000055', N'通化市', N'134000', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000055', N'通化市', N'134000', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000056', N'白山市', N'134300', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000056', N'白山市', N'134300', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000057', N'松原市', N'131100', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000057', N'松原市', N'131100', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000058', N'白城市', N'137000', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000058', N'白城市', N'137000', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000059', N'延边朝鲜族自治州', N'133000', N'1000007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000059', N'延边朝鲜族自治州', N'133000', N'100007', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000060', N'哈尔滨市', N'150000', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000060', N'哈尔滨市', N'150000', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000061', N'齐齐哈尔市', N'161000', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000061', N'齐齐哈尔市', N'161000', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000062', N'鸡西市', N'158100', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000062', N'鸡西市', N'158100', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000063', N'鹤岗市', N'154100', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000063', N'鹤岗市', N'154100', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000064', N'双鸭山市', N'155100', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000064', N'双鸭山市', N'155100', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000065', N'大庆市', N'163000', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000065', N'大庆市', N'163000', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000066', N'伊春市', N'152300', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000066', N'伊春市', N'152300', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000067', N'佳木斯市', N'154000', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000067', N'佳木斯市', N'154000', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000068', N'七台河市', N'154600', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000068', N'七台河市', N'154600', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000069', N'牡丹江市', N'157000', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000069', N'牡丹江市', N'157000', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000070', N'黑河市', N'164300', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000070', N'黑河市', N'164300', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000071', N'绥化市', N'152000', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000071', N'绥化市', N'152000', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000072', N'大兴安岭地区', N'165000', N'1000008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000072', N'大兴安岭地区', N'165000', N'100008', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000074', N'南京市', N'210000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000074', N'南京市', N'210000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000075', N'无锡市', N'214000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000075', N'无锡市', N'214000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000076', N'徐州市', N'221000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000076', N'徐州市', N'221000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000077', N'常州市', N'213000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000077', N'常州市', N'213000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000078', N'苏州市', N'215000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000078', N'苏州市', N'215000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000079', N'南通市', N'226000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000079', N'南通市', N'226000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000080', N'连云港市', N'222000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000080', N'连云港市', N'222000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000081', N'淮安市', N'223200', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000081', N'淮安市', N'223200', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000082', N'盐城市', N'224000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000082', N'盐城市', N'224000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000083', N'扬州市', N'225000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000083', N'扬州市', N'225000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000084', N'镇江市', N'212000', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000084', N'镇江市', N'212000', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000085', N'泰州市', N'225300', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000085', N'泰州市', N'225300', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000086', N'宿迁市', N'223800', N'1000010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000086', N'宿迁市', N'223800', N'100010', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000087', N'杭州市', N'310000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000087', N'杭州市', N'310000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000088', N'宁波市', N'315000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000088', N'宁波市', N'315000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000089', N'温州市', N'325000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000089', N'温州市', N'325000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000090', N'嘉兴市', N'314000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000090', N'嘉兴市', N'314000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000091', N'湖州市', N'313000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000091', N'湖州市', N'313000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000092', N'绍兴市', N'312000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000092', N'绍兴市', N'312000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000093', N'金华市', N'321000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000093', N'金华市', N'321000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000094', N'衢州市', N'324000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000094', N'衢州市', N'324000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000095', N'舟山市', N'316000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000095', N'舟山市', N'316000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000096', N'台州市', N'318000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000096', N'台州市', N'318000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000097', N'丽水市', N'323000', N'1000011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000097', N'丽水市', N'323000', N'100011', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000098', N'合肥市', N'230000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000098', N'合肥市', N'230000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000099', N'芜湖市', N'241000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000099', N'芜湖市', N'241000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000100', N'蚌埠市', N'233000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000100', N'蚌埠市', N'233000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000101', N'淮南市', N'232000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000101', N'淮南市', N'232000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000102', N'马鞍山市', N'243000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000102', N'马鞍山市', N'243000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000103', N'淮北市', N'235000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000103', N'淮北市', N'235000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000104', N'铜陵市', N'244000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000104', N'铜陵市', N'244000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000105', N'安庆市', N'246000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000105', N'安庆市', N'246000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000106', N'黄山市', N'242700', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000106', N'黄山市', N'242700', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000107', N'滁州市', N'239000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000107', N'滁州市', N'239000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000108', N'阜阳市', N'236100', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000108', N'阜阳市', N'236100', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000109', N'宿州市', N'234100', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000109', N'宿州市', N'234100', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000110', N'巢湖市', N'238000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000110', N'巢湖市', N'238000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000111', N'六安市', N'237000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000111', N'六安市', N'237000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000112', N'亳州市', N'236800', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000112', N'亳州市', N'236800', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000113', N'池州市', N'247100', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000113', N'池州市', N'247100', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000114', N'宣城市', N'366000', N'1000012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000114', N'宣城市', N'366000', N'100012', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000115', N'福州市', N'350000', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000115', N'福州市', N'350000', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000116', N'厦门市', N'361000', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000116', N'厦门市', N'361000', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000117', N'莆田市', N'351100', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000117', N'莆田市', N'351100', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000118', N'三明市', N'365000', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000118', N'三明市', N'365000', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000119', N'泉州市', N'362000', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000119', N'泉州市', N'362000', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000120', N'漳州市', N'363000', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000120', N'漳州市', N'363000', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000121', N'南平市', N'353000', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000121', N'南平市', N'353000', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000122', N'龙岩市', N'364000', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000122', N'龙岩市', N'364000', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000123', N'宁德市', N'352100', N'1000013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000123', N'宁德市', N'352100', N'100013', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000124', N'南昌市', N'330000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000124', N'南昌市', N'330000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000125', N'景德镇市', N'333000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000125', N'景德镇市', N'333000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000126', N'萍乡市', N'337000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000126', N'萍乡市', N'337000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000127', N'九江市', N'332000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000127', N'九江市', N'332000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000128', N'新余市', N'338000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000128', N'新余市', N'338000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000129', N'鹰潭市', N'335000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000129', N'鹰潭市', N'335000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000130', N'赣州市', N'341000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000130', N'赣州市', N'341000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000131', N'吉安市', N'343000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000131', N'吉安市', N'343000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000132', N'宜春市', N'336000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000132', N'宜春市', N'336000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000133', N'抚州市', N'332900', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000133', N'抚州市', N'332900', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000134', N'上饶市', N'334000', N'1000014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000134', N'上饶市', N'334000', N'100014', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000135', N'济南市', N'250000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000135', N'济南市', N'250000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000136', N'青岛市', N'266000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000136', N'青岛市', N'266000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000137', N'淄博市', N'255000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000137', N'淄博市', N'255000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000138', N'枣庄市', N'277100', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000138', N'枣庄市', N'277100', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000139', N'东营市', N'257000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000139', N'东营市', N'257000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000140', N'烟台市', N'264000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000140', N'烟台市', N'264000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000141', N'潍坊市', N'261000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000141', N'潍坊市', N'261000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000142', N'济宁市', N'272100', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000142', N'济宁市', N'272100', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000143', N'泰安市', N'271000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000143', N'泰安市', N'271000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000144', N'威海市', N'265700', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000144', N'威海市', N'265700', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000145', N'日照市', N'276800', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000145', N'日照市', N'276800', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000146', N'莱芜市', N'271100', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000146', N'莱芜市', N'271100', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000147', N'临沂市', N'276000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000147', N'临沂市', N'276000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000148', N'德州市', N'253000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000148', N'德州市', N'253000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000149', N'聊城市', N'252000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000149', N'聊城市', N'252000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000150', N'滨州市', N'256600', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000150', N'滨州市', N'256600', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000151', N'荷泽市', N'255000', N'1000015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000151', N'荷泽市', N'255000', N'100015', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000152', N'郑州市', N'450000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000152', N'郑州市', N'450000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000153', N'开封市', N'475000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000153', N'开封市', N'475000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000154', N'洛阳市', N'471000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000154', N'洛阳市', N'471000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000155', N'平顶山市', N'467000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000155', N'平顶山市', N'467000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000156', N'安阳市', N'454900', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000156', N'安阳市', N'454900', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000157', N'鹤壁市', N'456600', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000157', N'鹤壁市', N'456600', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000158', N'新乡市', N'453000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000158', N'新乡市', N'453000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000159', N'焦作市', N'454100', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000159', N'焦作市', N'454100', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000160', N'濮阳市', N'457000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000160', N'濮阳市', N'457000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000161', N'许昌市', N'461000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000161', N'许昌市', N'461000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000162', N'漯河市', N'462000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000162', N'漯河市', N'462000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000163', N'三门峡市', N'472000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000163', N'三门峡市', N'472000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000164', N'南阳市', N'473000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000164', N'南阳市', N'473000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000165', N'商丘市', N'476000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000165', N'商丘市', N'476000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000166', N'信阳市', N'464000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000166', N'信阳市', N'464000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000167', N'周口市', N'466000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000167', N'周口市', N'466000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000168', N'驻马店市', N'463000', N'1000016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000168', N'驻马店市', N'463000', N'100016', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000169', N'武汉市', N'430000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000169', N'武汉市', N'430000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000170', N'黄石市', N'435000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000170', N'黄石市', N'435000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000171', N'十堰市', N'442000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000171', N'十堰市', N'442000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000172', N'宜昌市', N'443000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000172', N'宜昌市', N'443000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000173', N'襄樊市', N'441000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000173', N'襄樊市', N'441000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000174', N'鄂州市', N'436000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000174', N'鄂州市', N'436000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000175', N'荆门市', N'448000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000175', N'荆门市', N'448000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000176', N'孝感市', N'432100', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000176', N'孝感市', N'432100', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000177', N'荆州市', N'434000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000177', N'荆州市', N'434000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000178', N'黄冈市', N'438000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000178', N'黄冈市', N'438000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000179', N'咸宁市', N'437000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000179', N'咸宁市', N'437000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000180', N'随州市', N'441300', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000180', N'随州市', N'441300', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000181', N'恩施土家族苗族自治州', N'445000', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000181', N'恩施土家族苗族自治州', N'445000', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000182', N'神农架', N'442400', N'1000017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000182', N'神农架', N'442400', N'100017', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000183', N'长沙市', N'410000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000183', N'长沙市', N'410000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000184', N'株洲市', N'412000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000184', N'株洲市', N'412000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000185', N'湘潭市', N'411100', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000185', N'湘潭市', N'411100', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000186', N'衡阳市', N'421000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000186', N'衡阳市', N'421000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000187', N'邵阳市', N'422000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000187', N'邵阳市', N'422000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000188', N'岳阳市', N'414000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000188', N'岳阳市', N'414000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000189', N'常德市', N'415000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000189', N'常德市', N'415000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000190', N'张家界市', N'427000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000190', N'张家界市', N'427000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000191', N'益阳市', N'413000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000191', N'益阳市', N'413000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000192', N'郴州市', N'423000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000192', N'郴州市', N'423000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000193', N'永州市', N'425000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000193', N'永州市', N'425000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000194', N'怀化市', N'418000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000194', N'怀化市', N'418000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000195', N'娄底市', N'417000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000195', N'娄底市', N'417000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000196', N'湘西土家族苗族自治州', N'416000', N'1000018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000196', N'湘西土家族苗族自治州', N'416000', N'100018', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000197', N'广州市', N'510000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000197', N'广州市', N'510000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000198', N'韶关市', N'521000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000198', N'韶关市', N'521000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000199', N'深圳市', N'518000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000199', N'深圳市', N'518000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000200', N'珠海市', N'519000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000200', N'珠海市', N'519000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000201', N'汕头市', N'515000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000201', N'汕头市', N'515000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000202', N'佛山市', N'528000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000202', N'佛山市', N'528000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000203', N'江门市', N'529000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000203', N'江门市', N'529000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000204', N'湛江市', N'524000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000204', N'湛江市', N'524000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000205', N'茂名市', N'525000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000205', N'茂名市', N'525000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000206', N'肇庆市', N'526000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000206', N'肇庆市', N'526000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000207', N'惠州市', N'516000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000207', N'惠州市', N'516000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000208', N'梅州市', N'514000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000208', N'梅州市', N'514000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000209', N'汕尾市', N'516600', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000209', N'汕尾市', N'516600', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000210', N'河源市', N'517000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000210', N'河源市', N'517000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000211', N'阳江市', N'529500', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000211', N'阳江市', N'529500', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000212', N'清远市', N'511500', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000212', N'清远市', N'511500', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000213', N'东莞市', N'511700', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000213', N'东莞市', N'511700', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000214', N'中山市', N'528400', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000214', N'中山市', N'528400', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000215', N'潮州市', N'515600', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000215', N'潮州市', N'515600', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000216', N'揭阳市', N'522000', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000216', N'揭阳市', N'522000', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000217', N'云浮市', N'527300', N'1000019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000217', N'云浮市', N'527300', N'100019', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000218', N'南宁市', N'530000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000218', N'南宁市', N'530000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000219', N'柳州市', N'545000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000219', N'柳州市', N'545000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000220', N'桂林市', N'541000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000220', N'桂林市', N'541000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000221', N'梧州市', N'543000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000221', N'梧州市', N'543000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000222', N'北海市', N'536000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000222', N'北海市', N'536000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000223', N'防城港市', N'538000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000223', N'防城港市', N'538000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000224', N'钦州市', N'535000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000224', N'钦州市', N'535000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000225', N'贵港市', N'537100', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000225', N'贵港市', N'537100', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000226', N'玉林市', N'537000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000226', N'玉林市', N'537000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000227', N'百色市', N'533000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000227', N'百色市', N'533000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000228', N'贺州市', N'542800', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000228', N'贺州市', N'542800', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000229', N'河池市', N'547000', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000229', N'河池市', N'547000', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000230', N'来宾市', N'546100', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000230', N'来宾市', N'546100', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000231', N'崇左市', N'532200', N'1000020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000231', N'崇左市', N'532200', N'100020', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000232', N'海口市', N'570000', N'1000021', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000232', N'海口市', N'570000', N'100021', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000233', N'三亚市', N'572000', N'1000021', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000233', N'三亚市', N'572000', N'100021', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000235', N'成都市', N'610000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000235', N'成都市', N'610000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000236', N'自贡市', N'643000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000236', N'自贡市', N'643000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000237', N'攀枝花市', N'617000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000237', N'攀枝花市', N'617000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000238', N'泸州市', N'646100', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000238', N'泸州市', N'646100', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000239', N'德阳市', N'618000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000239', N'德阳市', N'618000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000240', N'绵阳市', N'621000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000240', N'绵阳市', N'621000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000241', N'广元市', N'628000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000241', N'广元市', N'628000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000242', N'遂宁市', N'629000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000242', N'遂宁市', N'629000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000243', N'内江市', N'641000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000243', N'内江市', N'641000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000244', N'乐山市', N'614000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000244', N'乐山市', N'614000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000245', N'南充市', N'637000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000245', N'南充市', N'637000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000246', N'眉山市', N'612100', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000246', N'眉山市', N'612100', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000247', N'宜宾市', N'644000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000247', N'宜宾市', N'644000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000248', N'广安市', N'638000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000248', N'广安市', N'638000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000249', N'达州市', N'635000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000249', N'达州市', N'635000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000250', N'雅安市', N'625000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000250', N'雅安市', N'625000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000251', N'巴中市', N'635500', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000251', N'巴中市', N'635500', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000252', N'资阳市', N'641300', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000252', N'资阳市', N'641300', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000253', N'阿坝藏族羌族自治州', N'624600', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000253', N'阿坝藏族羌族自治州', N'624600', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000254', N'甘孜藏族自治州', N'626000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000254', N'甘孜藏族自治州', N'626000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000255', N'凉山彝族自治州', N'615000', N'1000023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000255', N'凉山彝族自治州', N'615000', N'100023', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000256', N'贵阳市', N'55000', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000256', N'贵阳市', N'55000', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000257', N'六盘水市', N'553000', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000257', N'六盘水市', N'553000', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000258', N'遵义市', N'563000', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000258', N'遵义市', N'563000', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000259', N'安顺市', N'561000', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000259', N'安顺市', N'561000', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000260', N'铜仁地区', N'554300', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000260', N'铜仁地区', N'554300', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000261', N'黔西南布依族苗族自治州', N'551500', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000261', N'黔西南布依族苗族自治州', N'551500', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000262', N'毕节地区', N'551700', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000262', N'毕节地区', N'551700', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000263', N'黔东南苗族侗族自治州', N'551500', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000263', N'黔东南苗族侗族自治州', N'551500', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000264', N'黔南布依族苗族自治州', N'550100', N'1000024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000264', N'黔南布依族苗族自治州', N'550100', N'100024', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000265', N'昆明市', N'650000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000265', N'昆明市', N'650000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000266', N'曲靖市', N'655000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000266', N'曲靖市', N'655000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000267', N'玉溪市', N'653100', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000267', N'玉溪市', N'653100', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000268', N'保山市', N'678000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000268', N'保山市', N'678000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000269', N'昭通市', N'657000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000269', N'昭通市', N'657000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000270', N'丽江市', N'674100', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000270', N'丽江市', N'674100', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000271', N'思茅市', N'665000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000271', N'思茅市', N'665000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000272', N'临沧市', N'677000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000272', N'临沧市', N'677000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000273', N'楚雄彝族自治州', N'675000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000273', N'楚雄彝族自治州', N'675000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000274', N'红河哈尼族彝族自治州', N'654400', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000274', N'红河哈尼族彝族自治州', N'654400', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000275', N'文山壮族苗族自治州', N'663000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000275', N'文山壮族苗族自治州', N'663000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000276', N'西双版纳傣族自治州', N'666200', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000276', N'西双版纳傣族自治州', N'666200', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000277', N'大理白族自治州', N'671000', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000277', N'大理白族自治州', N'671000', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000278', N'德宏傣族景颇族自治州', N'678400', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000278', N'德宏傣族景颇族自治州', N'678400', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000279', N'怒江傈僳族自治州', N'671400', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000279', N'怒江傈僳族自治州', N'671400', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000280', N'迪庆藏族自治州', N'674400', N'1000025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000280', N'迪庆藏族自治州', N'674400', N'100025', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000281', N'拉萨市', N'850000', N'1000026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000281', N'拉萨市', N'850000', N'100026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000282', N'昌都地区', N'854000', N'1000026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000282', N'昌都地区', N'854000', N'100026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000283', N'山南地区', N'856000', N'1000026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000283', N'山南地区', N'856000', N'100026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000284', N'日喀则地区', N'857000', N'1000026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000284', N'日喀则地区', N'857000', N'100026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000285', N'那曲地区', N'852000', N'1000026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000285', N'那曲地区', N'852000', N'100026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000286', N'阿里地区', N'859100', N'1000026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000286', N'阿里地区', N'859100', N'100026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000287', N'林芝地区', N'860100', N'1000026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000287', N'林芝地区', N'860100', N'100026', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000288', N'西安市', N'710000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000288', N'西安市', N'710000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000289', N'铜川市', N'727000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000289', N'铜川市', N'727000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000290', N'宝鸡市', N'721000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000290', N'宝鸡市', N'721000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000291', N'咸阳市', N'712000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000291', N'咸阳市', N'712000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000292', N'渭南市', N'714000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000292', N'渭南市', N'714000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000293', N'延安市', N'716000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000293', N'延安市', N'716000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000294', N'汉中市', N'723000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000294', N'汉中市', N'723000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000295', N'榆林市', N'719000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000295', N'榆林市', N'719000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000296', N'安康市', N'725000', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000296', N'安康市', N'725000', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000297', N'商洛市', N'711500', N'1000027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000297', N'商洛市', N'711500', N'100027', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000298', N'兰州市', N'730000', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000298', N'兰州市', N'730000', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000299', N'嘉峪关市', N'735100', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000299', N'嘉峪关市', N'735100', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000300', N'金昌市', N'737100', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000300', N'金昌市', N'737100', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000301', N'白银市', N'730900', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000301', N'白银市', N'730900', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000302', N'天水市', N'741000', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000302', N'天水市', N'741000', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000303', N'武威市', N'733000', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000303', N'武威市', N'733000', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000304', N'张掖市', N'734000', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000304', N'张掖市', N'734000', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000305', N'平凉市', N'744000', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000305', N'平凉市', N'744000', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000306', N'酒泉市', N'735000', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000306', N'酒泉市', N'735000', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000307', N'庆阳市', N'744500', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000307', N'庆阳市', N'744500', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000308', N'定西市', N'743000', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000308', N'定西市', N'743000', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000309', N'陇南市', N'742100', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000309', N'陇南市', N'742100', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000310', N'临夏回族自治州', N'731100', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000310', N'临夏回族自治州', N'731100', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000311', N'甘南藏族自治州', N'747000', N'1000028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000311', N'甘南藏族自治州', N'747000', N'100028', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000312', N'西宁市', N'810000', N'1000029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000312', N'西宁市', N'810000', N'100029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000313', N'海东地区', N'810600', N'1000029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000313', N'海东地区', N'810600', N'100029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000314', N'海北藏族自治州', N'810300', N'1000029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000314', N'海北藏族自治州', N'810300', N'100029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000315', N'黄南藏族自治州', N'811300', N'1000029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000315', N'黄南藏族自治州', N'811300', N'100029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000316', N'海南藏族自治州', N'813000', N'1000029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000316', N'海南藏族自治州', N'813000', N'100029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000317', N'果洛藏族自治州', N'814000', N'1000029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000317', N'果洛藏族自治州', N'814000', N'100029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000318', N'玉树藏族自治州', N'815000', N'1000029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000318', N'玉树藏族自治州', N'815000', N'100029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000319', N'海西蒙古族藏族自治州', N'817000', N'1000029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000319', N'海西蒙古族藏族自治州', N'817000', N'100029', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000320', N'银川市', N'750000', N'1000030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000320', N'银川市', N'750000', N'100030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000321', N'石嘴山市', N'753000', N'1000030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000321', N'石嘴山市', N'753000', N'100030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000322', N'吴忠市', N'751100', N'1000030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000322', N'吴忠市', N'751100', N'100030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000323', N'固原市', N'756000', N'1000030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000323', N'固原市', N'756000', N'100030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000324', N'中卫市', N'751700', N'1000030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000324', N'中卫市', N'751700', N'100030', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000325', N'乌鲁木齐市', N'830000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000325', N'乌鲁木齐市', N'830000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000326', N'克拉玛依市', N'834000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000326', N'克拉玛依市', N'834000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000327', N'吐鲁番地区', N'838000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000327', N'吐鲁番地区', N'838000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000328', N'哈密地区', N'839000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000328', N'哈密地区', N'839000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000329', N'昌吉回族自治州', N'831100', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000329', N'昌吉回族自治州', N'831100', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000330', N'博尔塔拉蒙古自治州', N'833400', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000330', N'博尔塔拉蒙古自治州', N'833400', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000331', N'巴音郭楞蒙古自治州', N'841000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000331', N'巴音郭楞蒙古自治州', N'841000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000332', N'阿克苏地区', N'843000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000332', N'阿克苏地区', N'843000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000333', N'克孜勒苏柯尔克孜自治州', N'835600', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000333', N'克孜勒苏柯尔克孜自治州', N'835600', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000334', N'喀什地区', N'844000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000334', N'喀什地区', N'844000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000335', N'和田地区', N'848000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000335', N'和田地区', N'848000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000336', N'伊犁哈萨克自治州', N'833200', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000336', N'伊犁哈萨克自治州', N'833200', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000337', N'塔城地区', N'834700', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000337', N'塔城地区', N'834700', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000338', N'阿勒泰地区', N'836500', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000338', N'阿勒泰地区', N'836500', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000339', N'石河子市', N'832000', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000339', N'石河子市', N'832000', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000340', N'阿拉尔市', N'843300', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000340', N'阿拉尔市', N'843300', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000341', N'图木舒克市', N'843900', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000341', N'图木舒克市', N'843900', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000342', N'五家渠市', N'831300', N'1000031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000342', N'五家渠市', N'831300', N'100031', N'2008-01-19 19:58:03.000', N'2008-01-19 19:58:03.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000346', N'东城区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000346', N'东城区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000347', N'西城区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000347', N'西城区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000348', N'崇文区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000348', N'崇文区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000349', N'宣武区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000349', N'宣武区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000350', N'朝阳区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000350', N'朝阳区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000351', N'丰台区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000351', N'丰台区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000352', N'石景山区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000352', N'石景山区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000353', N'海淀区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000353', N'海淀区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000354', N'门头沟区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000354', N'门头沟区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000355', N'房山区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000355', N'房山区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000356', N'通州区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000356', N'通州区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000357', N'顺义区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000357', N'顺义区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000358', N'昌平区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000358', N'昌平区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000359', N'大兴区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000359', N'大兴区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000360', N'怀柔区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000360', N'怀柔区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000361', N'平谷区', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000361', N'平谷区', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000362', N'密云县', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000362', N'密云县', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000363', N'延庆县', N'000000', N'1000001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000363', N'延庆县', N'000000', N'100001', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000364', N'和平区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000364', N'和平区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000365', N'河东区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000365', N'河东区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000366', N'河西区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000366', N'河西区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000367', N'南开区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000367', N'南开区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000368', N'河北区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000368', N'河北区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000369', N'红桥区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000369', N'红桥区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000370', N'塘沽区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000370', N'塘沽区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000371', N'汉沽区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000371', N'汉沽区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000372', N'大港区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000372', N'大港区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000373', N'东丽区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000373', N'东丽区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000374', N'西青区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000374', N'西青区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000375', N'津南区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000375', N'津南区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000376', N'北辰区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000376', N'北辰区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000377', N'武清区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000377', N'武清区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000378', N'宝坻区', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000378', N'宝坻区', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000379', N'宁河县', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000379', N'宁河县', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000380', N'静海县', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000380', N'静海县', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000381', N'蓟县', N'000000', N'1000002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000381', N'蓟县', N'000000', N'100002', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000719', N'黄浦区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000719', N'黄浦区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000720', N'卢湾区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000720', N'卢湾区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000721', N'徐汇区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000721', N'徐汇区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000722', N'长宁区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000722', N'长宁区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000723', N'静安区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000723', N'静安区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000724', N'普陀区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000724', N'普陀区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000725', N'闸北区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000725', N'闸北区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000726', N'虹口区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000726', N'虹口区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000727', N'杨浦区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000727', N'杨浦区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000728', N'闵行区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000728', N'闵行区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000729', N'宝山区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000729', N'宝山区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000730', N'嘉定区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000730', N'嘉定区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000731', N'浦东新区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000731', N'浦东新区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000732', N'金山区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000732', N'金山区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000733', N'松江区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000733', N'松江区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000734', N'青浦区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000734', N'青浦区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000735', N'南汇区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000735', N'南汇区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000736', N'奉贤区', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000736', N'奉贤区', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000737', N'崇明县', N'000000', N'1000009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1000737', N'崇明县', N'000000', N'100009', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002000', N'万州区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002000', N'万州区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002001', N'涪陵区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002001', N'涪陵区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002002', N'渝中区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002002', N'渝中区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002003', N'大渡口区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002003', N'大渡口区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002004', N'江北区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002004', N'江北区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002005', N'沙坪坝区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002005', N'沙坪坝区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002006', N'九龙坡区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002006', N'九龙坡区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002007', N'南岸区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002007', N'南岸区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002008', N'北碚区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002008', N'北碚区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002009', N'万盛区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002009', N'万盛区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002010', N'双桥区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002010', N'双桥区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002011', N'渝北区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002011', N'渝北区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002012', N'巴南区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002012', N'巴南区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002013', N'黔江区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002013', N'黔江区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002014', N'长寿区', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002014', N'长寿区', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002015', N'綦江县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002015', N'綦江县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002016', N'潼南县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002016', N'潼南县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002017', N'铜梁县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002017', N'铜梁县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002018', N'大足县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002018', N'大足县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002019', N'荣昌县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002019', N'荣昌县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002020', N'璧山县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002020', N'璧山县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002021', N'梁平县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002021', N'梁平县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002022', N'城口县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002022', N'城口县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002023', N'丰都县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002023', N'丰都县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002024', N'垫江县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002024', N'垫江县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002025', N'武隆县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002025', N'武隆县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002026', N'忠县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002026', N'忠县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002027', N'开县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002027', N'开县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002028', N'云阳县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002028', N'云阳县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002029', N'奉节县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002029', N'奉节县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002030', N'巫山县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002030', N'巫山县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002031', N'巫溪县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002031', N'巫溪县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002032', N'石柱土家族自治县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002032', N'石柱土家族自治县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002033', N'秀山土家族苗族自治县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002033', N'秀山土家族苗族自治县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002034', N'酉阳土家族苗族自治县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002034', N'酉阳土家族苗族自治县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002035', N'彭水苗族土家族自治县', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002035', N'彭水苗族土家族自治县', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002036', N'江津市', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002036', N'江津市', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002037', N'合川市', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002037', N'合川市', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002038', N'永川市', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002038', N'永川市', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
-INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002039', N'南川市', N'000000', N'1000022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
+INSERT INTO [dbo].[S_City] ([CityID], [CityName], [ZipCode], [ProvinceID], [DateCreated], [DateUpdated]) VALUES (N'1002039', N'南川市', N'000000', N'100022', N'2008-01-19 19:58:04.000', N'2008-01-19 19:58:04.000')
 GO
 GO
 SET IDENTITY_INSERT [dbo].[S_City] OFF
@@ -9975,106 +9975,106 @@ GO
 -- ----------------------------
 SET IDENTITY_INSERT [dbo].[S_Province] ON
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000001', N'北京市', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100001', N'北京市', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000002', N'天津市', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100002', N'天津市', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000003', N'河北省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100003', N'河北省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000004', N'山西省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100004', N'山西省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000005', N'内蒙古自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100005', N'内蒙古自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000006', N'辽宁省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100006', N'辽宁省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000007', N'吉林省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100007', N'吉林省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000008', N'黑龙江省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100008', N'黑龙江省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000009', N'上海市', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100009', N'上海市', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000010', N'江苏省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100010', N'江苏省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000011', N'浙江省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100011', N'浙江省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000012', N'安徽省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100012', N'安徽省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000013', N'福建省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100013', N'福建省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000014', N'江西省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100014', N'江西省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000015', N'山东省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100015', N'山东省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000016', N'河南省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100016', N'河南省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000017', N'湖北省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100017', N'湖北省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000018', N'湖南省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100018', N'湖南省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000019', N'广东省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100019', N'广东省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000020', N'广西壮族自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100020', N'广西壮族自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000021', N'海南省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100021', N'海南省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000022', N'重庆市', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100022', N'重庆市', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000023', N'四川省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100023', N'四川省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000024', N'贵州省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100024', N'贵州省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000025', N'云南省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100025', N'云南省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000026', N'西藏自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100026', N'西藏自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000027', N'陕西省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100027', N'陕西省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000028', N'甘肃省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100028', N'甘肃省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000029', N'青海省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100029', N'青海省', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000030', N'宁夏回族自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100030', N'宁夏回族自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000031', N'新疆维吾尔自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100031', N'新疆维吾尔自治区', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000032', N'中国香港', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100032', N'中国香港', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000033', N'中国澳门', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100033', N'中国澳门', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
-INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'1000034', N'中国台湾', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
+INSERT INTO [dbo].[S_Province] ([ProvinceID], [ProvinceName], [DateCreated], [DateUpdated]) VALUES (N'100034', N'中国台湾', N'2008-01-19 19:44:30.000', N'2008-01-19 19:44:30.000')
 GO
 GO
 SET IDENTITY_INSERT [dbo].[S_Province] OFF

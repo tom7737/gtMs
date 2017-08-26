@@ -8,4 +8,5 @@ import com.gt.ms.service.base.BaseService;
  * Created by tom on 2017/8/18.
  */
 public interface CustomerService extends BaseService<Customer, String> {
+    String getMaxCtmCode();
 }

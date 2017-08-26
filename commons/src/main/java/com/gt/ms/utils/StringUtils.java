@@ -570,12 +570,21 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     public static String incGuid(String maxGuid) {
+        return incGuid(maxGuid, 10);
+//        if (maxGuid == null)
+//            return "0000000001";
+//        Long aLong = str2long(maxGuid);
+//        if (aLong == null)
+//            return maxGuid;
+//        return fill(++aLong, 10);
+    }
+
+    public static String incGuid(String maxGuid, int x) {
         if (maxGuid == null)
-            return "0000000001";
+            maxGuid = "1";
         Long aLong = str2long(maxGuid);
         if (aLong == null)
             return maxGuid;
-        return fill(++aLong, 10);
+        return fill(++aLong, x);
     }
-
 }

@@ -21,4 +21,8 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, String> imple
         this.customersMapper = customersMapper;
     }
 
+    @Override
+    public String getMaxCtmCode() {
+        return customersMapper.getMaxCtmCode();
+    }
 }

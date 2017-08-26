@@ -1,8 +1,10 @@
 package com.gt.ms.controller.customer;
 
 import com.gt.ms.controller.base.BaseController;
+import com.gt.ms.controller.sqs.Sqs01Controller;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.common.SysAreaCity;
+import com.gt.ms.entity.common.SysAreaCountry;
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
@@ -11,7 +13,9 @@ import com.gt.ms.service.common.SysAreaCountryService;
 import com.gt.ms.service.common.SysAreaService;
 import com.gt.ms.service.common.SysAreaStateService;
 import com.gt.ms.service.customer.CustomerService;
+import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.StringUtils;
+import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +44,63 @@ public class CustomerController extends BaseController {
     private CustomerService customerService;
     @Autowired
     private OpService opService;
+
+    /**
+     * 添加客户页
+     *
+     * @return
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addPage(Model model) throws Exception {
+        //编号
+        String maxCtmCode = customerService.getMaxCtmCode();
+        String ctmCode = StringUtils.incGuid(maxCtmCode, 8);
+        List<Op> ops = opService.getList();
+        model.addAttribute("ops", ops);
+        model.addAttribute("ctmCode", ctmCode);
+        model.addAttribute("nowDates", DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd));
+        model.addAttribute("currentUser", getCurrentUser());
+        return "customer/add";
+    }
+
+
+    /**
+     * 添加客户
+     *
+     * @return
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult addPage(Customer customer) {
+        AjaxResult ajax = new AjaxResult();
+        try {
+            //ztdm
+            customer.setZtdm("0");
+            //dlguid
+            customer.setDlguid(Sqs01Controller.common_dlguid);
+            //khgjlx
+            if ("100011000000000002".equals(customer.getQygj())) {
+                customer.setKhgjlx("1");
+            } else {
+                customer.setKhgjlx("0");
+            }
+            logger.debug(customer.toString());
+            //重新获取客户编码
+            String maxCtmCode = customerService.getMaxCtmCode();
+            String ctmCode = StringUtils.incGuid(maxCtmCode, 8);
+            customer.setCtmCode(ctmCode);
+            customerService.save(customer);
+            ajax.setSuccess(true);
+            ajax.setMessage("添加成功！");
+        } catch (Exception e) {
+            logger.error("添加客户失败", e);
+            ajax.setSuccess(false);
+            ajax.setMessage("添加客户失败");
+
+        }
+        return ajax;
+    }
+
 
     /**
      * 客户管理

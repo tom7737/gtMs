@@ -72,7 +72,7 @@ public class Sqs01Controller extends BaseController {
     private static final Double common_country_fei = 300.00;//规费
     private static final Double common_country_fei_jt = 1500.00;//规费(集体)
     private static final Double common_country_fei_zm = 1500.00;//规费（证明）
-    private static final String common_dlguid = "10000";//代理组织ID
+    public static final String common_dlguid = "10000";//代理组织ID
     private static final String common_appno = "01";//商标注册国内申请书编号
     private static final String common_zllb = "1";//资料类别
 
@@ -421,7 +421,7 @@ public class Sqs01Controller extends BaseController {
             return result;
         } catch (Exception e) {
             LOGGER.error("添加商标注册申请书失败：{}", e);
-            result.setMessage(e.getMessage());
+            result.setMessage("添加商标注册申请书失败");
             return result;
         }
     }

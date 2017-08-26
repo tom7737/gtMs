@@ -129,6 +129,7 @@
             <if test="condition.agentNumber!=null and condition.agentNumber!=''">
                 and agent_number = #{condition.agentNumber}
             </if>
+            and ztdm = '0'
         </where>
 
         ) AS TEMP1
@@ -150,6 +151,7 @@
             <if test="condition.agentNumber!=null and condition.agentNumber!=''">
                 and agent_number = #{condition.agentNumber}
             </if>
+            and ztdm = '0'
         </where>
     </select>
     <select id="get" parameterType="java.lang.String" resultMap="Sqs01ResultMap">
@@ -157,6 +159,7 @@
         <include refid="Sqs01_Info"/>
         from [01]
         where guid = #{guid}
+        and ztdm = '0'
     </select>
     <select id="getCountByTmName" parameterType="com.gt.ms.entity.sqs.Sqs01" resultType="java.lang.Integer">
         select
@@ -164,6 +167,7 @@
         from [01]
         where class = #{class_}
         and tm_name = #{tmName}
+        and ztdm = '0'
     </select>
     <insert id="save" parameterType="com.gt.ms.entity.sqs.Sqs01">
         insert into [01] (app_name, app_addr, if_common0,

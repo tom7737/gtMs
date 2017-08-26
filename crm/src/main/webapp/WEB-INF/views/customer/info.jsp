@@ -207,13 +207,16 @@
                         <input name="ctmMobile" readonly type="text" class="easyui-validatebox"
                                value="${ctm.ctmMobile}">
                     </td>
+                    <td>微信号码</td>
+                    <td>
+                        <input name="ctmWxh" type="text" class="easyui-validatebox"
+                               value="${ctm.ctmWxh}">
+                    </td>
                     <td>联系传真</td>
                     <td>
                         <input name="ctmFax" readonly type="text" class="easyui-validatebox"
                                value="${ctm.ctmFax}">
                     </td>
-                    <td></td>
-                    <td></td>
                 </tr>
                 <tr>
                     <td>国内接收人</td>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gt.ms.mapper.common.SDistrictMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.common.SDistrict">
+        <id column="DistrictID" property="districtid" jdbcType="BIGINT"/>
+        <result column="DistrictName" property="districtname" jdbcType="NVARCHAR"/>
+        <result column="CityID" property="cityid" jdbcType="BIGINT"/>
+        <result column="DateCreated" property="datecreated" jdbcType="TIMESTAMP"/>
+        <result column="DateUpdated" property="dateupdated" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    DistrictID, DistrictName, CityID, DateCreated, DateUpdated
+  </sql>
+    <select id="getListByCityid" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from S_District
+        where CityID = #{cityid,jdbcType=BIGINT}
+    </select>
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from S_District
+        where DistrictID = #{districtid,jdbcType=BIGINT}
+    </select>
+    <delete id="remove" parameterType="java.lang.Long">
+    delete from S_District
+    where DistrictID = #{districtid,jdbcType=BIGINT}
+  </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.common.SDistrict">
+    insert into S_District (DistrictID, DistrictName, CityID, 
+      DateCreated, DateUpdated)
+    values (#{districtid,jdbcType=BIGINT}, #{districtname,jdbcType=NVARCHAR}, #{cityid,jdbcType=BIGINT}, 
+      #{datecreated,jdbcType=TIMESTAMP}, #{dateupdated,jdbcType=TIMESTAMP})
+  </insert>
+    <update id="update" parameterType="com.gt.ms.entity.common.SDistrict">
+        update S_District
+        <set>
+            <if test="districtname != null">
+                DistrictName = #{districtname,jdbcType=NVARCHAR},
+            </if>
+            <if test="cityid != null">
+                CityID = #{cityid,jdbcType=BIGINT},
+            </if>
+            <if test="datecreated != null">
+                DateCreated = #{datecreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dateupdated != null">
+                DateUpdated = #{dateupdated,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where DistrictID = #{districtid,jdbcType=BIGINT}
+    </update>
+</mapper>

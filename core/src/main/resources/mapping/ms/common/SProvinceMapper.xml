@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gt.ms.mapper.common.SProvinceMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.common.SProvince">
+        <id column="ProvinceID" property="provinceid" jdbcType="BIGINT"/>
+        <result column="ProvinceName" property="provincename" jdbcType="NVARCHAR"/>
+        <result column="DateCreated" property="datecreated" jdbcType="TIMESTAMP"/>
+        <result column="DateUpdated" property="dateupdated" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ProvinceID, ProvinceName, DateCreated, DateUpdated
+  </sql>
+    <select id="getList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from S_Province
+    </select>
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from S_Province
+        where ProvinceID = #{provinceid,jdbcType=BIGINT}
+    </select>
+    <delete id="remove" parameterType="java.lang.Long">
+    delete from S_Province
+    where ProvinceID = #{provinceid,jdbcType=BIGINT}
+  </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.common.SProvince">
+    insert into S_Province (ProvinceID, ProvinceName, DateCreated, 
+      DateUpdated)
+    values (#{provinceid,jdbcType=BIGINT}, #{provincename,jdbcType=NVARCHAR}, #{datecreated,jdbcType=TIMESTAMP}, 
+      #{dateupdated,jdbcType=TIMESTAMP})
+  </insert>
+    <update id="update" parameterType="com.gt.ms.entity.common.SProvince">
+        update S_Province
+        <set>
+            <if test="provincename != null">
+                ProvinceName = #{provincename,jdbcType=NVARCHAR},
+            </if>
+            <if test="datecreated != null">
+                DateCreated = #{datecreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dateupdated != null">
+                DateUpdated = #{dateupdated,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ProvinceID = #{provinceid,jdbcType=BIGINT}
+    </update>
+</mapper>

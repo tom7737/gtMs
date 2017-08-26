@@ -13,7 +13,26 @@
                 $("#gjid").append(option);
             });
         })
-        $.post("${path}/state/getList", {}, function (data) {
+        $.post("${path}/sprovince/getList", {}, function (data) {
+            data.forEach(function (v, i, my) {
+                var option = '<option value="' + v.provinceid + '" ' + (v.provinceid == sdzid ? 'selected' : '') + ' >' + v.provincename + '</option>';
+                $("#sdzid").append(option);
+            });
+        })
+
+        $.post("${path}/scity/getListByProvinceid", {provinceid: sdzid }, function (data) {
+            data.forEach(function (v, i, my) {
+                var option = '<option value="' + v.cityid + '" ' + (v.cityid == cdzid ? 'selected' : '') + ' >' + v.cityname + '</option>';
+                $("#cdzid").append(option);
+            });
+        })
+        $.post("${path}/sdistrict/getListByCityid", {cityid: cdzid}, function (data) {
+            data.forEach(function (v, i, my) {
+                var option = '<option value="' + v.districtid + '" ' + (v.districtid == qdzid ? 'selected' : '') + ' >' + v.districtname + '</option>';
+                $("#qdzid").append(option);
+            });
+        })
+        /*$.post("${path}/state/getList", {}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.dzid + '" ' + (v.dzid == sdzid ? 'selected' : '') + ' >' + v.dzpy + v.dzmc + '</option>';
                 $("#sdzid").append(option);
@@ -22,17 +41,15 @@
         $.post("${path}/city/getListBySdzid", {sdzid: sdzid}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.dzid + '" ' + (v.dzid == cdzid ? 'selected' : '') + ' >' + v.dzpy + '</option>';
-//                console.log( v.dzmc)
                 $("#cdzid").append(option);
             });
         })
         $.post("${path}/area/getListBySdzid", {sdzid: cdzid}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option id="' + v.dzid + '" ' + (v.dzid == qdzid ? 'selected' : '') + ' >' + v.dzpy + '</option>';
-//                console.log( v.dzmc)
                 $("#qdzid").append(option);
             });
-        })
+        })*/
     });
 
 </script>

@@ -3,15 +3,8 @@ package com.gt.ms.controller.customer;
 import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.controller.sqs.Sqs01Controller;
 import com.gt.ms.entity.admin.Op;
-import com.gt.ms.entity.common.SysAreaCity;
-import com.gt.ms.entity.common.SysAreaCountry;
 import com.gt.ms.entity.customer.Customer;
-import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
-import com.gt.ms.service.common.SysAreaCityService;
-import com.gt.ms.service.common.SysAreaCountryService;
-import com.gt.ms.service.common.SysAreaService;
-import com.gt.ms.service.common.SysAreaStateService;
 import com.gt.ms.service.customer.CustomerService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.StringUtils;
@@ -71,7 +64,7 @@ public class CustomerController extends BaseController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult addPage(Customer customer) {
+    public AjaxResult add(Customer customer) {
         AjaxResult ajax = new AjaxResult();
         try {
             //ztdm
@@ -84,7 +77,6 @@ public class CustomerController extends BaseController {
             } else {
                 customer.setKhgjlx("0");
             }
-            logger.debug(customer.toString());
             //重新获取客户编码
             String maxCtmCode = customerService.getMaxCtmCode();
             String ctmCode = StringUtils.incGuid(maxCtmCode, 8);
@@ -101,6 +93,106 @@ public class CustomerController extends BaseController {
         return ajax;
     }
 
+    /**
+     * 编辑客户页
+     *
+     * @return
+     */
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editPage(String ctmCode, Model model) throws Exception {
+        Customer customer = customerService.get(ctmCode);
+        //权限
+        Op currentUser = getCurrentUser();
+        if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
+                && !customer.getMakeOp().equals(currentUser.getOpName())//不是自己的客户
+                ) {
+            return "nopermission";
+        }
+        List<Op> ops = opService.getList();
+        Op op = getCurrentUser();
+        //查看手机号权限
+        if (!customer.getMakeOp().equals(op.getOpName()) && '0' == op.getOpExport().charAt(3)) {//权限
+            customer.setCtmLxr("*");
+            customer.setCtmTel("*");
+            customer.setCtmFax("*");
+            customer.setCtmWxh("*");
+            customer.setCtmHttp("*");
+            customer.setCtmEmail("*");
+            customer.setCtmLxrqq("*");
+            customer.setCtmMobile("*");
+        }
+        model.addAttribute("ops", ops);
+        model.addAttribute("ctm", customer);
+        return "customer/edit";
+    }
+
+
+    /**
+     * 编辑客户
+     *
+     * @return
+     */
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult edit(Customer customer) {
+        AjaxResult ajax = new AjaxResult();
+        try {
+            //权限
+            Op currentUser = getCurrentUser();
+            if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
+                    && !customerService.get(customer.getCtmCode()).getMakeOp().equals(currentUser.getOpName())//不是自己的客户
+                    ) {
+                ajax.setSuccess(false);
+                ajax.setMessage("没有权限！");
+                return ajax;
+            }
+            //khgjlx
+            if ("100011000000000002".equals(customer.getQygj())) {
+                customer.setKhgjlx("1");
+            } else {
+                customer.setKhgjlx("0");
+            }
+            customerService.update(customer);
+            ajax.setSuccess(true);
+            ajax.setMessage("修改成功！");
+        } catch (Exception e) {
+            logger.error("修改客户失败", e);
+            ajax.setSuccess(false);
+            ajax.setMessage("修改客户失败");
+
+        }
+        return ajax;
+    }
+    /**
+     * 删除客户
+     *
+     * @param ctmCode
+     * @return
+     */
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult delete(String ctmCode) {
+        AjaxResult result = new AjaxResult();
+        try {
+            Op currentUser = getCurrentUser();
+            if ('1' != currentUser.getOpChenge().charAt(2)//没有删除所有数据的权限
+                    && !customerService.get(ctmCode).getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
+                    ) {
+                result.setSuccess(false);
+                result.setMessage("没有权限！");
+                return result;
+            }
+
+            customerService.remove(ctmCode);
+            result.setSuccess(true);
+            result.setMessage("删除成功");
+            return result;
+        } catch (RuntimeException e) {
+            logger.error("删除商标注册申请书失败：{}", e);
+            result.setMessage(e.getMessage());
+            return result;
+        }
+    }
 
     /**
      * 客户管理
@@ -161,19 +253,26 @@ public class CustomerController extends BaseController {
     }
 
     /**
-     * 商标注册申请书信息页
+     * 客户信息页
      *
      * @return
      */
     @RequestMapping(value = "/info", method = RequestMethod.GET)
-    public String infoPage(String guid, Model model) {
+    public String infoPage(String ctmCode, Model model) {
 
-        Customer customer = customerService.get(guid);
+        Customer customer = customerService.get(ctmCode);
         List<Op> ops = opService.getList();
         Op op = getCurrentUser();
         //查看手机号权限
         if (!customer.getMakeOp().equals(op.getOpName()) && '0' == op.getOpExport().charAt(3)) {//权限
-            customer.setCtmMobile("***");
+            customer.setCtmLxr("*");
+            customer.setCtmTel("*");
+            customer.setCtmFax("*");
+            customer.setCtmWxh("*");
+            customer.setCtmHttp("*");
+            customer.setCtmEmail("*");
+            customer.setCtmLxrqq("*");
+            customer.setCtmMobile("*");
         }
         model.addAttribute("ops", ops);
         model.addAttribute("ctm", customer);

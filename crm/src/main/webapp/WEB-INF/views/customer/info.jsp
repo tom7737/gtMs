@@ -17,6 +17,9 @@
             data.forEach(function (v, i, my) {
                 var option = '<option value="' + v.provinceid + '" ' + (v.provinceid == sdzid ? 'selected' : '') + ' >' + v.provincename + '</option>';
                 $("#sdzid").append(option);
+                if(v.provinceid == sdzid){
+                    $("#ctmAddr").val($("#ctmAddr").val().replace(v.provincename, ""));
+                }
             });
         })
 
@@ -24,12 +27,18 @@
             data.forEach(function (v, i, my) {
                 var option = '<option value="' + v.cityid + '" ' + (v.cityid == cdzid ? 'selected' : '') + ' >' + v.cityname + '</option>';
                 $("#cdzid").append(option);
+                if(v.cityid == cdzid){
+                    $("#ctmAddr").val($("#ctmAddr").val().replace(v.cityname, ""));
+                }
             });
         })
         $.post("${path}/sdistrict/getListByCityid", {cityid: cdzid}, function (data) {
             data.forEach(function (v, i, my) {
                 var option = '<option value="' + v.districtid + '" ' + (v.districtid == qdzid ? 'selected' : '') + ' >' + v.districtname + '</option>';
                 $("#qdzid").append(option);
+                if(v.districtid == qdzid){
+                    $("#ctmAddr").val($("#ctmAddr").val().replace(v.districtname, ""));
+                }
             });
         })
         /*$.post("${path}/state/getList", {}, function (data) {
@@ -113,13 +122,13 @@
                     </td>
                     <td>申请人国籍</td>
                     <td>
-                        <select name="khgjlx" class="easyui-validatebox">
+                        <select name="qygj" class="easyui-validatebox">
                             <option>---请选择---</option>
-                            <option <c:if test="${ctm.khgjlx=='100011000000000001'}">selected</c:if>>中国大陆</option>
-                            <option <c:if test="${ctm.khgjlx=='100011000000000002'}">selected</c:if>>国外</option>
-                            <option <c:if test="${ctm.khgjlx=='100011000000000003'}">selected</c:if>>中国台湾</option>
-                            <option <c:if test="${ctm.khgjlx=='100011000000000004'}">selected</c:if>>中国香港</option>
-                            <option <c:if test="${ctm.khgjlx=='100011000000000005'}">selected</c:if>>中国澳门</option>
+                            <option <c:if test="${ctm.qygj=='100011000000000001'}">selected</c:if>>中国大陆</option>
+                            <option <c:if test="${ctm.qygj=='100011000000000002'}">selected</c:if>>国外</option>
+                            <option <c:if test="${ctm.qygj=='100011000000000003'}">selected</c:if>>中国台湾</option>
+                            <option <c:if test="${ctm.qygj=='100011000000000004'}">selected</c:if>>中国香港</option>
+                            <option <c:if test="${ctm.qygj=='100011000000000005'}">selected</c:if>>中国澳门</option>
                         </select>
                     </td>
                     <td>国家地区</td>
@@ -307,11 +316,11 @@
                         </select>
 
                     </td>
-                    <td>主体资料</td>
-                    <td><a href="javascript:void(0);" class="easyui-linkbutton"
+                    <td><%--主体资料--%></td>
+                    <td><%--<a href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择文件</a>
                         <input id="pic" type="file" name="pic" style="display: none;" accept=".jpg"/>
-                        <input type="text" readonly id="pic_text"/>
+                        <input type="text" readonly id="pic_text"/>--%>
                     </td>
                     <td><%--清除资料--%></td>
                     <td><%--<a onclick="cleanPic();" href="javascript:void(0);" class="easyui-linkbutton"

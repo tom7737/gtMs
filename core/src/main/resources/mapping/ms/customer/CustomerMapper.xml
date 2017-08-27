@@ -292,4 +292,6 @@
         </set>
         where ctm_code = #{ctmCode,jdbcType=NVARCHAR}
     </update>
+
+
 </mapper>

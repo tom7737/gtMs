@@ -48,16 +48,16 @@
                 }, {
                     field: 'action',
                     title: '操作',
-                    width: 230,
+                    width: 330,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += $.formatString('<a href="${path}/customer/info?guid={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.ctmCode);
+                        str += $.formatString('<a href="${path}/customer/info?ctmCode={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
                         str += $.formatString('<a href="${path}/sqs/01/add?ctmCode={0}" class="user-easyui-linkbutton-addSqs" data-options="plain:true,iconCls:\'icon-add\'"  >添加申请书</a>', row.ctmCode);
-                        <%--str += '&nbsp;&nbsp;|&nbsp;&nbsp;';--%>
-                        <%--str += $.formatString('<a href="${path}/sqs/01/edit?guid={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);--%>
-                        <%--str += '&nbsp;&nbsp;|&nbsp;&nbsp;';--%>
-                        <%--str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.ctmCode);--%>
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                        str += $.formatString('<a href="${path}/customer/edit?ctmCode={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                        str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.ctmCode);
                         return str;
                     }
                 }]],
@@ -85,8 +85,8 @@
             parent.$.messager.confirm('询问', '您是否要删除当前数据？', function (b) {
                 if (b) {
                     progressLoad();
-                    $.post('${path }/sqs/01/delete', {
-                        guid: id
+                    $.post('${path }/customer/delete', {
+                        ctmCode: id
                     }, function (result) {
                         if (result.success) {
                             parent.$.messager.alert('提示', result.message, 'info');

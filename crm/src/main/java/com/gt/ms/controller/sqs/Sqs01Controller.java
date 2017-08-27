@@ -438,7 +438,7 @@ public class Sqs01Controller extends BaseController {
         AjaxResult result = new AjaxResult();
         try {
             Op currentUser = getCurrentUser();
-            if ('1' != currentUser.getOpChenge().charAt(2)//没有修改所有数据的权限
+            if ('1' != currentUser.getOpChenge().charAt(2)//没有删除所有数据的权限
                     && !sqs01Server.get(guid).getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
                     ) {
                 result.setSuccess(false);

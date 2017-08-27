@@ -166,7 +166,7 @@
                             flink = '<p title="' + element.flink + '">' + element.flink + '</p>';
                         }
 
-                        var tr = '<tr class="tspdms" v="group_' + element.fgroup + '"  name="spdm_' + element.px + '" ' + ((index + 1) % 3 === 0 ? 'style=\"background-color: #EEEEEE\"' : '') +
+                        var tr = '<tr class="tspdms" v="group_' + element.fgroup + '" chinese="chinese_'+element.fspname+'"  name="spdm_' + element.px + '" ' + ((index + 1) % 3 === 0 ? 'style=\"background-color: #EEEEEE\"' : '') +
                                 '><td> <a onclick="add_commServerList(\'' + element.fspname + '\');" href="javascript:void(0);" class="easyui-linkbutton l-btn l-btn-small l-btn-plain" data-options="plain:true,iconCls:\'icon-add\'" group="" id=""><span class="l-btn-left l-btn-icon-left"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-add">&nbsp;</span></span></a> </td> <td>'
                                 + fspname + '</td> <td>'
                                 + fspeng + '</td> <td>'
@@ -214,13 +214,16 @@
 
         if (flag == 1) {//拼音搜索
             $(".tspdms").hide();
-            $("tr[name^='spdm_" + $("#px").val().toUpperCase() + "']").show();
+//            $("tr[name^='spdm_" + $("#px").val().toUpperCase() + "']").show();
+            $("tr[chinese^='chinese_" + $("#px").val() + "'],tr[name^='spdm_" + $("#px").val().toUpperCase() + "']").show();
         } else if (flag == 2) {//商品分类搜索
             $(".tspdms").hide();
             $("tr[v='group_" + $("#sbfz").val() + "']").show();
         } else if (flag == 3) {//拼音+商品分类搜索
             $(".tspdms").hide();
-            var x = "tr[name^='spdm_" + $("#px").val().toUpperCase() + "'][v='group_" + $("#sbfz").val() + "']";
+//            var x = "tr[name^='spdm_" + $("#px").val().toUpperCase() + "'][v='group_" + $("#sbfz").val() + "']";
+            var x = "tr[chinese^='chinese_" + $("#px").val().toUpperCase() + "'][v='group_" + $("#sbfz").val() + "'],"+
+                    "tr[name^='spdm_" + $("#px").val().toUpperCase() + "'][v='group_" + $("#sbfz").val() + "']";
 //            console.log(x);
             $(x).show();
         } else {

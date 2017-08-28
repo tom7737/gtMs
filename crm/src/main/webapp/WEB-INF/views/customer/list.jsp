@@ -103,6 +103,8 @@
                         if (result.success) {
                             parent.$.messager.alert('提示', result.message, 'info');
                             dataGrid.datagrid('reload');
+                        }else {
+                            parent.$.messager.alert('提示', result.message, 'info');
                         }
                         progressClose();
                     }, 'JSON');

@@ -170,7 +170,7 @@
                     <td>
                         <select name="makeOp">
                             <c:forEach items="${ops}" var="op">
-                                <option value="${op.opName}">${op.opTruename}</option>
+                                <option <c:if test="${currentUser.opCode==op.opCode}">selected</c:if> value="${op.opName}">${op.opTruename}</option>
                             </c:forEach>
                         </select>
                     </td>

@@ -55,7 +55,7 @@
                 if (result.success) {
                     parent.$.messager.alert('提示', result.message, 'info');
 //                    $('#sqs01AddForm')[0].reset();
-                    location.href = "${path}/sqs/01/manager";
+                    location.href = "${path}/sqs/01/info?guid=${guid}";
                 } else {
                     parent.$.messager.alert('提示', result.message, 'warning');
                 }

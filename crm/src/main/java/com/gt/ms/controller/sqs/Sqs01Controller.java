@@ -622,19 +622,20 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult edit(Sqs01 sqs01,String checkTmName, HttpServletRequest request) {
+    public AjaxResult edit(Sqs01 sqs01, String checkTmName, HttpServletRequest request) {
 
         AjaxResult result = new AjaxResult();
         try {
+            Sqs01 sqstemp = sqs01Server.get(sqs01.getGuid());
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
-                    && !sqs01Server.get(sqs01.getGuid()).getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
+                    && !sqstemp.getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
                     ) {
                 result.setSuccess(false);
                 result.setMessage("没有权限！");
                 return result;
             }
-            if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1) {
+            if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1 && !sqstemp.getTmName().equals(sqs01.getTmName())) {
                 //判断商标名称是否唯一
                 int count = sqs01Server.getCountByTmName(sqs01);
                 if (count > 0) {

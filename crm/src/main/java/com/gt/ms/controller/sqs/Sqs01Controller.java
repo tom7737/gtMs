@@ -98,8 +98,6 @@ public class Sqs01Controller extends BaseController {
         } else {
             map.put("ispic", "0");
         }
-
-        map.put("ispic", "0");
         PrintWriter writer = null;
 //        ServletOutputStream outputStream = null;
         try {

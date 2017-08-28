@@ -443,15 +443,21 @@ public class Sqs01Controller extends BaseController {
     public AjaxResult delete(String guid) {
         AjaxResult result = new AjaxResult();
         try {
+            Sqs01 sqsTemp = sqs01Server.get(guid);
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(2)//没有删除所有数据的权限
-                    && !sqs01Server.get(guid).getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
+                    && !sqsTemp.getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
                     ) {
                 result.setSuccess(false);
                 result.setMessage("没有权限！");
                 return result;
             }
-
+            // 验证是否可删除：如果申请书已经通过了财务审核则不可删除
+            if("1".equals(sqsTemp.getAccountstate())){
+                result.setSuccess(false);
+                result.setMessage("申请书已通过财务审核，不可被删除！");
+                return result;
+            }
             sqs01Server.remove(guid);
             result.setSuccess(true);
             result.setMessage("删除成功");

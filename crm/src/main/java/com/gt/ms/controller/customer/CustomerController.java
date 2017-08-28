@@ -6,6 +6,7 @@ import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.customer.CustomerService;
+import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
@@ -37,6 +38,8 @@ public class CustomerController extends BaseController {
     private CustomerService customerService;
     @Autowired
     private OpService opService;
+    @Autowired
+    private Sqs01Service sqs01Server;
 
     /**
      * 添加客户页
@@ -214,7 +217,12 @@ public class CustomerController extends BaseController {
                 result.setMessage("没有权限！");
                 return result;
             }
-
+            // 验证是否可删除：如果客户下面有申请书则不可以删除客户
+            if (sqs01Server.getCountByCtmCode(ctmCode) > 0) {
+                result.setSuccess(false);
+                result.setMessage("客户已有申请书，不可被删除！");
+                return result;
+            }
             customerService.remove(ctmCode);
             result.setSuccess(true);
             result.setMessage("删除成功");

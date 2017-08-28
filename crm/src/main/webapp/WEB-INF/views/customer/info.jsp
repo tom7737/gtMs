@@ -60,13 +60,22 @@
             });
         })*/
     });
-
+    function AddSqs(path) {
+        console.log(path);
+        var tt = parent.$.modalDialog.index_tabs;
+        tt.tabs('add', {
+            title : "新增申请书",
+            content : '<iframe frameborder="0" src="'+path+'" style="border:0;width:100%;height:99.5%;"></iframe>',
+            closable : true,
+            iconCls:'menu_icon_service'
+        });
+    }
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
     <div data-options="region:'center',border:false" title="客户信息"
          style="overflow: hidden;padding: 3px;overflow-y:scroll ">
         <div id="toolbar">
-            <a onclick="location.href='${path}/sqs/01/add?ctmCode=${ctm.ctmCode}';" href="javascript:void(0);" class="easyui-linkbutton"
+            <a onclick="AddSqs('${path}/sqs/01/add?ctmCode=${ctm.ctmCode}');" href="javascript:void(0);" class="easyui-linkbutton"
                data-options="plain:true,iconCls:'icon-add'">添加申请书</a>
         </div>
         <form id="sqs01EditForm" method="post" enctype=”multipart/form-data”>

@@ -53,7 +53,7 @@
                         var str = '';
                         str += $.formatString('<a href="${path}/customer/info?ctmCode={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
-                        str += $.formatString('<a href="${path}/sqs/01/add?ctmCode={0}" class="user-easyui-linkbutton-addSqs" data-options="plain:true,iconCls:\'icon-add\'"  >添加申请书</a>', row.ctmCode);
+                        str += $.formatString('<a onclick="AddSqs(\'${path}/sqs/01/add?ctmCode={0}\');" href="javascript:void(0);" class="user-easyui-linkbutton-addSqs" data-options="plain:true,iconCls:\'icon-add\'"  >添加申请书</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                         str += $.formatString('<a href="${path}/customer/edit?ctmCode={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
@@ -70,6 +70,18 @@
                 toolbar: '#toolbar'
             });
         });
+
+        function AddSqs(path) {
+            console.log(path);
+            var tt = parent.$.modalDialog.index_tabs;
+            tt.tabs('add', {
+                title : "新增申请书",
+                content : '<iframe frameborder="0" src="'+path+'" style="border:0;width:100%;height:99.5%;"></iframe>',
+                closable : true,
+                iconCls:'menu_icon_service'
+            });
+        }
+
 
         function addFun() {
             location.href = "${path}/customer/add";

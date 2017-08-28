@@ -12,6 +12,7 @@
         var layout_west_tree;
 
         $(function() {
+            parent.$.modalDialog.index_tabs = $('#index_tabs');
             index_layout = $('#index_layout').layout({
                 fit : true
             });

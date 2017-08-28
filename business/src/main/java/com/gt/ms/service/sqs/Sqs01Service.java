@@ -14,6 +14,16 @@ public interface Sqs01Service extends BaseService<Sqs01, String> {
      * @return
      */
     int getCountByTmName(Sqs01 sqs01);
-
+    /**
+     * 根据申请书ID获取对应数据条数
+     * @param guid
+     * @return
+     */
     int getCount(String guid);
+    /**
+     * 根据客户编号获取对应数据条数
+     * @param ctmCode
+     * @return
+     */
+    int getCountByCtmCode(String ctmCode);
 }

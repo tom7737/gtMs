@@ -8,8 +8,24 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Sqs01Mapper extends BaseMapper<Sqs01, String> {
 
-
+    /**
+     * 根据商标名称和类别获取对应数据条数
+     * @param sqs01
+     * @return
+     */
     int getCountByTmName(Sqs01 sqs01);
 
+    /**
+     * 根据申请书ID获取对应数据条数
+     * @param guid
+     * @return
+     */
     int getCount(String guid);
+
+    /**
+     * 根据客户编号获取对应数据条数
+     * @param ctmCode
+     * @return
+     */
+    int getCountByCtmCode(String ctmCode);
 }

@@ -78,4 +78,9 @@ public class Sqs01ServiceImpl extends BaseServiceImpl<Sqs01, String> implements 
     public int getCount(String guid) {
         return sqs01Dao.getCount(guid);
     }
+
+    @Override
+    public int getCountByCtmCode(String ctmCode) {
+        return sqs01Dao.getCountByCtmCode(ctmCode);
+    }
 }

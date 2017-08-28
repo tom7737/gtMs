@@ -176,6 +176,13 @@
         and tm_name = #{tmName}
         and ztdm = '0'
     </select>
+    <select id="getCountByCtmCode" parameterType="java.lang.String" resultType="java.lang.Integer">
+         select
+        count(*)
+        from [01]
+        where ctm_code = #{ctm_code}
+        and ztdm = '0'
+    </select>
     <insert id="save" parameterType="com.gt.ms.entity.sqs.Sqs01">
         insert into [01] (app_name, app_addr, if_common0,
         if_common1, post_code, person,

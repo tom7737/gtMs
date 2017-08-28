@@ -179,7 +179,7 @@
                 </tr>
                 <tr>
                     <td>客户地址（中文）</td>
-                    <td colspan="3"><input name="appAddr" readonly type="text" class="easyui-validatebox"
+                    <td colspan="3"><input id="ctmAddr" name="appAddr" readonly type="text" class="easyui-validatebox"
                                            style="width: 100%;"
                                            value="${ctm.ctmAddr}"></td>
                     <td></td>

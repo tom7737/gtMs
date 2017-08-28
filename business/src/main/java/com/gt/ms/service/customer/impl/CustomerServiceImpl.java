@@ -25,4 +25,14 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, String> imple
     public String getMaxCtmCode() {
         return customersMapper.getMaxCtmCode();
     }
+
+    @Override
+    public int getCountByCtmName(String ctmName) {
+        return customersMapper.getCountByCtmName(ctmName);
+    }
+
+    @Override
+    public int getCount(String ctmCode) {
+        return customersMapper.getCount(ctmCode);
+    }
 }

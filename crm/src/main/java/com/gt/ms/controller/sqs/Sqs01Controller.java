@@ -321,9 +321,9 @@ public class Sqs01Controller extends BaseController {
                 result.setMessage("没有权限！");
                 return result;
             }
-            if (sqs01Server.get(sqs01.getGuid()) != null) {
+            if (sqs01Server.getCount(sqs01.getGuid()) > 0) {
                 result.setSuccess(false);
-                result.setMessage("申请书已添加！");
+                result.setMessage("表单已提交，请勿重复提交表单！");
                 return result;
             }
             if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1) {

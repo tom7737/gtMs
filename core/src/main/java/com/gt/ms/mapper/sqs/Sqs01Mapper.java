@@ -10,4 +10,6 @@ public interface Sqs01Mapper extends BaseMapper<Sqs01, String> {
 
 
     int getCountByTmName(Sqs01 sqs01);
+
+    int getCount(String guid);
 }

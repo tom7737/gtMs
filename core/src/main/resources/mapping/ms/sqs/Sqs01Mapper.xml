@@ -161,6 +161,13 @@
         where guid = #{guid}
         and ztdm = '0'
     </select>
+    <select id="getCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select
+        count(*)
+        from [01]
+        where guid = #{guid}
+        and ztdm = '0'
+    </select>
     <select id="getCountByTmName" parameterType="com.gt.ms.entity.sqs.Sqs01" resultType="java.lang.Integer">
         select
         count(*)

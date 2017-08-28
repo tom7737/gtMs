@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface CustomersMapper extends BaseMapper<Customer, String> {
 
     String getMaxCtmCode();
+
+    int getCountByCtmName(String ctmName);
+
+    int getCount(String ctmCode);
 }

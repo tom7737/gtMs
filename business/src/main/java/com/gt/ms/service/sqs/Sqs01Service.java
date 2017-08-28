@@ -14,4 +14,6 @@ public interface Sqs01Service extends BaseService<Sqs01, String> {
      * @return
      */
     int getCountByTmName(Sqs01 sqs01);
+
+    int getCount(String guid);
 }

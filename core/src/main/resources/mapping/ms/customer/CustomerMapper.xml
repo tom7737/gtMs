@@ -102,7 +102,14 @@
             </if>
         </where>
     </select>
-
+    <select id="getCountByCtmName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select
+        count(*)
+        from customer
+        where
+        ctm_name = #{ctmName}
+        and ztdm = '0'
+    </select>
 
     <select id="getMaxCtmCode" resultType="java.lang.String">
     select 
@@ -115,6 +122,13 @@
         <include refid="Base_Column_List"/>
         from customer
         where ctm_code = #{ctmCode,jdbcType=NVARCHAR}
+    </select>
+    <select id="getCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select
+        count(*)
+        from customer
+        where ctm_code = #{ctmCode,jdbcType=NVARCHAR}
+        and ztdm = '0'
     </select>
     <delete id="remove" parameterType="java.lang.String">
     delete from customer

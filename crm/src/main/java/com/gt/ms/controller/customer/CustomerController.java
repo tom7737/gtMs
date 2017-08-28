@@ -67,6 +67,17 @@ public class CustomerController extends BaseController {
     public AjaxResult add(Customer customer) {
         AjaxResult ajax = new AjaxResult();
         try {
+            if (customerService.getCount(customer.getCtmCode()) >0) {
+                ajax.setSuccess(false);
+                ajax.setMessage("表单已提交，请勿重复提交表单！");
+                return ajax;
+            }
+            //客户名重复验证
+            if (customerService.getCountByCtmName(customer.getCtmName()) > 0) {
+                ajax.setSuccess(false);
+                ajax.setMessage("客户名称重复！");
+                return ajax;
+            }
             //ztdm
             customer.setZtdm("0");
             //dlguid
@@ -163,6 +174,7 @@ public class CustomerController extends BaseController {
         }
         return ajax;
     }
+
     /**
      * 删除客户
      *

@@ -9,4 +9,8 @@ import com.gt.ms.service.base.BaseService;
  */
 public interface CustomerService extends BaseService<Customer, String> {
     String getMaxCtmCode();
+
+    int getCountByCtmName(String ctmName);
+
+    int getCount(String ctmCode);
 }

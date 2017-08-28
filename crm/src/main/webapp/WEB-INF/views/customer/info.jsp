@@ -61,7 +61,7 @@
         })*/
     });
     function AddSqs(path) {
-        console.log(path);
+//        console.log(path);
         var tt = parent.$.modalDialog.index_tabs;
         tt.tabs('add', {
             title : "新增申请书",

@@ -95,7 +95,7 @@
         $('#customerEditForm').form({
             url: '${path }/customer/edit',
             onSubmit: function () {
-                console.log("submit");
+//                console.log("submit");
                 if ($("#qylxnew").val() == "-1") {
                     parent.$.messager.alert('提示', "请选择申请人类型", 'info');
                     return false;

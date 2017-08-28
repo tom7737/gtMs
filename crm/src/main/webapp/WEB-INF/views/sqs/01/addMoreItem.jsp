@@ -53,7 +53,7 @@
      * @param items
      */
     function add_commServerList(items) {
-        console.log('add_commServerList');
+//        console.log('add_commServerList');
         //添加小类前先刷新list
         commServerList = split_commServers($("#commServers").val());
         var flag = true;
@@ -201,10 +201,10 @@
      * 保存所选商品
      */
     function saveItem() {
-        console.log("saveItem()");
+//        console.log("saveItem()");
         commServerList = split_commServers($("#commServers").val());
         var flag = $("#refreshNo").is(":checked");//是否需要重新编号
-        console.log(flag)
+//        console.log(flag)
         var commServ = "";
         var addComm = "";
         commServerList.forEach(function (e, i, my) {

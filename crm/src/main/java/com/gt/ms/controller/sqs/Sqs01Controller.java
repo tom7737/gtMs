@@ -88,18 +88,8 @@ public class Sqs01Controller extends BaseController {
         Map<String, Object> map = new HashMap<String, Object>();
         Sqs01 sqs01 = sqs01Server.get(guid);
         map.put("sqs01", sqs01);
-//        map.put("agentNumber", sqs01.getAgentNumber());
-//        map.put("appName", sqs01.getAppName());
-//        map.put("appNameE", sqs01.getAppNameE());
-//        map.put("appState", sqs01.getAppState());
-//        map.put("agentName", sqs01.getAgentName());
-//        map.put("tmName", sqs01.getTmName());
-//        map.put("appAddr", sqs01.getAppAddr());
-//        map.put("appAddrE", sqs01.getAppAddrE());
-        map.put("makeOp", opService.getByOpName(sqs01.getMakeOp()).getOpTruename());
-        map.put("thisDate", DateUtils.getCurrentFormatDate("yyyy年MM月dd日"));
-//        map.put("appJsr", sqs01.getAppJsr());
-
+//        map.put("makeOp", opService.getByOpName(sqs01.getMakeOp()).getOpTruename());
+//        map.put("thisDate", DateUtils.getCurrentFormatDate("yyyy年MM月dd日"));
         if (sqs01.getPic() != null) {
             double heights = ImageUtil.BytToImg(sqs01.getPic());
             map.put("height", heights);
@@ -108,6 +98,8 @@ public class Sqs01Controller extends BaseController {
         } else {
             map.put("ispic", "0");
         }
+
+        map.put("ispic", "0");
         PrintWriter writer = null;
 //        ServletOutputStream outputStream = null;
         try {

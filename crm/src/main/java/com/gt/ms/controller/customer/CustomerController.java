@@ -67,7 +67,7 @@ public class CustomerController extends BaseController {
     public AjaxResult add(Customer customer) {
         AjaxResult ajax = new AjaxResult();
         try {
-            if (customerService.getCount(customer.getCtmCode()) >0) {
+            if (customerService.getCount(customer.getCtmCode()) > 0) {
                 ajax.setSuccess(false);
                 ajax.setMessage("表单已提交，请勿重复提交表单！");
                 return ajax;
@@ -79,7 +79,7 @@ public class CustomerController extends BaseController {
                 return ajax;
             }
             //身份证号重复验证
-            if (StringUtils.isNotBlank(customer.getSfzjhm())&&customerService.getCountBySfzjhm(customer.getSfzjhm()) > 0) {
+            if (StringUtils.isNotBlank(customer.getSfzjhm()) && customerService.getCountBySfzjhm(customer.getSfzjhm()) > 0) {
                 ajax.setSuccess(false);
                 ajax.setMessage("身份证号重复！");
                 return ajax;
@@ -154,13 +154,27 @@ public class CustomerController extends BaseController {
     public AjaxResult edit(Customer customer) {
         AjaxResult ajax = new AjaxResult();
         try {
+            Customer ctmtemp = customerService.get(customer.getCtmCode());
             //权限
+
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
-                    && !customerService.get(customer.getCtmCode()).getMakeOp().equals(currentUser.getOpName())//不是自己的客户
+                    && !ctmtemp.getMakeOp().equals(currentUser.getOpName())//不是自己的客户
                     ) {
                 ajax.setSuccess(false);
                 ajax.setMessage("没有权限！");
+                return ajax;
+            }
+            //客户名重复验证
+            if (!ctmtemp.getCtmName().equals(customer.getCtmName()) && customerService.getCountByCtmName(customer.getCtmName()) > 0) {
+                ajax.setSuccess(false);
+                ajax.setMessage("客户名称重复！");
+                return ajax;
+            }
+            //身份证号重复验证
+            if (StringUtils.isNotBlank(customer.getSfzjhm()) && !ctmtemp.getSfzjhm().equals(customer.getSfzjhm()) && customerService.getCountBySfzjhm(customer.getSfzjhm()) > 0) {
+                ajax.setSuccess(false);
+                ajax.setMessage("身份证号重复！");
                 return ajax;
             }
             //khgjlx

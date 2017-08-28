@@ -312,12 +312,18 @@ public class Sqs01Controller extends BaseController {
     public AjaxResult add(Sqs01 sqs01, HttpServletRequest request, String checkTmName) {
         AjaxResult result = new AjaxResult();
         try {
+
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(3)//没有添加申请及案件的权限
                     && !sqs01.getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
                     ) {
                 result.setSuccess(false);
                 result.setMessage("没有权限！");
+                return result;
+            }
+            if (sqs01Server.get(sqs01.getGuid()) != null) {
+                result.setSuccess(false);
+                result.setMessage("申请书已添加！");
                 return result;
             }
             if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1) {

@@ -35,4 +35,9 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, String> imple
     public int getCount(String ctmCode) {
         return customersMapper.getCount(ctmCode);
     }
+
+    @Override
+    public int getCountBySfzjhm(String sfzjhm) {
+        return customersMapper.getCountBySfzjhm(sfzjhm);
+    }
 }

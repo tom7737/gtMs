@@ -78,6 +78,12 @@ public class CustomerController extends BaseController {
                 ajax.setMessage("客户名称重复！");
                 return ajax;
             }
+            //身份证号重复验证
+            if (StringUtils.isNotBlank(customer.getSfzjhm())&&customerService.getCountBySfzjhm(customer.getSfzjhm()) > 0) {
+                ajax.setSuccess(false);
+                ajax.setMessage("身份证号重复！");
+                return ajax;
+            }
             //ztdm
             customer.setZtdm("0");
             //dlguid

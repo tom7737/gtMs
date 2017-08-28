@@ -13,4 +13,6 @@ public interface CustomerService extends BaseService<Customer, String> {
     int getCountByCtmName(String ctmName);
 
     int getCount(String ctmCode);
+
+    int getCountBySfzjhm(String sfzjhm);
 }

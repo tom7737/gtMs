@@ -12,4 +12,6 @@ public interface CustomersMapper extends BaseMapper<Customer, String> {
     int getCountByCtmName(String ctmName);
 
     int getCount(String ctmCode);
+
+    int getCountBySfzjhm(String sfzjhm);
 }

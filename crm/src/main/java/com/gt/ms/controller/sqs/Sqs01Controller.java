@@ -622,7 +622,7 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult edit(Sqs01 sqs01, HttpServletRequest request) {
+    public AjaxResult edit(Sqs01 sqs01,String checkTmName, HttpServletRequest request) {
 
         AjaxResult result = new AjaxResult();
         try {
@@ -634,7 +634,15 @@ public class Sqs01Controller extends BaseController {
                 result.setMessage("没有权限！");
                 return result;
             }
-
+            if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1) {
+                //判断商标名称是否唯一
+                int count = sqs01Server.getCountByTmName(sqs01);
+                if (count > 0) {
+                    result.setSuccess(false);
+                    result.setMessage("商标名称重复！");
+                    return result;
+                }
+            }
             if (sqs01.getTmKindJ() == null) {//集体
                 sqs01.setTmKindJ(false);
             }

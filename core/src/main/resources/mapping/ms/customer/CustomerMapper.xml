@@ -107,7 +107,7 @@
         count(*)
         from customer
         where
-        ctm_code = #{ctmCode}
+        ctm_name = #{ctmName}
         and ztdm = '0'
     </select>
     <select id="getCountBySfzjhm" parameterType="java.lang.String" resultType="java.lang.Integer">

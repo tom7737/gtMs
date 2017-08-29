@@ -289,6 +289,14 @@ public class CustomerController extends BaseController {
         }
         pageInfo.setCondition(condition);
         customerService.findDataGrid(pageInfo);
+        List<Op> list = opService.getList();
+        Map<String, String> map = new HashMap<String, String>();
+        for (Op op : list) {
+            map.put(op.getOpName(), op.getOpTruename());
+        }
+        for (Customer ctm : (List<Customer>) pageInfo.getRows()) {
+            ctm.setMakeOp(map.get(ctm.getMakeOp()));
+        }
         return pageInfo;
     }
 

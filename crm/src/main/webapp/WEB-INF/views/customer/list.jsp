@@ -46,6 +46,11 @@
                     field: 'ctmRegdate',
                     sortable: true
                 }, {
+                    width: '150',
+                    title: '代理人',
+                    field: 'makeOp',
+                    sortable: true
+                }, {
                     field: 'action',
                     title: '操作',
                     width: 330,

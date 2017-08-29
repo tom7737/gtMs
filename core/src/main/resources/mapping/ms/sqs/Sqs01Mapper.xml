@@ -96,7 +96,7 @@
     app_number, app_jsr, app_jsrdz, app_jsryb, gui_feem
   </sql>
     <sql id="Sqs01_List">
-        guid, app_name, tm_name,class ,agent_number
+        guid, app_name, tm_name,class ,agent_number,make_op
     </sql>
     <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="Sqs01ResultMap">
         SELECT

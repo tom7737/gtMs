@@ -15,8 +15,6 @@ import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.utils.*;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
-import org.apache.commons.beanutils.converters.DoubleConverter;
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageOutputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -240,6 +235,14 @@ public class Sqs01Controller extends BaseController {
         }
         pageInfo.setCondition(condition);
         sqs01Server.findDataGrid(pageInfo);
+        List<Op> list = opService.getList();
+        Map<String, String> map = new HashMap<String, String>();
+        for (Op op : list) {
+            map.put(op.getOpName(), op.getOpTruename());
+        }
+        for (Sqs01 sqs : (List<Sqs01>) pageInfo.getRows()) {
+            sqs.setMakeOp(map.get(sqs.getMakeOp()));
+        }
         return pageInfo;
     }
 

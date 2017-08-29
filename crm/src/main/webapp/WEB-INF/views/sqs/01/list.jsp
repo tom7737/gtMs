@@ -49,6 +49,11 @@
                     field: 'agentNumber',
                     sortable: true
                 }, {
+                    width: '150',
+                    title: '代理人',
+                    field: 'makeOp',
+                    sortable: true
+                }, {
                     field: 'action',
                     title: '操作',
                     width: 400,

@@ -54,7 +54,9 @@
     ctm_lxrqq, zjmc, ywy_op, qdid, cjid, cjid_zb, dlguid, lbid, ctm_name_jsr, ctm_name_jsrdz, 
     ctm_name_jsryb, qylxnew, qygj, sfzjmc, sfzjhm, qdzid, ctm_wxh
   </sql>
-
+    <sql id="Base_Column_Page">
+        ctm_code,ctm_name,ctm_name_e,ctm_regDate,make_op
+    </sql>
     <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>

@@ -18,6 +18,8 @@ Date: 2017-08-26 12:56:28
 -- ----------------------------
 -- Table structure for S_City
 -- ----------------------------
+use LMG
+IF  EXISTS (SELECT * FROM SYSOBJECTS WHERE NAME='S_City')
 DROP TABLE [dbo].[S_City]
 GO
 CREATE TABLE [dbo].[S_City] (
@@ -26,7 +28,7 @@ CREATE TABLE [dbo].[S_City] (
 [ZipCode] nvarchar(50) NULL ,
 [ProvinceID] bigint NULL ,
 [DateCreated] datetime NULL ,
-[DateUpdated] datetime NULL 
+[DateUpdated] datetime NULL
 )
 
 
@@ -1344,6 +1346,7 @@ GO
 -- ----------------------------
 -- Table structure for S_District
 -- ----------------------------
+IF  EXISTS (SELECT * FROM SYSOBJECTS WHERE NAME='S_District')
 DROP TABLE [dbo].[S_District]
 GO
 CREATE TABLE [dbo].[S_District] (
@@ -1351,7 +1354,7 @@ CREATE TABLE [dbo].[S_District] (
 [DistrictName] nvarchar(50) NULL ,
 [CityID] bigint NULL ,
 [DateCreated] datetime NULL ,
-[DateUpdated] datetime NULL 
+[DateUpdated] datetime NULL
 )
 
 
@@ -9956,6 +9959,7 @@ GO
 -- ----------------------------
 -- Table structure for S_Province
 -- ----------------------------
+IF  EXISTS (SELECT * FROM SYSOBJECTS WHERE NAME='S_Province')
 DROP TABLE [dbo].[S_Province]
 GO
 CREATE TABLE [dbo].[S_Province] (

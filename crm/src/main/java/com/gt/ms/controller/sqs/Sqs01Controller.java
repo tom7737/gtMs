@@ -143,7 +143,9 @@ public class Sqs01Controller extends BaseController {
         map.put("agentName", sqs01.getAgentName());
         map.put("tmName", sqs01.getTmName());
         map.put("appAddr", (sqs01.getAppAddr() == null ? "" : sqs01.getAppAddr()) + (sqs01.getAppAddrE() == null ? "" : sqs01.getAppAddrE()));
-        map.put("makeOp", opService.getByOpName(sqs01.getMakeOp()).getOpTruename());
+        map.put("person", sqs01.getPerson());
+        map.put("postCode", sqs01.getPostCode());
+        map.put("phone",sqs01.getPhone());
         map.put("thisDate", DateUtils.getCurrentFormatDate("yyyy年MM月dd日"));
         PrintWriter writer = null;
 //        ServletOutputStream outputStream = null;

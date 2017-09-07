@@ -5,9 +5,11 @@ import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.agent.AgentCode;
 import com.gt.ms.mapper.admin.OpMapepr;
 import com.gt.ms.mapper.agent.AgentCodeMapper;
+import com.gt.ms.mapper.agent.AgentMapper;
 import com.gt.ms.mapper.sqs.Sqs01Mapper;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
+import com.gt.ms.service.agent.AgentService;
 import com.gt.ms.service.base.BaseServiceImpl;
 import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.utils.StringUtils;
@@ -36,14 +38,19 @@ public class Sqs01ServiceImpl extends BaseServiceImpl<Sqs01, String> implements 
     @Autowired
     private OpMapepr opMapepr;
     @Autowired
-    private AppImageMapper appImageMapper;
+    private AgentService agentService;
+    public static final String common_dlguid = "10000";//代理组织ID
 
     @Override
     public int save(Sqs01 sqs01) {
-        int save = sqs01Dao.save(sqs01);
-        if (save == 0) {
-            return save;
+        int save = 0;
+        int count = sqs01Dao.getCountByAgentNumber(sqs01.getAgentNumber());
+        //判断agentCode是否存在，如果存在则重新获取agentCode
+        if (count > 0) {
+            String agentCode = agentService.getAgentCode(common_dlguid);
+            sqs01.setAgentNumber(agentCode);
         }
+        save = sqs01Dao.save(sqs01);
         String maxGuid = agentCodeMapper.getMaxGuid();
         String guid = StringUtils.incGuid(maxGuid);
         Op byOpName = opMapepr.getByOpName(sqs01.getMakeOp());

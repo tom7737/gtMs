@@ -1,12 +1,20 @@
+import com.gt.ms.entity.common.SCity;
+import com.gt.ms.entity.common.SProvince;
+import com.gt.ms.entity.common.SysAreaCity;
+import com.gt.ms.entity.common.SysAreaState;
+import com.gt.ms.mapper.common.SCityMapper;
+import com.gt.ms.mapper.common.SProvinceMapper;
+import com.gt.ms.mapper.common.SysAreaCityMapper;
+import com.gt.ms.mapper.common.SysAreaStateMapper;
 import com.gt.ms.redis.RedisServiceImpl;
-import com.gt.ms.utils.DocUtil;
-import com.sun.javafx.collections.MappingChange;
+import com.gt.ms.utils.ChineseCharToEn;
 import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RedisTest {
@@ -14,8 +22,63 @@ public class RedisTest {
     //    private static ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(
 //            "classpath:spring/spring-redis.xml");
     RedisServiceImpl service;
+    private static ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(
+            "classpath:spring/spring-mybatis.xml");
 
-    //        @Test
+
+    @Test
+    public void testDb() {
+        ChineseCharToEn cte = new ChineseCharToEn();
+        StringBuffer sb = new StringBuffer();
+//        System.out.println("获取拼音首字母："+ cte.getAllFirstLetter("北京联席办"));
+        SysAreaStateMapper sysAreaStateMapper = (SysAreaStateMapper) context.getBean("sysAreaStateMapper");
+        SProvinceMapper sProvinceMapper = (SProvinceMapper) context.getBean("SProvinceMapper");
+        SysAreaCityMapper sysAreaCityMapper = (SysAreaCityMapper) context.getBean("sysAreaCityMapper");
+        SCityMapper sCityMapper = (SCityMapper) context.getBean("SCityMapper");
+        List<SysAreaState> sysAreaStateList = sysAreaStateMapper.getList();
+        List<SProvince> sProvinceList = sProvinceMapper.getList();
+        Map<String, SysAreaState> map = new HashMap<String, SysAreaState>();
+        for (SysAreaState state : sysAreaStateList) {
+            map.put(state.getDzmc(), state);
+        }
+        for (SProvince province : sProvinceList) {
+            if (map.get(province.getProvincename()) == null) {
+//                System.out.println(province.getProvincename());
+            } else {
+                SysAreaState state = map.get(province.getProvincename());
+//                System.out.println(province.getProvincename() + "：匹配成功" + state.getDzid());
+                sb.append(province.getProvincename() + "：匹配成功" + state.getDzid() + "\n");
+                List<SysAreaCity> sysAreaCityList = sysAreaCityMapper.getListBySdzid(state.getDzid());
+                List<SCity> sCityList = sCityMapper.getListByProvinceid(province.getProvinceid());
+//                Map<String, SysAreaCity> cityMap = new HashMap<String, SysAreaCity>();
+//                for (SysAreaCity sysAreaCity : sysAreaCityList) {
+//                    cityMap.put(sysAreaCity.getDzpy(), sysAreaCity);
+//                }
+
+                for (SCity city : sCityList) {
+                    String szm = cte.getAllFirstLetter(city.getCityname().substring(0, 1)).toUpperCase();
+                    int count = 0;
+                    for (SysAreaCity sysAreaCity : sysAreaCityList) {
+                        if (sysAreaCity.getDzpy().equals(szm) /*&& sysAreaCity.getDzmc().length == (city.getCityname().length() * 2 + 6)*/) {
+                            count++;
+                        }
+                    }
+                    if (count == 1) {
+                    } else if (count > 1) {
+                        sb.append(city.getCityname() + "相同首字母数据数量：" + count + "\n");
+                    } else {
+                        sb.append(city.getCityname() + "相同首字母数据数量：" + count + "\n");
+                    }
+                }
+
+
+            }
+        }
+
+        System.out.println(sb.toString());
+    }
+
+    //    @Test
     public void testSave() throws InterruptedException {
 //        service = (RedisServiceImpl) context.getBean("redisService");
 //        service.clean();
@@ -64,7 +127,7 @@ public class RedisTest {
         }
     }
 
-    @Test
+    //    @Test
     public void test3() {
         System.out.println(encryption("<=>?@ABCDE"));
     }

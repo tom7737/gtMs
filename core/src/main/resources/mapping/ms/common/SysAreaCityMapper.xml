@@ -37,14 +37,21 @@
         update sys_area_city
         <set>
             <if test="record.dzpy != null">
-                dzpy = #{record.dzpy,jdbcType=NVARCHAR},
+                dzpy = #{dzpy,jdbcType=NVARCHAR},
             </if>
             <if test="record.sdzid != null">
-                sdzid = #{record.sdzid,jdbcType=NVARCHAR},
+                sdzid = #{sdzid,jdbcType=NVARCHAR},
             </if>
             <if test="record.dzmc != null">
-                dzmc = #{record.dzmc,jdbcType=VARBINARY},
+                dzmc = #{dzmc,jdbcType=VARBINARY},
             </if>
+        </set>
+        WHERE dzid = #{dzid}
+    </update>
+    <update id="update" parameterType="com.gt.ms.entity.common.SysAreaCity">
+        update sys_area_city_copy
+        <set>
+            dzmc = #{dzpy}
         </set>
         WHERE dzid = #{dzid}
     </update>

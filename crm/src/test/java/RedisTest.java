@@ -13,9 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class RedisTest {
 
@@ -54,20 +52,32 @@ public class RedisTest {
 //                for (SysAreaCity sysAreaCity : sysAreaCityList) {
 //                    cityMap.put(sysAreaCity.getDzpy(), sysAreaCity);
 //                }
-
+                Collections.sort(sCityList, new Comparator<SCity>() {
+                    @Override
+                    public int compare(SCity o1, SCity o2) {
+                        ChineseCharToEn cte = new ChineseCharToEn();
+                        return cte.getAllFirstLetter(o1.getCityname().substring(0, 1)).toUpperCase().compareTo(cte.getAllFirstLetter(o2.getCityname().substring(0, 1)).toUpperCase());
+                    }
+                });
+                SysAreaCity temp = new SysAreaCity();
                 for (SCity city : sCityList) {
                     String szm = cte.getAllFirstLetter(city.getCityname().substring(0, 1)).toUpperCase();
                     int count = 0;
+                    String ids = "|";
                     for (SysAreaCity sysAreaCity : sysAreaCityList) {
-                        if (sysAreaCity.getDzpy().equals(szm) /*&& sysAreaCity.getDzmc().length == (city.getCityname().length() * 2 + 6)*/) {
+                        if (sysAreaCity.getDzpy().equals(szm) && sysAreaCity.getDzmc().length == (city.getCityname().length() * 2 + 6)) {
                             count++;
+                            ids+=sysAreaCity.getDzid()+"|";
+                            temp.setDzid(sysAreaCity.getDzid());
+                            temp.setDzpy(city.getCityname());
                         }
                     }
                     if (count == 1) {
+//                        sysAreaCityMapper.update(temp);
                     } else if (count > 1) {
-                        sb.append(city.getCityname() + "相同首字母数据数量：" + count + "\n");
+                        sb.append(szm+ city.getCityname() +"相同首字母数据:"+ids+" 数量：" + count + "\n");
                     } else {
-                        sb.append(city.getCityname() + "相同首字母数据数量：" + count + "\n");
+                        sb.append(szm+city.getCityname() + "相同首字母数据:"+ids+" 数量：" + count + "\n");
                     }
                 }
 

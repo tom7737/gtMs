@@ -76,7 +76,7 @@ public class CustomerController extends BaseController {
                 return ajax;
             }
             //客户名重复验证
-            if (customerService.getCountByCtmName(customer.getCtmName()) > 0) {
+            if ("100012000000000001".equals(customer.getQylxnew()) && customerService.getCountByCtmName(customer.getCtmName()) > 0) {
                 ajax.setSuccess(false);
                 ajax.setMessage("客户名称重复！");
                 return ajax;
@@ -169,7 +169,7 @@ public class CustomerController extends BaseController {
                 return ajax;
             }
             //客户名重复验证
-            if (!ctmtemp.getCtmName().equals(customer.getCtmName()) && customerService.getCountByCtmName(customer.getCtmName()) > 0) {
+            if (!ctmtemp.getCtmName().equals(customer.getCtmName()) && "100012000000000001".equals(customer.getQylxnew()) && customerService.getCountByCtmName(customer.getCtmName()) > 0) {
                 ajax.setSuccess(false);
                 ajax.setMessage("客户名称重复！");
                 return ajax;

@@ -61,8 +61,12 @@ public class LoggerInterceptor implements HandlerInterceptor {
             sb.append(";");
         }
         String uuid = UUID.randomUUID().toString();
+        Op op = null;
         ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
-        Op op = opService.get(user.opCode);
+
+        if (user != null) {
+            op = opService.get(user.opCode);
+        }
         requestIdThreadLocal.set("requestId:" + uuid + ";op:" + (op == null ? "" : op.getOpName()) + ";url:" + uri + ";parameters:" + sb + (System.currentTimeMillis() - l));
         return true;
     }

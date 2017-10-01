@@ -107,21 +107,12 @@ public class Sqs01Controller extends BaseController {
             response.setCharacterEncoding("UTF-8");
             response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
             writer = response.getWriter();
-//            String filepath = this.getClass().getResource("").getPath() + File.separator + fileName;
             doc.createDoc(map, "sqs01", writer);
-//            outputStream = response.getOutputStream();
-//            File file = new File(filepath);
-//            outputStream.write(FileUtils.readFileToByteArray(file));
-//            file.delete();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             if (writer != null)
                 writer.close();
-//            if (outputStream != null) {
-//                outputStream.flush();
-//                outputStream.close();
-//            }
         }
     }
 
@@ -161,21 +152,12 @@ public class Sqs01Controller extends BaseController {
             response.setCharacterEncoding("UTF-8");
             response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
             writer = response.getWriter();
-//            String filepath = this.getClass().getResource("").getPath() + File.separator + fileName;
             doc.createDoc(map, "wts01", writer);
-//            outputStream = response.getOutputStream();
-//            File file = new File(filepath);
-//            outputStream.write(FileUtils.readFileToByteArray(file));
-//            file.delete();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             if (writer != null)
                 writer.close();
-//            if (outputStream != null) {
-//                outputStream.flush();
-//                outputStream.close();
-//            }
         }
     }
 

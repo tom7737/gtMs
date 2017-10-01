@@ -8,7 +8,10 @@ import com.gt.ms.mapper.common.SysAreaCityMapper;
 import com.gt.ms.mapper.common.SysAreaStateMapper;
 import com.gt.ms.redis.RedisServiceImpl;
 import com.gt.ms.utils.ChineseCharToEn;
+import org.junit.After;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,11 +23,24 @@ public class RedisTest {
     //    private static ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(
 //            "classpath:spring/spring-redis.xml");
     RedisServiceImpl service;
-    private static ConfigurableApplicationContext context = new ClassPathXmlApplicationContext(
-            "classpath:spring/spring-mybatis.xml");
+    private static ConfigurableApplicationContext context = null;
 
+//    @After
+    public void init() {
+        context = new ClassPathXmlApplicationContext(
+                "classpath:spring/spring-mybatis.xml");
+    }
+
+    private static final Logger logger = LoggerFactory.getLogger(RedisTest.class);
 
     @Test
+    public void logtest() {
+        Exception e = new Exception("msg");
+        Integer a = null;
+        logger.error(" method:logtest;methodParameters:" + "a = [" + a + "]" + ";",e);
+    }
+
+    //    @Test
     public void testDb() {
         ChineseCharToEn cte = new ChineseCharToEn();
         StringBuffer sb = new StringBuffer();
@@ -67,7 +83,7 @@ public class RedisTest {
                     for (SysAreaCity sysAreaCity : sysAreaCityList) {
                         if (sysAreaCity.getDzpy().equals(szm) && sysAreaCity.getDzmc().length == (city.getCityname().length() * 2 + 6)) {
                             count++;
-                            ids+=sysAreaCity.getDzid()+"|";
+                            ids += sysAreaCity.getDzid() + "|";
                             temp.setDzid(sysAreaCity.getDzid());
                             temp.setDzpy(city.getCityname());
                         }
@@ -75,9 +91,9 @@ public class RedisTest {
                     if (count == 1) {
 //                        sysAreaCityMapper.update(temp);
                     } else if (count > 1) {
-                        sb.append(szm+ city.getCityname() +"相同首字母数据:"+ids+" 数量：" + count + "\n");
+                        sb.append(szm + city.getCityname() + "相同首字母数据:" + ids + " 数量：" + count + "\n");
                     } else {
-                        sb.append(szm+city.getCityname() + "相同首字母数据:"+ids+" 数量：" + count + "\n");
+                        sb.append(szm + city.getCityname() + "相同首字母数据:" + ids + " 数量：" + count + "\n");
                     }
                 }
 

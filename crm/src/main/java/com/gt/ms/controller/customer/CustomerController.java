@@ -32,7 +32,7 @@ import java.util.Map;
 @RequestMapping("/customer")
 public class CustomerController extends BaseController {
 
-    private Logger logger = LoggerFactory.getLogger(CustomerController.class);
+    private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private CustomerService customerService;

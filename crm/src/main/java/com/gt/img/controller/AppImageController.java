@@ -22,8 +22,7 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/appImage")
 public class AppImageController extends BaseController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(AppImageController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AppImageController.class);
 
     @Autowired
     private AppImageService appImageService;

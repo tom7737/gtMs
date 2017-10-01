@@ -1,7 +1,11 @@
 package com.gt.ms.entity.agent;
 
 import java.util.Date;
-
+/**
+ *代理编号
+ * @author : admin
+ * @date : 2017-10-01 11:13
+ */
 public class AgentCode {
     private String guid;//唯一编号，主键
 

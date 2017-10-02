@@ -70,5 +70,13 @@ public class Sbfz implements java.io.Serializable {
         this.zhushi = zhushi;
     }
 
-
+    @Override
+    public String toString() {
+        return "Sbfz{" +
+                "fenzu='" + fenzu + '\'' +
+                ", page=" + page +
+                ", xinxi='" + xinxi + '\'' +
+                ", zhushi='" + zhushi + '\'' +
+                '}';
+    }
 }

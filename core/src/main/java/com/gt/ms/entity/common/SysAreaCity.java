@@ -1,5 +1,7 @@
 package com.gt.ms.entity.common;
 
+import java.util.Arrays;
+
 /**
  * 城市
  */
@@ -42,5 +44,15 @@ public class SysAreaCity {
 
     public void setDzmc(byte[] dzmc) {
         this.dzmc = dzmc;
+    }
+
+    @Override
+    public String toString() {
+        return "SysAreaCity{" +
+                "dzid='" + dzid + '\'' +
+                ", dzpy='" + dzpy + '\'' +
+                ", sdzid='" + sdzid + '\'' +
+                ", dzmc=" + Arrays.toString(dzmc) +
+                '}';
     }
 }

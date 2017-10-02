@@ -52,4 +52,15 @@ public class SDistrict {
     public void setDateupdated(Date dateupdated) {
         this.dateupdated = dateupdated;
     }
+
+    @Override
+    public String toString() {
+        return "SDistrict{" +
+                "districtid=" + districtid +
+                ", districtname='" + districtname + '\'' +
+                ", cityid=" + cityid +
+                ", datecreated=" + datecreated +
+                ", dateupdated=" + dateupdated +
+                '}';
+    }
 }

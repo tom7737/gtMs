@@ -86,6 +86,15 @@ public class CallCenterSys implements java.io.Serializable {
     public void setSz(String sz) {
         this.sz = sz;
     }
+
+    @Override
+    public String toString() {
+        return "CallCenterSys{" +
+                "dm='" + dm + '\'' +
+                ", ms='" + ms + '\'' +
+                ", sz='" + sz + '\'' +
+                '}';
+    }
 }
 
 

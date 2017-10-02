@@ -162,4 +162,26 @@ public class Agent {
     public void setAgentMobile(String agentMobile) {
         this.agentMobile = agentMobile == null ? null : agentMobile.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Agent{" +
+                "agentName='" + agentName + '\'' +
+                ", agentCodehead='" + agentCodehead + '\'' +
+                ", agentCode='" + agentCode + '\'' +
+                ", agentLinkman='" + agentLinkman + '\'' +
+                ", agentTel='" + agentTel + '\'' +
+                ", agentFax='" + agentFax + '\'' +
+                ", agentEmail='" + agentEmail + '\'' +
+                ", agentAdd='" + agentAdd + '\'' +
+                ", agentPost='" + agentPost + '\'' +
+                ", agentMemo='" + agentMemo + '\'' +
+                ", numAdd='" + numAdd + '\'' +
+                ", guid='" + guid + '\'' +
+                ", makeOp='" + makeOp + '\'' +
+                ", cjsj=" + cjsj +
+                ", gszh='" + gszh + '\'' +
+                ", agentMobile='" + agentMobile + '\'' +
+                '}';
+    }
 }

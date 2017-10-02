@@ -87,6 +87,19 @@ public class CallCenterLog implements java.io.Serializable {
     public void setMakeOp(String makeOp) {
         this.makeOp = makeOp;
     }
+
+    @Override
+    public String toString() {
+        return "CallCenterLog{" +
+                "guid='" + guid + '\'' +
+                ", ctmCode='" + ctmCode + '\'' +
+                ", ctmTel='" + ctmTel + '\'' +
+                ", ksrq=" + ksrq +
+                ", jsrq=" + jsrq +
+                ", makeOp='" + makeOp + '\'' +
+                ", cjsj=" + cjsj +
+                '}';
+    }
 }
 
 

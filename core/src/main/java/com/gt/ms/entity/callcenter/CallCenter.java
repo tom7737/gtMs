@@ -3,35 +3,43 @@ package com.gt.ms.entity.callcenter;
 import java.sql.Timestamp;
 
 /**
- * CallCenter entity. @author MyEclipse Persistence Tools
+ * 客户回访
+ *
+ * @author : admin
+ * @date : 2017-10-02 11:27
  */
 public class CallCenter implements java.io.Serializable {
 
     // Fields
-    private String    guid;
-    private String    ctmCode;
-    private String    ctmTel;
-    private Timestamp zxrq;
-    private String    zxnr;
-    private String    wavguid;
-    private String    makeOp;
-    private Timestamp cjsj;
+    private String guid;
+    private String ctmCode;//申请人编号
+    private String ctmTel;//客户电话
+    private Timestamp zxrq;//咨询日期
+    private String zxnr;//咨询内容
+    private String wavguid;//wav
+    private String makeOp;//添加记录人
+    private Timestamp cjsj;//创建时间
 
     // Constructors
 
-    /** default constructor */
-    public CallCenter() {}
+    /**
+     * default constructor
+     */
+    public CallCenter() {
+    }
 
-    /** full constructor */
+    /**
+     * full constructor
+     */
     public CallCenter(String ctmCode, String ctmTel, Timestamp zxrq, String zxnr, String wavguid, String makeOp,
                       Timestamp cjsj) {
         this.ctmCode = ctmCode;
-        this.ctmTel  = ctmTel;
-        this.zxrq    = zxrq;
-        this.zxnr    = zxnr;
+        this.ctmTel = ctmTel;
+        this.zxrq = zxrq;
+        this.zxnr = zxnr;
         this.wavguid = wavguid;
-        this.makeOp  = makeOp;
-        this.cjsj    = cjsj;
+        this.makeOp = makeOp;
+        this.cjsj = cjsj;
     }
 
     public Timestamp getCjsj() {
@@ -98,7 +106,20 @@ public class CallCenter implements java.io.Serializable {
     public void setZxrq(Timestamp zxrq) {
         this.zxrq = zxrq;
     }
+
+    @Override
+    public String toString() {
+        return "CallCenter{" +
+                "guid='" + guid + '\'' +
+                ", ctmCode='" + ctmCode + '\'' +
+                ", ctmTel='" + ctmTel + '\'' +
+                ", zxrq=" + zxrq +
+                ", zxnr='" + zxnr + '\'' +
+                ", wavguid='" + wavguid + '\'' +
+                ", makeOp='" + makeOp + '\'' +
+                ", cjsj=" + cjsj +
+                '}';
+    }
 }
 
 
-//~ Formatted by Jindent --- http://www.jindent.com

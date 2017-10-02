@@ -460,4 +460,55 @@ public class Customer implements java.io.Serializable  {
     public void setCtmMemo(String ctmMemo) {
         this.ctmMemo = ctmMemo == null ? null : ctmMemo.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "ctmCode='" + ctmCode + '\'' +
+                ", ctmName='" + ctmName + '\'' +
+                ", ctmTel='" + ctmTel + '\'' +
+                ", ctmMobile='" + ctmMobile + '\'' +
+                ", ctmFax='" + ctmFax + '\'' +
+                ", ctmHttp='" + ctmHttp + '\'' +
+                ", ctmEmail='" + ctmEmail + '\'' +
+                ", ctmAddr='" + ctmAddr + '\'' +
+                ", ctmPost='" + ctmPost + '\'' +
+                ", ctmClass='" + ctmClass + '\'' +
+                ", ctmRegdate='" + ctmRegdate + '\'' +
+                ", ctmLxr='" + ctmLxr + '\'' +
+                ", ctmJm='" + ctmJm + '\'' +
+                ", ctmNameEn='" + ctmNameEn + '\'' +
+                ", ctmAddrEn='" + ctmAddrEn + '\'' +
+                ", makeOp='" + makeOp + '\'' +
+                ", zjhm='" + zjhm + '\'' +
+                ", ztdm='" + ztdm + '\'' +
+                ", lxguid='" + lxguid + '\'' +
+                ", sdzid='" + sdzid + '\'' +
+                ", cdzid='" + cdzid + '\'' +
+                ", qylx='" + qylx + '\'' +
+                ", qyzt='" + qyzt + '\'' +
+                ", khgjlx='" + khgjlx + '\'' +
+                ", gjid='" + gjid + '\'' +
+                ", ctmAddrYj='" + ctmAddrYj + '\'' +
+                ", ctmQyfr='" + ctmQyfr + '\'' +
+                ", ctmLxrqq='" + ctmLxrqq + '\'' +
+                ", zjmc='" + zjmc + '\'' +
+                ", ywyOp='" + ywyOp + '\'' +
+                ", qdid='" + qdid + '\'' +
+                ", cjid='" + cjid + '\'' +
+                ", cjidZb='" + cjidZb + '\'' +
+                ", dlguid='" + dlguid + '\'' +
+                ", lbid='" + lbid + '\'' +
+                ", ctmNameJsr='" + ctmNameJsr + '\'' +
+                ", ctmNameJsrdz='" + ctmNameJsrdz + '\'' +
+                ", ctmNameJsryb='" + ctmNameJsryb + '\'' +
+                ", qylxnew='" + qylxnew + '\'' +
+                ", qygj='" + qygj + '\'' +
+                ", sfzjmc='" + sfzjmc + '\'' +
+                ", sfzjhm='" + sfzjhm + '\'' +
+                ", qdzid='" + qdzid + '\'' +
+                ", ctmWxh='" + ctmWxh + '\'' +
+                ", ctmMemo='" + ctmMemo + '\'' +
+                '}';
+    }
 }

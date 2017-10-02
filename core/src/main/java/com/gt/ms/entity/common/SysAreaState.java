@@ -33,4 +33,13 @@ public class SysAreaState {
     public void setDzpy(String dzpy) {
         this.dzpy = dzpy == null ? null : dzpy.trim();
     }
+
+    @Override
+    public String toString() {
+        return "SysAreaState{" +
+                "dzid='" + dzid + '\'' +
+                ", dzmc='" + dzmc + '\'' +
+                ", dzpy='" + dzpy + '\'' +
+                '}';
+    }
 }

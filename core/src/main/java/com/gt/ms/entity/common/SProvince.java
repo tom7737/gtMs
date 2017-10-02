@@ -42,4 +42,14 @@ public class SProvince {
     public void setDateupdated(Date dateupdated) {
         this.dateupdated = dateupdated;
     }
+
+    @Override
+    public String toString() {
+        return "SProvince{" +
+                "provinceid=" + provinceid +
+                ", provincename='" + provincename + '\'' +
+                ", datecreated=" + datecreated +
+                ", dateupdated=" + dateupdated +
+                '}';
+    }
 }

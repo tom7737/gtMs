@@ -139,4 +139,23 @@ public class Tspdm implements Serializable {
     public void setZtdm(String ztdm) {
         this.ztdm = ztdm;
     }
+
+    @Override
+    public String toString() {
+        return "Tspdm{" +
+                "bf='" + bf + '\'' +
+                ", bfzs='" + bfzs + '\'' +
+                ", fgroup='" + fgroup + '\'' +
+                ", flink='" + flink + '\'' +
+                ", fspdm='" + fspdm + '\'' +
+                ", fspeng='" + fspeng + '\'' +
+                ", fspname='" + fspname + '\'' +
+                ", id='" + id + '\'' +
+                ", lsqgx='" + lsqgx + '\'' +
+                ", page='" + page + '\'' +
+                ", px='" + px + '\'' +
+                ", szh='" + szh + '\'' +
+                ", ztdm='" + ztdm + '\'' +
+                '}';
+    }
 }

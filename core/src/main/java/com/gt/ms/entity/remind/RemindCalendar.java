@@ -3,22 +3,22 @@ package com.gt.ms.entity.remind;
 import java.sql.Timestamp;
 
 /**
- * ÈÕ³ÌÌáĞÑ
+ * æ—¥ç¨‹æé†’
  *
- * @Author twt 2017Äê10ÔÂ1ÈÕ 10:19:15
+ * @Author twt 2017å¹´10æœˆ1æ—¥ 10:19:15
  */
 public class RemindCalendar implements java.io.Serializable {
 
     // Fields
     private String    guid;
-    private String    yhid;    // ±»ÌáĞÑÓÃ»§
-    private String    rcrq;    // ÈÕ³ÌÈÕÆÚ
-    private String    jzrq;    // ½ØÖ¹ÈÕÆÚ
-    private String    rcnr;    // ÈÕ³ÌÄÚÈİ
-    private String    rczt;    // ÈÕ³Ì×´Ì¬£¬0·ñ/1ÊÇ
-    private String    wcrq;    // Íê³ÉÈÕÆÚ
-    private String    wcnr;    // Íê³ÉÄÚÈİ
-    private Timestamp cjsj;    // ´´½¨Ê±¼ä
+    private String    yhid;    // è¢«æé†’ç”¨æˆ·
+    private String    rcrq;    // æ—¥ç¨‹æ—¥æœŸ
+    private String    jzrq;    // æˆªæ­¢æ—¥æœŸ
+    private String    rcnr;    // æ—¥ç¨‹å†…å®¹
+    private String    rczt;    // æ—¥ç¨‹çŠ¶æ€ï¼Œ0å¦/1æ˜¯
+    private String    wcrq;    // å®Œæˆæ—¥æœŸ
+    private String    wcnr;    // å®Œæˆå†…å®¹
+    private Timestamp cjsj;    // åˆ›å»ºæ—¶é—´
 
     // Constructors
 

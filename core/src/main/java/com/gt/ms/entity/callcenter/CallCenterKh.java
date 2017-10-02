@@ -235,6 +235,24 @@ public class CallCenterKh implements java.io.Serializable {
     public void setZxrq(Timestamp zxrq) {
         this.zxrq = zxrq;
     }
+
+    @Override
+    public String toString() {
+        return "CallCenterKh{" +
+                "guid='" + guid + '\'' +
+                ", ctmName='" + ctmName + '\'' +
+                ", ctmAddr='" + ctmAddr + '\'' +
+                ", ctmPost='" + ctmPost + '\'' +
+                ", ctmTel='" + ctmTel + '\'' +
+                ", ctmMobile='" + ctmMobile + '\'' +
+                ", zxrq=" + zxrq +
+                ", zxnr='" + zxnr + '\'' +
+                ", wavguid='" + wavguid + '\'' +
+                ", makeOp='" + makeOp + '\'' +
+                ", cjsj=" + cjsj +
+                ", ztdm=" + ztdm +
+                '}';
+    }
 }
 
 

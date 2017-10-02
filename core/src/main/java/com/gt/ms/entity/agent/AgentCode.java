@@ -86,4 +86,18 @@ public class AgentCode {
     public void setCjsj(Date cjsj) {
         this.cjsj = cjsj;
     }
+
+    @Override
+    public String toString() {
+        return "AgentCode{" +
+                "guid='" + guid + '\'' +
+                ", apptype='" + apptype + '\'' +
+                ", appName='" + appName + '\'' +
+                ", agentNumber='" + agentNumber + '\'' +
+                ", appguid='" + appguid + '\'' +
+                ", dlguid='" + dlguid + '\'' +
+                ", makeOp='" + makeOp + '\'' +
+                ", cjsj=" + cjsj +
+                '}';
+    }
 }

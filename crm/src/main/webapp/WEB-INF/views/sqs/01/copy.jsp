@@ -76,7 +76,7 @@
                 $("#pic").val(null);
                 $("#img_pic").attr("src", "");
                 $("#pic_text").val(null);
-                $.post('${path }/sqs/01/picClean', {}, function (result) {
+                $.post('${path }/sqs/01/picClean', {guid: $("#guid").val()}, function (result) {
                     if (result.success) {
                         parent.$.messager.alert('提示', result.message, 'info');
                     }

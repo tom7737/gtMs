@@ -323,14 +323,14 @@ public class Sqs01Controller extends BaseController {
             }
 
             LOGGER.debug(sqs01.toString());
-            Object pic = getSessionPic(request);
+            Object pic = getSessionPic(request, sqs01.getGuid());
             if (pic != null)
                 sqs01.setPic((byte[]) pic);
             else
                 sqs01.setPic(null);
             sqs01.setZtdm("0");
             sqs01Server.save(sqs01);
-            saveOrUpdateWts(request);
+            saveOrUpdateWts(request, sqs01.getGuid());
 
             result.setSuccess(true);
             result.setMessage("添加成功！");
@@ -342,10 +342,10 @@ public class Sqs01Controller extends BaseController {
         }
     }
 
-    private void saveOrUpdateWts(HttpServletRequest request) {
+    private void saveOrUpdateWts(HttpServletRequest request, String appguid) {
         //修改委托书
-        Object wts = request.getSession().getAttribute("session_wts");
-        request.getSession().removeAttribute("session_wts");
+        Object wts = request.getSession().getAttribute("session_wts" + appguid);
+        request.getSession().removeAttribute("session_wts" + appguid);
         if (wts != null) {
             AppImage img = (AppImage) wts;
             if (img.getGuid() == null) {
@@ -445,10 +445,10 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/picClean")
     @ResponseBody
-    public AjaxResult picClean(HttpServletRequest request) throws IOException {
+    public AjaxResult picClean(HttpServletRequest request, String guid) throws IOException {
         AjaxResult result = new AjaxResult();
         try {
-            request.getSession().setAttribute("session_pic", new byte[0]);
+            request.getSession().setAttribute("session_pic" + guid, new byte[0]);
             result.setSuccess(true);
             result.setMessage("操作成功！");
         } catch (Exception e) {
@@ -475,7 +475,7 @@ public class Sqs01Controller extends BaseController {
             MultipartFile file = multipartRequest.getFile("upload_pic");
             String guid = request.getParameter("guid");
             byte[] pic = file.getBytes();
-            request.getSession().setAttribute("session_pic", pic);
+            request.getSession().setAttribute("session_pic" + guid, pic);
             LOGGER.debug("--------" + file.getOriginalFilename());
 //            Sqs01 sqs01 = new Sqs01();
 //            sqs01.setGuid(guid);
@@ -534,7 +534,7 @@ public class Sqs01Controller extends BaseController {
                 appImage.setTpwjgs(file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1));
 //                appImageService.update(appImage);
             }
-            request.getSession().setAttribute("session_wts", appImage);
+            request.getSession().setAttribute("session_wts" + appguid, appImage);
             result.setSuccess(true);
             result.setMessage("上传成功！");
         } catch (Exception e) {
@@ -588,14 +588,14 @@ public class Sqs01Controller extends BaseController {
             }
 
             LOGGER.debug(sqs01.toString());
-            Object pic = getSessionPic(request);
+            Object pic = getSessionPic(request, sqs01.getGuid());
             if (pic != null)
                 sqs01.setPic((byte[]) pic);
             else
                 sqs01.setPic(null);
             sqs01Server.update(sqs01);
             //修改委托书
-            saveOrUpdateWts(request);
+            saveOrUpdateWts(request, sqs01.getGuid());
             result.setSuccess(true);
             result.setMessage("修改成功！");
             return result;
@@ -660,7 +660,7 @@ public class Sqs01Controller extends BaseController {
         ServletOutputStream os = null;
         AppImage appImage = null;
         try {
-            Object session_wts = request.getSession().getAttribute("session_wts");
+            Object session_wts = request.getSession().getAttribute("session_wts" + guid);
             if (session_wts != null) {
                 appImage = (AppImage) session_wts;
             } else {
@@ -742,7 +742,7 @@ public class Sqs01Controller extends BaseController {
                 result.setMessage("表单已提交，请勿重复提交表单！");
                 return result;
             }
-            if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1 ) {
+            if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1) {
                 //判断商标名称是否唯一
                 int count = sqs01Server.getCountByTmName(sqs01);
                 if (count > 0) {
@@ -762,7 +762,7 @@ public class Sqs01Controller extends BaseController {
             }
 
             LOGGER.debug(sqs01.toString());
-            Object pic = getSessionPic(request);
+            Object pic = getSessionPic(request, sqs01.getGuid());
             if (pic != null) {
                 sqs01.setPic((byte[]) pic);
             } else {
@@ -772,7 +772,7 @@ public class Sqs01Controller extends BaseController {
             sqs01.setZtdm("0");
             sqs01Server.save(sqs01);
             //修改委托书
-            saveOrUpdateWts(request);
+            saveOrUpdateWts(request, sqs01.getGuid());
             result.setSuccess(true);
             result.setMessage("添加成功！");
             return result;
@@ -783,9 +783,9 @@ public class Sqs01Controller extends BaseController {
         }
     }
 
-    private Object getSessionPic(HttpServletRequest request) {
-        Object pic = request.getSession().getAttribute("session_pic");
-        request.getSession().removeAttribute("session_pic");
+    private Object getSessionPic(HttpServletRequest request, String guid) {
+        Object pic = request.getSession().getAttribute("session_pic" + guid);
+        request.getSession().removeAttribute("session_pic" + guid);
         return pic;
     }
 

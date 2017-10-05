@@ -61,6 +61,12 @@
                 }
             }
         });
+        //修改类别时清空商品/服务项目
+        $("#class_").numberbox({"onChange": function () {
+            $("#commServ").val("");
+            $("#addComm").val("");
+        }
+        });
 
     });
     //选择标样
@@ -188,7 +194,7 @@
     }
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-    <div data-options="region:'center',border:false" title="商标注册申请书"
+    <div data-options="region:'center',border:false" title="商标注册申请书-添加"
          style="overflow: hidden;padding: 3px;overflow-y:scroll ">
 
         <form id="sqs01AddForm" method="post" enctype=”multipart/form-data”>

@@ -51,6 +51,7 @@ public class LoggerInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         Enumeration<String> parameterNames = request.getParameterNames();
         StringBuilder sb = new StringBuilder();
+        sb.append("{");
         while (parameterNames.hasMoreElements()) {
             String nextElement = parameterNames.nextElement();
             sb.append(nextElement);
@@ -60,14 +61,14 @@ public class LoggerInterceptor implements HandlerInterceptor {
             }
             sb.append(";");
         }
-        String uuid = UUID.randomUUID().toString();
+        sb.append("}");
         Op op = null;
         ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
 
         if (user != null) {
             op = opService.get(user.opCode);
         }
-        requestIdThreadLocal.set("requestId:" + uuid + ";op:" + (op == null ? "" : op.getOpName()) + ";url:" + uri + ";parameters:" + sb + (System.currentTimeMillis() - l));
+        requestIdThreadLocal.set("op:" + (op == null ? "" : op.getOpName()) + ";url:" + uri + ";parameters:" + sb + (System.currentTimeMillis() - l));
         return true;
     }
 

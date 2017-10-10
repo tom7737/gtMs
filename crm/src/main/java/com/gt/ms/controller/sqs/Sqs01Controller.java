@@ -107,21 +107,12 @@ public class Sqs01Controller extends BaseController {
             response.setCharacterEncoding("UTF-8");
             response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
             writer = response.getWriter();
-//            String filepath = this.getClass().getResource("").getPath() + File.separator + fileName;
             doc.createDoc(map, "sqs01", writer);
-//            outputStream = response.getOutputStream();
-//            File file = new File(filepath);
-//            outputStream.write(FileUtils.readFileToByteArray(file));
-//            file.delete();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             if (writer != null)
                 writer.close();
-//            if (outputStream != null) {
-//                outputStream.flush();
-//                outputStream.close();
-//            }
         }
     }
 
@@ -145,7 +136,7 @@ public class Sqs01Controller extends BaseController {
         map.put("appAddr", (sqs01.getAppAddr() == null ? "" : sqs01.getAppAddr()) + (sqs01.getAppAddrE() == null ? "" : sqs01.getAppAddrE()));
         map.put("person", sqs01.getPerson());
         map.put("postCode", sqs01.getPostCode());
-        map.put("phone",sqs01.getPhone());
+        map.put("phone", sqs01.getPhone());
         map.put("thisDate", DateUtils.getCurrentFormatDate("yyyy年MM月dd日"));
         PrintWriter writer = null;
 //        ServletOutputStream outputStream = null;
@@ -161,21 +152,12 @@ public class Sqs01Controller extends BaseController {
             response.setCharacterEncoding("UTF-8");
             response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
             writer = response.getWriter();
-//            String filepath = this.getClass().getResource("").getPath() + File.separator + fileName;
             doc.createDoc(map, "wts01", writer);
-//            outputStream = response.getOutputStream();
-//            File file = new File(filepath);
-//            outputStream.write(FileUtils.readFileToByteArray(file));
-//            file.delete();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             if (writer != null)
                 writer.close();
-//            if (outputStream != null) {
-//                outputStream.flush();
-//                outputStream.close();
-//            }
         }
     }
 
@@ -330,61 +312,7 @@ public class Sqs01Controller extends BaseController {
                     return result;
                 }
             }
-            if (sqs01.getTmKindJ() == null) {//集体
-                sqs01.setTmKindJ(false);
-            }
-            if (sqs01.getTmKindT() == null) {//证明
-                sqs01.setTmKindT(false);
-            }
-            if (sqs01.getIfCommon0() == null) {//是否共同申请
-                sqs01.setIfCommon0(false);
-                sqs01.setIfCommon1(true);
-            } else {
-                sqs01.setIfCommon0(true);
-                sqs01.setIfCommon1(false);
-            }
-            if (sqs01.getSolid() == null) {//三维
-                sqs01.setSolid(false);
-            }
-            if (sqs01.getColour() == null) {//颜色
-                sqs01.setColour(false);
-            }
-            if (sqs01.getSound() == null) {//声音
-                sqs01.setSound(false);
-            }
-
-            if (sqs01.getTmKindJ() || sqs01.getTmKindT() || sqs01.getIfCommon0() ||
-                    sqs01.getSolid() || sqs01.getColour() || sqs01.getSound()) {
-                sqs01.setTmKindY(false);//有商标申请声明
-            } else {
-                sqs01.setTmKindY(true);//无商标申请声明
-            }
-
-            // fax
-            sqs01.setFax(common_fax);
-            //attach
-            if (StringUtils.isNotBlank(sqs01.getAddComm())) {
-                sqs01.setAttach("1");
-            } else {
-                sqs01.setAttach("0");
-            }
-            sqs01.setDlguid(common_dlguid);
-            //费用计算
-            if (sqs01.getTmKindJ() != null && sqs01.getTmKindJ()) {
-                sqs01.setCountryFee(common_country_fei_jt);
-            } else if (sqs01.getTmKindT() != null && sqs01.getTmKindT()) {
-                sqs01.setCountryFee(common_country_fei_zm);
-            } else {
-                sqs01.setCountryFee(common_country_fei);
-            }
-            String addComm = sqs01.getAddComm();
-            sqs01.setGuiFee(sqs01.getCountryFee());
-            if (com.gt.ms.utils.StringUtils.isNotBlank(addComm)) {
-                String[] split = addComm.split("。")[0].split("；");
-                sqs01.setGuiFeem(sqs01.getCountryFee() / 10 * split.length);
-            } else {
-                sqs01.setGuiFeem(0d);
-            }
+            Sqs01Init(sqs01);
             //agentFee
             if (sqs01.getPice() < sqs01.getGuiFee() + sqs01.getGuiFeem()) {
                 result.setSuccess(false);
@@ -395,28 +323,15 @@ public class Sqs01Controller extends BaseController {
             }
 
             LOGGER.debug(sqs01.toString());
-            Object pic = request.getSession().getAttribute("session_pic");
-            request.getSession().removeAttribute("session_pic");
+            Object pic = getSessionPic(request, sqs01.getGuid());
             if (pic != null)
                 sqs01.setPic((byte[]) pic);
             else
                 sqs01.setPic(null);
             sqs01.setZtdm("0");
             sqs01Server.save(sqs01);
-            //修改委托书
-            Object wts = request.getSession().getAttribute("session_wts");
-            request.getSession().removeAttribute("session_wts");
-            if (wts != null) {
-                AppImage img = (AppImage) wts;
-                if (img.getGuid() == null) {
-                    String maxGuid = appImageService.getMaxGuid();
-                    String guid = StringUtils.incGuid(maxGuid);
-                    img.setGuid(guid);
-                    appImageService.save(img);
-                } else {
-                    appImageService.update(img);
-                }
-            }
+            saveOrUpdateWts(request, sqs01.getGuid());
+
             result.setSuccess(true);
             result.setMessage("添加成功！");
             return result;
@@ -424,6 +339,23 @@ public class Sqs01Controller extends BaseController {
             LOGGER.error("添加商标注册申请书失败：{}", e);
             result.setMessage("添加商标注册申请书失败");
             return result;
+        }
+    }
+
+    private void saveOrUpdateWts(HttpServletRequest request, String appguid) {
+        //修改委托书
+        Object wts = request.getSession().getAttribute("session_wts" + appguid);
+        request.getSession().removeAttribute("session_wts" + appguid);
+        if (wts != null) {
+            AppImage img = (AppImage) wts;
+            if (img.getGuid() == null) {
+                String maxGuid = appImageService.getMaxGuid();
+                String guid = StringUtils.incGuid(maxGuid);
+                img.setGuid(guid);
+                appImageService.save(img);
+            } else {
+                appImageService.update(img);
+            }
         }
     }
 
@@ -448,7 +380,7 @@ public class Sqs01Controller extends BaseController {
                 return result;
             }
             // 验证是否可删除：如果申请书已经通过了财务审核则不可删除
-            if("1".equals(sqsTemp.getAccountstate())){
+            if ("1".equals(sqsTemp.getAccountstate())) {
                 result.setSuccess(false);
                 result.setMessage("申请书已通过财务审核，不可被删除！");
                 return result;
@@ -513,10 +445,10 @@ public class Sqs01Controller extends BaseController {
      */
     @RequestMapping(value = "/picClean")
     @ResponseBody
-    public AjaxResult picClean(HttpServletRequest request) throws IOException {
+    public AjaxResult picClean(HttpServletRequest request, String guid) throws IOException {
         AjaxResult result = new AjaxResult();
         try {
-            request.getSession().setAttribute("session_pic", new byte[0]);
+            request.getSession().setAttribute("session_pic" + guid, new byte[0]);
             result.setSuccess(true);
             result.setMessage("操作成功！");
         } catch (Exception e) {
@@ -543,7 +475,7 @@ public class Sqs01Controller extends BaseController {
             MultipartFile file = multipartRequest.getFile("upload_pic");
             String guid = request.getParameter("guid");
             byte[] pic = file.getBytes();
-            request.getSession().setAttribute("session_pic", pic);
+            request.getSession().setAttribute("session_pic" + guid, pic);
             LOGGER.debug("--------" + file.getOriginalFilename());
 //            Sqs01 sqs01 = new Sqs01();
 //            sqs01.setGuid(guid);
@@ -602,7 +534,7 @@ public class Sqs01Controller extends BaseController {
                 appImage.setTpwjgs(file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1));
 //                appImageService.update(appImage);
             }
-            request.getSession().setAttribute("session_wts", appImage);
+            request.getSession().setAttribute("session_wts" + appguid, appImage);
             result.setSuccess(true);
             result.setMessage("上传成功！");
         } catch (Exception e) {
@@ -645,61 +577,7 @@ public class Sqs01Controller extends BaseController {
                     return result;
                 }
             }
-            if (sqs01.getTmKindJ() == null) {//集体
-                sqs01.setTmKindJ(false);
-            }
-            if (sqs01.getTmKindT() == null) {//证明
-                sqs01.setTmKindT(false);
-            }
-            if (sqs01.getIfCommon0() == null) {//是否共同申请
-                sqs01.setIfCommon0(false);
-                sqs01.setIfCommon1(true);
-            } else {
-                sqs01.setIfCommon0(true);
-                sqs01.setIfCommon1(false);
-            }
-            if (sqs01.getSolid() == null) {//三维
-                sqs01.setSolid(false);
-            }
-            if (sqs01.getColour() == null) {//颜色
-                sqs01.setColour(false);
-            }
-            if (sqs01.getSound() == null) {//声音
-                sqs01.setSound(false);
-            }
-
-            if (sqs01.getTmKindJ() || sqs01.getTmKindT() || sqs01.getIfCommon0() ||
-                    sqs01.getSolid() || sqs01.getColour() || sqs01.getSound()) {
-                sqs01.setTmKindY(false);//有商标申请声明
-            } else {
-                sqs01.setTmKindY(true);//无商标申请声明
-            }
-
-            // fax
-            sqs01.setFax(common_fax);
-            //attach
-            if (StringUtils.isNotBlank(sqs01.getAddComm())) {
-                sqs01.setAttach("1");
-            } else {
-                sqs01.setAttach("0");
-            }
-            sqs01.setDlguid(common_dlguid);
-            //费用计算--费用在前端计算
-            if (sqs01.getTmKindJ() != null && sqs01.getTmKindJ()) {
-                sqs01.setCountryFee(common_country_fei_jt);
-            } else if (sqs01.getTmKindT() != null && sqs01.getTmKindT()) {
-                sqs01.setCountryFee(common_country_fei_zm);
-            } else {
-                sqs01.setCountryFee(common_country_fei);
-            }
-            String addComm = sqs01.getAddComm();
-            sqs01.setGuiFee(sqs01.getCountryFee());
-            if (com.gt.ms.utils.StringUtils.isNotBlank(addComm)) {
-                String[] split = addComm.split("。")[0].split("；");
-                sqs01.setGuiFeem(sqs01.getCountryFee() / 10 * split.length);
-            } else {
-                sqs01.setGuiFeem(0d);
-            }
+            Sqs01Init(sqs01);
             //agentFee
             if (sqs01.getPice() < sqs01.getGuiFee() + sqs01.getGuiFeem()) {
                 result.setSuccess(false);
@@ -710,27 +588,14 @@ public class Sqs01Controller extends BaseController {
             }
 
             LOGGER.debug(sqs01.toString());
-            Object pic = request.getSession().getAttribute("session_pic");
-            request.getSession().removeAttribute("session_pic");
+            Object pic = getSessionPic(request, sqs01.getGuid());
             if (pic != null)
                 sqs01.setPic((byte[]) pic);
             else
                 sqs01.setPic(null);
             sqs01Server.update(sqs01);
             //修改委托书
-            Object wts = request.getSession().getAttribute("session_wts");
-            request.getSession().removeAttribute("session_wts");
-            if (wts != null) {
-                AppImage img = (AppImage) wts;
-                if (img.getGuid() == null) {
-                    String maxGuid = appImageService.getMaxGuid();
-                    String guid = StringUtils.incGuid(maxGuid);
-                    img.setGuid(guid);
-                    appImageService.save(img);
-                } else {
-                    appImageService.update(img);
-                }
-            }
+            saveOrUpdateWts(request, sqs01.getGuid());
             result.setSuccess(true);
             result.setMessage("修改成功！");
             return result;
@@ -795,7 +660,7 @@ public class Sqs01Controller extends BaseController {
         ServletOutputStream os = null;
         AppImage appImage = null;
         try {
-            Object session_wts = request.getSession().getAttribute("session_wts");
+            Object session_wts = request.getSession().getAttribute("session_wts" + guid);
             if (session_wts != null) {
                 appImage = (AppImage) session_wts;
             } else {
@@ -825,6 +690,160 @@ public class Sqs01Controller extends BaseController {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    /**
+     * 编辑商标注册申请书页
+     *
+     * @param guid
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/copy", method = RequestMethod.GET)
+    public String copyPage(String guid, Model model) {
+        Sqs01 sqs01 = sqs01Server.get(guid);
+        List<Op> ops = opService.getList();
+        sqs01.setPic(null);
+
+        String newGuid = buildGuid();//生成新的guid
+        String agentCode = agentService.getAgentCode(common_dlguid);
+        sqs01.setAgentNumber(agentCode);
+        model.addAttribute("sqs01", sqs01);
+        model.addAttribute("ops", ops);
+        model.addAttribute("newGuid", newGuid);
+        return "sqs/01/copy";
+    }
+
+    /**
+     * /**
+     * 编辑商标注册申请书
+     *
+     * @param sqs01
+     * @return
+     */
+    @RequestMapping(value = "/copy", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult copy(Sqs01 sqs01, String checkTmName, String oldGuid, HttpServletRequest request) {
+
+        AjaxResult result = new AjaxResult();
+        try {
+            Sqs01 sqstemp = sqs01Server.get(sqs01.getGuid());
+            Op currentUser = getCurrentUser();
+            if ('1' != currentUser.getOpChenge().charAt(3)//没有添加申请及案件的权限
+                    && !sqstemp.getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
+                    ) {
+                result.setSuccess(false);
+                result.setMessage("没有权限！");
+                return result;
+            }
+            if (sqs01Server.getCount(sqs01.getGuid()) > 0) {
+                result.setSuccess(false);
+                result.setMessage("表单已提交，请勿重复提交表单！");
+                return result;
+            }
+            if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1) {
+                //判断商标名称是否唯一
+                int count = sqs01Server.getCountByTmName(sqs01);
+                if (count > 0) {
+                    result.setSuccess(false);
+                    result.setMessage("商标名称重复！");
+                    return result;
+                }
+            }
+            Sqs01Init(sqs01);
+            //agentFee
+            if (sqs01.getPice() < sqs01.getGuiFee() + sqs01.getGuiFeem()) {
+                result.setSuccess(false);
+                result.setMessage("费用不足！");
+                return result;
+            } else {
+                sqs01.setAgentFee(sqs01.getPice() - sqs01.getGuiFee() - sqs01.getGuiFeem());
+            }
+
+            LOGGER.debug(sqs01.toString());
+            Object pic = getSessionPic(request, sqs01.getGuid());
+            if (pic != null) {
+                sqs01.setPic((byte[]) pic);
+            } else {
+                Sqs01 oldSqs01 = sqs01Server.get(oldGuid);
+                sqs01.setPic(oldSqs01.getPic());
+            }
+            sqs01.setZtdm("0");
+            sqs01Server.save(sqs01);
+            //修改委托书
+            saveOrUpdateWts(request, sqs01.getGuid());
+            result.setSuccess(true);
+            result.setMessage("添加成功！");
+            return result;
+        } catch (Exception e) {
+            LOGGER.error("添加商标注册申请书失败：{}", e);
+            result.setMessage(e.getMessage());
+            return result;
+        }
+    }
+
+    private Object getSessionPic(HttpServletRequest request, String guid) {
+        Object pic = request.getSession().getAttribute("session_pic" + guid);
+        request.getSession().removeAttribute("session_pic" + guid);
+        return pic;
+    }
+
+    private void Sqs01Init(Sqs01 sqs01) {
+        if (sqs01.getTmKindJ() == null) {//集体
+            sqs01.setTmKindJ(false);
+        }
+        if (sqs01.getTmKindT() == null) {//证明
+            sqs01.setTmKindT(false);
+        }
+        if (sqs01.getIfCommon0() == null) {//是否共同申请
+            sqs01.setIfCommon0(false);
+            sqs01.setIfCommon1(true);
+        } else {
+            sqs01.setIfCommon0(true);
+            sqs01.setIfCommon1(false);
+        }
+        if (sqs01.getSolid() == null) {//三维
+            sqs01.setSolid(false);
+        }
+        if (sqs01.getColour() == null) {//颜色
+            sqs01.setColour(false);
+        }
+        if (sqs01.getSound() == null) {//声音
+            sqs01.setSound(false);
+        }
+
+        if (sqs01.getTmKindJ() || sqs01.getTmKindT() || sqs01.getIfCommon0() ||
+                sqs01.getSolid() || sqs01.getColour() || sqs01.getSound()) {
+            sqs01.setTmKindY(false);//有商标申请声明
+        } else {
+            sqs01.setTmKindY(true);//无商标申请声明
+        }
+
+        // fax
+        sqs01.setFax(common_fax);
+        //attach
+        if (StringUtils.isNotBlank(sqs01.getAddComm())) {
+            sqs01.setAttach("1");
+        } else {
+            sqs01.setAttach("0");
+        }
+        sqs01.setDlguid(common_dlguid);
+        //费用计算
+        if (sqs01.getTmKindJ() != null && sqs01.getTmKindJ()) {
+            sqs01.setCountryFee(common_country_fei_jt);
+        } else if (sqs01.getTmKindT() != null && sqs01.getTmKindT()) {
+            sqs01.setCountryFee(common_country_fei_zm);
+        } else {
+            sqs01.setCountryFee(common_country_fei);
+        }
+        String addComm = sqs01.getAddComm();
+        sqs01.setGuiFee(sqs01.getCountryFee());
+        if (StringUtils.isNotBlank(addComm)) {
+            String[] split = addComm.split("。")[0].split("；");
+            sqs01.setGuiFeem(sqs01.getCountryFee() / 10 * split.length);
+        } else {
+            sqs01.setGuiFeem(0d);
         }
     }
 }

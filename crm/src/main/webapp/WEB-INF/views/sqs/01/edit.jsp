@@ -34,7 +34,7 @@
         $('#sqs01EditForm').form({
             url: '${path }/sqs/01/edit',
             onSubmit: function () {
-                if($("#commServ").val()==null||$("#commServ").val()==""){
+                if ($("#commServ").val() == null || $("#commServ").val() == "") {
                     parent.$.messager.alert('提示', "请选择商品/服务项目", 'info');
                     return false;
                 }
@@ -57,7 +57,13 @@
                 }
             }
         });
-
+        //修改类别时清空商品/服务项目
+        $("#class_").numberbox({
+            "onChange": function () {
+                $("#commServ").val("");
+                $("#addComm").val("");
+            }
+        });
     });
     //选择标样
     function selectPic() {
@@ -70,8 +76,7 @@
                 $("#pic").val(null);
                 $("#img_pic").attr("src", "");
                 $("#pic_text").val(null);
-                $.post('${path }/sqs/01/picClean', {
-                }, function (result) {
+                $.post('${path }/sqs/01/picClean', {guid: $("#guid").val()}, function (result) {
                     if (result.success) {
                         parent.$.messager.alert('提示', result.message, 'info');
                     }
@@ -88,14 +93,14 @@
 
     //添加小类
     function addItemFun() {
-        if ($("#class_").val() == null || $("#class_").val() == ""||isNaN($("#class_").val())) {
+        if ($("#class_").val() == null || $("#class_").val() == "" || isNaN($("#class_").val())) {
             parent.$.messager.alert('提示', '请输入小类', 'info');
         } else if (parseInt($("#class_").val()) < 1 || parseInt($("#class_").val()) > 45) {
             parent.$.messager.alert('提示', '没有这个类别', 'info');
-        }else {
+        } else {
             parent.$.modalDialog.class_ = $("#class_");
-            parent.$.modalDialog.commServ =  $("#commServ");
-            parent.$.modalDialog.addComm =  $("#addComm");
+            parent.$.modalDialog.commServ = $("#commServ");
+            parent.$.modalDialog.addComm = $("#addComm");
             parent.$.modalDialog({
                 title: '选择商品',
                 width: 500,
@@ -104,7 +109,7 @@
                 buttons: [{
                     text: '添加',
                     handler: function () {
-                        var saveItem =   parent.$.modalDialog.saveItem;
+                        var saveItem = parent.$.modalDialog.saveItem;
                         saveItem();
 //                    parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
 //                    var f = parent.$.modalDialog.handler.find('#sqs01AddItemForm');
@@ -185,7 +190,7 @@
     }
 </script>
 <div class="easyui-layout" data-options="fit:true,border:false">
-    <div data-options="region:'center',border:false" title="商标注册申请书"
+    <div data-options="region:'center',border:false" title="商标注册申请书-编辑"
          style="overflow: hidden;padding: 3px;overflow-y:scroll ">
 
         <form id="sqs01EditForm" method="post" enctype="multipart/form-data">
@@ -364,14 +369,16 @@
                 <tr>
                     <td>商标说明</td>
                     <td colspan="3"><input name="dgnDesc" type="text" class="easyui-validatebox"
-                                           data-options="required:true" value="${sqs01.dgnDesc}" style="width: 100%"></td>
+                                           data-options="required:true" value="${sqs01.dgnDesc}" style="width: 100%">
+                    </td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <
                     <td>类别</td>
-                    <td><input id="class_" name="class_" type="text" class="easyui-numberbox"  data-options="required:true"
+                    <td><input id="class_" name="class_" type="text" class="easyui-numberbox"
+                               data-options="required:true"
                                value="${sqs01.class_}">
                         <a onclick="addItemFun();" href="javascript:void(0);" class="easyui-linkbutton"
                            data-options="plain:true,iconCls:'icon-add'">选择商品</a></td>
@@ -386,7 +393,8 @@
                 <tr>
                     <td>商品/服务项目</td>
                     <td colspan="5"><textarea id="commServ" style="width: 100%;height: 50px;"
-                                              data-options="required:true"    name="commServ">${sqs01.commServ}</textarea></td>
+                                              data-options="required:true" name="commServ">${sqs01.commServ}</textarea>
+                    </td>
                 </tr>
                 <tr>
                     <td>增加商品/服务项目</td>
@@ -396,8 +404,8 @@
                 <tr>
                     <td>商标名称</td>
                     <td><input name="tmName" type="text" class="easyui-validatebox"
-                               data-options="required:true"  value="${sqs01.tmName}">
-                        <input type="checkbox" checked name="checkTmName" value="1" >检查
+                               data-options="required:true" value="${sqs01.tmName}">
+                        <input type="checkbox" checked name="checkTmName" value="1">检查
                         <%--<input type="checkbox">监测--%>
                     </td>
                     <td>注册号</td>

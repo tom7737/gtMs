@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.remind.RemindCalendarMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.remind.RemindCalendar">
+        <id column="guid" jdbcType="NVARCHAR" property="guid"/>
+        <result column="yhid" jdbcType="NVARCHAR" property="yhid"/>
+        <result column="rcrq" jdbcType="NVARCHAR" property="rcrq"/>
+        <result column="jzrq" jdbcType="NVARCHAR" property="jzrq"/>
+        <result column="rcnr" jdbcType="NVARCHAR" property="rcnr"/>
+        <result column="rczt" jdbcType="NVARCHAR" property="rczt"/>
+        <result column="wcrq" jdbcType="NVARCHAR" property="wcrq"/>
+        <result column="wcnr" jdbcType="NVARCHAR" property="wcnr"/>
+        <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    guid, yhid, rcrq, jzrq, rcnr, rczt, wcrq, wcnr, cjsj
+  </sql>
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from remind_calendar
+        where guid = #{guid,jdbcType=NVARCHAR}
+    </select>
+    <delete id="remove" parameterType="java.lang.String">
+    delete from remind_calendar
+    where guid = #{guid,jdbcType=NVARCHAR}
+  </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.remind.RemindCalendar">
+    insert into remind_calendar (guid, yhid, rcrq, jzrq, rcnr, rczt, wcrq, wcnr, cjsj)
+    values (#{guid,jdbcType=NVARCHAR}, #{yhid,jdbcType=NVARCHAR}, #{rcrq,jdbcType=NVARCHAR},
+      #{jzrq,jdbcType=NVARCHAR}, #{rcnr,jdbcType=NVARCHAR}, #{rczt,jdbcType=NVARCHAR},
+      #{wcrq,jdbcType=NVARCHAR}, #{wcnr,jdbcType=NVARCHAR}, #{cjsj,jdbcType=TIMESTAMP})
+  </insert>
+    <update id="update" parameterType="com.gt.ms.entity.remind.RemindCalendar">
+        update remind_calendar
+        <set>
+            <if test="yhid != null">
+                yhid = #{yhid,jdbcType=NVARCHAR},
+            </if>
+            <if test="rcrq != null">
+                rcrq = #{rcrq,jdbcType=NVARCHAR},
+            </if>
+            <if test="jzrq != null">
+                jzrq = #{jzrq,jdbcType=NVARCHAR},
+            </if>
+            <if test="rcnr != null">
+                rcnr = #{rcnr,jdbcType=NVARCHAR},
+            </if>
+            <if test="rczt != null">
+                rczt = #{rczt,jdbcType=NVARCHAR},
+            </if>
+            <if test="wcrq != null">
+                wcrq = #{wcrq,jdbcType=NVARCHAR},
+            </if>
+            <if test="wcnr != null">
+                wcnr = #{wcnr,jdbcType=NVARCHAR},
+            </if>
+            <if test="cjsj != null">
+                cjsj = #{cjsj,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where guid = #{guid,jdbcType=NVARCHAR}
+    </update>
+</mapper>

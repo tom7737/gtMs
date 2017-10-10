@@ -136,13 +136,22 @@ public class App01More  implements java.io.Serializable {
     public void setZtdm(String ztdm) {
         this.ztdm = ztdm;
     }
-   
 
 
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "App01More{" +
+                "guid='" + guid + '\'' +
+                ", dlguid='" + dlguid + '\'' +
+                ", appguid='" + appguid + '\'' +
+                ", agentNumber='" + agentNumber + '\'' +
+                ", class_='" + class_ + '\'' +
+                ", commServ='" + commServ + '\'' +
+                ", addComm='" + addComm + '\'' +
+                ", guiFee=" + guiFee +
+                ", memo='" + memo + '\'' +
+                ", cjsj=" + cjsj +
+                ", ztdm='" + ztdm + '\'' +
+                '}';
+    }
 }

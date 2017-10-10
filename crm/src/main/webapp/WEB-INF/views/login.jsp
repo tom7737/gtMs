@@ -179,6 +179,9 @@
                     if (result.success) {
                         window.location.href='${path }/index';
                     }else{
+                        if("验证码错误"==result.message){
+                            changeImg();
+                        }
                          $.messager.show({
                             title:'提示',
                             msg:'<div class="light-info"><div class="light-tip icon-tip"></div><div>'+result.message+'</div></div>',

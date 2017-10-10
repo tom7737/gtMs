@@ -1,6 +1,8 @@
 package com.gt.ms.entity.sqs;
 
 
+import java.util.Arrays;
+
 /**
  * 商标注册申请书
  */
@@ -835,6 +837,89 @@ public class Sqs01 implements java.io.Serializable {
         this.guiFeem = guiFeem;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Sqs01{" +
+                "guid='" + guid + '\'' +
+                ", appName='" + appName + '\'' +
+                ", appAddr='" + appAddr + '\'' +
+                ", ifCommon0=" + ifCommon0 +
+                ", ifCommon1=" + ifCommon1 +
+                ", postCode='" + postCode + '\'' +
+                ", person='" + person + '\'' +
+                ", phone='" + phone + '\'' +
+                ", fax='" + fax + '\'' +
+                ", agentName='" + agentName + '\'' +
+                ", tmKindY=" + tmKindY +
+                ", tmKindJ=" + tmKindJ +
+                ", tmKindT=" + tmKindT +
+                ", solid=" + solid +
+                ", colour=" + colour +
+                ", dgnDesc='" + dgnDesc + '\'' +
+                ", class_='" + class_ + '\'' +
+                ", commServ='" + commServ + '\'' +
+                ", attach='" + attach + '\'' +
+                ", commonApp='" + commonApp + '\'' +
+                ", intCode='" + intCode + '\'' +
+                ", memo1='" + memo1 + '\'' +
+                ", tmName='" + tmName + '\'' +
+                ", addComm='" + addComm + '\'' +
+                ", agentNumber='" + agentNumber + '\'' +
+                ", pic=" + Arrays.toString(pic) +
+                ", ctmCode='" + ctmCode + '\'' +
+                ", makeDate='" + makeDate + '\'' +
+                ", makeOp='" + makeOp + '\'' +
+                ", sentDate='" + sentDate + '\'' +
+                ", sentOp='" + sentOp + '\'' +
+                ", sentState='" + sentState + '\'' +
+                ", listCode='" + listCode + '\'' +
+                ", rtnState='" + rtnState + '\'' +
+                ", regCode='" + regCode + '\'' +
+                ", pice=" + pice +
+                ", counterman='" + counterman + '\'' +
+                ", archiveNo='" + archiveNo + '\'' +
+                ", guiFee=" + guiFee +
+                ", regType='" + regType + '\'' +
+                ", accountman='" + accountman + '\'' +
+                ", accountstate='" + accountstate + '\'' +
+                ", accountmemo='" + accountmemo + '\'' +
+                ", accountdate='" + accountdate + '\'' +
+                ", invoice='" + invoice + '\'' +
+                ", receiptcode='" + receiptcode + '\'' +
+                ", invoicedate='" + invoicedate + '\'' +
+                ", invoiceman='" + invoiceman + '\'' +
+                ", receivable='" + receivable + '\'' +
+                ", appDate='" + appDate + '\'' +
+                ", sqdate='" + sqdate + '\'' +
+                ", dlguid='" + dlguid + '\'' +
+                ", fpqx='" + fpqx + '\'' +
+                ", ztdm='" + ztdm + '\'' +
+                ", appCode='" + appCode + '\'' +
+                ", jkrq='" + jkrq + '\'' +
+                ", jkfs='" + jkfs + '\'' +
+                ", sjje='" + sjje + '\'' +
+                ", ywyOp='" + ywyOp + '\'' +
+                ", snwh='" + snwh + '\'' +
+                ", cjid='" + cjid + '\'' +
+                ", cjidZb='" + cjidZb + '\'' +
+                ", agentFee=" + agentFee +
+                ", gfcz='" + gfcz + '\'' +
+                ", countryFee=" + countryFee +
+                ", appNameE='" + appNameE + '\'' +
+                ", appAddrE='" + appAddrE + '\'' +
+                ", appState='" + appState + '\'' +
+                ", gjid='" + gjid + '\'' +
+                ", appNew='" + appNew + '\'' +
+                ", classMore=" + classMore +
+                ", sound=" + sound +
+                ", priorityClaim=" + priorityClaim +
+                ", priorityProve=" + priorityProve +
+                ", priorityState='" + priorityState + '\'' +
+                ", appNumber='" + appNumber + '\'' +
+                ", appJsr='" + appJsr + '\'' +
+                ", appJsrdz='" + appJsrdz + '\'' +
+                ", appJsryb='" + appJsryb + '\'' +
+                ", guiFeem=" + guiFeem +
+                '}';
+    }
 }

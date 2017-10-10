@@ -1,7 +1,11 @@
 package com.gt.ms.entity.agent;
 
 import java.util.Date;
-
+/**
+ *代理编号
+ * @author : admin
+ * @date : 2017-10-01 11:13
+ */
 public class AgentCode {
     private String guid;//唯一编号，主键
 
@@ -81,5 +85,19 @@ public class AgentCode {
 
     public void setCjsj(Date cjsj) {
         this.cjsj = cjsj;
+    }
+
+    @Override
+    public String toString() {
+        return "AgentCode{" +
+                "guid='" + guid + '\'' +
+                ", apptype='" + apptype + '\'' +
+                ", appName='" + appName + '\'' +
+                ", agentNumber='" + agentNumber + '\'' +
+                ", appguid='" + appguid + '\'' +
+                ", dlguid='" + dlguid + '\'' +
+                ", makeOp='" + makeOp + '\'' +
+                ", cjsj=" + cjsj +
+                '}';
     }
 }

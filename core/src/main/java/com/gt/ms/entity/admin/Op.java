@@ -392,4 +392,30 @@ public class Op implements Serializable {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Op{" +
+                "opCode='" + opCode + '\'' +
+                ", opName='" + opName + '\'' +
+                ", opDept='" + opDept + '\'' +
+                ", opPassword='" + opPassword + '\'' +
+                ", opLimit='" + opLimit + '\'' +
+                ", opRegist='" + opRegist + '\'' +
+                ", opLogin='" + opLogin + '\'' +
+                ", opPrelogin='" + opPrelogin + '\'' +
+                ", opChenge='" + opChenge + '\'' +
+                ", opMemo='" + opMemo + '\'' +
+                ", opTruename='" + opTruename + '\'' +
+                ", opHits=" + opHits +
+                ", opPower='" + opPower + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", opExport='" + opExport + '\'' +
+                ", opState='" + opState + '\'' +
+                ", opSfzh='" + opSfzh + '\'' +
+                ", opJs=" + opJs +
+                ", opJsmr=" + opJsmr +
+                ", opZb='" + opZb + '\'' +
+                ", opZbjs='" + opZbjs + '\'' +
+                '}';
+    }
 }

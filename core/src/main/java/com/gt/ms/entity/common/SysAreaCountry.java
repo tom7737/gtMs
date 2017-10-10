@@ -33,4 +33,13 @@ public class SysAreaCountry {
     public void setGjpy(String gjpy) {
         this.gjpy = gjpy == null ? null : gjpy.trim();
     }
+
+    @Override
+    public String toString() {
+        return "SysAreaCountry{" +
+                "gjid='" + gjid + '\'' +
+                ", gjmc='" + gjmc + '\'' +
+                ", gjpy='" + gjpy + '\'' +
+                '}';
+    }
 }

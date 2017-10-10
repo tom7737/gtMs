@@ -63,8 +63,30 @@
             </list>
         </property>
     </bean>
-
-
+    <!-- 总错误处理 -->
+    <bean id="exceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView">
+            <value>/error/500</value>
+        </property>
+        <property name="defaultStatusCode">
+            <value>500</value>
+        </property>
+        <!-- 异常记录到日志 -->
+        <property name="warnLogCategory">
+            <value>
+                org.springframework.web.servlet.handler.SimpleMappingExceptionResolver
+            </value>
+        </property>
+    </bean>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <!-- 不包含的 -->
+            <mvc:exclude-mapping path="/static/**"/>
+            <bean class="com.gt.ms.interceptor.LoggerInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <!-- ueditor -->
     <!--<bean class="com.gt.ms.ueditor.UeditorManager"/>-->
     <!--<bean class="com.gt.ms.ueditor.UeditorService"/>-->

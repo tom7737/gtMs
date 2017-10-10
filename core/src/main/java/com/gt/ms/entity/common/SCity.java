@@ -62,4 +62,16 @@ public class SCity {
     public void setDateupdated(Date dateupdated) {
         this.dateupdated = dateupdated;
     }
+
+    @Override
+    public String toString() {
+        return "SCity{" +
+                "cityid=" + cityid +
+                ", cityname='" + cityname + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                ", provinceid=" + provinceid +
+                ", datecreated=" + datecreated +
+                ", dateupdated=" + dateupdated +
+                '}';
+    }
 }

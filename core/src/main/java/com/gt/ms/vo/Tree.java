@@ -19,6 +19,18 @@ public class Tree implements java.io.Serializable {
     private String iconCls;
     private String pid;
 
+    public Tree() {
+    }
+
+    public Tree(Long id, String text, String state, boolean checked, String iconCls, Object attributes) {
+        this.id = id;
+        this.text = text;
+        this.state = state;
+        this.checked = checked;
+        this.iconCls = iconCls;
+        this.attributes = attributes;
+    }
+
     public Long getId() {
         return id;
     }

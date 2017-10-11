@@ -3,34 +3,37 @@
 <%@ include file="/commons/basejs.jsp" %>
 
 <script type="text/javascript">
+    var picChange,wtsChange;
     $(function () {
         var path, clip = $("#img_pic"), FileReader = window.FileReader;
-        $("#pic").change(function () {
-            if (FileReader) {//chrome浏览器处理
-                var reader = new FileReader(),
-                        file = this.files[0];
-                reader.onload = function (e) {
-                    clip.attr("src", e.target.result);//这里是把图片转成64位数据存入<img>中的src里
-                };
-                reader.readAsDataURL(file);
-                //这里需要延迟一下，否则无法放入文本框内
-                //setTimeout("showchange()",1000);
-            }
-            else {//其他浏览器处理，火狐在这里就不写出来了，网上资料很多
-                path = $(this).val();
-                if (/"\w\W"/.test(path)) {
-                    path = path.slice(1, -1);
-                }
-                clip.attr("src", path);
-            }
-            $("#pic_text").val($(this).val());
+       picChange = function () {
+           if (FileReader) {//chrome浏览器处理
+               var reader = new FileReader(),
+                       file = this.files[0];
+               reader.onload = function (e) {
+                   clip.attr("src", e.target.result);//这里是把图片转成64位数据存入<img>中的src里
+               };
+               reader.readAsDataURL(file);
+               //这里需要延迟一下，否则无法放入文本框内
+               //setTimeout("showchange()",1000);
+           }
+           else {//其他浏览器处理，火狐在这里就不写出来了，网上资料很多
+               path = $(this).val();
+               if (/"\w\W"/.test(path)) {
+                   path = path.slice(1, -1);
+               }
+               clip.attr("src", path);
+           }
+           $("#pic_text").val($(this).val());
 
-            uploadInfo("pic", '${path }/sqs/01/picUpload');
-        });
-        $("#wts").change(function () {
-            $("#wts_text").val($(this).val());
-            uploadInfo("wts", '${path }/sqs/01/wtsUpload');
-        })
+           uploadInfo("pic", '${path }/sqs/01/picUpload');
+       }
+       wtsChange = function () {
+           $("#wts_text").val($(this).val());
+           uploadInfo("wts", '${path }/sqs/01/wtsUpload');
+       }
+        $("#pic").change(picChange);
+        $("#wts").change(wtsChange)
         $('#sqs01EditForm').form({
             url: '${path }/sqs/01/copy',
             onSubmit: function () {
@@ -73,7 +76,9 @@
     function cleanPic() {
         parent.$.messager.confirm('询问', '您是否要清空标样？', function (b) {
             if (b) {
-                $("#pic").val(null);
+                $("#pic").remove();
+                $("#pic_text").after('<input id="pic" type="file" name="upload_pic" style="display: none;" accept=".jpg"/>');
+                $("#pic").change(picChange);
                 $("#img_pic").attr("src", "");
                 $("#pic_text").val(null);
                 $.post('${path }/sqs/01/picClean', {guid: $("#guid").val()}, function (result) {

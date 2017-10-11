@@ -3,9 +3,10 @@
 <%@ include file="/commons/basejs.jsp" %>
 
 <script type="text/javascript">
+    var picChange,wtsChange;
     $(function () {
         var path, clip = $("#img_pic"), FileReader = window.FileReader;
-        $("#pic").change(function () {
+        picChange = function () {
             if (FileReader) {//chrome浏览器处理
                 var reader = new FileReader(),
                         file = this.files[0];
@@ -26,11 +27,13 @@
             $("#pic_text").val($(this).val());
 
             uploadInfo("pic", '${path }/sqs/01/picUpload');
-        });
-        $("#wts").change(function () {
+        }
+        wtsChange = function () {
             $("#wts_text").val($(this).val());
             uploadInfo("wts", '${path }/sqs/01/wtsUpload');
-        })
+        }
+        $("#pic").change(picChange);
+        $("#wts").change(wtsChange)
         $('#sqs01EditForm').form({
             url: '${path }/sqs/01/edit',
             onSubmit: function () {
@@ -73,7 +76,9 @@
     function cleanPic() {
         parent.$.messager.confirm('询问', '您是否要清空标样？', function (b) {
             if (b) {
-                $("#pic").val(null);
+                $("#pic").remove();
+                $("#pic_text").after('<input id="pic" type="file" name="upload_pic" style="display: none;" accept=".jpg"/>');
+                $("#pic").change(picChange);
                 $("#img_pic").attr("src", "");
                 $("#pic_text").val(null);
                 $.post('${path }/sqs/01/picClean', {guid: $("#guid").val()}, function (result) {

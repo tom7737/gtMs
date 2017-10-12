@@ -1,17 +1,12 @@
 package com.gt.ms.service.agent.impl;
 
 import com.gt.ms.entity.agent.Agent;
-import com.gt.ms.entity.common.Sbfz;
 import com.gt.ms.mapper.agent.AgentMapper;
-import com.gt.ms.mapper.common.SbfzMapper;
 import com.gt.ms.service.agent.AgentService;
 import com.gt.ms.service.base.BaseServiceImpl;
-import com.gt.ms.service.common.SbfzService;
 import com.gt.ms.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Created by admini on 2017/5/10.
@@ -40,8 +35,10 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, String> implements 
         agentCode = before + (++integer);
         agent.setAgentCode(agentCode);
         int i = agentMapper.updateAgentCode(agent);
-        if (i == 0)
+        if (i == 0) {
             return null;
-        return agentCode;
+        } else {
+            return agentCode.replaceAll("GT", "HN");
+        }
     }
 }

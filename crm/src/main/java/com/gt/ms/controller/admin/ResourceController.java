@@ -1,10 +1,10 @@
 package com.gt.ms.controller.admin;
 
 import com.gt.ms.controller.base.BaseController;
+import com.gt.ms.entity.admin.Resource;
 import com.gt.ms.service.admin.ResourceService;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.Tree;
-import com.gt.ms.entity.admin.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,8 +60,10 @@ public class ResourceController extends BaseController {
         trees.add(tree1);
         Tree tree2 = new Tree(2L, "客户模块", "open", false, "icon-company", "");
         Tree tree21 = new Tree(21L, "客户管理", "open", false, "icon-list", "/customer/manager");
+        Tree tree22 = new Tree(22L, "客户回访", "open", false, "icon-list", "/customer/return/manager");
         List<Tree> trees2 = new ArrayList<Tree>();
         trees2.add(tree21);
+        trees2.add(tree22);
         tree2.setChildren(trees2);
         trees.add(tree2);
 

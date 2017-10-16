@@ -9,13 +9,76 @@
         <result column="ctm_ret_mantwo" property="ctmRetMantwo" jdbcType="NVARCHAR"/>
         <result column="ctm_ret_way" property="ctmRetWay" jdbcType="NVARCHAR"/>
         <result column="make_date" property="makeDate" jdbcType="TIMESTAMP"/>
-        <result column="ctm_re_memo" property="ctmRetMemo" jdbcType="NVARCHAR"/>
+        <result column="ctm_re_memo" property="ctmRetMemo" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <resultMap id="BaseVoResultMap" type="com.gt.ms.vo.customer.CustomerReturnVo">
+        <id column="ctm_ret_code" property="ctmRetCode" jdbcType="NVARCHAR"/>
+        <result column="ctm_code" property="ctmCode" jdbcType="NVARCHAR"/>
+        <result column="ctm_ret_date" property="ctmRetDate" jdbcType="TIMESTAMP"/>
+        <result column="ctm_ret_manone" property="ctmRetManone" jdbcType="NVARCHAR"/>
+        <result column="ctm_ret_mantwo" property="ctmRetMantwo" jdbcType="NVARCHAR"/>
+        <result column="ctm_ret_way" property="ctmRetWay" jdbcType="NVARCHAR"/>
+        <result column="make_date" property="makeDate" jdbcType="TIMESTAMP"/>
+        <result column="ctm_ret_memo" property="ctmRetMemo" jdbcType="LONGVARCHAR"/>
+        <result column="ctm_name" property="ctmName" jdbcType="NVARCHAR"/>
+        <result column="ctm_name_en" property="ctmNameEn" jdbcType="NVARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
     ctm_code, ctm_ret_code, ctm_ret_date, ctm_ret_manone, ctm_ret_mantwo
-    , ctm_ret_way,make_date,ctm_re_memo
+    , ctm_ret_way,make_date,ctm_ret_memo
   </sql>
+    <sql id="Base_Vo_Column_List">
+        ctm_code, ctm_ret_code, ctm_ret_date, ctm_ret_manone, ctm_ret_mantwo
+        , ctm_ret_way,make_date,ctm_ret_memo,ctm_name,ctm_name_en
+    </sql>
+    <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="BaseVoResultMap">
+        SELECT
+        <include refid="Base_Vo_Column_List"/>
+        FROM(
 
+        SELECT TOP ${size+from} ROW_NUMBER() OVER(
+        <choose>
+            <when test="sort!=null and sort!='seq'">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                ORDER BY ctm_ret_code DESC
+            </otherwise>
+        </choose>
+        ) AS ROWID,customerreturn.*,customer.ctm_name,customer.ctm_name_en
+
+        FROM customer inner join customerreturn
+        on customer.ctm_code = customerreturn.ctm_code
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                customer.make_op = #{condition.makeOpQx}
+            </if>
+            <if test="condition.ctmName!=null and condition.ctmName!=''">
+                and ( customer.ctm_name like '%${condition.ctmName}%' or customer.ctm_name_en like '%${condition.ctmName}%' )
+            </if>
+            <if test="condition.ctmCode!=null and condition.ctmCode!=''">
+                and customer.ctm_code = #{condition.ctmCode}
+            </if>
+        </where>
+        ) AS TEMP1
+        WHERE ROWID> ${from}
+    </select>
+    <select id="findPageCount" parameterType="com.gt.ms.vo.PageInfo" resultType="java.lang.Integer">
+        SELECT COUNT (*)
+        FROM customer inner join customerreturn
+        on customer.ctm_code = customerreturn.ctm_code
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                customer.make_op = #{condition.makeOpQx}
+            </if>
+            <if test="condition.ctmName!=null and condition.ctmName!=''">
+                and ( customer.ctm_name like '%${condition.ctmName}%' or customer.ctm_name_en like '%${condition.ctmName}%' )
+            </if>
+            <if test="condition.ctmCode!=null and condition.ctmCode!=''">
+                and customer.ctm_code = #{condition.ctmCode}
+            </if>
+        </where>
+    </select>
 
     <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
@@ -29,7 +92,7 @@
   </delete>
     <insert id="save" parameterType="com.gt.ms.entity.customer.CustomerReturn">
     insert into customerreturn (ctm_code, ctm_ret_code, ctm_ret_date, ctm_ret_manone, ctm_ret_mantwo
-    , ctm_ret_way,make_date,ctm_re_memo)
+    , ctm_ret_way,make_date,ctm_ret_memo)
     values (#{ctmCode}, #{ctmRetCode}, #{ctmRetDate},
       #{ctmRetManone}, #{ctmRetMantwo}, #{ctmRetWay}, #{makeDate}, #{ctmRetMemo}
       )
@@ -56,7 +119,7 @@
                 make_date = #{makeDate},
             </if>
             <if test="ctmRetMemo != null">
-                ctm_re_memo = #{ctmRetMemo},
+                ctm_ret_memo = #{ctmRetMemo},
             </if>
         </set>
         where ctm_ret_code = #{ctmRetCode}

@@ -80,7 +80,7 @@
                 make_op = #{condition.makeOpQx}
             </if>
             <if test="condition.ctmName!=null and condition.ctmName!=''">
-                and ctm_name like '%${condition.ctmName}%'
+                and (ctm_name like '%${condition.ctmName}%' or ctm_name_en like '%${condition.ctmName}%')
             </if>
             <if test="condition.ctmCode!=null and condition.ctmCode!=''">
                 and ctm_code = #{condition.ctmCode}
@@ -97,7 +97,7 @@
                 make_op = #{condition.makeOpQx}
             </if>
             <if test="condition.ctmName!=null and condition.ctmName!=''">
-                and ctm_name like '%${condition.ctmName}%'
+                and (ctm_name like '%${condition.ctmName}%' or ctm_name_en like '%${condition.ctmName}%')
             </if>
             <if test="condition.ctmCode!=null and condition.ctmCode!=''">
                 and ctm_code = #{condition.ctmCode}

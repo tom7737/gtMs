@@ -1,12 +1,15 @@
 package com.gt.ms.entity.common;
 
-import java.io.Serializable;
+import com.gt.ms.entity.base.BaseEntity;
+
 
 /**
  * 商品代码
- * @author 
+ *
+ * @author
  */
-public class Tspdm implements Serializable {
+public class Tspdm extends BaseEntity {
+    private static final long serialVersionUID = 8984457672393177384L;
     private String bf;//所属部分
 
     private String bfzs;//所属部分注释
@@ -33,8 +36,6 @@ public class Tspdm implements Serializable {
 
     private String ztdm;//状态代码
 
-
-    private static final long serialVersionUID = 1L;
 
     public String getBf() {
         return bf;

@@ -1,5 +1,7 @@
 package com.gt.ms.entity.remind;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.sql.Timestamp;
 
 /**
@@ -7,17 +9,18 @@ import java.sql.Timestamp;
  *
  * @Author twt 2017年10月1日 10:19:15
  */
-public class RemindCalendar implements java.io.Serializable {
+public class RemindCalendar extends BaseEntity {
 
+    private static final long serialVersionUID = -7057201014094388912L;
     // Fields
-    private String    guid;
-    private String    yhid;    // 被提醒用户
-    private String    rcrq;    // 日程日期
-    private String    jzrq;    // 截止日期
-    private String    rcnr;    // 日程内容
-    private String    rczt;    // 日程状态，0否/1是
-    private String    wcrq;    // 完成日期
-    private String    wcnr;    // 完成内容
+    private String guid;
+    private String yhid;    // 被提醒用户
+    private String rcrq;    // 日程日期
+    private String jzrq;    // 截止日期
+    private String rcnr;    // 日程内容
+    private String rczt;    // 日程状态，0否/1是
+    private String wcrq;    // 完成日期
+    private String wcnr;    // 完成内容
     private Timestamp cjsj;    // 创建时间
 
     // Constructors
@@ -25,7 +28,8 @@ public class RemindCalendar implements java.io.Serializable {
     /**
      * default constructor
      */
-    public RemindCalendar() {}
+    public RemindCalendar() {
+    }
 
     /**
      * full constructor
@@ -114,7 +118,21 @@ public class RemindCalendar implements java.io.Serializable {
     public void setYhid(String yhid) {
         this.yhid = yhid;
     }
+
+    @Override
+    public String toString() {
+        return "RemindCalendar{" +
+                "guid='" + guid + '\'' +
+                ", yhid='" + yhid + '\'' +
+                ", rcrq='" + rcrq + '\'' +
+                ", jzrq='" + jzrq + '\'' +
+                ", rcnr='" + rcnr + '\'' +
+                ", rczt='" + rczt + '\'' +
+                ", wcrq='" + wcrq + '\'' +
+                ", wcnr='" + wcnr + '\'' +
+                ", cjsj=" + cjsj +
+                '}';
+    }
 }
 
 
-//~ Formatted by Jindent --- http://www.jindent.com

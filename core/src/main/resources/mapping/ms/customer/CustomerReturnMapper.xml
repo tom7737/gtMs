@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gt.ms.mapper.customer.CustomerReturnMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.customer.CustomerReturn">
+        <id column="ctm_ret_code" property="ctmRetCode" jdbcType="NVARCHAR"/>
+        <result column="ctm_code" property="ctmCode" jdbcType="NVARCHAR"/>
+        <result column="ctm_ret_date" property="ctmRetDate" jdbcType="TIMESTAMP"/>
+        <result column="ctm_ret_manone" property="ctmRetManone" jdbcType="NVARCHAR"/>
+        <result column="ctm_ret_mantwo" property="ctmRetMantwo" jdbcType="NVARCHAR"/>
+        <result column="ctm_ret_way" property="ctmRetWay" jdbcType="NVARCHAR"/>
+        <result column="make_date" property="makeDate" jdbcType="TIMESTAMP"/>
+        <result column="ctm_re_memo" property="ctmRetMemo" jdbcType="NVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ctm_code, ctm_ret_code, ctm_ret_date, ctm_ret_manone, ctm_ret_mantwo
+    , ctm_ret_way,make_date,ctm_re_memo
+  </sql>
+
+
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from customerreturn
+        where ctm_ret_code = #{ctmRetCode}
+    </select>
+    <delete id="remove" parameterType="java.lang.Long">
+    delete from customerreturn
+    where ctm_ret_code = #{ctmRetCode}
+  </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.customer.CustomerReturn">
+    insert into customerreturn (ctm_code, ctm_ret_code, ctm_ret_date, ctm_ret_manone, ctm_ret_mantwo
+    , ctm_ret_way,make_date,ctm_re_memo)
+    values (#{ctmCode}, #{ctmRetCode}, #{ctmRetDate},
+      #{ctmRetManone}, #{ctmRetMantwo}, #{ctmRetWay}, #{makeDate}, #{ctmRetMemo}
+      )
+  </insert>
+    <update id="update" parameterType="com.gt.ms.entity.customer.CustomerReturn">
+        update customerreturn
+        <set>
+            <if test="ctmCode != null">
+                ctm_code = #{ctmCode},
+            </if>
+            <if test="ctmRetDate != null">
+                ctm_ret_date = #{ctmRetDate},
+            </if>
+            <if test="ctmRetManone != null">
+                ctm_ret_manone = #{ctmRetManone},
+            </if>
+            <if test="ctmRetMantwo != null">
+                ctm_ret_mantwo = #{ctmRetMantwo},
+            </if>
+            <if test="ctmRetWay != null">
+                ctm_ret_way = #{ctmRetWay},
+            </if>
+            <if test="makeDate != null">
+                make_date = #{makeDate},
+            </if>
+            <if test="ctmRetMemo != null">
+                ctm_re_memo = #{ctmRetMemo},
+            </if>
+        </set>
+        where ctm_ret_code = #{ctmRetCode}
+    </update>
+</mapper>

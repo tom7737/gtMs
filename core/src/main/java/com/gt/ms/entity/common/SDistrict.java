@@ -1,8 +1,11 @@
 package com.gt.ms.entity.common;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.util.Date;
 
-public class SDistrict {
+public class SDistrict  extends BaseEntity {
+    private static final long serialVersionUID = 3680035862863007539L;
     private Long districtid;
 
     private String districtname;

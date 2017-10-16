@@ -1,6 +1,7 @@
 package com.gt.ms.entity.admin;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.gt.ms.entity.base.BaseEntity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
  * @author：zhixuan.wang
  * @date：2015/10/1 14:51
  */
-public class Resource implements Serializable {
+public class Resource extends BaseEntity {
 
     private static final long serialVersionUID = -5321613594382537470L;
 

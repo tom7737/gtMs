@@ -1,10 +1,13 @@
 package com.gt.ms.entity.callcenter;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 /**
  * CallCenterSysId entity. @author MyEclipse Persistence Tools
  */
-public class CallCenterSys implements java.io.Serializable {
+public class CallCenterSys  extends BaseEntity {
 
+    private static final long serialVersionUID = -5152920478945273258L;
     // Fields
     private String dm;
     private String ms;

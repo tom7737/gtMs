@@ -1,12 +1,15 @@
 package com.gt.ms.entity.callcenter;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.sql.Timestamp;
 
 /**
  * CallCenterKhId entity. @author MyEclipse Persistence Tools
  */
-public class CallCenterKh implements java.io.Serializable {
+public class CallCenterKh  extends BaseEntity {
 
+    private static final long serialVersionUID = -186458049496248000L;
     // Fields
     private String    guid;
     private String    ctmName;

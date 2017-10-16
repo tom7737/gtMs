@@ -3,7 +3,9 @@ package com.gt.ms.entity.customer;
 /**
  * 客户
  */
-public class Customer implements java.io.Serializable  {
+public class Customer implements java.io.Serializable {
+
+    private static final long serialVersionUID = -3506377895722118787L;
     private String ctmCode;//申请人编号
 
     private String ctmName;//客户名称

@@ -1,11 +1,14 @@
 package com.gt.ms.entity.common;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.util.Arrays;
 
 /**
  * 城市
  */
-public class SysAreaCity {
+public class SysAreaCity extends BaseEntity {
+    private static final long serialVersionUID = -4325526137788528665L;
     private String dzid;//市地址ID
 
     private String dzpy;//名称首字母

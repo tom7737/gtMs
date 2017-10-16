@@ -1,9 +1,12 @@
 package com.gt.ms.entity.common;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 /**
  * 省
  */
-public class SysAreaState {
+public class SysAreaState extends BaseEntity {
+    private static final long serialVersionUID = 158229993584655056L;
     private String dzid;//省地址ID
 
     private String dzmc;//名称

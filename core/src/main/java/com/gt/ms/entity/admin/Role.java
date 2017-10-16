@@ -1,5 +1,7 @@
 package com.gt.ms.entity.admin;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.io.Serializable;
 
 /**
@@ -7,7 +9,7 @@ import java.io.Serializable;
  * @author：zhixuan.wang
  * @date：2015/10/1 14:51
  */
-public class Role implements Serializable {
+public class Role extends BaseEntity {
 
     private static final long serialVersionUID = -1756241579303707517L;
 

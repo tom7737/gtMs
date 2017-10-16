@@ -1,11 +1,14 @@
 package com.gt.ms.entity.common;
 
 
+import com.gt.ms.entity.base.BaseEntity;
+
 /**
  * 商标分组
  */
 
-public class Sbfz implements java.io.Serializable {
+public class Sbfz extends BaseEntity {
+    private static final long serialVersionUID = -6374713825114400638L;
 
 
     // Fields    

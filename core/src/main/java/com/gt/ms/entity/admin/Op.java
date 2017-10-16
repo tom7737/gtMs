@@ -1,6 +1,8 @@
 package com.gt.ms.entity.admin;
 
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
@@ -8,8 +10,9 @@ import java.io.Serializable;
 /**
  * 用户
  */
-public class Op implements Serializable {
+public class Op extends BaseEntity {
 
+    private static final long serialVersionUID = 8171458231004385820L;
     // Fields
     private String opCode;//用户编号
     private String opName;//用户名

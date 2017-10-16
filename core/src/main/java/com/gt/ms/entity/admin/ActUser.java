@@ -1,6 +1,7 @@
 package com.gt.ms.entity.admin;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gt.ms.entity.base.BaseEntity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
  * 管理员实体类
  * Created by admini on 2017/5/10.
  */
-public class ActUser implements Serializable {
+public class ActUser  extends BaseEntity {
     private static final long serialVersionUID = 170081362881143L;
 
     /**

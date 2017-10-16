@@ -1,13 +1,16 @@
 package com.gt.ms.entity.sqs;
 
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.util.Arrays;
 
 /**
  * 商标注册申请书
  */
 
-public class Sqs01 implements java.io.Serializable {
+public class Sqs01 extends BaseEntity {
+    private static final long serialVersionUID = 1332987374259412838L;
 
 
     // Fields    

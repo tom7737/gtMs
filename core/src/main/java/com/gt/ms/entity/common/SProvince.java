@@ -1,8 +1,11 @@
 package com.gt.ms.entity.common;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.util.Date;
 
-public class SProvince {
+public class SProvince  extends BaseEntity {
+    private static final long serialVersionUID = 4587769362572878992L;
     private Long provinceid;
 
     private String provincename;

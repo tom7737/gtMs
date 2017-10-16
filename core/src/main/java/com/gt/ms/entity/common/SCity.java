@@ -1,8 +1,11 @@
 package com.gt.ms.entity.common;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.util.Date;
 
-public class SCity {
+public class SCity  extends BaseEntity {
+    private static final long serialVersionUID = 1330194901851081778L;
     private Long cityid;
 
     private String cityname;

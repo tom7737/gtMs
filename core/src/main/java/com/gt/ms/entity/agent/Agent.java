@@ -1,8 +1,11 @@
 package com.gt.ms.entity.agent;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.util.Date;
 
-public class Agent {
+public class Agent extends BaseEntity {
+    private static final long serialVersionUID = 4169872367689646682L;
     private String agentName;//代理组织名称
 
     private String agentCodehead;//申请书头编码

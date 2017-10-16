@@ -1,5 +1,7 @@
 package com.gt.ms.entity.callcenter;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.sql.Timestamp;
 
 /**
@@ -8,8 +10,9 @@ import java.sql.Timestamp;
  * @author : admin
  * @date : 2017-10-02 11:27
  */
-public class CallCenter implements java.io.Serializable {
+public class CallCenter extends BaseEntity {
 
+    private static final long serialVersionUID = -3573508439077484474L;
     // Fields
     private String guid;
     private String ctmCode;//申请人编号

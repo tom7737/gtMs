@@ -1,12 +1,17 @@
 package com.gt.ms.entity.agent;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.util.Date;
+
 /**
- *代理编号
+ * 代理编号
+ *
  * @author : admin
  * @date : 2017-10-01 11:13
  */
-public class AgentCode {
+public class AgentCode extends BaseEntity {
+    private static final long serialVersionUID = 3501730897033604473L;
     private String guid;//唯一编号，主键
 
     private String apptype;//申请书类型

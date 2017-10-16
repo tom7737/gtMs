@@ -1,9 +1,12 @@
 package com.gt.ms.entity.common;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 /**
  * 国籍
  */
-public class SysAreaCountry {
+public class SysAreaCountry extends BaseEntity {
+    private static final long serialVersionUID = 1602016720522226726L;
     private String gjid;//国籍ID
 
     private String gjmc;//国籍名称

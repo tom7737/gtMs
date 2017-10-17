@@ -79,7 +79,10 @@
             </if>
         </where>
     </select>
-
+    <select id="getMaxCtmRetCode" resultType="java.lang.String">
+        select top 1 ctm_ret_code from customerreturn
+        order by ctm_ret_code desc
+    </select>
     <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>

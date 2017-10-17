@@ -79,8 +79,26 @@
                 },
                 toolbar: '#toolbar'
             });
+            searchFun();
         });
-
+        function addFun() {
+            //获取ctmCode
+            var ctmCode = $("#ctmCode").val();
+            parent.$.modalDialog({
+                title: '添加',
+                width: 500,
+                height: 300,
+                href: '${path }/customer/return/addPage?ctmCode=' + ctmCode,
+                buttons: [{
+                    text: '确定',
+                    handler: function () {
+                        parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
+                        var f = parent.$.modalDialog.handler.find('#customerReturnAddForm');
+                        f.submit();
+                    }
+                }]
+            });
+        }
 
         function deleteFun(id) {
             if (id == undefined) {//点击右键菜单才会触发这个
@@ -118,12 +136,12 @@
                 title: '编辑',
                 width: 500,
                 height: 300,
-                href: '${path }/user/editPage?id=' + id,
+                href: '${path }/customer/return/editPage?id=' + id,
                 buttons: [{
                     text: '确定',
                     handler: function () {
                         parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                        var f = parent.$.modalDialog.handler.find('#userEditForm');
+                        var f = parent.$.modalDialog.handler.find('#customerReturnEditForm');
                         f.submit();
                     }
                 }]
@@ -140,12 +158,14 @@
     </script>
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
+
 <div data-options="region:'north',border:false" style="height: 30px; background-color: #fff">
     <form id="searchForm">
         <table>
             <tr>
-                <th>客户编号:</th>
-                <td><input name="ctmCode" placeholder="请输入客户编号"/></td>
+                <input type="hidden" id="ctmCode" name="ctmCode" value="${ctmCode}">
+                <%--<th>客户编号:</th>--%>
+                <%--<td><input name="ctmCode" placeholder="请输入客户编号" value="${ctmCode}"/></td>--%>
                 <th>客户名称:</th>
                 <td><input name="ctmName" placeholder="请输入客户名称"/></td>
                 <td>

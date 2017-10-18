@@ -271,6 +271,9 @@ public class CustomerController extends BaseController {
                 case "ctmRegdate":
                     sort = "ctm_regdate";
                     break;
+                case "makeOp":
+                    sort = "make_op";
+                    break;
                 default:
                     break;
             }
@@ -299,6 +302,17 @@ public class CustomerController extends BaseController {
         }
         return pageInfo;
     }
+
+    /**
+     * 选择客户
+     *
+     * @return
+     */
+    @RequestMapping(value = "/select", method = RequestMethod.GET)
+    public String select() {
+        return "customer/select";
+    }
+
 
     /**
      * 客户信息页

@@ -1,111 +1,92 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/commons/global.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
     <%@ include file="/commons/basejs.jsp" %>
-    <meta http-equiv="X-UA-Compatible" content="edge"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>日程提醒</title>
     <script type="text/javascript">
 
         var dataGrid;
-
+        console.log(1);
         $(function () {
-
+            console.log(1);
             dataGrid = $('#dataGrid').datagrid({
-                url: '${path }/remind/s/dataGrid',
+                url: '${path }/customer/dataGrid',
                 fit: true,
                 striped: true,
                 rownumbers: true,
                 pagination: true,
                 singleSelect: true,
-                idField: 'txbm',
-                sortName: 'txbm',
+                idField: 'id',
+                sortName: 'ctm_code',
                 sortOrder: 'desc',
                 pageSize: 20,
                 pageList: [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
                 columns: [[{
                     width: '100',
-                    title: '提醒日期',
-                    field: 'txrq',
-                    sortable: false
+                    title: '客户编号',
+                    field: 'ctmCode',
+                    sortable: true
                 }, {
                     width: '150',
-                    title: '提醒名称',
-                    field: 'txmc',
-                    sortable: false
+                    title: '客户名称',
+                    field: 'ctmName',
+                    sortable: true
                 }, {
                     width: '150',
-                    title: '提醒内容',
-                    field: 'txnr',
-                    sortable: false
+                    title: '客户英文名称',
+                    field: 'ctmNameEn',
+                    sortable: true
+                }, {
+                    width: '100',
+                    title: '添加日期',
+                    field: 'ctmRegdate',
+                    sortable: true
                 }, {
                     width: '150',
                     title: '代理人',
                     field: 'makeOp',
-                    sortable: false
+                    sortable: true
                 }, {
                     field: 'action',
                     title: '操作',
                     width: 330,
                     formatter: function (value, row, index) {
+                        console.log("formatter:"+value);
                         var str = '';
-                        str += $.formatString('<a href="${path}/customer/info?ctmCode={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.txbm);
+                        str += $.formatString('<a href="${path}/customer/info?ctmCode={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
-                        str += $.formatString('<a href="${path}/customer/edit?ctmCode={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.txbm);
+                        str += $.formatString('<a onclick="AddSqs(\'${path}/sqs/01/add?ctmCode={0}\');" href="javascript:void(0);" class="user-easyui-linkbutton-addSqs" data-options="plain:true,iconCls:\'icon-add\'"  >添加申请书</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                        str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.txbm);
+                        str += $.formatString('<a href="${path}/customer/edit?ctmCode={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                        str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.ctmCode);
                         return str;
                     }
                 }]],
                 onLoadSuccess: function (data) {
+                    console.log("onLoadSuccess:"+data);
                     $('.user-easyui-linkbutton-search').linkbutton({text: '查看', plain: true, iconCls: 'icon-search'});
+                    $('.user-easyui-linkbutton-addSqs').linkbutton({text: '添加申请书', plain: true, iconCls: 'icon-add'});
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
                     $('.user-easyui-linkbutton-del').linkbutton({text: '删除', plain: true, iconCls: 'icon-del'});
                 },
                 toolbar: '#toolbar'
             });
-            searchFun();
+            console.log(2);
         });
-        function selectCustomerFun() {
-            parent.$.modalDialog({
-                title: '添加',
-                width: 800,
-                height: 600,
-                href: '${path }/customer/select',
-                buttons: [{
-                    text: '确定',
-                    handler: function () {
-                        parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
-                        var f = parent.$.modalDialog.handler.find('#roleAddForm');
-                        f.submit();
-                    }
-                }]
+
+        function AddSqs(path) {
+            console.log(path);
+            var tt = parent.$.modalDialog.index_tabs;
+            tt.tabs('add', {
+                title: "新增申请书",
+                content: '<iframe frameborder="0" src="' + path + '" style="border:0;width:100%;height:99.5%;"></iframe>',
+                closable: true,
+                iconCls: 'menu_icon_service'
             });
         }
 
-        function addFun() {
-            var ctmCode = $("#ctmCode").val();
-            if (ctmCode == null || ctmCode == "") {
-                selectCustomerFun();
-            } else {
-                parent.$.modalDialog({
-                    title: '添加',
-                    width: 500,
-                    height: 300,
-                    href: '${path }/remind/s/addPage',
-                    buttons: [{
-                        text: '确定',
-                        handler: function () {
-                            parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
-                            var f = parent.$.modalDialog.handler.find('#roleAddForm');
-                            f.submit();
-                        }
-                    }]
-                });
-            }
 
+        function addFun() {
+            location.href = "${path}/customer/add";
         }
 
         function deleteFun(id) {
@@ -164,19 +145,33 @@
             dataGrid.datagrid('load', {});
         }
     </script>
-</head>
-<body class="easyui-layout" data-options="fit:true,border:false">
-<div data-options="region:'north',border:false" style="display:none;height: 30px; background-color: #fff">
+<div data-options="region:'north',border:false" style="height: 30px; background-color: #fff">
     <form id="searchForm">
-        <input type="hidden" name="ctmCode" id="ctmCode" value="${customer.ctmCode}">
+        <table>
+            <tr>
+                <th>客户编号:</th>
+                <td><input name="ctmCode" placeholder="请输入客户编号"/></td>
+                <th>客户名称:</th>
+                <td><input name="ctmName" placeholder="请输入客户名称"/></td>
+                <td>
+                    <a href="javascript:void(0);" class="easyui-linkbutton"
+                       data-options="iconCls:'icon-search',plain:true" onclick="searchFun();">查询</a><a
+                        href="javascript:void(0);" class="easyui-linkbutton"
+                        data-options="iconCls:'icon-cancel',plain:true" onclick="cleanFun();">清空</a>
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
-<div data-options="region:'center',border:true,title:'日程提醒列表'">
+<div data-options="region:'center',border:true,title:'选择客户'">
     <table id="dataGrid" data-options="fit:true,border:false"></table>
 </div>
+<%--
+<div data-options="region:'west',border:true,split:false,title:'组织机构'" style="width:150px;overflow: hidden; ">
+    <ul id="organizationTree" style="width:160px;margin: 10px 10px 10px 10px">
+    </ul>
+</div>--%>
 <div id="toolbar" style="display: none;">
     <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton"
        data-options="plain:true,iconCls:'icon-add'">添加</a>
 </div>
-</body>
-</html>

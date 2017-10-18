@@ -1,8 +1,9 @@
 package com.gt.ms.entity.remind;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gt.ms.entity.base.BaseEntity;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -27,7 +28,8 @@ public class RemindSystem extends BaseEntity {
     private String txrq;//提醒日期
     private String txzt;//提醒状态 0否/1是
     private String cjid;//创建人
-    private Timestamp cjsj;//创建时间
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date cjsj;//创建时间
 
 
     // Constructors
@@ -42,7 +44,7 @@ public class RemindSystem extends BaseEntity {
     /**
      * full constructor
      */
-    public RemindSystem(String yhid, String txlx, String txlb, String txfs, String txguid, String txnr, String txrq, String txzt, String cjid, Timestamp cjsj) {
+    public RemindSystem(String yhid, String txlx, String txlb, String txfs, String txguid, String txnr, String txrq, String txzt, String cjid, Date cjsj) {
         this.yhid = yhid;
         this.txlx = txlx;
         this.txlb = txlb;
@@ -138,11 +140,11 @@ public class RemindSystem extends BaseEntity {
         this.cjid = cjid;
     }
 
-    public Timestamp getCjsj() {
+    public Date getCjsj() {
         return this.cjsj;
     }
 
-    public void setCjsj(Timestamp cjsj) {
+    public void setCjsj(Date cjsj) {
         this.cjsj = cjsj;
     }
 

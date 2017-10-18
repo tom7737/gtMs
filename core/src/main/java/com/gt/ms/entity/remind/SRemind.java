@@ -1,8 +1,9 @@
 package com.gt.ms.entity.remind;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gt.ms.entity.base.BaseEntity;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -22,16 +23,19 @@ public class SRemind extends BaseEntity {
     private Integer txjb;//
     private String txfs;//提醒方式
     private String txtj;//
-    private Timestamp txrq;//提醒日期
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private Date txrq;//提醒日期
     private Integer txcs;//提醒次数
     private String txmc;//提醒名称
     private String txnr;//提醒内容
     private String sftx;//
     private String cly;//处理人
-    private Timestamp clrq;//处理日期
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private Date clrq;//处理日期
     private String agentNumber;//申请书编号
     private String makeOp;//添加记录人
-    private Timestamp makeDate;//添加记录日期
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+    private Date makeDate;//添加记录日期
     private String dlguid;//代理机构编号
 
 
@@ -47,7 +51,7 @@ public class SRemind extends BaseEntity {
     /**
      * full constructor
      */
-    public SRemind(String txly, Integer txjb, String txfs, String txtj, Timestamp txrq, Integer txcs, String txmc, String txnr, String sftx, String cly, Timestamp clrq, String agentNumber, String makeOp, Timestamp makeDate, String dlguid) {
+    public SRemind(String txly, Integer txjb, String txfs, String txtj, Date txrq, Integer txcs, String txmc, String txnr, String sftx, String cly, Date clrq, String agentNumber, String makeOp, Date makeDate, String dlguid) {
         this.txly = txly;
         this.txjb = txjb;
         this.txfs = txfs;
@@ -108,11 +112,11 @@ public class SRemind extends BaseEntity {
         this.txtj = txtj;
     }
 
-    public Timestamp getTxrq() {
+    public Date getTxrq() {
         return this.txrq;
     }
 
-    public void setTxrq(Timestamp txrq) {
+    public void setTxrq(Date txrq) {
         this.txrq = txrq;
     }
 
@@ -156,11 +160,11 @@ public class SRemind extends BaseEntity {
         this.cly = cly;
     }
 
-    public Timestamp getClrq() {
+    public Date getClrq() {
         return this.clrq;
     }
 
-    public void setClrq(Timestamp clrq) {
+    public void setClrq(Date clrq) {
         this.clrq = clrq;
     }
 
@@ -180,11 +184,11 @@ public class SRemind extends BaseEntity {
         this.makeOp = makeOp;
     }
 
-    public Timestamp getMakeDate() {
+    public Date getMakeDate() {
         return this.makeDate;
     }
 
-    public void setMakeDate(Timestamp makeDate) {
+    public void setMakeDate(Date makeDate) {
         this.makeDate = makeDate;
     }
 

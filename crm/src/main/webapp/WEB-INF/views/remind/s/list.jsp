@@ -68,12 +68,35 @@
             });
             searchFun();
         });
-        function selectCustomerFun() {
+        /**
+         * 选择客户
+         */
+        function selectCustomerFun(successCallback) {
             parent.$.modalDialog({
                 title: '添加',
-                width: 800,
-                height: 600,
+                width: 500,
+                height: 500,
                 href: '${path }/customer/select',
+                buttons: [{
+                    text: '确定',
+                    handler: function () {
+                        var callback = parent.$.modalDialog.callback;
+                        callback();
+                        var ctmCode_temp = parent.$.modalDialog.ctmCodeTemp;
+                        if (ctmCode_temp != null && ctmCode_temp != "") {
+                            successCallback(ctmCode_temp);
+                        }
+                    }
+                }]
+            });
+        }
+
+        function openAddFun(ctmCode) {
+            parent.$.modalDialog({
+                title: '添加',
+                width: 500,
+                height: 300,
+                href: '${path }/remind/s/addPage?ctmCode=' + ctmCode,
                 buttons: [{
                     text: '确定',
                     handler: function () {
@@ -87,23 +110,12 @@
 
         function addFun() {
             var ctmCode = $("#ctmCode").val();
+//            console.log(ctmCode);
             if (ctmCode == null || ctmCode == "") {
-                selectCustomerFun();
+                //用户是通过左侧菜单进入列表页，每次添加都需要选择客户
+                selectCustomerFun(openAddFun);
             } else {
-                parent.$.modalDialog({
-                    title: '添加',
-                    width: 500,
-                    height: 300,
-                    href: '${path }/remind/s/addPage',
-                    buttons: [{
-                        text: '确定',
-                        handler: function () {
-                            parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
-                            var f = parent.$.modalDialog.handler.find('#roleAddForm');
-                            f.submit();
-                        }
-                    }]
-                });
+                openAddFun(ctmCode);
             }
 
         }

@@ -81,9 +81,29 @@
             });
             searchFun();
         });
-        function addFun() {
-            //获取ctmCode
-            var ctmCode = $("#ctmCode").val();
+        /**
+         * 选择客户
+         */
+        function selectCustomerFun(successCallback) {
+            parent.$.modalDialog({
+                title: '添加',
+                width: 500,
+                height: 500,
+                href: '${path }/customer/select',
+                buttons: [{
+                    text: '确定',
+                    handler: function () {
+                        var callback = parent.$.modalDialog.callback;
+                        callback();
+                        var ctmCode_temp = parent.$.modalDialog.ctmCodeTemp;
+                        if (ctmCode_temp != null && ctmCode_temp != "") {
+                            successCallback(ctmCode_temp);
+                        }
+                    }
+                }]
+            });
+        }
+        function openAddFun(ctmCode) {
             parent.$.modalDialog({
                 title: '添加',
                 width: 500,
@@ -98,6 +118,16 @@
                     }
                 }]
             });
+        }
+        function addFun() {
+            //获取ctmCode
+            var ctmCode = $("#ctmCode").val();
+            if (ctmCode == null || ctmCode == "") {
+                //用户是通过左侧菜单进入列表页，每次添加都需要选择客户
+                selectCustomerFun(openAddFun);
+            } else {
+                openAddFun(ctmCode);
+            }
         }
 
         function deleteFun(id) {
@@ -178,7 +208,7 @@
         </table>
     </form>
 </div>
-<div data-options="region:'center',border:true,title:'客户列表'">
+<div data-options="region:'center',border:true,title:'客户回访列表'">
     <table id="dataGrid" data-options="fit:true,border:false"></table>
 </div>
 <%--

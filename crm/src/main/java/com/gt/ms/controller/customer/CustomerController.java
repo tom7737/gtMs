@@ -340,4 +340,29 @@ public class CustomerController extends BaseController {
         model.addAttribute("ctm", customer);
         return "customer/info";
     }
+
+    @RequestMapping(value = "/getListByCtmName", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult getListByCtmName(String ctmName) {
+        AjaxResult result = new AjaxResult();
+        try {
+            if (!StringUtils.isNotBlank(ctmName)) {
+                result.setSuccess(false);
+                result.setMessage("请输入客户名称！");
+                return result;
+            }
+            Op currentUser = getCurrentUser();
+            String makeOp = null;
+            if ('0' == currentUser.getOpChenge().charAt(0)) {//权限
+                makeOp = currentUser.getOpName();
+            }
+            List<Customer> list = customerService.getListByCtmName(ctmName, makeOp);
+            result.setDatas(list);
+        } catch (Exception e) {
+            logger.error("查询客户列表失败{}", e);
+            result.setSuccess(false);
+            result.setMessage("查询客户列表失败！");
+        }
+        return result;
+    }
 }

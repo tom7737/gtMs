@@ -7,6 +7,8 @@ import com.gt.ms.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by tom on 2017/8/18.
  */
@@ -39,5 +41,10 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, String> imple
     @Override
     public int getCountBySfzjhm(String sfzjhm) {
         return customersMapper.getCountBySfzjhm(sfzjhm);
+    }
+
+    @Override
+    public List<Customer> getListByCtmName(String ctmName, String makeOp) {
+        return customersMapper.getListByCtmName(ctmName, makeOp);
     }
 }

@@ -112,6 +112,20 @@
         ctm_name = #{ctmName}
         and ztdm = '0'
     </select>
+    <select id="getListByCtmName" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select top 100
+        ctm_code,ctm_name,ctm_name_en
+        from customer
+        <where>
+            <if test="makeOp!=null and makeOp!=''">
+                make_op = #{condition.makeOp}
+            </if>
+            <if test="ctmName!=null and ctmName!=''">
+                and (ctm_name like '%${ctmName}%' or ctm_name_en like '%${ctmName}%')
+            </if>
+        </where>
+        and ztdm = '0'
+    </select>
     <select id="getCountBySfzjhm" parameterType="java.lang.String" resultType="java.lang.Integer">
         select
         count(*)

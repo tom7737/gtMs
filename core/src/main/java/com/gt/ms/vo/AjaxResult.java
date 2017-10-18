@@ -26,6 +26,10 @@ public class AjaxResult implements Serializable {
 	/* 用于附带一些对象数据 */
 	private Object datas;
 
+	public AjaxResult() {
+		this.success = true;
+		this.message = "成功";
+	}
 	public boolean isSuccess() {
 		return success;
 	}

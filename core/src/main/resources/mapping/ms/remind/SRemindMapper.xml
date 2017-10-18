@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.remind.SRemindMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.remind.SRemind">
+        <id column="txbm" jdbcType="NVARCHAR" property="txbm"/>
+        <result column="txly" jdbcType="NVARCHAR" property="txly"/>
+        <result column="txjb" jdbcType="INTEGER" property="txjb"/>
+        <result column="txfs" jdbcType="NVARCHAR" property="txfs"/>
+        <result column="txtj" jdbcType="NVARCHAR" property="txtj"/>
+        <result column="txrq" jdbcType="TIMESTAMP" property="txrq"/>
+        <result column="txcs" jdbcType="INTEGER" property="txcs"/>
+        <result column="txmc" jdbcType="NVARCHAR" property="txmc"/>
+        <result column="txnr" jdbcType="LONGVARCHAR" property="txnr"/>
+        <result column="sftx" jdbcType="NVARCHAR" property="sftx"/>
+        <result column="cly" jdbcType="NVARCHAR" property="cly"/>
+        <result column="clrq" jdbcType="TIMESTAMP" property="clrq"/>
+        <result column="agent_number" jdbcType="NVARCHAR" property="agentNumber"/>
+        <result column="make_op" jdbcType="NVARCHAR" property="makeOp"/>
+        <result column="make_date" jdbcType="TIMESTAMP" property="makeDate"/>
+        <result column="dlguid" jdbcType="NVARCHAR" property="dlguid"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    txbm, txly, txjb, txfs, txtj, txrq, txcs, txmc, txnr, sftx, cly,
+    clrq,agent_number,make_op,make_date,dlguid
+  </sql>
+
+    <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM(
+
+        SELECT TOP ${size+from} ROW_NUMBER() OVER(
+        <choose>
+            <when test="sort!=null and sort!='seq'">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                ORDER BY txbm DESC
+            </otherwise>
+        </choose>
+        ) AS ROWID,*
+
+        FROM s_remind
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                make_op = #{condition.makeOpQx}
+            </if>
+        </where>
+        ) AS TEMP1
+        WHERE ROWID> ${from}
+    </select>
+    <select id="findPageCount" parameterType="com.gt.ms.vo.PageInfo" resultType="java.lang.Integer">
+        SELECT COUNT (*)
+        FROM s_remind
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                make_op = #{condition.makeOpQx}
+            </if>
+        </where>
+    </select>
+
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from s_remind
+        where txbm = #{txbm}
+    </select>
+    <delete id="remove" parameterType="java.lang.String">
+    delete from s_remind
+    where txbm = #{txbm}
+  </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.remind.RemindSystem">
+    insert into s_remind (txbm, txly, txjb, txfs, txtj, txrq, txcs, txmc, txnr, sftx, cly,
+    clrq,agent_number,make_op,make_date,dlguid)
+    values (#{txbm}, #{txly}, #{txjb},#{txfs}, #{txtj}, #{txrq},#{txcs}, #{txmc},
+    #{txnr}, #{sftx}, #{cly}, #{clrq}, #{agent_number}, #{make_op}, #{make_date}, #{dlguid})
+  </insert>
+    <update id="update" parameterType="com.gt.ms.entity.remind.RemindSystem">
+        update s_remind
+        <set>
+            <if test="txly != null">
+                txly = #{txly},
+            </if>
+            <if test="txjb != null">
+                txjb = #{txjb},
+            </if>
+            <if test="txfs != null">
+                txfs = #{txfs},
+            </if>
+            <if test="txtj != null">
+                txtj = #{txtj},
+            </if>
+            <if test="txrq != null">
+                txrq = #{txrq},
+            </if>
+            <if test="txcs != null">
+                txcs = #{txcs},
+            </if>
+            <if test="txmc != null">
+                txmc = #{txmc},
+            </if>
+            <if test="txnr != null">
+                txnr = #{txnr},
+            </if>
+            <if test="sftx != null">
+                sftx = #{sftx},
+            </if>
+            <if test="cly != null">
+                cly = #{cly},
+            </if>
+            <if test="clrq != null">
+                clrq = #{clrq},
+            </if>
+            <if test="agent_number != null">
+                agent_number = #{agentNumber},
+            </if>
+            <if test="make_op != null">
+                make_op = #{makeOp},
+            </if>
+            <if test="make_date != null">
+                make_date = #{makeDate},
+            </if>
+            <if test="dlguid != null">
+                dlguid = #{dlguid},
+            </if>
+        </set>
+        where txbm = #{txbm}
+    </update>
+</mapper>

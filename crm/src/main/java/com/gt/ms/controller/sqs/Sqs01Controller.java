@@ -198,6 +198,9 @@ public class Sqs01Controller extends BaseController {
                 case "agentNumber":
                     sort = "agent_number";
                     break;
+                case "makeOp":
+                    sort = "make_op";
+                    break;
                 default:
                     break;
             }

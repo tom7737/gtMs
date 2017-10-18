@@ -1,18 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/commons/global.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
     <%@ include file="/commons/basejs.jsp" %>
-    <meta http-equiv="X-UA-Compatible" content="edge"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>客户管理</title>
     <script type="text/javascript">
 
         var dataGrid;
-
+        console.log(1);
         $(function () {
-
+            console.log(1);
             dataGrid = $('#dataGrid').datagrid({
                 url: '${path }/customer/dataGrid',
                 fit: true,
@@ -55,6 +49,7 @@
                     title: '操作',
                     width: 330,
                     formatter: function (value, row, index) {
+                        console.log("formatter:"+value);
                         var str = '';
                         str += $.formatString('<a href="${path}/customer/info?ctmCode={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
@@ -63,31 +58,29 @@
                         str += $.formatString('<a href="${path}/customer/edit?ctmCode={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                         str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.ctmCode);
-                        str += '<hr style="    margin-top: -3px;margin-bottom: -3px;"/>';
-                        str += $.formatString('<a href="${path}/customer/return/manager?ctmCode={0}" class="user-easyui-linkbutton-customerReturn" data-options="plain:true,iconCls:\'icon-list\'"  >客户回访</a>', row.ctmCode);
-                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                         return str;
                     }
                 }]],
                 onLoadSuccess: function (data) {
+                    console.log("onLoadSuccess:"+data);
                     $('.user-easyui-linkbutton-search').linkbutton({text: '查看', plain: true, iconCls: 'icon-search'});
                     $('.user-easyui-linkbutton-addSqs').linkbutton({text: '添加申请书', plain: true, iconCls: 'icon-add'});
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
                     $('.user-easyui-linkbutton-del').linkbutton({text: '删除', plain: true, iconCls: 'icon-del'});
-                    $('.user-easyui-linkbutton-customerReturn').linkbutton({text: '客户回访', plain: true, iconCls: 'icon-list'});
                 },
                 toolbar: '#toolbar'
             });
+            console.log(2);
         });
 
         function AddSqs(path) {
             console.log(path);
             var tt = parent.$.modalDialog.index_tabs;
             tt.tabs('add', {
-                title : "新增申请书",
-                content : '<iframe frameborder="0" src="'+path+'" style="border:0;width:100%;height:99.5%;"></iframe>',
-                closable : true,
-                iconCls:'menu_icon_service'
+                title: "新增申请书",
+                content: '<iframe frameborder="0" src="' + path + '" style="border:0;width:100%;height:99.5%;"></iframe>',
+                closable: true,
+                iconCls: 'menu_icon_service'
             });
         }
 
@@ -112,7 +105,7 @@
                         if (result.success) {
                             parent.$.messager.alert('提示', result.message, 'info');
                             dataGrid.datagrid('reload');
-                        }else {
+                        } else {
                             parent.$.messager.alert('提示', result.message, 'info');
                         }
                         progressClose();
@@ -152,8 +145,6 @@
             dataGrid.datagrid('load', {});
         }
     </script>
-</head>
-<body class="easyui-layout" data-options="fit:true,border:false">
 <div data-options="region:'north',border:false" style="height: 30px; background-color: #fff">
     <form id="searchForm">
         <table>
@@ -172,7 +163,7 @@
         </table>
     </form>
 </div>
-<div data-options="region:'center',border:true,title:'客户列表'">
+<div data-options="region:'center',border:true,title:'选择客户'">
     <table id="dataGrid" data-options="fit:true,border:false"></table>
 </div>
 <%--
@@ -184,5 +175,3 @@
     <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton"
        data-options="plain:true,iconCls:'icon-add'">添加</a>
 </div>
-</body>
-</html>

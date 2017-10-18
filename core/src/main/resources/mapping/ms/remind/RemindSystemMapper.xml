@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.remind.RemindSystemMapper">
+    <resultMap id="BaseResultMap" type="com.gt.ms.entity.remind.RemindSystem">
+        <id column="guid" jdbcType="NVARCHAR" property="guid"/>
+        <result column="yhid" jdbcType="NVARCHAR" property="yhid"/>
+        <result column="txlx" jdbcType="NVARCHAR" property="txlx"/>
+        <result column="txlb" jdbcType="NVARCHAR" property="txlb"/>
+        <result column="txfs" jdbcType="NVARCHAR" property="txfs"/>
+        <result column="txguid" jdbcType="NVARCHAR" property="txguid"/>
+        <result column="txnr" jdbcType="NVARCHAR" property="txnr"/>
+        <result column="txrq" jdbcType="NVARCHAR" property="txrq"/>
+        <result column="txzt" jdbcType="NVARCHAR" property="txzt"/>
+        <result column="cjid" jdbcType="NVARCHAR" property="cjid"/>
+        <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    guid, yhid, txlx, txlb, txfs, txguid, txnr, txrq, txzt, cjid, cjsj
+  </sql>
+    <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from remind_system
+        where guid = #{guid}
+    </select>
+    <delete id="remove" parameterType="java.lang.String">
+    delete from remind_system
+    where guid = #{guid}
+  </delete>
+    <insert id="save" parameterType="com.gt.ms.entity.remind.RemindSystem">
+    insert into remind_system (guid, yhid, txlx, txlb, txfs, txguid, txnr, txrq, txzt, cjid, cjsj)
+    values (#{guid}, #{yhid}, #{txlx},#{txlb}, #{txfs}, #{txguid},#{txnr}, #{txrq}, #{txzt}, #{cjid}, #{cjsj})
+  </insert>
+    <update id="update" parameterType="com.gt.ms.entity.remind.RemindSystem">
+        update remind_system
+        <set>
+            <if test="yhid != null">
+                yhid = #{yhid},
+            </if>
+            <if test="txlx != null">
+                txlx = #{txlx},
+            </if>
+            <if test="txlb != null">
+                txlb = #{txlb},
+            </if>
+            <if test="txfs != null">
+                txfs = #{txfs},
+            </if>
+            <if test="txguid != null">
+                txguid = #{txguid},
+            </if>
+            <if test="txnr != null">
+                txnr = #{txnr},
+            </if>
+            <if test="txrq != null">
+                txrq = #{txrq},
+            </if>
+            <if test="txzt != null">
+                txzt = #{txzt},
+            </if>
+            <if test="cjid != null">
+                cjid = #{cjid},
+            </if>
+            <if test="cjsj != null">
+                cjsj = #{cjsj},
+            </if>
+        </set>
+        where guid = #{guid}
+    </update>
+</mapper>

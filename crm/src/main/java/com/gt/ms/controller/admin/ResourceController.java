@@ -61,9 +61,11 @@ public class ResourceController extends BaseController {
         Tree tree2 = new Tree(2L, "客户模块", "open", false, "icon-company", "");
         Tree tree21 = new Tree(21L, "客户管理", "open", false, "icon-list", "/customer/manager");
         Tree tree22 = new Tree(22L, "客户回访", "open", false, "icon-list", "/customer/return/manager");
+        Tree tree23 = new Tree(23L, "日程提醒", "open", false, "icon-list", "/remind/s/manager");
         List<Tree> trees2 = new ArrayList<Tree>();
         trees2.add(tree21);
         trees2.add(tree22);
+        trees2.add(tree23);
         tree2.setChildren(trees2);
         trees.add(tree2);
 

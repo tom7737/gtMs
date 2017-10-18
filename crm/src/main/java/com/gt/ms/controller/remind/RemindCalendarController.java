@@ -25,7 +25,6 @@ import java.util.Map;
 /**
  * @description：日程提醒管理
  * @author：twt
- * @date：2017年8月23日 22:17:08
  */
 @Controller
 @RequestMapping("/remind/calendar")

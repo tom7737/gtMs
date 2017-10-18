@@ -1,43 +1,52 @@
 package com.gt.ms.entity.remind;
 
+import com.gt.ms.entity.base.BaseEntity;
+
 import java.sql.Timestamp;
 
 
 /**
- * SRemind entity. @author MyEclipse Persistence Tools
+ * 日程提醒
+ *
+ * @author 唐文滔
  */
 
-public class SRemind  implements java.io.Serializable {
+public class SRemind extends BaseEntity {
+    private static final long serialVersionUID = 8791792924128211886L;
 
 
     // Fields    
 
-     private String txbm;
-     private String txly;
-     private Integer txjb;
-     private String txfs;
-     private String txtj;
-     private Timestamp txrq;
-     private Integer txcs;
-     private String txmc;
-     private String txnr;
-     private String sftx;
-     private String cly;
-     private Timestamp clrq;
-     private String agentNumber;
-     private String makeOp;
-     private Timestamp makeDate;
-     private String dlguid;
+    private String txbm;//唯一编号，主键
+    private String txly;//
+    private Integer txjb;//
+    private String txfs;//提醒方式
+    private String txtj;//
+    private Timestamp txrq;//提醒日期
+    private Integer txcs;//提醒次数
+    private String txmc;//提醒名称
+    private String txnr;//提醒内容
+    private String sftx;//
+    private String cly;//处理人
+    private Timestamp clrq;//处理日期
+    private String agentNumber;//申请书编号
+    private String makeOp;//添加记录人
+    private Timestamp makeDate;//添加记录日期
+    private String dlguid;//代理机构编号
 
 
     // Constructors
 
-    /** default constructor */
+    /**
+     * default constructor
+     */
     public SRemind() {
     }
 
-    
-    /** full constructor */
+
+    /**
+     * full constructor
+     */
     public SRemind(String txly, Integer txjb, String txfs, String txtj, Timestamp txrq, Integer txcs, String txmc, String txnr, String sftx, String cly, Timestamp clrq, String agentNumber, String makeOp, Timestamp makeDate, String dlguid) {
         this.txly = txly;
         this.txjb = txjb;
@@ -56,13 +65,13 @@ public class SRemind  implements java.io.Serializable {
         this.dlguid = dlguid;
     }
 
-   
+
     // Property accessors
 
     public String getTxbm() {
         return this.txbm;
     }
-    
+
     public void setTxbm(String txbm) {
         this.txbm = txbm;
     }
@@ -70,7 +79,7 @@ public class SRemind  implements java.io.Serializable {
     public String getTxly() {
         return this.txly;
     }
-    
+
     public void setTxly(String txly) {
         this.txly = txly;
     }
@@ -78,7 +87,7 @@ public class SRemind  implements java.io.Serializable {
     public Integer getTxjb() {
         return this.txjb;
     }
-    
+
     public void setTxjb(Integer txjb) {
         this.txjb = txjb;
     }
@@ -86,7 +95,7 @@ public class SRemind  implements java.io.Serializable {
     public String getTxfs() {
         return this.txfs;
     }
-    
+
     public void setTxfs(String txfs) {
         this.txfs = txfs;
     }
@@ -94,7 +103,7 @@ public class SRemind  implements java.io.Serializable {
     public String getTxtj() {
         return this.txtj;
     }
-    
+
     public void setTxtj(String txtj) {
         this.txtj = txtj;
     }
@@ -102,7 +111,7 @@ public class SRemind  implements java.io.Serializable {
     public Timestamp getTxrq() {
         return this.txrq;
     }
-    
+
     public void setTxrq(Timestamp txrq) {
         this.txrq = txrq;
     }
@@ -110,7 +119,7 @@ public class SRemind  implements java.io.Serializable {
     public Integer getTxcs() {
         return this.txcs;
     }
-    
+
     public void setTxcs(Integer txcs) {
         this.txcs = txcs;
     }
@@ -118,7 +127,7 @@ public class SRemind  implements java.io.Serializable {
     public String getTxmc() {
         return this.txmc;
     }
-    
+
     public void setTxmc(String txmc) {
         this.txmc = txmc;
     }
@@ -126,7 +135,7 @@ public class SRemind  implements java.io.Serializable {
     public String getTxnr() {
         return this.txnr;
     }
-    
+
     public void setTxnr(String txnr) {
         this.txnr = txnr;
     }
@@ -134,7 +143,7 @@ public class SRemind  implements java.io.Serializable {
     public String getSftx() {
         return this.sftx;
     }
-    
+
     public void setSftx(String sftx) {
         this.sftx = sftx;
     }
@@ -142,7 +151,7 @@ public class SRemind  implements java.io.Serializable {
     public String getCly() {
         return this.cly;
     }
-    
+
     public void setCly(String cly) {
         this.cly = cly;
     }
@@ -150,7 +159,7 @@ public class SRemind  implements java.io.Serializable {
     public Timestamp getClrq() {
         return this.clrq;
     }
-    
+
     public void setClrq(Timestamp clrq) {
         this.clrq = clrq;
     }
@@ -158,7 +167,7 @@ public class SRemind  implements java.io.Serializable {
     public String getAgentNumber() {
         return this.agentNumber;
     }
-    
+
     public void setAgentNumber(String agentNumber) {
         this.agentNumber = agentNumber;
     }
@@ -166,7 +175,7 @@ public class SRemind  implements java.io.Serializable {
     public String getMakeOp() {
         return this.makeOp;
     }
-    
+
     public void setMakeOp(String makeOp) {
         this.makeOp = makeOp;
     }
@@ -174,7 +183,7 @@ public class SRemind  implements java.io.Serializable {
     public Timestamp getMakeDate() {
         return this.makeDate;
     }
-    
+
     public void setMakeDate(Timestamp makeDate) {
         this.makeDate = makeDate;
     }
@@ -182,17 +191,31 @@ public class SRemind  implements java.io.Serializable {
     public String getDlguid() {
         return this.dlguid;
     }
-    
+
     public void setDlguid(String dlguid) {
         this.dlguid = dlguid;
     }
-   
 
 
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "SRemind{" +
+                "txbm='" + txbm + '\'' +
+                ", txly='" + txly + '\'' +
+                ", txjb=" + txjb +
+                ", txfs='" + txfs + '\'' +
+                ", txtj='" + txtj + '\'' +
+                ", txrq=" + txrq +
+                ", txcs=" + txcs +
+                ", txmc='" + txmc + '\'' +
+                ", txnr='" + txnr + '\'' +
+                ", sftx='" + sftx + '\'' +
+                ", cly='" + cly + '\'' +
+                ", clrq=" + clrq +
+                ", agentNumber='" + agentNumber + '\'' +
+                ", makeOp='" + makeOp + '\'' +
+                ", makeDate=" + makeDate +
+                ", dlguid='" + dlguid + '\'' +
+                '}';
+    }
 }

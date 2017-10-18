@@ -1,4 +1,4 @@
-package com.gt.ms.mapper.remind;
+package com.gt.ms.entity.remind;
 
 import java.sql.Timestamp;
 

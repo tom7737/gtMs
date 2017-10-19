@@ -64,11 +64,11 @@
                     width: 330,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += $.formatString('<a href="${path}/customer/info?ctmCode={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.ctmCode);
+                        str += $.formatString('<a href="javascript:void(0);"  onclick="infoFun(\'{0}\');"  class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.ctmRetCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
-                        str += $.formatString('<a href="${path}/customer/edit?ctmCode={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmCode);
+                        str += $.formatString('<a href="javascript:void(0);"  onclick="editFun(\'{0}\');" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.ctmRetCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                        str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.ctmCode);
+                        str += $.formatString('<a href="javascript:void(0);"  onclick="deleteFun(\'{0}\');" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" >删除</a>', row.ctmRetCode);
                         return str;
                     }
                 }]],
@@ -129,7 +129,21 @@
                 openAddFun(ctmCode);
             }
         }
-
+        function infoFun(ctmRetCode) {
+            parent.$.modalDialog({
+                title: '添加',
+                width: 500,
+                height: 300,
+                href: '${path }/customer/return/info?ctmRetCode=' + ctmRetCode,
+                buttons: [{
+                    text: '确定',
+                    handler: function () {
+                        parent.$.modalDialog.handler.dialog('close');
+                        searchFun();
+                    }
+                }]
+            });
+        }
         function deleteFun(id) {
             if (id == undefined) {//点击右键菜单才会触发这个
                 var rows = dataGrid.datagrid('getSelections');
@@ -140,8 +154,8 @@
             parent.$.messager.confirm('询问', '您是否要删除当前数据？', function (b) {
                 if (b) {
                     progressLoad();
-                    $.post('${path }/customer/delete', {
-                        ctmCode: id
+                    $.post('${path }/customer/return/delete', {
+                        ctmRetCode: id
                     }, function (result) {
                         if (result.success) {
                             parent.$.messager.alert('提示', result.message, 'info');
@@ -166,7 +180,7 @@
                 title: '编辑',
                 width: 500,
                 height: 300,
-                href: '${path }/customer/return/editPage?id=' + id,
+                href: '${path }/customer/return/editPage?ctmRetCode=' + id,
                 buttons: [{
                     text: '确定',
                     handler: function () {

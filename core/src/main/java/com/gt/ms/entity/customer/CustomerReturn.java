@@ -21,12 +21,12 @@ public class CustomerReturn extends BaseEntity {
 
     private String ctmCode;//客户编号
     private String ctmRetCode;//客户回访编号
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date ctmRetDate;//客户回访日期
     private String ctmRetManone;//回访人
     private String ctmRetMantwo;//被回访人
     private String ctmRetWay;//回访方式
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date makeDate;//创建日期（回访日期）
     private String ctmRetMemo;//备注
 

@@ -135,4 +135,71 @@ public class CustomerReturnController extends BaseController {
         }
         return ajaxResult;
     }
+
+    /**
+     * 客户回访信息
+     *
+     * @return
+     */
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    public String info(String ctmRetCode, Model model) {
+        CustomerReturn customerReturn = customerReturnService.get(ctmRetCode);
+        model.addAttribute("customerReturn", customerReturn);
+        return "customer/return/info";
+    }
+
+    /**
+     * 修改客户回访页
+     *
+     * @return
+     */
+    @RequestMapping(value = "/editPage", method = RequestMethod.GET)
+    public String editPage(String ctmRetCode, Model model) {
+        CustomerReturn customerReturn = customerReturnService.get(ctmRetCode);
+        model.addAttribute("customerReturn", customerReturn);
+        return "/customer/return/edit";
+    }
+
+    /**
+     * 修改客户回访
+     *
+     * @return
+     */
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult edit(CustomerReturn customerReturn) {
+        AjaxResult ajaxResult = new AjaxResult();
+        try {
+            customerReturnService.update(customerReturn);
+            ajaxResult.setSuccess(true);
+            ajaxResult.setMessage("修改成功");
+        } catch (Exception e) {
+            logger.error("修改客户回访时发生错误:{}", e);
+            ajaxResult.setSuccess(false);
+            ajaxResult.setMessage("修改失败！");
+        }
+        return ajaxResult;
+    }
+
+    /**
+     * 删除客户
+     *
+     * @param ctmRetCode
+     * @return
+     */
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult delete(String ctmRetCode) {
+        AjaxResult result = new AjaxResult();
+        try {
+            customerReturnService.remove(ctmRetCode);
+            result.setSuccess(true);
+            result.setMessage("删除成功");
+            return result;
+        } catch (Exception e) {
+            logger.error("删除客户回访申请书失败：{}", e);
+            result.setMessage(e.getMessage());
+            return result;
+        }
+    }
 }

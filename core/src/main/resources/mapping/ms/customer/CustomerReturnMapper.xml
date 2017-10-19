@@ -89,7 +89,7 @@
         from customerreturn
         where ctm_ret_code = #{ctmRetCode}
     </select>
-    <delete id="remove" parameterType="java.lang.Long">
+    <delete id="remove" parameterType="java.lang.String">
     delete from customerreturn
     where ctm_ret_code = #{ctmRetCode}
   </delete>

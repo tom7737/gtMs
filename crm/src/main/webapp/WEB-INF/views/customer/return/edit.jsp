@@ -4,8 +4,8 @@
 
     $(function () {
 
-        $('#customerReturnAddForm').form({
-            url: '${path }/customer/return/add',
+        $('#customerReturnEditForm').form({
+            url: '${path }/customer/return/edit',
             onSubmit: function () {
                 progressLoad();
                 var isValid = $(this).form('validate');
@@ -27,20 +27,21 @@
     });
 </script>
 <div style="padding: 3px;">
-    <form id="customerReturnAddForm" method="post">
-        <input type="hidden" name="ctmCode" value="${customer.ctmCode}"/>
+    <form id="customerReturnEditForm" method="post">
+        <input type="hidden" name="ctmRetCode" value="${customerReturn.ctmRetCode}"/>
         <table class="grid">
             <tr>
                 <td>回访日期</td>
                 <td><input name="ctmRetDate" type="text" placeholder="请选择回访日期" class="easyui-validatebox"
                            data-options="required:true" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly
+                           value="<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${customerReturn.ctmRetDate}"/>"
                 ></td>
                 <td>回访方式</td>
                 <td>
                     <select name="ctmRetWay" class="easyui-validatebox">
-                        <option value="电话回访" selected>电话回访</option>
-                        <option value="登门拜访">登门拜访</option>
-                        <option value="信件回访">信件回访</option>
+                        <option value="电话回访" <c:if test="${customerReturn.ctmRetWay=='电话回访'}">selected</c:if>>电话回访</option>
+                        <option value="登门拜访" <c:if test="${customerReturn.ctmRetWay=='登门拜访'}">selected</c:if>>登门拜访</option>
+                        <option value="信件回访" <c:if test="${customerReturn.ctmRetWay=='信件回访'}">selected</c:if>>信件回访</option>
                     </select>
 
                 </td>
@@ -49,17 +50,17 @@
             <tr>
                 <td>回访人</td>
                 <td><input name="ctmRetManone" class="easyui-validatebox" maxlength="20"
-                           required="required" data-options="editable:false" value="${op.opTruename}"></td>
+                           required="required" data-options="editable:false" value="${customerReturn.ctmRetManone}"></td>
                 <td>受访人</td>
                 <td><input name="ctmRetMantwo" class="easyui-validatebox" maxlength="20"
                            required="required" data-options="editable:false"
-                           value="${customer.ctmName}${customer.ctmNameEn}"></td>
+                           value="${customerReturn.ctmRetMantwo}"></td>
             </tr>
             <tr>
                 <td>回访事由</td>
                 <td colspan="3">
                     <textarea name="ctmRetMemo" data-options="required:true" style="width: 300px;height:50px;"
-                              maxlength="500"></textarea>
+                              maxlength="500">${customerReturn.ctmRetMemo}</textarea>
                 </td>
             </tr>
         </table>

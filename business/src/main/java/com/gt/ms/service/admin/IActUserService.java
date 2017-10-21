@@ -42,7 +42,7 @@ public interface IActUserService extends BaseService<ActUser, Long> {
      * @param userId
      * @param pwd
      */
-    void updateUserPwdById(Long userId, String pwd);
+    void updateUserPwdById(String userId, String pwd);
 
     /**
      * 根据用户id查询用户带部门

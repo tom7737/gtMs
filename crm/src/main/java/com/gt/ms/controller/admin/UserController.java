@@ -1,10 +1,13 @@
 package com.gt.ms.controller.admin;
 
 import com.gt.ms.controller.base.BaseController;
-import com.gt.ms.entity.admin.Role;
-import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.entity.admin.ActUser;
+import com.gt.ms.entity.admin.Op;
+import com.gt.ms.entity.admin.Role;
 import com.gt.ms.service.admin.IActUserService;
+import com.gt.ms.service.admin.OpService;
+import com.gt.ms.utils.ms.EncryptionUtil;
+import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
 import com.gt.ms.vo.UserVo;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -39,6 +42,8 @@ public class UserController extends BaseController {
     @Autowired
     @Qualifier("actUserServiceImpl")
     private IActUserService iActUserService;
+    @Autowired
+    private OpService opService;
 
     /**
      * 用户管理页
@@ -191,13 +196,21 @@ public class UserController extends BaseController {
     @ResponseBody
     public AjaxResult editUserPwd(HttpServletRequest request, String oldPwd, String pwd) {
         AjaxResult result = new AjaxResult();
-//        if (!getCurrentUser().getPassword().equals(DigestUtils.md5Hex(oldPwd))) {
-//            result.setMessage("老密码不正确!");
-//            return result;
-//        }
+        Op op = getCurrentUser();
+        if (!op.getOpPassword().equals(EncryptionUtil.encryption(oldPwd))) {
+            result.setSuccess(false);
+            result.setMessage("老密码不正确!");
+            return result;
+        }
 
+        if (pwd == null || pwd.length() < 6 || pwd.length() > 10) {
+            // // TODO: 2017-10-21 test
+            result.setSuccess(false);
+            result.setMessage("密码必须是6-10位之间");
+            return result;
+        }
         try {
-//            iActUserService.updateUserPwdById(getUserId(), DigestUtils.md5Hex(pwd));
+            opService.updateUserPwdById(op.getOpCode(), EncryptionUtil.encryption(pwd));
             result.setSuccess(true);
             result.setMessage("密码修改成功！");
             return result;

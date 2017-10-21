@@ -74,8 +74,8 @@ public class ActUserServiceImpl extends BaseServiceImpl<ActUser, Long> implement
     }
 
     @Override
-    public void updateUserPwdById(Long userId, String pwd) {
-        actUserMapper.updateUserPwdById(userId, pwd);
+    public void updateUserPwdById(String opCode, String pwd) {
+        actUserMapper.updateUserPwdById(opCode, pwd);
     }
 
     @Override

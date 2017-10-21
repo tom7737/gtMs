@@ -26,4 +26,9 @@ public class OpServiceImpl extends BaseServiceImpl<Op, String> implements OpServ
     public Op getByOpName(String opName) {
         return opDao.getByOpName(opName);
     }
+
+    @Override
+    public void updateUserPwdById(String opCode, String pwd) {
+        opDao.updateUserPwdById(opCode,pwd);
+    }
 }

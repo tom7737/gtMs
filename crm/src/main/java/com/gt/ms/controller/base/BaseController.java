@@ -27,7 +27,7 @@ public class BaseController {
     /**
      * 不需要XSS过滤的请求路径
      */
-    private static final String[] exUrl = {"/content/add", "/content/edit"};
+    private static final String[] exUrl = { "/user/editUserPwd","/login"};
 
     @Autowired
     private OpService opService;

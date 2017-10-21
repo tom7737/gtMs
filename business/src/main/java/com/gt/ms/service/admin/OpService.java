@@ -9,4 +9,11 @@ import com.gt.ms.service.base.BaseService;
 public interface OpService extends BaseService<Op, String> {
 
     Op getByOpName(String opName);
+
+    /**
+     * 修改密码
+     * @param opCode
+     * @param pwd
+     */
+    void updateUserPwdById(String opCode, String pwd);
 }

@@ -44,10 +44,15 @@
         from op
         where op_code = #{op_code}
     </select>
+
     <select id="getList" resultMap="OpResultMap">
         select
         <include refid="op_List"/>
         from op
     </select>
+
+    <update id="updateUserPwdById" parameterType="java.util.Map" >
+        update op set op_password = #{pwd} where op_code = #{opCode}
+    </update>
 
 </mapper>

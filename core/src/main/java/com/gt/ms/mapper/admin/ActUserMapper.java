@@ -5,6 +5,7 @@ import com.gt.ms.mapper.base.BaseMapper;
 import com.gt.ms.entity.admin.ActUser;
 import com.gt.ms.vo.PageInfo;
 import com.gt.ms.vo.UserVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -68,10 +69,10 @@ public interface ActUserMapper extends BaseMapper<ActUser, Long> {
     /**
      * 修改用户密码
      *
-     * @param userId
+     * @param opCode
      * @param pwd
      */
-    void updateUserPwdById(Long userId, String pwd);
+    void updateUserPwdById(@Param("opCode") String opCode,@Param("pwd") String pwd);
 
     /**
      * 根据用户id查询用户带部门

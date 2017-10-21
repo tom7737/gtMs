@@ -17,10 +17,16 @@
                 progressClose();
                 result = $.parseJSON(result);
                 if (result.success) {
-                    parent.$.messager.alert('提示', result.msg, 'info');
+                    parent.$.messager.alert('提示', result.message, 'info');
                     parent.$.modalDialog.handler.dialog('close');
+                    $.post('${path }/logout', function (result) {
+                        if (result.success) {
+                            progressClose();
+                            window.location.href = '${path }';
+                        }
+                    }, 'json');
                 } else {
-                    parent.$.messager.alert('错误', result.msg, 'error');
+                    parent.$.messager.alert('错误', result.message, 'error');
                 }
             }
         });
@@ -40,11 +46,15 @@
                     </tr>
                     <tr>
                         <th>新密码：</th>
-                        <td><input name="pwd" type="password" placeholder="请输入新密码" class="easyui-validatebox" data-options="required:true"></td>
+                        <td><input name="pwd" type="password" placeholder="6-10位字母和数字组合"
+                                maxlength="10"   class="easyui-validatebox" data-options="required:true"></td>
                     </tr>
                     <tr>
                         <th>重复密码：</th>
-                        <td><input name="rePwd" type="password" placeholder="请再次输入新密码" class="easyui-validatebox" data-options="required:true,validType:'eqPwd[\'#editUserPwdForm input[name=pwd]\']'"></td>
+                        <td><input name="rePwd" type="password" placeholder="6-10位字母和数字组合"
+                                maxlength="10"   class="easyui-validatebox"
+                                   data-options="required:true,validType:'eqPwd[\'#editUserPwdForm input[name=pwd]\']'">
+                        </td>
                     </tr>
                 </table>
             </form>

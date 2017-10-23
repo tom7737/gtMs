@@ -26,10 +26,25 @@
                 pageSize: 20,
                 pageList: [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
                 columns: [[{
-                    width: '100',
+                    width: '150',
                     title: '提醒日期',
                     field: 'txrq',
-                    sortable: false
+                    sortable: false,
+                    styler: function (value, row, inde) {
+                        var now = new Date();
+                        var d = new Date(Date.parse(value.replace(/-/g, "/")));
+                        console.log(now - d);
+//                        return d;
+                        if (now - d > 0) {
+                            if (row.cly!=null&&row.cly!=""){
+                                return "background-color:#66ff66;";
+                            }else{
+                                return "background-color:#FF3300;"
+                            }
+                        }else {
+                            return "background-color:#FF8C00;";
+                        }
+                    }
                 }, {
                     width: '150',
                     title: '提醒名称',

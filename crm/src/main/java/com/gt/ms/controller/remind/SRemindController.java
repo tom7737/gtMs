@@ -5,7 +5,6 @@ import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.remind.SRemind;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.remind.SRemindService;
-import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,7 +30,8 @@ public class SRemindController extends BaseController {
 
     @Autowired
     private SRemindService sRemindService;
-
+    @Autowired
+    private OpService opService;
     /**
      * 日程提醒管理
      *
@@ -61,6 +62,13 @@ public class SRemindController extends BaseController {
         }
         pageInfo.setCondition(condition);
         sRemindService.findDataGrid(pageInfo);
+        Map<String, String> map = opService.getMap();
+        List list = pageInfo.getRows();
+        if (list != null && list.size() > 0) {
+            for (SRemind s : (List<SRemind>) list) {
+                s.setMakeOp(map.get(s.getMakeOp()));
+            }
+        }
         return pageInfo;
     }
 }

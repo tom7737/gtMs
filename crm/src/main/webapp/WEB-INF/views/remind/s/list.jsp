@@ -12,9 +12,8 @@
         var dataGrid;
 
         $(function () {
-
             dataGrid = $('#dataGrid').datagrid({
-                url: '${path }/remind/s/dataGrid',
+                url: '${path }/remind/s/dataGrid<c:if test="${ctmCode != null && ctmCode != '' }">?agentNumber=${ctmCode}</c:if>',
                 fit: true,
                 striped: true,
                 rownumbers: true,
@@ -86,7 +85,7 @@
                 },
                 toolbar: '#toolbar'
             });
-            searchFun();
+//            searchFun();
         });
         /**
          * 选择客户
@@ -237,7 +236,7 @@
 <body class="easyui-layout" data-options="fit:true,border:false">
 <div data-options="region:'north',border:false" style="display:none;height: 30px; background-color: #fff">
     <form id="searchForm">
-        <input type="hidden" name="agentNumber" id="ctmCode" value="${ctmCode}">
+        <input type="hidden" id="ctmCode" value="${ctmCode}">
     </form>
 </div>
 <div data-options="region:'center',border:true,title:'日程提醒列表'">

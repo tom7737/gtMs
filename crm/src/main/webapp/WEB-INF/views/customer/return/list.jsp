@@ -14,7 +14,7 @@
         $(function () {
 
             dataGrid = $('#dataGrid').datagrid({
-                url: '${path }/customer/return/dataGrid',
+                url: '${path }/customer/return/dataGrid<c:if test="${ctmCode != null && ctmCode != '' }">?ctmCode=${ctmCode}</c:if>',
                 fit: true,
                 striped: true,
                 rownumbers: true,
@@ -79,7 +79,7 @@
                 },
                 toolbar: '#toolbar'
             });
-            searchFun();
+//            searchFun();
         });
         /**
          * 选择客户
@@ -207,7 +207,7 @@
     <form id="searchForm">
         <table>
             <tr>
-                <input type="hidden" id="ctmCode" name="ctmCode" value="${ctmCode}">
+                <input type="hidden" id="ctmCode" <%--name="ctmCode"--%> value="${ctmCode}">
                 <%--<th>客户编号:</th>--%>
                 <%--<td><input name="ctmCode" placeholder="请输入客户编号" value="${ctmCode}"/></td>--%>
                 <th>客户名称:</th>

@@ -66,7 +66,7 @@
                         str += '<hr style="    margin-top: -3px;margin-bottom: -3px;"/>';
                         str += $.formatString('<a href="${path}/customer/return/manager?ctmCode={0}" class="user-easyui-linkbutton-customerReturn" data-options="plain:true,iconCls:\'icon-list\'"  >客户回访</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                        str += $.formatString('<a href="${path}/remind/s/manager?ctmCode={0}" class="user-easyui-linkbutton-customerReturn" data-options="plain:true,iconCls:\'icon-list\'"  >日程提醒</a>', row.ctmCode);
+                        str += $.formatString('<a href="${path}/remind/s/manager?ctmCode={0}" class="user-easyui-linkbutton-sRemind" data-options="plain:true,iconCls:\'icon-list\'"  >日程提醒</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                         return str;
                     }

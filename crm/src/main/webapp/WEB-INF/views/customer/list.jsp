@@ -66,6 +66,8 @@
                         str += '<hr style="    margin-top: -3px;margin-bottom: -3px;"/>';
                         str += $.formatString('<a href="${path}/customer/return/manager?ctmCode={0}" class="user-easyui-linkbutton-customerReturn" data-options="plain:true,iconCls:\'icon-list\'"  >客户回访</a>', row.ctmCode);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                        str += $.formatString('<a href="${path}/remind/s/manager?ctmCode={0}" class="user-easyui-linkbutton-customerReturn" data-options="plain:true,iconCls:\'icon-list\'"  >日程提醒</a>', row.ctmCode);
+                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                         return str;
                     }
                 }]],
@@ -75,6 +77,7 @@
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
                     $('.user-easyui-linkbutton-del').linkbutton({text: '删除', plain: true, iconCls: 'icon-del'});
                     $('.user-easyui-linkbutton-customerReturn').linkbutton({text: '客户回访', plain: true, iconCls: 'icon-list'});
+                    $('.user-easyui-linkbutton-sRemind').linkbutton({text: '日程提醒', plain: true, iconCls: 'icon-list'});
                 },
                 toolbar: '#toolbar'
             });

@@ -10,5 +10,11 @@ import com.gt.ms.service.base.BaseService;
  * @author : twt
  */
 public interface SRemindService extends BaseService<SRemind, String> {
-
+    /**
+     * 根据参数判断是否有重复数据
+     *
+     * @param sRemind
+     * @return
+     */
+    String getExist(SRemind sRemind);
 }

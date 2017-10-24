@@ -23,7 +23,15 @@
     txbm, txly, txjb, txfs, txtj, txrq, txcs, txmc, txnr, sftx, cly,
     clrq,agent_number,make_op,make_date,dlguid
   </sql>
-
+    <select id="getExist" resultType="java.lang.Integer">
+        SELECT top 1 txmc FROM s_remind
+         WHERE txly=#{txly} AND dlguid=#{dlguid} AND agent_number=#{agentNumber} AND txmc=#{txmc}
+    </select>
+    <select id="getMaxTxbm" resultType="java.lang.String">
+        select top 1 txbm
+        from s_remind
+        order by txbm desc
+    </select>
     <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
@@ -35,7 +43,8 @@
                 order by ${sort} ${order}
             </when>
             <otherwise>
-                ORDER BY txbm DESC
+                order by case when clrq is null then 0 else 1 end
+                ,txrq DESC
             </otherwise>
         </choose>
         ) AS ROWID,*
@@ -44,6 +53,9 @@
         <where>
             <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
                 make_op = #{condition.makeOpQx}
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and agent_number = #{condition.agentNumber}
             </if>
         </where>
         ) AS TEMP1
@@ -55,6 +67,9 @@
         <where>
             <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
                 make_op = #{condition.makeOpQx}
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and agent_number = #{condition.agentNumber}
             </if>
         </where>
     </select>
@@ -69,13 +84,13 @@
     delete from s_remind
     where txbm = #{txbm}
   </delete>
-    <insert id="save" parameterType="com.gt.ms.entity.remind.RemindSystem">
+    <insert id="save" parameterType="com.gt.ms.entity.remind.SRemind">
     insert into s_remind (txbm, txly, txjb, txfs, txtj, txrq, txcs, txmc, txnr, sftx, cly,
     clrq,agent_number,make_op,make_date,dlguid)
     values (#{txbm}, #{txly}, #{txjb},#{txfs}, #{txtj}, #{txrq},#{txcs}, #{txmc},
-    #{txnr}, #{sftx}, #{cly}, #{clrq}, #{agent_number}, #{make_op}, #{make_date}, #{dlguid})
+    #{txnr,jdbcType=NVARCHAR}, #{sftx}, #{cly}, #{clrq}, #{agentNumber}, #{makeOp}, #{makeDate}, #{dlguid})
   </insert>
-    <update id="update" parameterType="com.gt.ms.entity.remind.RemindSystem">
+    <update id="update" parameterType="com.gt.ms.entity.remind.SRemind">
         update s_remind
         <set>
             <if test="txly != null">
@@ -111,13 +126,13 @@
             <if test="clrq != null">
                 clrq = #{clrq},
             </if>
-            <if test="agent_number != null">
+            <if test="agentNumber != null">
                 agent_number = #{agentNumber},
             </if>
-            <if test="make_op != null">
+            <if test="makeOp != null">
                 make_op = #{makeOp},
             </if>
-            <if test="make_date != null">
+            <if test="makeDate != null">
                 make_date = #{makeDate},
             </if>
             <if test="dlguid != null">

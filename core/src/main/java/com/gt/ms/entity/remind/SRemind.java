@@ -32,7 +32,7 @@ public class SRemind extends BaseEntity {
     private String cly;//处理人
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date clrq;//处理日期
-    private String agentNumber;//申请书编号
+    private String agentNumber;//申请书编号(客户编号)
     private String makeOp;//添加记录人
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date makeDate;//添加记录日期

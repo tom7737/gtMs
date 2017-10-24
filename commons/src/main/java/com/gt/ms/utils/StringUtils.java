@@ -408,32 +408,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         }
     }
 
-    public static String RedeemCodeExChangeCondition(Integer num) {
-        String ConditionStr = "";
-        switch (num) {
-            case 0:
-                ConditionStr = "直接兑换";
-                break;
-            case 1000:
-                ConditionStr = "购彩满10元兑换";
-                break;
-            case 2000:
-                ConditionStr = "购彩满20元兑换";
-                break;
-            case 5000:
-                ConditionStr = "购彩满50元兑换";
-                break;
-            case 10000:
-                ConditionStr = "购彩满100元兑换";
-                break;
-            case 50000:
-                ConditionStr = "购彩满500元兑换";
-                break;
-            default:
-                break;
-        }
-        return ConditionStr;
-    }
 
     /**
      * 身份证校验表

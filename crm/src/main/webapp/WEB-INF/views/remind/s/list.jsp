@@ -21,7 +21,7 @@
                 pagination: true,
                 singleSelect: true,
                 idField: 'txbm',
-                sortName: 'txbm',
+                sortName: null,
                 sortOrder: 'desc',
                 pageSize: 20,
                 pageList: [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
@@ -33,17 +33,17 @@
                     styler: function (value, row, inde) {
                         var now = new Date();
                         var d = new Date(Date.parse(value.replace(/-/g, "/")));
-                        console.log(now - d);
-//                        return d;
-                        if (now - d > 0) {
-                            if (row.cly!=null&&row.cly!=""){
-                                return "background-color:#66ff66;";
-                            }else{
-                                return "background-color:#FF3300;"
+
+                        if (row.cly != null && row.cly != "") {
+                            return "background-color:#66ff66";//已处理 绿色#66ff66;
+                        } else {
+                            if (now - d > 0) {//未处理
+                                return "background-color:red;" //已过时 红色#FF3300
+                            } else {
+                                return "background-color:yellow;";//未过时 黄色#FF8C00
                             }
-                        }else {
-                            return "background-color:#FF8C00;";
                         }
+
                     }
                 }, {
                     width: '150',
@@ -66,16 +66,21 @@
                     width: 330,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += $.formatString('<a href="${path}/customer/info?ctmCode={0}" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'"  >查看</a>', row.txbm);
-                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
-                        str += $.formatString('<a href="${path}/customer/edit?ctmCode={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.txbm);
-                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                        str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.txbm);
+                        str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-search" data-options="plain:true,iconCls:\'icon-edit\'" onclick="infoFun(\'{0}\');"  >查看</a>', row.txbm);
+                        if (row.cly == null || row.cly == "") {
+                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;'
+                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-complete" data-options="plain:true,iconCls:\'icon-edit\'" onclick="completeFun(\'{0}\');"  >已完成</a>', row.txbm);
+                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'" onclick="editFun(\'{0}\');"  >编辑</a>', row.txbm);
+                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.txbm);
+                        }
                         return str;
                     }
                 }]],
                 onLoadSuccess: function (data) {
                     $('.user-easyui-linkbutton-search').linkbutton({text: '查看', plain: true, iconCls: 'icon-search'});
+                    $('.user-easyui-linkbutton-complete').linkbutton({text: '完成', plain: true, iconCls: 'icon-ok'});
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
                     $('.user-easyui-linkbutton-del').linkbutton({text: '删除', plain: true, iconCls: 'icon-del'});
                 },
@@ -116,7 +121,7 @@
                     text: '确定',
                     handler: function () {
                         parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个treeGrid，所以先预定义好
-                        var f = parent.$.modalDialog.handler.find('#roleAddForm');
+                        var f = parent.$.modalDialog.handler.find('#sRemindAddForm');
                         f.submit();
                     }
                 }]
@@ -145,8 +150,8 @@
             parent.$.messager.confirm('询问', '您是否要删除当前数据？', function (b) {
                 if (b) {
                     progressLoad();
-                    $.post('${path }/customer/delete', {
-                        ctmCode: id
+                    $.post('${path }/remind/s/delete', {
+                        txbm: id
                     }, function (result) {
                         if (result.success) {
                             parent.$.messager.alert('提示', result.message, 'info');
@@ -159,7 +164,30 @@
                 }
             });
         }
-
+        function completeFun(id) {
+            if (id == undefined) {//点击右键菜单才会触发这个
+                var rows = dataGrid.datagrid('getSelections');
+                id = rows[0].id;
+            } else {//点击操作里面的删除图标会触发这个
+                dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
+            }
+            parent.$.messager.confirm('询问', '您是否已完成当前事宜？', function (b) {
+                if (b) {
+                    progressLoad();
+                    $.post('${path }/remind/s/complete', {
+                        txbm: id
+                    }, function (result) {
+                        if (result.success) {
+                            parent.$.messager.alert('提示', result.message, 'info');
+                            dataGrid.datagrid('reload');
+                        } else {
+                            parent.$.messager.alert('提示', result.message, 'info');
+                        }
+                        progressClose();
+                    }, 'JSON');
+                }
+            });
+        }
         function editFun(id) {
             if (id == undefined) {
                 var rows = dataGrid.datagrid('getSelections');
@@ -171,18 +199,32 @@
                 title: '编辑',
                 width: 500,
                 height: 300,
-                href: '${path }/user/editPage?id=' + id,
+                href: '${path }/remind/s/editPage?txbm=' + id,
                 buttons: [{
                     text: '确定',
                     handler: function () {
                         parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                        var f = parent.$.modalDialog.handler.find('#userEditForm');
+                        var f = parent.$.modalDialog.handler.find('#sRemindEditForm');
                         f.submit();
                     }
                 }]
             });
         }
-
+        function infoFun(txbm) {
+            parent.$.modalDialog({
+                title: '编辑',
+                width: 500,
+                height: 300,
+                href: '${path }/remind/s/info?txbm=' + txbm,
+                buttons: [{
+                    text: '确定',
+                    handler: function () {
+                        parent.$.modalDialog.handler.dialog('close');
+                        searchFun();
+                    }
+                }]
+            });
+        }
         function searchFun() {
             dataGrid.datagrid('load', $.serializeObject($('#searchForm')));
         }
@@ -195,7 +237,7 @@
 <body class="easyui-layout" data-options="fit:true,border:false">
 <div data-options="region:'north',border:false" style="display:none;height: 30px; background-color: #fff">
     <form id="searchForm">
-        <input type="hidden" name="ctmCode" id="ctmCode" value="${customer.ctmCode}">
+        <input type="hidden" name="agentNumber" id="ctmCode" value="${ctmCode}">
     </form>
 </div>
 <div data-options="region:'center',border:true,title:'日程提醒列表'">

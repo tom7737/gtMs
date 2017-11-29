@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.sqs.AppguifeiMapper">
+    <resultMap id="AppguifeiResultMap" type="com.gt.ms.entity.sqs.Appguifei">
+        <id column="appno" jdbcType="INTEGER" property="appno"/>
+        <result column="app_Fee" jdbcType="DOUBLE" property="appFee"/>
+        <result column="app_Fee2" jdbcType="DOUBLE" property="appFee2"/>
+        <result column="app_Fee3" jdbcType="DOUBLE" property="appFee3"/>
+        <result column="app_Type" jdbcType="NVARCHAR" property="appType"/>
+    </resultMap>
+
+    <sql id="Appguifei_List">
+    appno,app_Fee,app_Fee2,app_Fee3,app_Type
+  </sql>
+
+    <select id="get" parameterType="java.lang.String" resultMap="AppguifeiResultMap">
+        select
+        <include refid="Appguifei_List"/>
+        from [appguifei]
+        where appno = #{appno}
+    </select>
+    <select id="getList" resultMap="AppguifeiResultMap">
+        select
+        <include refid="Appguifei_List"/>
+        from [appguifei]
+    </select>
+    <insert id="save" parameterType="com.gt.ms.entity.sqs.Appguifei">
+        insert into appguifei (app_Fee,app_Fee2,app_Fee3,app_Type)
+        values (#{app_Fee},#{app_Fee2}, #{app_Fee3}, #{app_Type})
+    </insert>
+</mapper>

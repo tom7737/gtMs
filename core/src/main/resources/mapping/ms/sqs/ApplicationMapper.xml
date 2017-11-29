@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gt.ms.mapper.sqs.ApplicationMapper">
+    <resultMap id="ApplicationResultMap" type="com.gt.ms.entity.sqs.Application">
+        <id column="guid" jdbcType="NVARCHAR" property="guid"/>
+        <result column="ctm_Code" jdbcType="NVARCHAR" property="ctmCode"/>
+        <result column="ctm_name" jdbcType="NVARCHAR" property="ctmName"/>
+        <result column="ctm_addr" jdbcType="NVARCHAR" property="ctmAddr"/>
+        <result column="app_Name" jdbcType="NVARCHAR" property="appName"/>
+        <result column="app_Type" jdbcType="INTEGER" property="appType"/>
+        <result column="gui_Fei" jdbcType="DOUBLE" property="guiFei"/>
+        <result column="agent_Fei" jdbcType="DOUBLE" property="agentFei"/>
+        <result column="pice" jdbcType="DOUBLE" property="pice"/>
+        <result column="cjid" jdbcType="NVARCHAR" property="cjid"/>
+        <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="agent_Number" jdbcType="NVARCHAR" property="agentNumber"/>
+        <result column="dlguid" jdbcType="NVARCHAR" property="dlguid"/>
+    </resultMap>
+
+    <sql id="Application_List">
+    guid, ctm_Code,ctm_name,ctm_addr,app_Name,app_Type,gui_Fei,agent_Fei,
+    pice,cjid,cjsj,status,agent_Number,dlguid
+  </sql>
+
+    <select id="get" parameterType="java.lang.String" resultMap="ApplicationResultMap">
+        select
+        <include refid="Application_List"/>
+        from [application]
+        where guid = #{guid}
+    </select>
+
+    <insert id="save" parameterType="com.gt.ms.entity.sqs.Application">
+        insert into application (guid,ctm_Code, ctm_name, ctm_addr,
+        app_Name, app_Type, gui_Fei,
+        agent_Fei, pice, cjid,
+        cjsj,status,agent_Number,dlguid)
+        values (#{guid},#{ctmCode}, #{ctmName}, #{ctmAddr},
+        #{appName}, #{appType}, #{guiFei},
+        #{agentFei,jdbcType=TIMESTAMP}, #{pice}, #{cjid},
+        #{cjsj},#{status},#{agentNumber},#{dlguid})
+    </insert>
+</mapper>

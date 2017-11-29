@@ -12,14 +12,26 @@ import java.util.Set;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * @author 唐文滔
  * @date 2017年10月16日 19:18:13
  */
 public abstract class BaseEntity implements Serializable {
-    protected static final long serialVersionUID = 1l;
+    /**
+     * 用于此父类获取子类实例
+     *
+     * @return
+     */
+    protected BaseEntity child() {
+        return this;
+    }
 
-    public abstract String toString();
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(child(), ToStringStyle.DEFAULT_STYLE);
+    }
 
 }

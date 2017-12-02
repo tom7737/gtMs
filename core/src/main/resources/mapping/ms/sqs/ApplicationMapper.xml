@@ -22,7 +22,64 @@
     guid, ctm_Code,ctm_name,ctm_addr,app_Name,app_Type,gui_Fei,agent_Fei,
     pice,cjid,cjsj,status,agent_Number,dlguid
   </sql>
+    <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="ApplicationResultMap">
+        SELECT
+        <include refid="Application_List"/>
+        FROM(
 
+        SELECT TOP ${size+from} ROW_NUMBER() OVER(
+        <choose>
+            <when test="sort!=null and sort!='seq'">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by guid DESC
+            </otherwise>
+        </choose>
+        ) AS ROWID,*
+
+        FROM application
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                cjid = #{condition.makeOpQx}
+            </if>
+            <if test="condition.appName!=null and condition.appName!=''">
+                and app_name like '%${condition.appName}%'
+            </if>
+            <if test="condition.ctmName!=null and condition.ctmName!=''">
+                and ctm_name like '%${condition.ctmName}%'
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and agent_number = #{condition.agentNumber}
+            </if>
+        </where>
+        ) AS TEMP1
+        WHERE ROWID> ${from}
+    </select>
+    <select id="findPageCount" parameterType="com.gt.ms.vo.PageInfo" resultType="java.lang.Integer">
+        SELECT COUNT (*)
+        FROM application
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                cjid = #{condition.makeOpQx}
+            </if>
+            <if test="condition.appName!=null and condition.appName!=''">
+                and app_name like '%${condition.appName}%'
+            </if>
+            <if test="condition.ctmName!=null and condition.ctmName!=''">
+                and ctm_name like '%${condition.ctmName}%'
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and agent_number = #{condition.agentNumber}
+            </if>
+        </where>
+    </select>
+    <select id="getCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select
+        COUNT (*)
+        from [application]
+        where guid = #{guid}
+    </select>
     <select id="get" parameterType="java.lang.String" resultMap="ApplicationResultMap">
         select
         <include refid="Application_List"/>

@@ -319,7 +319,7 @@ public class Sqs01Controller extends BaseController {
             //agentFee
             if (sqs01.getPice() < sqs01.getGuiFee() + sqs01.getGuiFeem()) {
                 result.setSuccess(false);
-                result.setMessage("费用不足！");
+                result.setMessage("费用错误！");
                 return result;
             } else {
                 sqs01.setAgentFee(sqs01.getPice() - sqs01.getGuiFee() - sqs01.getGuiFeem());

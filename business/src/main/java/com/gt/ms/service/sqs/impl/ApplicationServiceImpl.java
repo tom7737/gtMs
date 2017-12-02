@@ -26,4 +26,8 @@ public class ApplicationServiceImpl extends BaseServiceImpl<Application, String>
         this.applicationMapper = applicationMapper;
     }
 
+    @Override
+    public int getCount(String guid) {
+        return applicationMapper.getCount(guid);
+    }
 }

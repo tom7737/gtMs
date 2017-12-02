@@ -14,7 +14,11 @@ public class Application extends BaseEntity {
     private static final long serialVersionUID = 902357806562837492L;
 
 
-    // Fields    
+    // Fields
+    /**
+     * 状态-新创建
+     */
+    public static final Integer STATUS_NEW = 0;
 
     private String guid;
     private String ctmCode;//客户编号
@@ -25,7 +29,7 @@ public class Application extends BaseEntity {
     private Double guiFei;//规费
     private Double agentFei;//代理费
     private Double pice;//总费用
-    private String cjid;//创建人
+    private String cjid;//代理人/创建人
     private Timestamp cjsj;//创建时间
     private Integer status;//申请状态
     private String agentNumber;//代理编号

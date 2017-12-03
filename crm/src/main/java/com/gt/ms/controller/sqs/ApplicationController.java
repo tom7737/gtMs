@@ -43,8 +43,6 @@ public class ApplicationController extends BaseController {
     @Autowired
     private ApplicationService applicationService;
     @Autowired
-    private FinanceService financeService;
-    @Autowired
     private OpService opService;
     @Autowired
     private CustomerService customerService;
@@ -58,8 +56,7 @@ public class ApplicationController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/manager", method = RequestMethod.GET)
-    public String manager(String ctmCode, Model model) {
-        model.addAttribute("ctmCode", ctmCode);
+    public String manager() {
         return "/sqs/app/list";
     }
 

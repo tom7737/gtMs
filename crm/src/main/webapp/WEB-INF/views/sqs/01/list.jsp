@@ -181,7 +181,7 @@
         </table>
     </form>
 </div>
-<div data-options="region:'center',border:true,title:'用户列表'">
+<div data-options="region:'center',border:true,title:'申请书列表'">
     <table id="dataGrid" data-options="fit:true,border:false"></table>
 </div>
 <%--

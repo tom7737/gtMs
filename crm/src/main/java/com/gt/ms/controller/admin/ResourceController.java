@@ -1,6 +1,7 @@
 package com.gt.ms.controller.admin;
 
 import com.gt.ms.controller.base.BaseController;
+import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.admin.Resource;
 import com.gt.ms.service.admin.ResourceService;
 import com.gt.ms.vo.AjaxResult;
@@ -39,7 +40,7 @@ public class ResourceController extends BaseController {
     @RequestMapping(value = "/tree")
     @ResponseBody
     public List<Tree> tree() {
-//        ActUser currentUser = getCurrentUser();
+        Op currentUser = getCurrentUser();
 //        List<Tree> tree = resourceService.findTree(currentUser);
 //        return tree;
         List<Tree> trees = new ArrayList<Tree>();
@@ -61,8 +62,15 @@ public class ResourceController extends BaseController {
         trees2.add(tree23);
         tree2.setChildren(trees2);
         trees.add(tree2);
-
-
+        Tree tree3 = new Tree(3L, "财务模块", "open", false, "icon-company", "");
+        Tree tree31 = new Tree(31L, "财务管理", "open", false, "icon-list", "/finance/manager");
+        List<Tree> trees3 = new ArrayList<Tree>();
+        trees3.add(tree31);
+        tree3.setChildren(trees3);
+        //财务模块权限
+        if ('1'==currentUser.getOpLimit().charAt(10)) {
+            trees.add(tree3);
+        }
         return trees;
     }
 

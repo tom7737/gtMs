@@ -17,13 +17,88 @@
         <result column="kddh" jdbcType="NVARCHAR" property="kddh"/>
         <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
         <result column="cjid" jdbcType="NVARCHAR" property="cjid"/>
+        <association property="application" resultMap="ApplicationResultMap"/>
     </resultMap>
-
+    <resultMap id="ApplicationResultMap" type="com.gt.ms.entity.sqs.Application">
+        <id column="application_guid" jdbcType="NVARCHAR" property="guid"/>
+        <result column="app_ctm_Code" jdbcType="NVARCHAR" property="ctmCode"/>
+        <result column="app_ctm_name" jdbcType="NVARCHAR" property="ctmName"/>
+        <result column="app_ctm_addr" jdbcType="NVARCHAR" property="ctmAddr"/>
+        <result column="app_app_Name" jdbcType="NVARCHAR" property="appName"/>
+        <result column="app_app_Type" jdbcType="INTEGER" property="appType"/>
+        <result column="app_gui_Fei" jdbcType="DOUBLE" property="guiFei"/>
+        <result column="app_agent_Fei" jdbcType="DOUBLE" property="agentFei"/>
+        <result column="app_pice" jdbcType="DOUBLE" property="pice"/>
+        <result column="app_cjid" jdbcType="NVARCHAR" property="cjid"/>
+        <result column="app_cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
+        <result column="app_status" jdbcType="INTEGER" property="status"/>
+        <result column="app_agent_Number" jdbcType="NVARCHAR" property="agentNumber"/>
+        <result column="app_dlguid" jdbcType="NVARCHAR" property="dlguid"/>
+    </resultMap>
     <sql id="Finance_List">
     guid, app_guid,accountman,accountstate,accountmemo,accountdate,invoice,receiptcode,
     invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid
   </sql>
+    <sql id="Finance_List2">
+        f.*,
+        a.guid as application_guid, a.ctm_code as  app_ctm_Code,a.ctm_name as app_ctm_name, a.ctm_addr as app_ctm_addr,
+        a.app_name as app_app_Name, a.app_type as app_app_Type, a.gui_fei as app_gui_Fei,a.agent_fei as app_agent_Fei,
+        a.pice as app_pice,a.cjid as app_cjid,a.cjsj as  app_cjsj,a.status as app_status,
+        a.agent_number as app_agent_Number,a.dlguid as app_dlguid
+    </sql>
+    <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="FinanceResultMap">
+        SELECT
+        *
+        FROM(
 
+        SELECT TOP ${size+from} ROW_NUMBER() OVER(
+        <choose>
+            <when test="sort!=null and sort!='seq'">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by guid DESC
+            </otherwise>
+        </choose>
+        ) AS ROWID,
+        <include refid="Finance_List2"/>
+
+        FROM finance f inner JOIN application a on f.app_guid = a.guid
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                a.cjid = #{condition.makeOpQx}
+            </if>
+            <if test="condition.appName!=null and condition.appName!=''">
+                and a.app_name like '%${condition.appName}%'
+            </if>
+            <if test="condition.ctmName!=null and condition.ctmName!=''">
+                and a.ctm_name like '%${condition.ctmName}%'
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and a.agent_number = #{condition.agentNumber}
+            </if>
+        </where>
+        ) AS TEMP1
+        WHERE ROWID> ${from}
+    </select>
+    <select id="findPageCount" parameterType="com.gt.ms.vo.PageInfo" resultType="java.lang.Integer">
+        SELECT COUNT (*)
+        FROM finance f inner JOIN application a on f.app_guid = a.guid
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                a.cjid = #{condition.makeOpQx}
+            </if>
+            <if test="condition.appName!=null and condition.appName!=''">
+                and a.app_name like '%${condition.appName}%'
+            </if>
+            <if test="condition.ctmName!=null and condition.ctmName!=''">
+                and a.ctm_name like '%${condition.ctmName}%'
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and a.agent_number = #{condition.agentNumber}
+            </if>
+        </where>
+    </select>
     <select id="get" parameterType="java.lang.Integer" resultMap="FinanceResultMap">
         select
         <include refid="Finance_List"/>
@@ -39,4 +114,44 @@
         #{receiptcode}, #{invoicedate}, #{invoiceman},
         #{receivable},#{fpqx},#{kddh},#{cjsj},#{cjid})
     </insert>
+    <update id="update" parameterType="com.gt.ms.entity.finance.Finance">
+        update finance
+        <set>
+            cjsj = cjsj,
+            <if test="accountman != null">
+                accountman = #{accountman},
+            </if>
+            <if test="accountstate != null">
+                accountstate = #{accountstate},
+            </if>
+            <if test="accountmemo != null">
+                accountmemo = #{accountmemo},
+            </if>
+            <if test="accountdate != null">
+                accountdate = #{accountdate},
+            </if>
+            <if test="invoice != null">
+                invoice = #{invoice},
+            </if>
+            <if test="receiptcode != null">
+                receiptcode = #{receiptcode},
+            </if>
+            <if test="invoicedate != null">
+                invoicedate = #{invoicedate},
+            </if>
+            <if test="invoiceman != null">
+                invoiceman = #{invoiceman},
+            </if>
+            <if test="receivable != null">
+                receivable = #{receivable},
+            </if>
+            <if test="fpqx != null">
+                fpqx = #{fpqx},
+            </if>
+            <if test="kddh != null">
+                kddh = #{kddh},
+            </if>
+        </set>
+        where guid = #{guid}
+    </update>
 </mapper>

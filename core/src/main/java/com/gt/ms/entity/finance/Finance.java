@@ -1,6 +1,7 @@
 package com.gt.ms.entity.finance;
 
 import com.gt.ms.entity.base.BaseEntity;
+import com.gt.ms.entity.sqs.Application;
 
 import java.sql.Timestamp;
 
@@ -59,11 +60,12 @@ public class Finance extends BaseEntity {
     private String invoicedate;//开票日期
     private String invoiceman;//开票人
     private String receivable;//应收账款，0已收/1未收
-    private String fpqx;//发票去向
+    private String fpqx;//发票去向 0自取/1快递
     private String kddh;//快递单号
     private Timestamp cjsj;//创建时间
     private String cjid;//创建人
 
+    private Application application;
 
     // Constructors
 
@@ -217,5 +219,12 @@ public class Finance extends BaseEntity {
         this.cjid = cjid;
     }
 
+    public Application getApplication() {
+        return this.application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
+    }
 
 }

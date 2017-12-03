@@ -94,7 +94,55 @@
         cjsj,status,agent_Number,dlguid)
         values (#{guid},#{ctmCode}, #{ctmName}, #{ctmAddr},
         #{appName}, #{appType}, #{guiFei},
-        #{agentFei,jdbcType=TIMESTAMP}, #{pice}, #{cjid},
+        #{agentFei}, #{pice}, #{cjid},
         #{cjsj},#{status},#{agentNumber},#{dlguid})
     </insert>
+
+    <update id="update" parameterType="com.gt.ms.entity.sqs.Application">
+        update application
+        <set>
+            <if test="ctmCode!=null">
+                ctm_Code = #{ctmCode},
+            </if>
+            <if test="ctmName!=null">
+                ctm_Name = #{ctmName},
+            </if>
+            <if test="ctmAddr!=null">
+                ctm_Addr = #{ctmAddr},
+            </if>
+            <if test="appName!=null">
+                app_Name = #{appName},
+            </if>
+            <if test="appType!=null">
+                app_Type = #{appType},
+            </if>
+            <if test="guiFei!=null">
+                gui_Fei = #{guiFei},
+            </if>
+            <if test="agentFei!=null">
+                agent_Fei = #{agentFei},
+            </if>
+            <if test="pice!=null">
+                pice = #{pice},
+            </if>
+            <if test="cjid!=null">
+                cjid = #{cjid},
+            </if>
+            <if test="status!=null">
+                status = #{status},
+            </if>
+            <if test="agentNumber!=null">
+                agent_Number = #{agentNumber},
+            </if>
+            <if test="dlguid!=null">
+                dlguid = #{dlguid},
+            </if>
+        </set>
+        where guid = #{guid}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String" >
+        delete from application
+        where guid = #{guid}
+    </delete>
 </mapper>

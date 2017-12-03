@@ -19,6 +19,14 @@ public class Application extends BaseEntity {
      * 状态-新创建
      */
     public static final Integer STATUS_NEW = 0;
+    /**
+     * 状态-财务审核中
+     */
+    public static final Integer STATUS_CHECK_PAY = 1;
+    /**
+     * 状态-已付款
+     */
+    public static final Integer STATUS_PAY = 2;
 
     private String guid;
     private String ctmCode;//客户编号

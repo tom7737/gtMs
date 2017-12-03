@@ -3,12 +3,13 @@ package com.gt.ms.controller.sqs;
 import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.customer.Customer;
-import com.gt.ms.entity.remind.SRemind;
+import com.gt.ms.entity.sqs.Appguifei;
 import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.agent.AgentService;
 import com.gt.ms.service.customer.CustomerService;
-import com.gt.ms.service.remind.SRemindService;
+import com.gt.ms.service.finance.FinanceService;
+import com.gt.ms.service.sqs.AppguifeiService;
 import com.gt.ms.service.sqs.ApplicationService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.RandomUtils;
@@ -25,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,13 +43,15 @@ public class ApplicationController extends BaseController {
     @Autowired
     private ApplicationService applicationService;
     @Autowired
-    private SRemindService sRemindService;
+    private FinanceService financeService;
     @Autowired
     private OpService opService;
     @Autowired
     private CustomerService customerService;
     @Autowired
     private AgentService agentService;
+    @Autowired
+    private AppguifeiService appguifeiService;
     /**
      * 申请书管理
      *
@@ -190,9 +192,13 @@ public class ApplicationController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/info", method = RequestMethod.GET)
-    public String info(String txbm, Model model) {
-        SRemind sRemind = sRemindService.get(txbm);
-        model.addAttribute("sRemind", sRemind);
+    public String info(String guid, Model model) {
+        Application app = applicationService.get(guid);
+        Appguifei appguifei = appguifeiService.get(app.getAppType());
+        Op op = opService.getByOpName(app.getCjid());
+        model.addAttribute("app", app);
+        model.addAttribute("appguifei", appguifei);
+        model.addAttribute("op", op);
         return "/sqs/app/info";
     }
 
@@ -202,17 +208,17 @@ public class ApplicationController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/editPage", method = RequestMethod.GET)
-    public String editPage(String txbm, Model model) {
-        // 已完成的申请书不能修改
-        /*SRemind temp = sRemindService.get(txbm);
+    public String editPage(String guid, Model model) {
+        Application app = applicationService.get(guid);
         Op currentUser = getCurrentUser();
         if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
-                && !temp.getMakeOp().equals(currentUser.getOpName())//不是自己的客户
+                && !app.getCjid().equals(currentUser.getOpName())//不是自己的客户
                 ) {
             return "nopermission";
-        }*/
-        SRemind sRemind = sRemindService.get(txbm);
-        model.addAttribute("sRemind", sRemind);
+        }
+        List<Op> opList = opService.getList();
+        model.addAttribute("app", app);
+        model.addAttribute("opList", opList);
         return "/sqs/app/edit";
     }
 
@@ -223,39 +229,24 @@ public class ApplicationController extends BaseController {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult edit(SRemind sRemind) {
+    public AjaxResult edit(Application app) {
         AjaxResult ajaxResult = new AjaxResult();
         try {
-            // 已完成的申请书不能修改
-            SRemind temp = sRemindService.get(sRemind.getTxbm());
-            /*Op currentUser = getCurrentUser();
+            Application temp = applicationService.get(app.getGuid());
+            Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
-                    && !temp.getMakeOp().equals(currentUser.getOpName())//不是自己的客户
+                    && !temp.getCjid().equals(currentUser.getOpName())//不是自己的客户
                     ) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("没有权限！");
                 return ajaxResult;
             }
-            if (StringUtils.isNotBlank(temp.getCly())) {
+            if (!Application.STATUS_NEW.equals(temp.getStatus())) {
                 ajaxResult.setSuccess(false);
-                ajaxResult.setMessage("已完成的申请书不能修改！");
-            }*/
-            // 判断重复提交
-            sRemind.setTxly(temp.getTxly());
-            sRemind.setDlguid(temp.getDlguid());
-            sRemind.setAgentNumber(temp.getAgentNumber());
-            String exist = sRemindService.getExist(sRemind);
-            if (StringUtils.isNotBlank(exist) && !exist.equals(sRemind.getTxbm())) {
-                ajaxResult.setSuccess(false);
-                ajaxResult.setMessage("已有相同提醒");
-                return ajaxResult;
+                ajaxResult.setMessage("只有新申请的申请书才能修改！");
             }
-            SRemind update = new SRemind();
-            update.setTxbm(sRemind.getTxbm());
-            update.setTxrq(sRemind.getTxrq());
-            update.setTxmc(sRemind.getTxmc());
-            update.setTxnr(sRemind.getTxnr());
-            sRemindService.update(update);
+            // 判断重复提交
+            applicationService.update(app);
             ajaxResult.setSuccess(true);
             ajaxResult.setMessage("修改成功");
         } catch (Exception e) {
@@ -273,24 +264,23 @@ public class ApplicationController extends BaseController {
      */
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult delete(String txbm) {
+    public AjaxResult delete(String guid) {
         AjaxResult ajaxResult = new AjaxResult();
         try {
-            /*SRemind sRemind = sRemindService.get(txbm);
+            Application app = applicationService.get(guid);
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(2)//没有删除所有数据的权限
-                    && !sRemind.getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
+                    && !app.getCjid().equals(currentUser.getOpName())//不是自己的申请书
                     ) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("没有权限！");
                 return ajaxResult;
             }
-            // 已完成的申请书不能删除
-            if (StringUtils.isNotBlank(sRemind.getCly())) {
+            if (!Application.STATUS_NEW.equals(app.getStatus())) {
                 ajaxResult.setSuccess(false);
-                ajaxResult.setMessage("已完成的申请书不能删除！");
-            }*/
-            sRemindService.remove(txbm);
+                ajaxResult.setMessage("只有新申请的申请书才能删除！");
+            }
+            applicationService.remove(guid);
             ajaxResult.setSuccess(true);
             ajaxResult.setMessage("删除成功");
         } catch (Exception e) {
@@ -302,38 +292,33 @@ public class ApplicationController extends BaseController {
     }
 
     /**
-     * 完成申请书
+     * 提交财务
      *
      * @return
      */
-    @RequestMapping(value = "/complete", method = RequestMethod.POST)
+    @RequestMapping(value = "/submitCheckPay", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResult complete(String txbm) {
+    public AjaxResult complete(String guid) {
         AjaxResult ajaxResult = new AjaxResult();
         try {
-            // 已完成的申请书不能修改
-           /* SRemind temp = sRemindService.get(txbm);
+            Application app = applicationService.get(guid);
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
-                    && !temp.getMakeOp().equals(currentUser.getOpName())//不是自己的客户
+                    && !app.getCjid().equals(currentUser.getOpName())//不是自己的申请书
                     ) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("没有权限！");
                 return ajaxResult;
             }
-            if (StringUtils.isNotBlank(temp.getCly())) {
+            if (!Application.STATUS_NEW.equals(app.getStatus())) {
                 ajaxResult.setSuccess(false);
-                ajaxResult.setMessage("已完成的申请书不能修改！");
-            }*/
-            SRemind update = new SRemind();
-            update.setTxbm(txbm);
-            update.setCly(getCurrentUser().getOpName());
-            update.setClrq(new Date());
-            sRemindService.update(update);
+                ajaxResult.setMessage("只有新申请的申请书才能提交审核！");
+            }
+            applicationService.saveFinance(app, currentUser);
             ajaxResult.setSuccess(true);
             ajaxResult.setMessage("成功");
         } catch (Exception e) {
-            logger.error("完成申请书时发生错误:{}", e);
+            logger.error("提交财务时发生错误:{}", e);
             ajaxResult.setSuccess(false);
             ajaxResult.setMessage("操作失败！");
         }

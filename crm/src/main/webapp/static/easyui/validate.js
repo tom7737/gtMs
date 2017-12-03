@@ -171,7 +171,13 @@ $(function () {
             },
             message: '请输入数字'
         },
-
+        //验证金额
+        money: {
+            validator: function (value, param) {
+                return /^[0-9]+.?[0-9]{0,2}$/.test(value);
+            },
+            message: '请输入正确的金额'
+        },
 //19.验证密码两次的输入是否相同
         same: {
             validator: function (value, param) {

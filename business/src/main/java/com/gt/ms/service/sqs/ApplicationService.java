@@ -1,5 +1,6 @@
 package com.gt.ms.service.sqs;
 
+import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.sqs.App01More;
 import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.service.base.BaseService;
@@ -16,4 +17,10 @@ public interface ApplicationService extends BaseService<Application, String> {
      * @return
      */
     int getCount(String guid);
+
+    /**
+     * 提交财务审核
+     * @param app
+     */
+    void saveFinance(Application app, Op currentUser);
 }

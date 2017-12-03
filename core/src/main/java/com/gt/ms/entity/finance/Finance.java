@@ -15,14 +15,46 @@ public class Finance extends BaseEntity {
 
 
     // Fields    
+    /**
+     * 财务审核状态-新创建
+     */
+    public static final String ACCOUNTSTATE_NEW = "0";
+    /**
+     * 财务审核状态-审核通过
+     */
+    public static final String ACCOUNTSTATE_PASS = "1";
+    /**
+     * 财务审核状态-审核不通过
+     */
+    public static final String ACCOUNTSTATE_NOT_PASS = "2";
 
-    private String guid;
+    /**
+     * 财务审核状态-不需要开票
+     */
+    public static final String INVOICE_NOT_NEED = "0";
+    /**
+     * 财务审核状态-需要开票
+     */
+    public static final String INVOICE_NEED = "1";
+    /**
+     * 财务审核状态-已开票
+     */
+    public static final String INVOICE_OK = "2";
+    /**
+     * 应收账款-已收
+     */
+    public static final String RECEIVABLE_YES = "0";
+    /**
+     * 应收账款-未收
+     */
+    public static final String RECEIVABLE_NO = "1";
+    private Integer guid;
     private String appGuid;//申请书ID
     private String accountman;//财务审核人
-    private String accountstate;//财务审核状态
+    private String accountstate;//财务审核状态 0新创建/1审核通过/2审核不通过
     private String accountmemo;//财务审核备注
     private String accountdate;//财务审核日期
-    private String invoice;//是否开票
+    private String invoice;//是否开票 0不需要开票/1需要开票/2已开票
     private String receiptcode;//票据单号
     private String invoicedate;//开票日期
     private String invoiceman;//开票人
@@ -65,11 +97,11 @@ public class Finance extends BaseEntity {
 
     // Property accessors
 
-    public String getGuid() {
+    public Integer getGuid() {
         return this.guid;
     }
 
-    public void setGuid(String guid) {
+    public void setGuid(Integer guid) {
         this.guid = guid;
     }
 

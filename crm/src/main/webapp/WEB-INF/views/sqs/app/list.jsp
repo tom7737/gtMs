@@ -77,14 +77,17 @@
                     width: 400,
                     formatter: function (value, row, index) {
                         var str = '';
-                        str += $.formatString('<a href="${path}/sqs/01/info?guid={0}" class="user-easyui-linkbutton-info" data-options="plain:true,iconCls:\'icon-info\'"  >查看</a>', row.guid);
+                        str += $.formatString('<a href="${path}/sqs/app/info?guid={0}" class="user-easyui-linkbutton-info" data-options="plain:true,iconCls:\'icon-info\'"  >查看</a>', row.guid);
                         str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                        str += $.formatString('<a href="${path}/sqs/01/edit?guid={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.guid);
-                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                        str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.guid);
-                        str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
-                        str += '<hr style="    margin-top: -3px;margin-bottom: -3px;"/>';
-                        str += $.formatString('<a href="${path}/sqs/01/copy?guid={0}" class="user-easyui-linkbutton-copy" data-options="plain:true,iconCls:\'icon-edit\'"  >再次申请</a>', row.guid);
+                        // 只有新申请的申请书才能修改
+                        if (row.status == 0) {
+                            str += $.formatString('<a href="${path}/sqs/app/editPage?guid={0}" class="user-easyui-linkbutton-edit" data-options="plain:true,iconCls:\'icon-edit\'"  >编辑</a>', row.guid);
+                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-del" data-options="plain:true,iconCls:\'icon-del\'" onclick="deleteFun(\'{0}\');" >删除</a>', row.guid);
+                            str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
+                            str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-copy" data-options="plain:true,iconCls:\'icon-edit\'" onclick="submitCheckPay(\'{0}\')"  >财务审核</a>', row.guid);
+                        }
+//                            str += '<hr style="    margin-top: -3px;margin-bottom: -3px;"/>';
                         return str;
                     }
                 }]],
@@ -92,9 +95,34 @@
                     $('.user-easyui-linkbutton-info').linkbutton({text: '查看', plain: true, iconCls: 'icon-search'});
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
                     $('.user-easyui-linkbutton-del').linkbutton({text: '删除', plain: true, iconCls: 'icon-del'});
-                    $('.user-easyui-linkbutton-copy').linkbutton({text: '再次申请', plain: true, iconCls: 'icon-add'});
+                    $('.user-easyui-linkbutton-copy').linkbutton({text: '财务审核', plain: true, iconCls: 'icon-add'});
                 },
                 toolbar: '#toolbar'
+            });
+        }
+        function submitCheckPay(id) {
+            if (id == undefined) {//点击右键菜单才会触发这个
+                var rows = dataGrid.datagrid('getSelections');
+                id = rows[0].id;
+            } else {//点击操作里面的删除图标会触发这个
+                dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
+            }
+            parent.$.messager.confirm('询问', '您确定提交财务审核？', function (b) {
+                if (b) {
+                    progressLoad();
+                    console.log(id);
+                    $.post('${path }/sqs/app/submitCheckPay', {
+                        guid: id
+                    }, function (result) {
+                        if (result.success) {
+                            parent.$.messager.alert('提示', result.message, 'info');
+                            dataGrid.datagrid('reload');
+                        } else {
+                            parent.$.messager.alert('提示', result.message, 'info');
+                        }
+                        progressClose();
+                    }, 'JSON');
+                }
             });
         }
         function addFun() {
@@ -115,6 +143,7 @@
         }
 
         function deleteFun(id) {
+
             if (id == undefined) {//点击右键菜单才会触发这个
                 var rows = dataGrid.datagrid('getSelections');
                 id = rows[0].id;
@@ -124,7 +153,8 @@
             parent.$.messager.confirm('询问', '您是否要删除当前数据？', function (b) {
                 if (b) {
                     progressLoad();
-                    $.post('${path }/sqs/01/delete', {
+                    console.log(id);
+                    $.post('${path }/sqs/app/delete', {
                         guid: id
                     }, function (result) {
                         if (result.success) {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * Created by admini on 2017/5/10.
  */
 @Service
-public class FinanceServiceImpl extends BaseServiceImpl<Finance, String> implements FinanceService {
+public class FinanceServiceImpl extends BaseServiceImpl<Finance, Integer> implements FinanceService {
 
 
     private FinanceMapper financeMapper;

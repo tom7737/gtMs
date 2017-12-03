@@ -13,7 +13,7 @@
     appno,app_Fee,app_Fee2,app_Fee3,app_Type
   </sql>
 
-    <select id="get" parameterType="java.lang.String" resultMap="AppguifeiResultMap">
+    <select id="get" parameterType="java.lang.Integer" resultMap="AppguifeiResultMap">
         select
         <include refid="Appguifei_List"/>
         from [appguifei]

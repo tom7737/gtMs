@@ -7,5 +7,5 @@ import com.gt.ms.service.base.BaseService;
 /**
  * Created by admini on 2017/5/10.
  */
-public interface FinanceService extends BaseService<Finance, String> {
+public interface FinanceService extends BaseService<Finance, Integer> {
 }

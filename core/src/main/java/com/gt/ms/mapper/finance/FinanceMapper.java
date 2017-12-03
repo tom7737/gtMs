@@ -6,6 +6,6 @@ import com.gt.ms.mapper.base.BaseMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FinanceMapper extends BaseMapper<Finance, String> {
+public interface FinanceMapper extends BaseMapper<Finance, Integer> {
 
 }

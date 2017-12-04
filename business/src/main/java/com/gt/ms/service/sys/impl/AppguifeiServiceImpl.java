@@ -1,9 +1,9 @@
-package com.gt.ms.service.sqs.impl;
+package com.gt.ms.service.sys.impl;
 
-import com.gt.ms.entity.sqs.Appguifei;
-import com.gt.ms.mapper.sqs.AppguifeiMapper;
+import com.gt.ms.entity.sys.Appguifei;
+import com.gt.ms.mapper.sys.AppguifeiMapper;
 import com.gt.ms.service.base.BaseServiceImpl;
-import com.gt.ms.service.sqs.AppguifeiService;
+import com.gt.ms.service.sys.AppguifeiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

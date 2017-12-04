@@ -1,6 +1,6 @@
-package com.gt.ms.service.sqs;
+package com.gt.ms.service.sys;
 
-import com.gt.ms.entity.sqs.Appguifei;
+import com.gt.ms.entity.sys.Appguifei;
 import com.gt.ms.service.base.BaseService;
 
 /**

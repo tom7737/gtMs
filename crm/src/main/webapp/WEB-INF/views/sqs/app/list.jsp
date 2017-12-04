@@ -95,7 +95,7 @@
                     $('.user-easyui-linkbutton-info').linkbutton({text: '查看', plain: true, iconCls: 'icon-search'});
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
                     $('.user-easyui-linkbutton-del').linkbutton({text: '删除', plain: true, iconCls: 'icon-del'});
-                    $('.user-easyui-linkbutton-copy').linkbutton({text: '财务审核', plain: true, iconCls: 'icon-add'});
+                    $('.user-easyui-linkbutton-copy').linkbutton({text: '提交财务审核', plain: true, iconCls: 'icon-redo'});
                 },
                 toolbar: '#toolbar'
             });

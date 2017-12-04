@@ -12,8 +12,17 @@ import java.util.List;
 public interface ApplicationMapper extends BaseMapper<Application, String> {
     /**
      * 根据申请书ID获取对应数据条数
+     *
      * @param guid
      * @return
      */
     int getCount(String guid);
+
+    /**
+     * 根据申请书类型统计申请数量
+     *
+     * @param appType
+     * @return
+     */
+    Integer getCountByAppType(Integer appType);
 }

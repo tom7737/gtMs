@@ -1,4 +1,4 @@
-package com.gt.ms.entity.sqs;
+package com.gt.ms.entity.sys;
 
 
 import com.gt.ms.entity.base.BaseEntity;
@@ -7,7 +7,6 @@ import com.gt.ms.entity.base.BaseEntity;
  * 申请书规费
  * appfeeId entity. @author MyEclipse Persistence Tools
  */
-
 public class Appguifei extends BaseEntity {
     private static final long serialVersionUID = -1956868874091496938L;
 

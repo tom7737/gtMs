@@ -51,4 +51,9 @@ public class ApplicationServiceImpl extends BaseServiceImpl<Application, String>
         update.setStatus(Application.STATUS_CHECK_PAY);
         applicationMapper.update(update);
     }
+
+    @Override
+    public Integer getCountByAppType(Integer appno) {
+        return applicationMapper.getCountByAppType(appno);
+    }
 }

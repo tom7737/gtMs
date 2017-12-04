@@ -80,6 +80,12 @@
         from [application]
         where guid = #{guid}
     </select>
+    <select id="getCountByAppType" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select
+        COUNT (*)
+        from [application]
+        where app_Type = #{appType}
+    </select>
     <select id="get" parameterType="java.lang.String" resultMap="ApplicationResultMap">
         select
         <include refid="Application_List"/>
@@ -141,7 +147,7 @@
         where guid = #{guid}
     </update>
 
-    <delete id="delete" parameterType="java.lang.String" >
+    <delete id="remove" parameterType="java.lang.String">
         delete from application
         where guid = #{guid}
     </delete>

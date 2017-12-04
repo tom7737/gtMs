@@ -65,15 +65,23 @@ public class Sqs01ServiceImpl extends BaseServiceImpl<Sqs01, String> implements 
         ac.setMakeOp(byOpName.getOpCode());
         ac.setCjsj(new Date());
         agentCodeMapper.save(ac);
-
+        // TODO 添加申请信息
         return save;
+    }
+
+    @Override
+    public int update(Sqs01 object) {
+        // TODO 修改申请信息
+        return super.update(object);
     }
 
     @Override
     public int remove(String id) {
 //        appImageMapper.removeByAppguid(id);
 //        agentCodeMapper.removeByAppguid(id);
+        // TODO 删除申请信息
         return sqs01Dao.remove(id);
+
     }
 
     @Override

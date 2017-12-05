@@ -80,6 +80,15 @@ public class ResourceController extends BaseController {
         if ('1'==currentUser.getOpLimit().charAt(11)) {
             trees.add(tree4);
         }
+        Tree tree5 = new Tree(5L, "统计模块", "open", false, "icon-company", "");
+        Tree tree51 = new Tree(51L, "新增客户统计", "open", false, "icon-list", "/statistics/newCustomer");
+        List<Tree> trees5 = new ArrayList<Tree>();
+        trees5.add(tree51);
+        tree5.setChildren(trees5);
+        //统计模块权限
+        if ('1'==currentUser.getOpLimit().charAt(7)) {
+            trees.add(tree5);
+        }
         return trees;
     }
 

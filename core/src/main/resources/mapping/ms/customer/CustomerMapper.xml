@@ -47,6 +47,10 @@
         <result column="qdzid" property="qdzid" jdbcType="NVARCHAR"/>
         <result column="ctm_wxh" property="ctmWxh" jdbcType="NVARCHAR"/>
     </resultMap>
+    <resultMap id="CustomerStatisticsVoResultMap" type="com.gt.ms.vo.customer.CustomerStatisticsVo">
+        <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
+        <result column="counts" property="counts" jdbcType="INTEGER"/>
+    </resultMap>
     <sql id="Base_Column_List">
     ctm_code, ctm_name, ctm_tel, ctm_mobile, ctm_fax, ctm_http, ctm_email, ctm_addr, 
     ctm_post, ctm_class, ctm_regDate, ctm_lxr, ctm_jm, ctm_name_en, ctm_addr_en, make_op, 
@@ -57,6 +61,29 @@
     <sql id="Base_Column_Page">
         ctm_code,ctm_name,ctm_name_e,ctm_regDate,make_op
     </sql>
+
+    <select id="getCountByCtmRegDate" parameterType="java.util.Map" resultMap="CustomerStatisticsVoResultMap">
+        SELECT
+        top 1000
+        ctm_regDate as ctmRegDate,
+        COUNT (ctm_regDate) AS counts
+        FROM
+        dbo.[customer]
+        where
+        ztdm = '0'
+        <if test="startTime !=null and startTime !=''">
+            and ctm_regDate &gt;= #{startTime}
+        </if>
+        <if test="endTime !=null and endTime !=''">
+            and ctm_regDate &lt;= #{endTime}
+        </if>
+        GROUP BY
+        ctm_regDate
+        ORDER BY
+        ctm_regDate asc
+
+    </select>
+
     <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>

@@ -2,7 +2,9 @@ package com.gt.ms.service.customer;
 
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.service.base.BaseService;
+import com.gt.ms.vo.customer.CustomerStatisticsVo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,6 +21,7 @@ public interface CustomerService extends BaseService<Customer, String> {
 
     /**
      * 根据客户名称查询客户数量
+     *
      * @param ctmName
      * @return
      */
@@ -26,6 +29,7 @@ public interface CustomerService extends BaseService<Customer, String> {
 
     /**
      * 根据客户编号查询客户数量
+     *
      * @param ctmCode
      * @return
      */
@@ -33,6 +37,7 @@ public interface CustomerService extends BaseService<Customer, String> {
 
     /**
      * 根据身份证号码查询客户数量
+     *
      * @param sfzjhm
      * @return
      */
@@ -46,4 +51,13 @@ public interface CustomerService extends BaseService<Customer, String> {
      * @return
      */
     List<Customer> getListByCtmName(String ctmName, String makeOp);
+
+    /**
+     * 统计每天新增客户数
+     *
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    List<CustomerStatisticsVo> getCountByCtmRegDate(String startTime, String endTime);
 }

@@ -11,6 +11,7 @@ import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
+import com.gt.ms.vo.customer.CustomerStatisticsVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 客户管理
@@ -365,4 +364,20 @@ public class CustomerController extends BaseController {
         }
         return result;
     }
+
+    @RequestMapping("/statistics/newCustomer")
+    @ResponseBody
+    public AjaxResult newCustomerStatistics(String startTime, String endTime) {
+        AjaxResult result = new AjaxResult();
+        try {
+            List<CustomerStatisticsVo> list = customerService.getCountByCtmRegDate(startTime, endTime);
+            result.setDatas(list);
+        } catch (Exception e) {
+            logger.error("查询客户列表失败{}", e);
+            result.setSuccess(false);
+            result.setMessage("查询客户列表失败！");
+        }
+        return result;
+    }
+
 }

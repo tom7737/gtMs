@@ -1,14 +1,13 @@
 package com.gt.ms.service.sqs.impl;
 
-import com.gt.img.mapper.AppImageMapper;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.agent.AgentCode;
+import com.gt.ms.entity.sqs.Application;
+import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.mapper.admin.OpMapepr;
 import com.gt.ms.mapper.agent.AgentCodeMapper;
-import com.gt.ms.mapper.agent.AgentMapper;
+import com.gt.ms.mapper.sqs.ApplicationMapper;
 import com.gt.ms.mapper.sqs.Sqs01Mapper;
-import com.gt.ms.entity.sqs.Sqs01;
-import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.agent.AgentService;
 import com.gt.ms.service.base.BaseServiceImpl;
 import com.gt.ms.service.sqs.Sqs01Service;
@@ -16,6 +15,7 @@ import com.gt.ms.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -39,6 +39,8 @@ public class Sqs01ServiceImpl extends BaseServiceImpl<Sqs01, String> implements 
     private OpMapepr opMapepr;
     @Autowired
     private AgentService agentService;
+    @Autowired
+    private ApplicationMapper applicationMapper;
     public static final String common_dlguid = "10000";//代理组织ID
 
     @Override
@@ -65,21 +67,84 @@ public class Sqs01ServiceImpl extends BaseServiceImpl<Sqs01, String> implements 
         ac.setMakeOp(byOpName.getOpCode());
         ac.setCjsj(new Date());
         agentCodeMapper.save(ac);
-        // TODO 添加申请信息
+        // 添加申请信息
+        Application application = new Application();
+        application.setGuid(sqs01.getGuid());
+        application.setCtmCode(sqs01.getCtmCode());
+        application.setCtmName((sqs01.getAppName() == null ? "" : sqs01.getAppName()) + (sqs01.getAppNameE() == null ? "" : " " + sqs01.getAppNameE()));
+        application.setCtmAddr((sqs01.getAppAddr() == null ? "" : sqs01.getAppAddr()) + (sqs01.getAppAddrE() == null ? "" : " " + sqs01.getAppAddrE()));
+        application.setAppName(sqs01.getTmName());
+        application.setAppType(1);
+        application.setGuiFei((sqs01.getGuiFee() == null ? 0 : sqs01.getGuiFee()) + (sqs01.getGuiFeem() == null ? 0 : sqs01.getGuiFeem()));
+        application.setAgentFei(sqs01.getAgentFee());
+        application.setPice(sqs01.getPice());
+        application.setCjid(sqs01.getMakeOp());
+        application.setCjsj(new Timestamp(System.currentTimeMillis()));
+        application.setStatus(Application.STATUS_NEW);
+        application.setAgentNumber(sqs01.getAgentNumber());
+        application.setDlguid(sqs01.getDlguid());
+        applicationMapper.save(application);
         return save;
     }
 
     @Override
-    public int update(Sqs01 object) {
-        // TODO 修改申请信息
-        return super.update(object);
+    public int update(Sqs01 sqs01) {
+        // 修改申请信息
+        boolean flag = false;
+        Application application = new Application();
+        application.setGuid(sqs01.getGuid());
+        if (StringUtils.isNotBlank(sqs01.getCtmCode())) {
+            application.setCtmCode(sqs01.getCtmCode());
+            flag = true;
+        }
+        if (StringUtils.isNotBlank((sqs01.getAppName() == null ? "" : sqs01.getAppName()) + (sqs01.getAppNameE() == null ? "" : " " + sqs01.getAppNameE()))) {
+            application.setCtmName((sqs01.getAppName() == null ? "" : sqs01.getAppName()) + (sqs01.getAppNameE() == null ? "" : " " + sqs01.getAppNameE()));
+            flag = true;
+        }
+        if (StringUtils.isNotBlank((sqs01.getAppAddr() == null ? "" : sqs01.getAppAddr()) + (sqs01.getAppAddrE() == null ? "" : " " + sqs01.getAppAddrE()))) {
+            application.setCtmAddr((sqs01.getAppAddr() == null ? "" : sqs01.getAppAddr()) + (sqs01.getAppAddrE() == null ? "" : " " + sqs01.getAppAddrE()));
+            flag = true;
+        }
+        if (StringUtils.isNotBlank(sqs01.getTmName())) {
+            application.setAppName(sqs01.getTmName());
+            flag = true;
+        }
+        if (sqs01.getGuiFee() != null && sqs01.getGuiFeem() != null) {
+            application.setGuiFei((sqs01.getGuiFee() == null ? 0 : sqs01.getGuiFee()) + (sqs01.getGuiFeem() == null ? 0 : sqs01.getGuiFeem()));
+            flag = true;
+        }
+        if (sqs01.getAgentFee() != null) {
+            application.setAgentFei(sqs01.getAgentFee());
+            flag = true;
+        }
+        if (sqs01.getPice() != null) {
+            application.setPice(sqs01.getPice());
+            flag = true;
+        }
+        if (StringUtils.isNotBlank(sqs01.getMakeOp())) {
+            application.setCjid(sqs01.getMakeOp());
+            flag = true;
+        }
+        if (StringUtils.isNotBlank(sqs01.getAgentNumber())) {
+            application.setAgentNumber(sqs01.getAgentNumber());
+            flag = true;
+        }
+        if (StringUtils.isNotBlank(sqs01.getDlguid())) {
+            application.setDlguid(sqs01.getDlguid());
+            flag = true;
+        }
+        if (flag) {
+            applicationMapper.update(application);
+        }
+        return super.update(sqs01);
     }
 
     @Override
     public int remove(String id) {
 //        appImageMapper.removeByAppguid(id);
 //        agentCodeMapper.removeByAppguid(id);
-        // TODO 删除申请信息
+        // 删除申请信息
+        applicationMapper.remove(id);
         return sqs01Dao.remove(id);
 
     }

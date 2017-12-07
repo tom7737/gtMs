@@ -6,11 +6,13 @@ import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.common.SysAreaCountry;
 import com.gt.ms.entity.customer.Customer;
+import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.entity.sqs.Sqs01;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.agent.AgentService;
 import com.gt.ms.service.common.SysAreaCountryService;
 import com.gt.ms.service.customer.CustomerService;
+import com.gt.ms.service.sqs.ApplicationService;
 import com.gt.ms.service.sqs.Sqs01Service;
 import com.gt.ms.utils.*;
 import com.gt.ms.vo.AjaxResult;
@@ -62,6 +64,8 @@ public class Sqs01Controller extends BaseController {
     private AgentService agentService;
     @Autowired
     private SysAreaCountryService sysAreaCountryService;
+    @Autowired
+    private ApplicationService applicationService;
 
     private static final String common_fax = "010-63347510";//传真
     private static final Double common_country_fei = 300.00;//规费
@@ -382,6 +386,12 @@ public class Sqs01Controller extends BaseController {
                 result.setMessage("没有权限！");
                 return result;
             }
+            Application temp = applicationService.get(guid);
+            if (!Application.STATUS_NEW.equals(temp.getStatus())) {
+                result.setSuccess(false);
+                result.setMessage("只有新申请的申请书才能删除！");
+                return result;
+            }
             // 验证是否可删除：如果申请书已经通过了财务审核则不可删除
             if ("1".equals(sqsTemp.getAccountstate())) {
                 result.setSuccess(false);
@@ -563,12 +573,19 @@ public class Sqs01Controller extends BaseController {
         AjaxResult result = new AjaxResult();
         try {
             Sqs01 sqstemp = sqs01Server.get(sqs01.getGuid());
+
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
                     && !sqstemp.getMakeOp().equals(currentUser.getOpName())//不是自己的申请书
                     ) {
                 result.setSuccess(false);
                 result.setMessage("没有权限！");
+                return result;
+            }
+            Application temp = applicationService.get(sqs01.getGuid());
+            if (!Application.STATUS_NEW.equals(temp.getStatus())) {
+                result.setSuccess(false);
+                result.setMessage("只有新申请的申请书才能修改！");
                 return result;
             }
             if (checkTmName != null && sqs01.getTmName().indexOf("图形") == -1 && !sqstemp.getTmName().equals(sqs01.getTmName())) {

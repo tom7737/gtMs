@@ -3,13 +3,13 @@ package com.gt.ms.controller.sqs;
 import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.customer.Customer;
-import com.gt.ms.entity.sys.Appguifei;
 import com.gt.ms.entity.sqs.Application;
+import com.gt.ms.entity.sys.Appguifei;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.agent.AgentService;
 import com.gt.ms.service.customer.CustomerService;
-import com.gt.ms.service.sys.AppguifeiService;
 import com.gt.ms.service.sqs.ApplicationService;
+import com.gt.ms.service.sys.AppguifeiService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.RandomUtils;
 import com.gt.ms.utils.StringUtils;
@@ -240,8 +240,8 @@ public class ApplicationController extends BaseController {
             if (!Application.STATUS_NEW.equals(temp.getStatus())) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("只有新申请的申请书才能修改！");
+                return ajaxResult;
             }
-            // 判断重复提交
             applicationService.update(app);
             ajaxResult.setSuccess(true);
             ajaxResult.setMessage("修改成功");
@@ -275,6 +275,7 @@ public class ApplicationController extends BaseController {
             if (!Application.STATUS_NEW.equals(app.getStatus())) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("只有新申请的申请书才能删除！");
+                return ajaxResult;
             }
             applicationService.remove(guid);
             ajaxResult.setSuccess(true);
@@ -309,6 +310,7 @@ public class ApplicationController extends BaseController {
             if (!Application.STATUS_NEW.equals(app.getStatus())) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("只有新申请的申请书才能提交审核！");
+                return ajaxResult;
             }
             applicationService.saveFinance(app, currentUser);
             ajaxResult.setSuccess(true);

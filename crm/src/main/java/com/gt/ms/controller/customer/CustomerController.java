@@ -365,19 +365,5 @@ public class CustomerController extends BaseController {
         return result;
     }
 
-    @RequestMapping("/statistics/newCustomer")
-    @ResponseBody
-    public AjaxResult newCustomerStatistics(String startTime, String endTime) {
-        AjaxResult result = new AjaxResult();
-        try {
-            List<CustomerStatisticsVo> list = customerService.getCountByCtmRegDate(startTime, endTime);
-            result.setDatas(list);
-        } catch (Exception e) {
-            logger.error("查询客户列表失败{}", e);
-            result.setSuccess(false);
-            result.setMessage("查询客户列表失败！");
-        }
-        return result;
-    }
 
 }

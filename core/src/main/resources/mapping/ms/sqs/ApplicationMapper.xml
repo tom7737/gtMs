@@ -17,11 +17,38 @@
         <result column="agent_Number" jdbcType="NVARCHAR" property="agentNumber"/>
         <result column="dlguid" jdbcType="NVARCHAR" property="dlguid"/>
     </resultMap>
-
+    <resultMap id="ApplicationStatisticsVoResultMap" type="com.gt.ms.vo.sqs.ApplicationStatisticsVo">
+        <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
+        <result column="counts" property="counts" jdbcType="INTEGER"/>
+    </resultMap>
     <sql id="Application_List">
     guid, ctm_Code,ctm_name,ctm_addr,app_Name,app_Type,gui_Fei,agent_Fei,
     pice,cjid,cjsj,status,agent_Number,dlguid
   </sql>
+
+
+    <select id="getCountByCjsj" parameterType="java.util.Map" resultMap="ApplicationStatisticsVoResultMap">
+        SELECT
+        top 1000
+        convert(nvarchar(10),cjsj,120)  as ctmRegDate,
+        COUNT (convert(nvarchar(10),cjsj,120)) AS counts
+        FROM
+        dbo.[application]
+        where
+        1=1
+        <if test="startTime !=null and startTime !=''">
+            and cjsj &gt;= #{startTime}
+        </if>
+        <if test="endTime !=null and endTime !=''">
+            and cjsj &lt;= #{endTime}
+        </if>
+        GROUP BY
+        convert(nvarchar(10),cjsj,120)
+        ORDER BY
+        convert(nvarchar(10),cjsj,120) asc
+
+    </select>
+
     <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="ApplicationResultMap">
         SELECT
         <include refid="Application_List"/>

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>新增客户数据分析</title>
+    <title>新增申请数据分析</title>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="mobileoptimized" content="0"/>
@@ -51,8 +51,6 @@
                        data-options="iconCls:'icon-search',plain:true" onclick="searchFun();">查询</a>
                     <a href="javascript:void(0);" class="easyui-linkbutton"
                        data-options="iconCls:'icon-cancel',plain:true" onclick="cleanFun();">清空</a>
-                    <%--<a href="javascript:void(0);" class="easyui-linkbutton"--%>
-                    <%--data-options="iconCls:'icon-save',plain:true" onclick="exportFun();">导出</a>--%>
                 </td>
             </tr>
         </table>
@@ -81,7 +79,7 @@
         var endTime = $("#endTime").val();
         var showType = $("#showType").val();
         //bar 柱状图 line折线图
-        data_tj("新增客户统计",showType,"${path}/statistics/newCustomer",dateType, starTime, endTime);
+        data_tj("新增申请统计",showType,"${path}/statistics/newApplication",dateType, starTime, endTime);
     }
     function cleanFun() {
         $("#searchForm")[0].reset();

@@ -7,10 +7,12 @@ import com.gt.ms.mapper.finance.FinanceMapper;
 import com.gt.ms.mapper.sqs.ApplicationMapper;
 import com.gt.ms.service.base.BaseServiceImpl;
 import com.gt.ms.service.sqs.ApplicationService;
+import com.gt.ms.vo.sqs.ApplicationStatisticsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by admini on 2017/5/10.
@@ -55,5 +57,10 @@ public class ApplicationServiceImpl extends BaseServiceImpl<Application, String>
     @Override
     public Integer getCountByAppType(Integer appno) {
         return applicationMapper.getCountByAppType(appno);
+    }
+
+    @Override
+    public List<ApplicationStatisticsVo> getCountByCjsj(String startTime, String endTime) {
+        return applicationMapper.getCountByCjsj(startTime,endTime);
     }
 }

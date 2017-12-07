@@ -46,8 +46,8 @@ function setOption(title, type, data, dateType) {
     var data1 = [];
     var month, monthTemp, monthCounts;
     var week, weekTemp/*前一个日期是周几*/, lastDate/*前一个日期对象*/, weekCounts, dateTemp, day;
-    data.datas.forEach(function (item, index) {
-        if (dateType == 2) {//按月
+    if (dateType == 2) {//按月
+        data.datas.forEach(function (item, index) {
             monthTemp = item.ctmRegDate.substr(0, 7);//当前值的月份
             if (month == null) {//第一次，设置值
                 month = monthTemp;
@@ -60,7 +60,11 @@ function setOption(title, type, data, dateType) {
                 month = monthTemp;
                 monthCounts = item.counts;
             }
-        } else if (dateType == 1) {//按周
+        });
+        xdata.push(month + "(" + monthCounts + ")");
+        data1.push(monthCounts);
+    } else if (dateType == 1) {//按周
+        data.datas.forEach(function (item, index) {
             //获取当前日期是周几
             dateTemp = new Date(item.ctmRegDate);
             day = dateTemp.getDay();//当前日期是周几
@@ -78,14 +82,19 @@ function setOption(title, type, data, dateType) {
             }
             weekTemp = day;
             lastDate = dateTemp;
-        } else {//按日
+        });
+        var weekDate = new GetWeekDate(week);
+        xdata.push(week + "~" + weekDate.getWeekEndDate() + "(" + weekCounts + ")");
+        data1.push(weekCounts);
+    } else {//按日
+        data.datas.forEach(function (item, index) {
             xdata.push(item.ctmRegDate + "(" + item.counts + ")");
             data1.push(item.counts);
-        }
+        });
+    }
 
 
-    });
-    // console.log(xdata)
+// console.log(xdata)
     var option1 = {
         title: {
             text: title

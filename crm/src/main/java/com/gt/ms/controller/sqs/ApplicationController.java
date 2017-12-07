@@ -15,6 +15,8 @@ import com.gt.ms.utils.RandomUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
+import com.gt.ms.vo.customer.CustomerStatisticsVo;
+import com.gt.ms.vo.sqs.ApplicationStatisticsVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

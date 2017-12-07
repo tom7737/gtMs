@@ -19,6 +19,7 @@
     <!--[自定义esayId表单验证]-->
     <script type="text/javascript" src="${staticPath }/static/easyui/validate.js" charset="utf-8"></script>
     <script type="text/javascript" src="${staticPath }/static/js/commons.js" charset="utf-8"></script>
+    <script type="text/javascript" src="${staticPath }/static/js/dateUtil.js" charset="utf-8"></script>
     <%--[ajax文件上传]--%>
     <script type="text/javascript" src="${staticPath }/static/AjaxUpload.js"></script>
     <script type="text/javascript" src="${staticPath }/static/ajaxfileupload.js"></script>

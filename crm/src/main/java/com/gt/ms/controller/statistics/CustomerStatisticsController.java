@@ -21,9 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 客户统计
@@ -43,7 +41,11 @@ public class CustomerStatisticsController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/statistics/newCustomer", method = RequestMethod.GET)
-    public String newCustomerStatistics() {
+    public String newCustomerStatistics(Model model) {
+        Calendar instance = Calendar.getInstance();
+        instance.set(Calendar.DAY_OF_MONTH, 1);
+        model.addAttribute("startTime", DateUtils.format(instance.getTime(), DateUtils.format_yyyy_MM_dd));
+        model.addAttribute("endTime", DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd));
         return "statistics/newCustomer";
     }
 

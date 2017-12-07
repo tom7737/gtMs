@@ -21,23 +21,38 @@
     <form id="searchForm">
         <table>
             <tr>
+                <th>数据维度:</th>
+                <td>
+                    <select id="dateType">
+                        <option value="0">按天</option>
+                        <option value="1">按周</option>
+                        <option value="2">按月</option>
+                    </select>
+                </td>
                 <th>自定义时间:</th>
                 <td>
                     <input id="startTime" name="startTime" placeholder="点击选择时间"
                            onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
-                           readonly="readonly"/>
+                           readonly="readonly" value="${startTime}"/>
                     至
                     <input id="endTime" name="endTime" placeholder="点击选择时间"
                            onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
-                           readonly="readonly"/>
+                           readonly="readonly" value="${endTime}"/>
+                </td>
+                <th>显示方式:</th>
+                <td>
+                    <select id="showType">
+                        <option value="bar">柱状图</option>
+                        <option value="line">折线图</option>
+                    </select>
                 </td>
                 <td>
                     <a href="javascript:void(0);" class="easyui-linkbutton"
                        data-options="iconCls:'icon-search',plain:true" onclick="searchFun();">查询</a>
                     <a href="javascript:void(0);" class="easyui-linkbutton"
                        data-options="iconCls:'icon-cancel',plain:true" onclick="cleanFun();">清空</a>
-                    <a href="javascript:void(0);" class="easyui-linkbutton"
-                       data-options="iconCls:'icon-save',plain:true" onclick="exportFun();">导出</a>
+                    <%--<a href="javascript:void(0);" class="easyui-linkbutton"--%>
+                    <%--data-options="iconCls:'icon-save',plain:true" onclick="exportFun();">导出</a>--%>
                 </td>
             </tr>
         </table>
@@ -49,21 +64,28 @@
 
 </div>
 <script type="text/javascript" src="${staticPath }/static/echart/echarts.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="${staticPath }/static/js/statistics/newCustomer.js" charset="utf-8"></script>
+<script type="text/javascript" src="${staticPath }/static/js/statistics/statistics.js" charset="utf-8"></script>
 <script>
     $(function () {
-        data_tj("${path}/customer/statistics/newCustomer");
+        searchFun();
+        $("#dateType").change(function(){
+            searchFun();
+        });
+        $("#showType").change(function(){
+            searchFun();
+        });
     });
     function searchFun() {
+        var dateType = $("#dateType").val();
         var starTime = $("#startTime").val();
         var endTime = $("#endTime").val();
-        data_tj("${path}/customer/statistics/newCustomer", starTime, endTime);
+        var showType = $("#showType").val();
+        //bar 柱状图 line折线图
+        data_tj("新增客户统计",showType,"${path}/customer/statistics/newCustomer",dateType, starTime, endTime);
     }
     function cleanFun() {
         $("#searchForm")[0].reset();
-        var starTime = $("#startTime").val();
-        var endTime = $("#endTime").val();
-        data_tj("${path}/customer/statistics/newCustomer", starTime, endTime);
+        searchFun()
     }
 </script>
 </body>

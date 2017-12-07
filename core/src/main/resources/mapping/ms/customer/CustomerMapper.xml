@@ -47,7 +47,7 @@
         <result column="qdzid" property="qdzid" jdbcType="NVARCHAR"/>
         <result column="ctm_wxh" property="ctmWxh" jdbcType="NVARCHAR"/>
     </resultMap>
-    <resultMap id="CustomerStatisticsVoResultMap" type="com.gt.ms.vo.customer.CustomerStatisticsVo">
+    <resultMap id="StatisticsVoResultMap" type="com.gt.ms.vo.statistics.StatisticsVo">
         <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
         <result column="counts" property="counts" jdbcType="INTEGER"/>
     </resultMap>
@@ -62,7 +62,7 @@
         ctm_code,ctm_name,ctm_name_e,ctm_regDate,make_op
     </sql>
 
-    <select id="getCountByCtmRegDate" parameterType="java.util.Map" resultMap="CustomerStatisticsVoResultMap">
+    <select id="getCountByCtmRegDate" parameterType="java.util.Map" resultMap="StatisticsVoResultMap">
         SELECT
         top 1000
         ctm_regDate as ctmRegDate,

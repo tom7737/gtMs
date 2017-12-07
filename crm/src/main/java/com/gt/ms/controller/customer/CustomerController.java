@@ -11,7 +11,6 @@ import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
-import com.gt.ms.vo.customer.CustomerStatisticsVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.gt.ms.controller.statistics;
 
 import com.gt.ms.controller.base.BaseController;
-import com.gt.ms.service.sqs.ApplicationService;
+import com.gt.ms.service.finance.FinanceService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.statistics.StatisticsVo;
@@ -18,37 +18,37 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * 申请统计
+ * 业绩统计
  * Created by tom on 2017/8/18.
  */
 @Controller
-public class ApplicationStatisticsController extends BaseController {
+public class FinanceStatisticsController extends BaseController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ApplicationStatisticsController.class);
+    private static final Logger logger = LoggerFactory.getLogger(FinanceStatisticsController.class);
 
     @Autowired
-    private ApplicationService applicationService;
+    private FinanceService financeService;
 
     /**
      * 新增申请统计
      *
      * @return
      */
-    @RequestMapping(value = "/statistics/newApplication", method = RequestMethod.GET)
-    public String newApplicationStatistics(Model model) {
+    @RequestMapping(value = "/statistics/newFinance", method = RequestMethod.GET)
+    public String newFinanceStatistics(Model model) {
         Calendar instance = Calendar.getInstance();
         instance.set(Calendar.DAY_OF_MONTH, 1);
         model.addAttribute("startTime", DateUtils.format(instance.getTime(), DateUtils.format_yyyy_MM_dd));
         model.addAttribute("endTime", DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd));
-        return "statistics/newApplication";
+        return "statistics/newFinance";
     }
 
 
-    @RequestMapping("/statistics/newApplication")
+    @RequestMapping("/statistics/newFinance")
     @ResponseBody
-    public AjaxResult newApplicationStatistics(String startTime, String endTime) {
+    public AjaxResult newFinanceStatistics(String startTime, String endTime) {
         AjaxResult result = new AjaxResult();
-        List<StatisticsVo> list = applicationService.getCountByCjsj(startTime, endTime);
+        List<StatisticsVo> list = financeService.getCountByCjsj(startTime, endTime);
         result.setDatas(list);
         return result;
     }

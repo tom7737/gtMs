@@ -4,7 +4,7 @@
 
     $(function () {
 
-        $('#sRemindEditForm').form({
+        $('#financeEditForm').form({
             url: '${path }/finance/edit',
             onSubmit: function () {
                 progressLoad();

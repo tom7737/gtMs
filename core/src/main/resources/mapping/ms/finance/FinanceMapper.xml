@@ -35,10 +35,35 @@
         <result column="app_agent_Number" jdbcType="NVARCHAR" property="agentNumber"/>
         <result column="app_dlguid" jdbcType="NVARCHAR" property="dlguid"/>
     </resultMap>
+    <resultMap id="StatisticsVoResultMap" type="com.gt.ms.vo.statistics.StatisticsVo">
+        <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
+        <result column="counts" property="counts" jdbcType="INTEGER"/>
+    </resultMap>
     <sql id="Finance_List">
     guid, app_guid,accountman,accountstate,accountmemo,accountdate,invoice,receiptcode,
     invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid
   </sql>
+    <select id="getCountByCjsj" parameterType="java.util.Map" resultMap="StatisticsVoResultMap">
+        SELECT
+        top 1000
+        convert(nvarchar(10),accountdate,120)  as ctmRegDate,
+        convert(int,ISNULL(SUM (pice),0)) AS counts
+        FROM
+        dbo.[finance] f INNER JOIN application a on f.app_guid = a.guid
+        where
+        f.accountstate = 1
+        <if test="startTime !=null and startTime !=''">
+            and convert(nvarchar(10),accountdate,120) &gt;= #{startTime}
+        </if>
+        <if test="endTime !=null and endTime !=''">
+            and convert(nvarchar(10),accountdate,120) &lt;= #{endTime}
+        </if>
+        GROUP BY
+        convert(nvarchar(10),accountdate,120)
+        ORDER BY
+        convert(nvarchar(10),accountdate,120) asc
+
+    </select>
     <sql id="Finance_List2">
         f.*,
         a.guid as application_guid, a.ctm_code as  app_ctm_Code,a.ctm_name as app_ctm_name, a.ctm_addr as app_ctm_addr,

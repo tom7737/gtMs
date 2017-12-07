@@ -128,7 +128,7 @@ function setOption(title, type, data, dateType) {
         },
         series: [
             {
-                name: '人数',
+                name: 'counts',
                 type: (type == null ? "type" : type),
                 yAxisIndex: 0,
                 data: data1,

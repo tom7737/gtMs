@@ -17,7 +17,7 @@
         <result column="agent_Number" jdbcType="NVARCHAR" property="agentNumber"/>
         <result column="dlguid" jdbcType="NVARCHAR" property="dlguid"/>
     </resultMap>
-    <resultMap id="ApplicationStatisticsVoResultMap" type="com.gt.ms.vo.sqs.ApplicationStatisticsVo">
+    <resultMap id="StatisticsVoResultMap" type="com.gt.ms.vo.statistics.StatisticsVo">
         <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
         <result column="counts" property="counts" jdbcType="INTEGER"/>
     </resultMap>
@@ -27,7 +27,7 @@
   </sql>
 
 
-    <select id="getCountByCjsj" parameterType="java.util.Map" resultMap="ApplicationStatisticsVoResultMap">
+    <select id="getCountByCjsj" parameterType="java.util.Map" resultMap="StatisticsVoResultMap">
         SELECT
         top 1000
         convert(nvarchar(10),cjsj,120)  as ctmRegDate,
@@ -37,10 +37,10 @@
         where
         1=1
         <if test="startTime !=null and startTime !=''">
-            and cjsj &gt;= #{startTime}
+            and  convert(nvarchar(10),cjsj,120) &gt;= #{startTime}
         </if>
         <if test="endTime !=null and endTime !=''">
-            and cjsj &lt;= #{endTime}
+            and  convert(nvarchar(10),cjsj,120) &lt;= #{endTime}
         </if>
         GROUP BY
         convert(nvarchar(10),cjsj,120)

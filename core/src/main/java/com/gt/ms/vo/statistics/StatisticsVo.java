@@ -1,14 +1,11 @@
-package com.gt.ms.vo.sqs;
+package com.gt.ms.vo.statistics;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gt.ms.entity.base.BaseEntity;
-
-import java.sql.Timestamp;
 
 /**
  * Created by admin on 2017-12-05.
  */
-public class ApplicationStatisticsVo extends BaseEntity {
+public class StatisticsVo extends BaseEntity {
     private static final long serialVersionUID = 66855014277935371L;
     private String ctmRegDate;
     private Integer counts;

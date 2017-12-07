@@ -4,11 +4,10 @@ import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.mapper.customer.CustomersMapper;
 import com.gt.ms.service.base.BaseServiceImpl;
 import com.gt.ms.service.customer.CustomerService;
-import com.gt.ms.vo.customer.CustomerStatisticsVo;
+import com.gt.ms.vo.statistics.StatisticsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,7 +50,7 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, String> imple
     }
 
     @Override
-    public List<CustomerStatisticsVo> getCountByCtmRegDate(String startTime, String endTime) {
+    public List<StatisticsVo> getCountByCtmRegDate(String startTime, String endTime) {
         return customersMapper.getCountByCtmRegDate(startTime, endTime);
     }
 }

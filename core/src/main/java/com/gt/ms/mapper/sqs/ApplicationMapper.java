@@ -1,10 +1,9 @@
 package com.gt.ms.mapper.sqs;
 
 
-import com.gt.ms.entity.sqs.App01More;
 import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.mapper.base.BaseMapper;
-import com.gt.ms.vo.sqs.ApplicationStatisticsVo;
+import com.gt.ms.vo.statistics.StatisticsVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -34,5 +33,5 @@ public interface ApplicationMapper extends BaseMapper<Application, String> {
      * @param endTime
      * @return
      */
-    List<ApplicationStatisticsVo> getCountByCjsj(@Param("startTime") String startTime,@Param("endTime") String endTime);
+    List<StatisticsVo> getCountByCjsj(@Param("startTime") String startTime, @Param("endTime") String endTime);
 }

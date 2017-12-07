@@ -2,9 +2,8 @@ package com.gt.ms.service.customer;
 
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.service.base.BaseService;
-import com.gt.ms.vo.customer.CustomerStatisticsVo;
+import com.gt.ms.vo.statistics.StatisticsVo;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -59,5 +58,5 @@ public interface CustomerService extends BaseService<Customer, String> {
      * @param endTime
      * @return
      */
-    List<CustomerStatisticsVo> getCountByCtmRegDate(String startTime, String endTime);
+    List<StatisticsVo> getCountByCtmRegDate(String startTime, String endTime);
 }

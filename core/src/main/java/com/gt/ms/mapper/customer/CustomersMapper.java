@@ -2,11 +2,10 @@ package com.gt.ms.mapper.customer;
 
 import com.gt.ms.entity.customer.Customer;
 import com.gt.ms.mapper.base.BaseMapper;
-import com.gt.ms.vo.customer.CustomerStatisticsVo;
+import com.gt.ms.vo.statistics.StatisticsVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -28,5 +27,5 @@ public interface CustomersMapper extends BaseMapper<Customer, String> {
      * @param endTime
      * @return
      */
-    List<CustomerStatisticsVo> getCountByCtmRegDate(@Param("startTime")String startTime,  @Param("endTime")String endTime);
+    List<StatisticsVo> getCountByCtmRegDate(@Param("startTime")String startTime, @Param("endTime")String endTime);
 }

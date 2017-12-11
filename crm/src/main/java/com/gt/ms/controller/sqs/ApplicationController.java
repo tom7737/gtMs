@@ -50,6 +50,10 @@ public class ApplicationController extends BaseController {
     @Autowired
     private AppguifeiService appguifeiService;
     /**
+     * 业务类型-商标注册
+     */
+    public static final Integer SBZC_APP_TYPE = 1;
+    /**
      * 申请书管理
      *
      * @return
@@ -145,7 +149,11 @@ public class ApplicationController extends BaseController {
     public AjaxResult add(Application app) {
         AjaxResult result = new AjaxResult();
         try {
-
+            if (SBZC_APP_TYPE.equals(app.getAppType())) {
+                result.setSuccess(false);
+                result.setMessage("请直接操作商标注册申请书！");
+                return result;
+            }
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(3)//没有添加申请及案件的权限
                     && !app.getCjid().equals(currentUser.getOpName())//不是自己的申请书
@@ -168,6 +176,7 @@ public class ApplicationController extends BaseController {
                 result.setMessage("表单已提交，请勿重复提交表单！");
                 return result;
             }
+
             app.setAgentFei(app.getPice() - app.getGuiFei());
             app.setDlguid(Sqs01Controller.common_dlguid);
             app.setStatus(Application.STATUS_NEW);
@@ -229,6 +238,11 @@ public class ApplicationController extends BaseController {
         AjaxResult ajaxResult = new AjaxResult();
         try {
             Application temp = applicationService.get(app.getGuid());
+            if (SBZC_APP_TYPE.equals(app.getAppType()) || SBZC_APP_TYPE.equals(temp.getAppType())) {
+                ajaxResult.setSuccess(false);
+                ajaxResult.setMessage("请直接操作商标注册申请书！");
+                return ajaxResult;
+            }
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(1)//没有修改所有数据的权限
                     && !temp.getCjid().equals(currentUser.getOpName())//不是自己的客户
@@ -264,6 +278,11 @@ public class ApplicationController extends BaseController {
         AjaxResult ajaxResult = new AjaxResult();
         try {
             Application app = applicationService.get(guid);
+            if (SBZC_APP_TYPE.equals(app.getAppType())) {
+                ajaxResult.setSuccess(false);
+                ajaxResult.setMessage("请直接操作商标注册申请书！");
+                return ajaxResult;
+            }
             Op currentUser = getCurrentUser();
             if ('1' != currentUser.getOpChenge().charAt(2)//没有删除所有数据的权限
                     && !app.getCjid().equals(currentUser.getOpName())//不是自己的申请书

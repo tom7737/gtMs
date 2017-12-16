@@ -72,6 +72,21 @@
                     field: 'cjid',
                     sortable: true
                 }, {
+                    width: '100',
+                    title: '状态',
+                    field: 'status',
+                    sortable: true,
+                    formatter: function (value, row, index) {
+                        if (value == 0)
+                            return "新创建";
+                        else if (value == 1)
+                            return "财务审核中"
+                        else if (value == 2)
+                            return "财务审核通过"
+                        else
+                            return "";
+                    }
+                }, {
                     field: 'action',
                     title: '操作',
                     width: 400,

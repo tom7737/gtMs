@@ -100,8 +100,8 @@
                 <td>发票去向</td>
                 <td> <select name="fpqx" class="easyui-validatebox" >
                     <option  value="">请选择</option>
-                    <option <c:if test="${finance.fpqx==0}">selected</c:if> value="1">自取</option>
-                    <option <c:if test="${finance.fpqx==1}">selected</c:if> value="2">快递</option>
+                    <option <c:if test="${finance.fpqx=='0'}">selected</c:if> value="0">自取</option>
+                    <option <c:if test="${finance.fpqx=='1'}">selected</c:if> value="1">快递</option>
                 </select></td>
                 <td>快递单号</td>
                 <td>

@@ -129,6 +129,9 @@
             <if test="condition.agentNumber!=null and condition.agentNumber!=''">
                 and agent_number = #{condition.agentNumber}
             </if>
+            <if test="condition.sentDate!=null and condition.sentDate!=''">
+                and sent_date = #{condition.sentDate}
+            </if>
             and ztdm = '0'
         </where>
 
@@ -150,6 +153,9 @@
             </if>
             <if test="condition.agentNumber!=null and condition.agentNumber!=''">
                 and agent_number = #{condition.agentNumber}
+            </if>
+            <if test="condition.sentDate!=null and condition.sentDate!=''">
+                and sent_date = #{condition.sentDate}
             </if>
             and ztdm = '0'
         </where>

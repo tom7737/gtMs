@@ -10,12 +10,12 @@ import java.util.Map;
  * @author：Wangzhixuan
  * @date：2015年4月23日 上午1:41:46
  */
-public class PageInfo {
+public class PageInfo<T> {
 
     private final static int PAGESIZE = 10; //默认显示的记录数 
 
     private int total; // 总记录 
-    private List rows; //显示的记录
+    private List<T> rows; //显示的记录
 
     @JsonIgnore
     private int from;

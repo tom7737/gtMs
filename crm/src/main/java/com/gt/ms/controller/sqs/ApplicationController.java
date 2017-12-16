@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -176,7 +177,7 @@ public class ApplicationController extends BaseController {
                 result.setMessage("表单已提交，请勿重复提交表单！");
                 return result;
             }
-
+            app.setAppCounts(1);
             app.setAgentFei(app.getPice() - app.getGuiFei());
             app.setDlguid(Sqs01Controller.common_dlguid);
             app.setStatus(Application.STATUS_NEW);
@@ -342,6 +343,45 @@ public class ApplicationController extends BaseController {
         return ajaxResult;
     }
 
+    /**
+     * 申请书已报送
+     *
+     * @return
+     */
+    @RequestMapping(value = "/submission", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult submission(String guid) {
+        AjaxResult ajaxResult = new AjaxResult();
+        try {
+            Application app = applicationService.get(guid);
+            Op currentUser = getCurrentUser();
+
+            List<String> list = Arrays.asList("ws", "zh", "lk");
+            if (!list.contains(currentUser.getOpName())) {
+                ajaxResult.setSuccess(false);
+                ajaxResult.setMessage("没有权限！");
+                return ajaxResult;
+            }
+            if (!Application.STATUS_PAY.equals(app.getStatus())) {
+                ajaxResult.setSuccess(false);
+                ajaxResult.setMessage("只有财务审核通过的申请书才能报送！");
+                return ajaxResult;
+            }
+            Application update = new Application();
+            update.setGuid(app.getGuid());
+            update.setStatus(Application.STATUS_SUBMISSION);
+            update.setSubmitOp(currentUser.getOpName());
+            update.setSubmitTime(new Timestamp(System.currentTimeMillis()));
+            applicationService.update(update);
+            ajaxResult.setSuccess(true);
+            ajaxResult.setMessage("成功");
+        } catch (Exception e) {
+            logger.error("提交财务时发生错误:{}", e);
+            ajaxResult.setSuccess(false);
+            ajaxResult.setMessage("操作失败！");
+        }
+        return ajaxResult;
+    }
 
 
 }

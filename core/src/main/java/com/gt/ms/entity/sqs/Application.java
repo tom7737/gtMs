@@ -24,10 +24,13 @@ public class Application extends BaseEntity {
      */
     public static final Integer STATUS_CHECK_PAY = 1;
     /**
-     * 状态-已付款
+     * 状态-财务审核通过
      */
     public static final Integer STATUS_PAY = 2;
-
+    /**
+     * 状态-已报送
+     */
+    public static final Integer STATUS_SUBMISSION = 3;
     private String guid;
     private String ctmCode;//客户编号
     private String ctmName;//客户名称
@@ -42,7 +45,9 @@ public class Application extends BaseEntity {
     private Integer status;//申请状态
     private String agentNumber;//代理编号
     private String dlguid;//代理组织编号
-
+    private Integer appCounts;//申请书数量
+    private Timestamp submitTime;//报送时间
+    private String submitOp;//报送人
 
     // Constructors
 
@@ -187,5 +192,28 @@ public class Application extends BaseEntity {
         this.dlguid = dlguid;
     }
 
+    public Integer getAppCounts() {
+        return appCounts;
+    }
 
+    public void setAppCounts(Integer appCounts) {
+        this.appCounts = appCounts;
+    }
+
+
+    public Timestamp getSubmitTime() {
+        return submitTime;
+    }
+
+    public void setSubmitTime(Timestamp submitTime) {
+        this.submitTime = submitTime;
+    }
+
+    public String getSubmitOp() {
+        return submitOp;
+    }
+
+    public void setSubmitOp(String submitOp) {
+        this.submitOp = submitOp;
+    }
 }

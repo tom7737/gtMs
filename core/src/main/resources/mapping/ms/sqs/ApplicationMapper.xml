@@ -16,6 +16,9 @@
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="agent_Number" jdbcType="NVARCHAR" property="agentNumber"/>
         <result column="dlguid" jdbcType="NVARCHAR" property="dlguid"/>
+        <result column="app_counts" jdbcType="INTEGER" property="appCounts"/>
+        <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime"/>
+        <result column="submit_op" jdbcType="NVARCHAR" property="submitOp"/>
     </resultMap>
     <resultMap id="StatisticsVoResultMap" type="com.gt.ms.vo.statistics.StatisticsVo">
         <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
@@ -23,7 +26,7 @@
     </resultMap>
     <sql id="Application_List">
     guid, ctm_Code,ctm_name,ctm_addr,app_Name,app_Type,gui_Fei,agent_Fei,
-    pice,cjid,cjsj,status,agent_Number,dlguid
+    pice,cjid,cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op
   </sql>
 
 
@@ -124,11 +127,11 @@
         insert into application (guid,ctm_Code, ctm_name, ctm_addr,
         app_Name, app_Type, gui_Fei,
         agent_Fei, pice, cjid,
-        cjsj,status,agent_Number,dlguid)
+        cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op)
         values (#{guid},#{ctmCode}, #{ctmName}, #{ctmAddr},
         #{appName}, #{appType}, #{guiFei},
         #{agentFei}, #{pice}, #{cjid},
-        #{cjsj},#{status},#{agentNumber},#{dlguid})
+        #{cjsj},#{status},#{agentNumber},#{dlguid},#{appCounts},#{submitTime},#{submitOp})
     </insert>
 
     <update id="update" parameterType="com.gt.ms.entity.sqs.Application">
@@ -169,6 +172,15 @@
             </if>
             <if test="dlguid!=null">
                 dlguid = #{dlguid},
+            </if>
+            <if test="appCounts!=null">
+                app_counts = #{appCounts},
+            </if>
+            <if test="submitTime!=null">
+                submit_time = #{submitTime},
+            </if>
+            <if test="submitOp!=null">
+                submit_op = #{submitOp},
             </if>
         </set>
         where guid = #{guid}

@@ -83,6 +83,8 @@
                             return "财务审核中"
                         else if (value == 2)
                             return "财务审核通过"
+                        else if (value == 3)
+                            return "已报送"
                         else
                             return "";
                     }
@@ -102,7 +104,20 @@
                             str += '&nbsp;&nbsp;|&nbsp;&nbsp;';
                             str += $.formatString('<a href="javascript:void(0)" class="user-easyui-linkbutton-copy" data-options="plain:true,iconCls:\'icon-edit\'" onclick="submitCheckPay(\'{0}\')"  >财务审核</a>', row.guid);
                         }
+
 //                            str += '<hr style="    margin-top: -3px;margin-bottom: -3px;"/>';
+                        return str;
+                    }
+                }, {
+                    field: 'submitAction',
+                    title: '报文操作',
+                    width: 80,
+                    formatter: function (value, row, index) {
+                        var str = '';
+                        // 只有财务审核通过的申请书才能报文
+                        if (row.status == 2) {
+                            str += $.formatString('<a href="javascript:void(0)" onclick="submission(\'{0}\')" class="user-easyui-linkbutton-submitOver" data-options="plain:true,iconCls:\'icon-edit\'" )"  >已报送</a>', row.guid);
+                        }
                         return str;
                     }
                 }]],
@@ -111,10 +126,32 @@
                     $('.user-easyui-linkbutton-edit').linkbutton({text: '编辑', plain: true, iconCls: 'icon-edit'});
                     $('.user-easyui-linkbutton-del').linkbutton({text: '删除', plain: true, iconCls: 'icon-del'});
                     $('.user-easyui-linkbutton-copy').linkbutton({text: '提交财务审核', plain: true, iconCls: 'icon-redo'});
+                    $('.user-easyui-linkbutton-submitOver').linkbutton({text: '已报送', plain: true, iconCls: 'icon-ok'});
                 },
                 toolbar: '#toolbar'
             });
         }
+
+        function submission(id) {
+            parent.$.messager.confirm('询问', '您确定此申请书已报送？', function (b) {
+                if (b) {
+                    progressLoad();
+                    console.log(id);
+                    $.post('${path }/sqs/app/submission', {
+                        guid: id
+                    }, function (result) {
+                        if (result.success) {
+                            parent.$.messager.alert('提示', result.message, 'info');
+                            dataGrid.datagrid('reload');
+                        } else {
+                            parent.$.messager.alert('提示', result.message, 'info');
+                        }
+                        progressClose();
+                    }, 'JSON');
+                }
+            });
+        }
+        
         function submitCheckPay(id) {
             if (id == undefined) {//点击右键菜单才会触发这个
                 var rows = dataGrid.datagrid('getSelections');

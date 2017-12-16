@@ -1,4 +1,4 @@
-package com.gt.ms.utils;
+package com.gt.ms.utils.properties;
 
 
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ public class PropertyUtil {
         InputStream in = null;
         try {
             //<!--第一种，通过类加载器进行获取properties文件流-->
-            in = PropertyUtil.class.getClassLoader().getResourceAsStream("b2bConfig.properties");
+            in = PropertyUtil.class.getClassLoader().getResourceAsStream("config/application.properties");
             //<!--第二种，通过类进行获取properties文件流-->
             //in = PropertyUtil.class.getResourceAsStream("/jdbc.properties");
             props.load(in);

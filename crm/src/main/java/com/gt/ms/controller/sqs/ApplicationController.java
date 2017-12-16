@@ -13,6 +13,8 @@ import com.gt.ms.service.sys.AppguifeiService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.RandomUtils;
 import com.gt.ms.utils.StringUtils;
+import com.gt.ms.utils.constants.Constants;
+import com.gt.ms.utils.properties.PropertyUtil;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
 import org.slf4j.Logger;
@@ -355,8 +357,8 @@ public class ApplicationController extends BaseController {
         try {
             Application app = applicationService.get(guid);
             Op currentUser = getCurrentUser();
-
-            List<String> list = Arrays.asList("ws", "zh", "lk");
+            String submissionOp = PropertyUtil.getProperty(Constants.ROLE_SUBMISSION_OP);
+            List<String> list = Arrays.asList(submissionOp.split(","));
             if (!list.contains(currentUser.getOpName())) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("没有权限！");

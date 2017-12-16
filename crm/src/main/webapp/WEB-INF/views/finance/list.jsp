@@ -33,8 +33,8 @@
                 pagination: true,
                 singleSelect: true,
                 idField: 'id',
-                sortName: 'accountstate',
-                sortOrder: 'asc',
+                sortName: 'accountstate asc,accountdate',
+                sortOrder: 'desc',
                 pageSize: 20,
                 pageList: [10, 20, 30, 40, 50, 100, 200, 300, 400, 500],
                 columns: [[{
@@ -46,7 +46,7 @@
                         return row.application.ctmName;
                     }
                 }, {
-                    width: '200',
+                    width: '150',
                     title: '申请书名称',
                     field: 'application.appName',
                     sortable: false,
@@ -54,7 +54,7 @@
                         return row.application.appName;
                     }
                 }, {
-                    width: '150',
+                    width: '100',
                     title: '申请书类型',
                     field: 'appType',
                     sortable: false,
@@ -86,6 +86,11 @@
                     formatter: function (value, row, index) {
                         return row.application.cjid;
                     }
+                }, {
+                    width: '120',
+                    title: '审核日期',
+                    field: 'accountdate',
+                    sortable: true,
                 }, {
                     width: '80',
                     title: '财务状态',

@@ -5,4 +5,6 @@ package com.gt.ms.task;
  */
 public interface ISqsTask {
     void syncStatus();
+
+    void syncSqsByDate(String currentFormatDate);
 }

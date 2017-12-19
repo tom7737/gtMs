@@ -15,7 +15,6 @@ import com.gt.ms.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -68,21 +67,7 @@ public class Sqs01ServiceImpl extends BaseServiceImpl<Sqs01, String> implements 
         ac.setCjsj(new Date());
         agentCodeMapper.save(ac);
         // 添加申请信息
-        Application application = new Application();
-        application.setGuid(sqs01.getGuid());
-        application.setCtmCode(sqs01.getCtmCode());
-        application.setCtmName((sqs01.getAppName() == null ? "" : sqs01.getAppName()) + (sqs01.getAppNameE() == null ? "" : " " + sqs01.getAppNameE()));
-        application.setCtmAddr((sqs01.getAppAddr() == null ? "" : sqs01.getAppAddr()) + (sqs01.getAppAddrE() == null ? "" : " " + sqs01.getAppAddrE()));
-        application.setAppName(sqs01.getTmName());
-        application.setAppType(1);
-        application.setGuiFei((sqs01.getGuiFee() == null ? 0 : sqs01.getGuiFee()) + (sqs01.getGuiFeem() == null ? 0 : sqs01.getGuiFeem()));
-        application.setAgentFei(sqs01.getAgentFee());
-        application.setPice(sqs01.getPice());
-        application.setCjid(sqs01.getMakeOp());
-        application.setCjsj(new Timestamp(System.currentTimeMillis()));
-        application.setStatus(Application.STATUS_NEW);
-        application.setAgentNumber(sqs01.getAgentNumber());
-        application.setDlguid(sqs01.getDlguid());
+        Application application = new Application(sqs01);
         applicationMapper.save(application);
         return save;
     }

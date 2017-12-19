@@ -1,6 +1,9 @@
 package com.gt.ms.entity.sqs;
 
 import com.gt.ms.entity.base.BaseEntity;
+import com.gt.ms.utils.DateUtils;
+import com.gt.ms.utils.StringUtils;
+import com.gt.ms.utils.constants.AppConstants;
 
 import java.sql.Timestamp;
 
@@ -57,6 +60,39 @@ public class Application extends BaseEntity {
     public Application() {
     }
 
+    /**
+     * 复制申请书信息
+     *
+     * @param sqs01
+     */
+    public Application(Sqs01 sqs01) {
+        this.setGuid(sqs01.getGuid());
+        this.setCtmCode(sqs01.getCtmCode());
+        this.setCtmName((sqs01.getAppName() == null ? "" : sqs01.getAppName()) + (sqs01.getAppNameE() == null ? "" : " " + sqs01.getAppNameE()));
+        this.setCtmAddr((sqs01.getAppAddr() == null ? "" : sqs01.getAppAddr()) + (sqs01.getAppAddrE() == null ? "" : " " + sqs01.getAppAddrE()));
+        this.setAppName(sqs01.getTmName());
+        this.setAppType(AppConstants.APP_TYPE_TM_SBZC);
+        this.setGuiFei((sqs01.getGuiFee() == null ? 0 : sqs01.getGuiFee()) + (sqs01.getGuiFeem() == null ? 0 : sqs01.getGuiFeem()));
+        this.setAgentFei(sqs01.getAgentFee() == null ? 0 : sqs01.getAgentFee());
+        this.setPice(sqs01.getPice() == null ? 0 : sqs01.getPice());
+        this.setCjid(sqs01.getMakeOp());
+        if (StringUtils.isNotBlank(sqs01.getMakeDate()))
+            this.setCjsj(new Timestamp(DateUtils.format(sqs01.getMakeDate(), DateUtils.format_yyyy_MM_dd).getTime()));
+        else
+            this.setCjsj(new Timestamp(System.currentTimeMillis()));
+        if (sqs01.getSentState() != null)
+            this.setStatus(Application.STATUS_SUBMISSION);
+        else if (sqs01.getAccountstate() == "1")
+            this.setStatus(Application.STATUS_PAY);
+        else
+            this.setStatus(Application.STATUS_NEW);
+        this.setAgentNumber(sqs01.getAgentNumber());
+        this.setAppCounts(1);
+        this.setDlguid(sqs01.getDlguid());
+        this.setSubmitOp(sqs01.getSentOp());
+        if (StringUtils.isNotBlank(sqs01.getSentDate()))
+            this.setSubmitTime(new Timestamp(DateUtils.format(sqs01.getSentDate(), DateUtils.format_yyyy_MM_dd).getTime()));
+    }
 
     /**
      * full constructor

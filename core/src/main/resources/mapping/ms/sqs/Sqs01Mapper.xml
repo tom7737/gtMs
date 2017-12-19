@@ -132,6 +132,9 @@
             <if test="condition.sentDate!=null and condition.sentDate!=''">
                 and sent_date = #{condition.sentDate}
             </if>
+            <if test="condition.makeDate!=null and condition.makeDate!=''">
+                and make_date = #{condition.makeDate}
+            </if>
             and ztdm = '0'
         </where>
 
@@ -156,6 +159,9 @@
             </if>
             <if test="condition.sentDate!=null and condition.sentDate!=''">
                 and sent_date = #{condition.sentDate}
+            </if>
+            <if test="condition.makeDate!=null and condition.makeDate!=''">
+                and make_date = #{condition.makeDate}
             </if>
             and ztdm = '0'
         </where>

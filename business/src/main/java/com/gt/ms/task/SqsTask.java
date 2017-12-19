@@ -29,7 +29,11 @@ public class SqsTask implements ISqsTask {
     @Autowired
     private ApplicationService applicationService;
 
-    @Scheduled(cron = "0/5 * * * * ? ") // 间隔5秒执行
+    /**
+     * 同步申请书报送状态
+     * FIXME 待测试
+     */
+    @Scheduled(cron = "0 0/5 * * * ? ") // 间隔5分钟执行
     public void syncStatus() {
         logger.debug("同步申请书状态定时任务开始执行");
         //查询一段时间内的报送信息
@@ -57,4 +61,31 @@ public class SqsTask implements ISqsTask {
         }
     }
 
+    @Scheduled(cron = "0 5 0/1 * * ? ") // 间隔5秒执行
+    public void syncSqs() {
+        logger.debug("同步申请书信息定时任务开始执行");
+        //查询一段时间内的报送信息
+        String currentFormatDate = DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd);
+        syncSqsByDate(currentFormatDate);
+    }
+
+    public void syncSqsByDate(String currentFormatDate) {
+        PageInfo<Sqs01> pageInfo = new PageInfo<Sqs01>(1, 1000);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("makeDate", currentFormatDate);
+        pageInfo.setCondition(map);
+        sqs01Service.findDataGrid(pageInfo);
+        List<Sqs01> rows = pageInfo.getRows();
+        for (int i = 0; i < rows.size(); i++) {
+            Sqs01 sqs = rows.get(i);
+            Integer appcount = applicationService.getCount(sqs.getGuid());
+            if (appcount == null || appcount == 0) {
+                //如果申请书表中没有相应的申请书，或者申请书状态不是已通过财务审核，则跳过
+                // 添加申请信息
+                Application application = new Application(sqs01Service.get(sqs.getGuid()));
+                logger.error("同步商标注册申请书：{}", application);
+                applicationService.save(application);
+            }
+        }
+    }
 }

@@ -82,7 +82,7 @@
 
 
     <root>
-        <level value="DEBUG"/>
+        <level value="ERROR"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="ERROR_FILE"/>
     </root>

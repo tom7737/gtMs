@@ -33,15 +33,19 @@ public class TaskTest {
     @Test
     public void sqsTask() throws ParseException {
         ISqsTask obj =(ISqsTask) context.getBean("sqsTask");
-        Date startDate = DateUtils.parseDate("2017-07-18", DateUtils.format_yyyy_MM_dd);
-        Date endDate = DateUtils.parseDate("2018-01-01", DateUtils.format_yyyy_MM_dd);
+        Date startDate = DateUtils.parseDate("2016-01-01", DateUtils.format_yyyy_MM_dd);
+        Date endDate = DateUtils.parseDate("2016-01-10", DateUtils.format_yyyy_MM_dd);
 
+//        while (startDate.getTime() < endDate.getTime()) {
+//            logger.error("同步{}的商标注册数据", DateUtils.format(startDate, DateUtils.format_yyyy_MM_dd));
+//            obj.syncSqsByDate(DateUtils.format(startDate, DateUtils.format_yyyy_MM_dd));
+//            startDate = DateUtils.addDays(startDate, 1);
+//        }
         while (startDate.getTime() < endDate.getTime()) {
-            logger.error("同步{}的商标注册数据", DateUtils.format(startDate, DateUtils.format_yyyy_MM_dd));
-            obj.syncSqsByDate(DateUtils.format(startDate, DateUtils.format_yyyy_MM_dd));
+            logger.error("同步{}的商标注册申请状态", DateUtils.format(startDate, DateUtils.format_yyyy_MM_dd));
+            obj.syncStatusByDate(DateUtils.format(startDate, DateUtils.format_yyyy_MM_dd));
             startDate = DateUtils.addDays(startDate, 1);
         }
-//        sqsTask = (ISqsTask) obj;
     }
 
 }

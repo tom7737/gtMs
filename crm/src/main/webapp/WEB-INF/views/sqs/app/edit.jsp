@@ -134,6 +134,13 @@
                                value="新申请" readonly></td>
                 </tr>
                 <tr>
+                    <td>备注</td>
+                    <td colspan="5">
+                        <textarea name="remark" class="easyui-validatebox"
+                                  style="width: 100%;">${app.remark}</textarea>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="6"><a onclick=" $('#sqsEditForm').submit();" href="javascript:void(0);"
                                        class="easyui-linkbutton" style="width: 100px;"
                                        data-options="plain:true,iconCls:'icon-save'">保存</a>

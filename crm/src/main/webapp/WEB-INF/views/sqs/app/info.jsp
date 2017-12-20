@@ -62,8 +62,15 @@
                     </td>
                     <td>申请状态</td>
                     <td><input type="text" class="easyui-validatebox"
-                               value="<c:if test="${app.status==0}">新申请</c:if><c:if test="${app.status==1}">财务审核中</c:if><c:if test="${app.status==2}">已付款</c:if>"
+                               value="<c:if test="${app.status==0}">新申请</c:if><c:if test="${app.status==1}">财务审核中</c:if><c:if test="${app.status==2}">已付款</c:if><c:if test="${app.status==3}">已报送</c:if>"
                                readonly></td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td colspan="5">
+                        <textarea name="remark" readonly class="easyui-validatebox"
+                                  style="width: 100%;">${app.remark}</textarea>
+                    </td>
                 </tr>
             </table>
 

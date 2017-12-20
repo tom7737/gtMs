@@ -19,6 +19,7 @@
         <result column="app_counts" jdbcType="INTEGER" property="appCounts"/>
         <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime"/>
         <result column="submit_op" jdbcType="NVARCHAR" property="submitOp"/>
+        <result column="remark" jdbcType="NVARCHAR" property="remark"/>
     </resultMap>
     <resultMap id="StatisticsVoResultMap" type="com.gt.ms.vo.statistics.StatisticsVo">
         <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
@@ -26,7 +27,7 @@
     </resultMap>
     <sql id="Application_List">
     guid, ctm_Code,ctm_name,ctm_addr,app_Name,app_Type,gui_Fei,agent_Fei,
-    pice,cjid,cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op
+    pice,cjid,cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op,remark
   </sql>
 
 
@@ -125,13 +126,12 @@
 
     <insert id="save" parameterType="com.gt.ms.entity.sqs.Application">
         insert into application (guid,ctm_Code, ctm_name, ctm_addr,
-        app_Name, app_Type, gui_Fei,
-        agent_Fei, pice, cjid,
-        cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op)
+        app_Name, app_Type, gui_Fei,agent_Fei, pice, cjid,
+        cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op,remark)
         values (#{guid},#{ctmCode}, #{ctmName}, #{ctmAddr},
         #{appName}, #{appType}, #{guiFei},
         #{agentFei}, #{pice}, #{cjid},
-        #{cjsj},#{status},#{agentNumber},#{dlguid},#{appCounts},#{submitTime},#{submitOp})
+        #{cjsj},#{status},#{agentNumber},#{dlguid},#{appCounts},#{submitTime},#{submitOp},#{remark})
     </insert>
 
     <update id="update" parameterType="com.gt.ms.entity.sqs.Application">
@@ -181,6 +181,9 @@
             </if>
             <if test="submitOp!=null">
                 submit_op = #{submitOp},
+            </if>
+            <if test="remark!=null">
+                remark = #{remark},
             </if>
         </set>
         where guid = #{guid}

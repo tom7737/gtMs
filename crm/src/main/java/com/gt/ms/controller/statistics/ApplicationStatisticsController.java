@@ -44,7 +44,7 @@ public class ApplicationStatisticsController extends BaseController {
     }
 
 
-    @RequestMapping("/statistics/newApplication")
+    @RequestMapping(value = "/statistics/newApplication", method = RequestMethod.POST)
     @ResponseBody
     public AjaxResult newApplicationStatistics(String startTime, String endTime) {
         AjaxResult result = new AjaxResult();
@@ -52,5 +52,38 @@ public class ApplicationStatisticsController extends BaseController {
         result.setDatas(list);
         return result;
     }
+
+
+    /**
+     * TODO 代理人业务量
+     *
+     * @return
+     */
+    @RequestMapping(value = "/statistics/opNewApplication", method = RequestMethod.GET)
+    public String opNewApplicationStatistics(Model model) {
+        Calendar instance = Calendar.getInstance();
+        instance.set(Calendar.DAY_OF_MONTH, 1);
+        model.addAttribute("startTime", DateUtils.format(instance.getTime(), DateUtils.format_yyyy_MM_dd));
+        model.addAttribute("endTime", DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd));
+        return "statistics/newApplication";
+    }
+
+    /**
+     * TODO 代理人业务量
+     * //4、业务类型查询功能是不是：查询每个代理人某个时间段（给出本日，本周，本月，本年选项）的业务（可选单项和所有）数量
+     *
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    @RequestMapping(value = "/statistics/opNewApplication", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult opNewApplicationStatistics(String startTime, String endTime) {
+        AjaxResult result = new AjaxResult();
+        List<StatisticsVo> list = applicationService.getCountByCjsj(startTime, endTime);
+        result.setDatas(list);
+        return result;
+    }
+
 
 }

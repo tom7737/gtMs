@@ -39,10 +39,39 @@
         <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
         <result column="counts" property="counts" jdbcType="INTEGER"/>
     </resultMap>
+    <resultMap id="OpNewFinanceVoResultMap" type="com.gt.ms.vo.statistics.OpNewFinanceVo">
+        <result column="cjid" property="cjid" jdbcType="NVARCHAR"/>
+        <result column="agentFei" property="agentFei" jdbcType="DOUBLE"/>
+        <result column="guiFei" property="guiFei" jdbcType="DOUBLE"/>
+        <result column="pice" property="pice" jdbcType="DOUBLE"/>
+    </resultMap>
     <sql id="Finance_List">
     guid, app_guid,accountman,accountstate,accountmemo,accountdate,invoice,receiptcode,
     invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid
   </sql>
+    <select id="getPiceByCjsjGourpByOp" parameterType="java.util.Map" resultMap="OpNewFinanceVoResultMap">
+        SELECT
+        TOP 1000 a.cjid as cjid,
+        SUM (a.agent_fei) as agentFei,
+        SUM (a.gui_fei) as guiFei,
+        SUM (a.pice) as pice
+        FROM
+        dbo.[finance] f
+        INNER JOIN application a ON f.app_guid = a.guid
+        WHERE
+        f.accountstate = 1
+        <if test="startTime !=null and startTime !=''">
+            and convert(nvarchar(10),f.accountdate,120) &gt;= #{startTime}
+        </if>
+        <if test="endTime !=null and endTime !=''">
+            and convert(nvarchar(10),f.accountdate,120) &lt;= #{endTime}
+        </if>
+        GROUP BY
+        a.cjid
+        ORDER BY
+        SUM (a.pice) desc
+
+    </select>
     <select id="getCountByCjsj" parameterType="java.util.Map" resultMap="StatisticsVoResultMap">
         SELECT
         top 1000

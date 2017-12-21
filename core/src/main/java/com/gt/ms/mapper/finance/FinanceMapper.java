@@ -3,6 +3,7 @@ package com.gt.ms.mapper.finance;
 
 import com.gt.ms.entity.finance.Finance;
 import com.gt.ms.mapper.base.BaseMapper;
+import com.gt.ms.vo.statistics.OpNewFinanceVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -19,4 +20,12 @@ public interface FinanceMapper extends BaseMapper<Finance, Integer> {
      * @return
      */
     List<StatisticsVo> getCountByCjsj(@Param("startTime") String startTime, @Param("endTime") String endTime);
+
+    /**
+     * 统计代理人的业绩
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    List<OpNewFinanceVo> getPiceByCjsjGourpByOp(@Param("startTime") String startTime, @Param("endTime") String endTime);
 }

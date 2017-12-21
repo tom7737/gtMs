@@ -4,6 +4,7 @@ import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.service.finance.FinanceService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.vo.AjaxResult;
+import com.gt.ms.vo.statistics.OpNewFinanceVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,7 @@ public class FinanceStatisticsController extends BaseController {
 
     @Autowired
     private FinanceService financeService;
+
 
     /**
      * 新增申请统计
@@ -63,12 +65,12 @@ public class FinanceStatisticsController extends BaseController {
         instance.set(Calendar.DAY_OF_MONTH, 1);
         model.addAttribute("startTime", DateUtils.format(instance.getTime(), DateUtils.format_yyyy_MM_dd));
         model.addAttribute("endTime", DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd));
-        return "statistics/newFinance";
+        return "statistics/opNewFinance";
     }
 
     /**
      * TODO 代理人业绩
-     * //3、费用查询功能是不是：查询每个代理人某个时间段（给出本日，本周，本月，本年选项）的代理费，规费，总费用(可以选择查代理费或规费或总费用)
+     * //查询每个代理人某个时间段（给出本日，本周，本月，本年选项）的代理费，规费，总费用(可以选择查代理费或规费或总费用)
      *
      * @param startTime
      * @param endTime
@@ -78,7 +80,8 @@ public class FinanceStatisticsController extends BaseController {
     @ResponseBody
     public AjaxResult opNewFinanceStatistics(String startTime, String endTime) {
         AjaxResult result = new AjaxResult();
-        List<StatisticsVo> list = financeService.getCountByCjsj(startTime, endTime);
+        List<OpNewFinanceVo> list = financeService.getPiceByCjsjGourpByOp(startTime, endTime);
+
         result.setDatas(list);
         return result;
     }

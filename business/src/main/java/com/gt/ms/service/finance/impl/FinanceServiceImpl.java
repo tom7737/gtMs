@@ -6,6 +6,7 @@ import com.gt.ms.mapper.finance.FinanceMapper;
 import com.gt.ms.mapper.sqs.ApplicationMapper;
 import com.gt.ms.service.base.BaseServiceImpl;
 import com.gt.ms.service.finance.FinanceService;
+import com.gt.ms.vo.statistics.OpNewFinanceVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,11 @@ public class FinanceServiceImpl extends BaseServiceImpl<Finance, Integer> implem
     @Override
     public List<StatisticsVo> getCountByCjsj(String startTime, String endTime) {
         return financeMapper.getCountByCjsj(startTime, endTime);
+    }
+
+    @Override
+    public List<OpNewFinanceVo> getPiceByCjsjGourpByOp(String startTime, String endTime) {
+        return financeMapper.getPiceByCjsjGourpByOp(startTime, endTime);
     }
 
     @Override

@@ -51,7 +51,7 @@ public class Application extends BaseEntity {
     private Integer appCounts;//申请书数量
     private Timestamp submitTime;//报送时间
     private String submitOp;//报送人
-
+    private String remark;//备注
     // Constructors
 
     /**
@@ -251,5 +251,13 @@ public class Application extends BaseEntity {
 
     public void setSubmitOp(String submitOp) {
         this.submitOp = submitOp;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

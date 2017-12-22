@@ -140,7 +140,7 @@ public class ApplicationStatisticsController extends BaseController {
      */
     @RequestMapping(value = "/statistics/applicationList", method = RequestMethod.POST)
     @ResponseBody
-    public PageInfo applicationList(Application application, Integer page, Integer rows, String sort, String order) {
+    public PageInfo applicationList(Application application, Integer page, Integer rows, String sort, String order, String startTime, String endTime) {
         PageInfo pageInfo = new PageInfo(page, rows, sort, order);
         Map<String, Object> condition = new HashMap<String, Object>();
         Op currentUser = getCurrentUser();
@@ -155,6 +155,12 @@ public class ApplicationStatisticsController extends BaseController {
         }
         if (application.getStatus() != null) {
             condition.put("status", application.getStatus());
+        }
+        if (StringUtils.isNotBlank(startTime)) {
+            condition.put("startTime", startTime);
+        }
+        if (StringUtils.isNotBlank(endTime)) {
+            condition.put("endTime", endTime);
         }
         pageInfo.setCondition(condition);
         applicationService.findDataGrid(pageInfo);

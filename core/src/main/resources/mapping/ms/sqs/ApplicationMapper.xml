@@ -117,6 +117,12 @@
             <if test="condition.status!=null and condition.status!=''">
                 and status = #{condition.status}
             </if>
+            <if test="condition.startTime !=null and condition.startTime !=''">
+                and convert(nvarchar(10),cjsj,120) &gt;= #{condition.startTime}
+            </if>
+            <if test="condition.endTime !=null and condition.endTime !=''">
+                and convert(nvarchar(10),cjsj,120) &lt;= #{condition.endTime}
+            </if>
         </where>
         ) AS TEMP1
         WHERE ROWID> ${from}
@@ -142,6 +148,12 @@
             </if>
             <if test="condition.status!=null and condition.status!=''">
                 and status = #{condition.status}
+            </if>
+            <if test="condition.startTime !=null and condition.startTime !=''">
+                and convert(nvarchar(10),cjsj,120) &gt;= #{condition.startTime}
+            </if>
+            <if test="condition.endTime !=null and condition.endTime !=''">
+                and convert(nvarchar(10),cjsj,120) &lt;= #{condition.endTime}
             </if>
         </where>
     </select>

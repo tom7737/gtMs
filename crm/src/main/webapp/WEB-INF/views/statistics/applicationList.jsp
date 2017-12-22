@@ -17,7 +17,7 @@
                     function (data) {
                         var userRealNames = data.datas;
                         for (var key in userRealNames) {
-                            $("#cjid").append(' <option value="'+key+'">'+userRealNames[key]+'</option>');
+                            $("#cjid").append(' <option value="' + key + '">' + userRealNames[key] + '</option>');
 //                            console.log(key + "--" + userRealNames[key]);
                         }
                     }
@@ -31,7 +31,46 @@
                         dataGridFun();
                     }
             );
-
+            $("#dateType").change(function () {
+                var weekDate = new GetWeekDate(new Date().getTime());
+                var val = $(this).val();
+                switch (val) {
+                    case "0"://今天
+                        $("#startTime").val(weekDate.getDate());
+                        $("#endTime").val(weekDate.getDate());
+                        break;
+                    case "1"://昨天
+                        $("#startTime").val(weekDate.getYesterdayDate());
+                        $("#endTime").val(weekDate.getYesterdayDate());
+                        break;
+                    case "2"://本周
+                        $("#startTime").val(weekDate.getWeekStartDate());
+                        $("#endTime").val(weekDate.getWeekEndDate());
+                        break;
+                    case "3"://上周
+                        $("#startTime").val(weekDate.getLastWeekStartDate());
+                        $("#endTime").val(weekDate.getLastWeekEndDate());
+                        break;
+                    case "4"://本月
+                        $("#startTime").val(weekDate.getMonthStartDate());
+                        $("#endTime").val(weekDate.getMonthEndDate());
+                        break;
+                    case "5"://上月
+                        $("#startTime").val(weekDate.getLastMonthStartDate());
+                        $("#endTime").val(weekDate.getLastMonthEndDate());
+                        break;
+                    case "6"://今年
+                        $("#startTime").val(weekDate.getYearStartDate());
+                        $("#endTime").val(weekDate.getYearEndDate());
+                        break;
+                    case "7"://去年
+                        $("#startTime").val(weekDate.getLastYearStartDate());
+                        $("#endTime").val(weekDate.getLastYearEndDate());
+                        break;
+                    default:
+                        break;
+                }
+            });
         });
         function dataGridFun() {
             dataGrid = $('#dataGrid').datagrid({
@@ -123,30 +162,53 @@
     </script>
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
-<div data-options="region:'north',border:false" style="height: 30px; background-color: #fff">
+<div data-options="region:'north',border:false" style="height: 60px; background-color: #fff">
     <form id="searchForm">
         <table>
             <tr>
                 <th>客户名称:</th>
                 <td><input name="ctmName" placeholder="请输入客户名称"/></td>
-                <th>状态:</th>
+                <th>财务状态:</th>
                 <td><select name="status">
                     <option value="">全部</option>
                     <option value="0">新创建</option>
                     <option value="1">财务审核中</option>
                     <option value="2" selected>财务审核通过</option>
-                    <option value="3">已报送</option>
                 </select></td>
                 <th>代理人:</th>
                 <td><select id="cjid" name="cjid">
                     <option value="">全部</option>
                 </select></td>
-                <td>
-                    <a href="javascript:void(0);" class="easyui-linkbutton"
-                       data-options="iconCls:'icon-search',plain:true" onclick="searchFun();">查询</a><a
-                        href="javascript:void(0);" class="easyui-linkbutton"
-                        data-options="iconCls:'icon-cancel',plain:true" onclick="cleanFun();">清空</a>
-                </td>
+            <tr></tr>
+            <th>选择时间:</th>
+            <td>
+                <select id="dateType">
+                    <option value="0">今天</option>
+                    <option value="1">昨天</option>
+                    <option value="2">本周</option>
+                    <option value="3">上周</option>
+                    <option value="4">本月</option>
+                    <option value="5">上月</option>
+                    <option value="6">今年</option>
+                    <option value="7">去年</option>
+                </select>
+            </td>
+            <th>自定义时间:</th>
+            <td>
+                <input id="startTime" name="startTime" placeholder="点击选择时间"
+                       onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
+                       readonly="readonly"/>
+                至
+                <input id="endTime" name="endTime" placeholder="点击选择时间"
+                       onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
+                       readonly="readonly"/>
+            </td>
+            <td>
+                <a href="javascript:void(0);" class="easyui-linkbutton"
+                   data-options="iconCls:'icon-search',plain:true" onclick="searchFun();">查询</a><a
+                    href="javascript:void(0);" class="easyui-linkbutton"
+                    data-options="iconCls:'icon-cancel',plain:true" onclick="cleanFun();">清空</a>
+            </td>
             </tr>
         </table>
     </form>

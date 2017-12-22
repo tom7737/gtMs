@@ -4,6 +4,7 @@ import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.sqs.App01More;
 import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.service.base.BaseService;
+import com.gt.ms.vo.statistics.OpNewApplicationVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 
 import java.util.List;
@@ -43,4 +44,14 @@ public interface ApplicationService extends BaseService<Application, String> {
      * @return
      */
     List<StatisticsVo> getCountByCjsj(String startTime, String endTime);
+
+    /**
+     * 统计代理人业务量
+     *
+     * @param appType
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    List<OpNewApplicationVo> getSumGroupByOp(Integer appType, String startTime, String endTime);
 }

@@ -3,6 +3,7 @@ package com.gt.ms.mapper.sqs;
 
 import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.mapper.base.BaseMapper;
+import com.gt.ms.vo.statistics.OpNewApplicationVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -26,6 +27,7 @@ public interface ApplicationMapper extends BaseMapper<Application, String> {
      * @return
      */
     Integer getCountByAppType(Integer appType);
+
     /**
      * 统计每天新增申请数
      *
@@ -34,4 +36,14 @@ public interface ApplicationMapper extends BaseMapper<Application, String> {
      * @return
      */
     List<StatisticsVo> getCountByCjsj(@Param("startTime") String startTime, @Param("endTime") String endTime);
+
+    /**
+     * 统计代理人业务量
+     *
+     * @param appType
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    List<OpNewApplicationVo> getSumGroupByOp(@Param("appType") Integer appType, @Param("startTime") String startTime, @Param("endTime") String endTime);
 }

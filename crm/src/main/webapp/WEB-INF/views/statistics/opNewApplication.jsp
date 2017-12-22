@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>代理人业绩数据分析</title>
+    <title>代理人业务量数据分析</title>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="mobileoptimized" content="0"/>
@@ -44,6 +44,12 @@
                            onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
                            readonly="readonly"/>
                 </td>
+                <th>选择业务:</th>
+                <td>
+                    <select id="appType">
+                        <option value="0">全部</option>
+                    </select>
+                </td>
                 <th>显示方式:</th>
                 <td>
                     <select id="showType">
@@ -67,13 +73,24 @@
 
 </div>
 <script type="text/javascript" src="${staticPath }/static/echart/echarts.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="${staticPath }/static/js/statistics/opNewFinance.js" charset="utf-8"></script>
+<script type="text/javascript" src="${staticPath }/static/js/statistics/opNewApplication.js" charset="utf-8"></script>
 <script>
+    var weekDate = new GetWeekDate(new Date().getTime());
+    var map = new Map();
     $(function () {
-        var weekDate = new GetWeekDate(new Date().getTime());
         $("#startTime").val(weekDate.getDate());
         $("#endTime").val(weekDate.getDate());
-        searchFun();
+        //获取商品分组信息
+        $.post('${path }/appguifei/getList',
+                function (data) {
+                    data.forEach(function (e, i, my) {
+                        map.set(e.appno + "", e);
+                        $("#appType").append('<option value="' + e.appno + '">' + e.appType + '</option>');
+                    })
+                    searchFun();
+                }
+        );
+
         $("#dateType").change(function () {
             var val = $(this).val();
             switch (val) {
@@ -118,14 +135,17 @@
         $("#showType").change(function () {
             searchFun();
         });
+        $("#appType").change(function () {
+            searchFun();
+        });
     });
     function searchFun() {
-        var dateType = $("#dateType").val();
+        var appType = $("#appType").val();
         var starTime = $("#startTime").val();
         var endTime = $("#endTime").val();
         var showType = $("#showType").val();
         //bar 柱状图 line折线图
-        data_tj("代理人业绩统计", showType, "${path}/statistics/opNewFinance", dateType, starTime, endTime);
+        data_tj("代理人业务量统计", showType, "${path}/statistics/opNewApplication", appType, starTime, endTime);
     }
     function cleanFun() {
         $("#searchForm")[0].reset();

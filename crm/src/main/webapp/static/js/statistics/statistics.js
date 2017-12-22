@@ -42,6 +42,7 @@ function data_tj(title, type, dataurl, dateType, startTime, endTime) {
  * @param dateType 数据维度
  */
 function setOption(title, type, data, dateType) {
+    // console.log("data:" + data);
     var xdata = [];
     var data1 = [];
     var month, monthTemp, monthCounts;
@@ -61,8 +62,10 @@ function setOption(title, type, data, dateType) {
                 monthCounts = item.counts;
             }
         });
-        xdata.push(month + "(" + monthCounts + ")");
-        data1.push(monthCounts);
+        if (data.datas.length > 0) {
+            xdata.push(month + "(" + monthCounts + ")");
+            data1.push(monthCounts);
+        }
     } else if (dateType == 1) {//按周
         data.datas.forEach(function (item, index) {
             //获取当前日期是周几
@@ -83,9 +86,11 @@ function setOption(title, type, data, dateType) {
             weekTemp = day;
             lastDate = dateTemp;
         });
-        var weekDate = new GetWeekDate(week);
-        xdata.push(week + "~" + weekDate.getWeekEndDate() + "(" + weekCounts + ")");
-        data1.push(weekCounts);
+        if (data.datas.length > 0) {
+            var weekDate = new GetWeekDate(week);
+            xdata.push(week + "~" + weekDate.getWeekEndDate() + "(" + weekCounts + ")");
+            data1.push(weekCounts);
+        }
     } else {//按日
         data.datas.forEach(function (item, index) {
             xdata.push(item.ctmRegDate + "(" + item.counts + ")");
@@ -94,7 +99,7 @@ function setOption(title, type, data, dateType) {
     }
 
 
-// console.log(xdata)
+    // console.log(xdata)
     var option1 = {
         title: {
             text: title

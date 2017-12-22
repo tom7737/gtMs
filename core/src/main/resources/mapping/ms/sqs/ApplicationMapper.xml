@@ -25,26 +25,53 @@
         <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
         <result column="counts" property="counts" jdbcType="INTEGER"/>
     </resultMap>
+    <resultMap id="OpNewApplicationVoResultMap" type="com.gt.ms.vo.statistics.OpNewApplicationVo">
+        <result column="cjid" property="cjid" jdbcType="NVARCHAR"/>
+        <result column="sums" property="sums" jdbcType="INTEGER"/>
+    </resultMap>
     <sql id="Application_List">
     guid, ctm_Code,ctm_name,ctm_addr,app_Name,app_Type,gui_Fei,agent_Fei,
     pice,cjid,cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op,remark
   </sql>
+    <select id="getSumGroupByOp" parameterType="java.util.Map" resultMap="OpNewApplicationVoResultMap">
+        SELECT
+        top 1000
+        cjid ,
+        isnull( sum (app_counts),0) AS sums
+        FROM
+        dbo.[application]
+        where
+        1=1
+        <if test="appType !=null and appType !=''">
+            and app_type = #{appType}
+        </if>
+        <if test="startTime !=null and startTime !=''">
+            and convert(nvarchar(10),cjsj,120) &gt;= #{startTime}
+        </if>
+        <if test="endTime !=null and endTime !=''">
+            and convert(nvarchar(10),cjsj,120) &lt;= #{endTime}
+        </if>
+        GROUP BY
+        cjid
+        ORDER BY
+        sum (app_counts) DESC;
 
+    </select>
 
     <select id="getCountByCjsj" parameterType="java.util.Map" resultMap="StatisticsVoResultMap">
         SELECT
         top 1000
-        convert(nvarchar(10),cjsj,120)  as ctmRegDate,
-        COUNT (convert(nvarchar(10),cjsj,120)) AS counts
+        convert(nvarchar(10),cjsj,120) as ctmRegDate,
+        isnull( sum (app_counts),0)  AS counts
         FROM
         dbo.[application]
         where
         1=1
         <if test="startTime !=null and startTime !=''">
-            and  convert(nvarchar(10),cjsj,120) &gt;= #{startTime}
+            and convert(nvarchar(10),cjsj,120) &gt;= #{startTime}
         </if>
         <if test="endTime !=null and endTime !=''">
-            and  convert(nvarchar(10),cjsj,120) &lt;= #{endTime}
+            and convert(nvarchar(10),cjsj,120) &lt;= #{endTime}
         </if>
         GROUP BY
         convert(nvarchar(10),cjsj,120)

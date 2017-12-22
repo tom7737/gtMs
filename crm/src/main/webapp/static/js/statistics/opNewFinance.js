@@ -1,6 +1,5 @@
 var myChart1 = echarts.init(document.getElementById('main_ld'));
 var old_dataurl, old_startTime, old_endTime, old_data;
-// TODO 获取用户真实姓名
 /**
  * 根据数据画图
  * @param title 标题
@@ -55,7 +54,7 @@ function setOption(title, type, data, dateType) {
     });
 
 
-    console.log(xdata)
+    // console.log(xdata)
     var option1 = {
         title: {
             text: title
@@ -71,7 +70,7 @@ function setOption(title, type, data, dateType) {
         },
         series: [
             {
-                name: '总费用',
+                name: '总业绩',
                 type: (type == null ? "type" : type),
                 data: data1
             }, {

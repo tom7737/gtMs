@@ -21,23 +21,28 @@
     <form id="searchForm">
         <table>
             <tr>
-                <th>数据维度:</th>
+                <th>选择时间:</th>
                 <td>
                     <select id="dateType">
-                        <option value="0">按天</option>
-                        <option value="1">按周</option>
-                        <option value="2">按月</option>
+                        <option value="0">今天</option>
+                        <option value="1">昨天</option>
+                        <option value="2">本周</option>
+                        <option value="3">上周</option>
+                        <option value="4">本月</option>
+                        <option value="5">上月</option>
+                        <option value="6">今年</option>
+                        <option value="7">去年</option>
                     </select>
                 </td>
                 <th>自定义时间:</th>
                 <td>
                     <input id="startTime" name="startTime" placeholder="点击选择时间"
                            onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
-                           readonly="readonly" value="${startTime}"/>
+                           readonly="readonly"/>
                     至
                     <input id="endTime" name="endTime" placeholder="点击选择时间"
                            onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
-                           readonly="readonly" value="${endTime}"/>
+                           readonly="readonly"/>
                 </td>
                 <th>显示方式:</th>
                 <td>
@@ -65,11 +70,52 @@
 <script type="text/javascript" src="${staticPath }/static/js/statistics/opNewFinance.js" charset="utf-8"></script>
 <script>
     $(function () {
+        var weekDate = new GetWeekDate(new Date().getTime());
+        $("#startTime").val(weekDate.getDate());
+        $("#endTime").val(weekDate.getDate());
         searchFun();
-        $("#dateType").change(function(){
+        $("#dateType").change(function () {
+            var val = $(this).val();
+            switch (val) {
+                case "0"://今天
+                    $("#startTime").val(weekDate.getDate());
+                    $("#endTime").val(weekDate.getDate());
+                    break;
+                case "1"://昨天
+                    $("#startTime").val(weekDate.getYesterdayDate());
+                    $("#endTime").val(weekDate.getYesterdayDate());
+                    break;
+                case "2"://本周
+                    $("#startTime").val(weekDate.getWeekStartDate());
+                    $("#endTime").val(weekDate.getWeekEndDate());
+                    break;
+                case "3"://上周
+                    $("#startTime").val(weekDate.getLastWeekStartDate());
+                    $("#endTime").val(weekDate.getLastWeekEndDate());
+                    break;
+                case "4"://本月
+                    $("#startTime").val(weekDate.getMonthStartDate());
+                    $("#endTime").val(weekDate.getMonthEndDate());
+                    break;
+                case "5"://上月
+                    $("#startTime").val(weekDate.getLastMonthStartDate());
+                    $("#endTime").val(weekDate.getLastMonthEndDate());
+                    break;
+                case "6"://今年
+                    $("#startTime").val(weekDate.getYearStartDate());
+                    $("#endTime").val(weekDate.getYearEndDate());
+                    break;
+                case "7"://去年
+                    $("#startTime").val(weekDate.getWeekStartDate());
+                    $("#endTime").val(weekDate.getWeekEndDate());
+                    break;
+                default:
+                    break;
+            }
             searchFun();
         });
-        $("#showType").change(function(){
+
+        $("#showType").change(function () {
             searchFun();
         });
     });
@@ -79,7 +125,7 @@
         var endTime = $("#endTime").val();
         var showType = $("#showType").val();
         //bar 柱状图 line折线图
-        data_tj("代理人业绩统计",showType,"${path}/statistics/opNewFinance",dateType, starTime, endTime);
+        data_tj("代理人业绩统计", showType, "${path}/statistics/opNewFinance", dateType, starTime, endTime);
     }
     function cleanFun() {
         $("#searchForm")[0].reset();

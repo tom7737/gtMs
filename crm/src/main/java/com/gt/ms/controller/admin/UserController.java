@@ -204,7 +204,6 @@ public class UserController extends BaseController {
         }
 
         if (pwd == null || pwd.length() < 6 || pwd.length() > 10) {
-            // // TODO: 2017-10-21 test
             result.setSuccess(false);
             result.setMessage("密码必须是6-10位之间");
             return result;

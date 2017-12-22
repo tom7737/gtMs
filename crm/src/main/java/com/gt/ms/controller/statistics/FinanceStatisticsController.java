@@ -1,6 +1,7 @@
 package com.gt.ms.controller.statistics;
 
 import com.gt.ms.controller.base.BaseController;
+import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.finance.FinanceService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.vo.AjaxResult;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 业绩统计
@@ -29,7 +31,8 @@ public class FinanceStatisticsController extends BaseController {
 
     @Autowired
     private FinanceService financeService;
-
+    @Autowired
+    private OpService opService;
 
     /**
      * 新增申请统计
@@ -54,22 +57,19 @@ public class FinanceStatisticsController extends BaseController {
         result.setDatas(list);
         return result;
     }
+
     /**
-     * TODO 代理人业绩
+     * 代理人业绩
      *
      * @return
      */
     @RequestMapping(value = "/statistics/opNewFinance", method = RequestMethod.GET)
-    public String opNewFinanceStatistics(Model model) {
-        Calendar instance = Calendar.getInstance();
-        instance.set(Calendar.DAY_OF_MONTH, 1);
-        model.addAttribute("startTime", DateUtils.format(instance.getTime(), DateUtils.format_yyyy_MM_dd));
-        model.addAttribute("endTime", DateUtils.getCurrentFormatDate(DateUtils.format_yyyy_MM_dd));
+    public String opNewFinanceStatistics() {
         return "statistics/opNewFinance";
     }
 
     /**
-     * TODO 代理人业绩
+     * 代理人业绩
      * //查询每个代理人某个时间段（给出本日，本周，本月，本年选项）的代理费，规费，总费用(可以选择查代理费或规费或总费用)
      *
      * @param startTime
@@ -81,7 +81,11 @@ public class FinanceStatisticsController extends BaseController {
     public AjaxResult opNewFinanceStatistics(String startTime, String endTime) {
         AjaxResult result = new AjaxResult();
         List<OpNewFinanceVo> list = financeService.getPiceByCjsjGourpByOp(startTime, endTime);
-
+        Map<String, String> map = opService.getMap();
+        for (int i = 0; i < list.size(); i++) {
+            OpNewFinanceVo opNewFinanceVo = list.get(i);
+            opNewFinanceVo.setCjid(map.get(opNewFinanceVo.getCjid()));
+        }
         result.setDatas(list);
         return result;
     }

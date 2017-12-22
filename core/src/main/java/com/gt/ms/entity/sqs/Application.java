@@ -31,9 +31,13 @@ public class Application extends BaseEntity {
      */
     public static final Integer STATUS_PAY = 2;
     /**
-     * 状态-已报送
+     * 报送状态-未报送
      */
-    public static final Integer STATUS_SUBMISSION = 3;
+    public static final Integer SEND_STATUS_NO = 0;
+    /**
+     * 报送状态-已报送
+     */
+    public static final Integer SEND_STATUS_YES = 2;
     private String guid;
     private String ctmCode;//客户编号
     private String ctmName;//客户名称
@@ -52,6 +56,7 @@ public class Application extends BaseEntity {
     private Timestamp submitTime;//报送时间
     private String submitOp;//报送人
     private String remark;//备注
+    private Integer sendStatus;//报送状态 0未报送/1报送中/1已报送
     // Constructors
 
     /**
@@ -80,9 +85,13 @@ public class Application extends BaseEntity {
             this.setCjsj(new Timestamp(DateUtils.format(sqs01.getMakeDate(), DateUtils.format_yyyy_MM_dd).getTime()));
         else
             this.setCjsj(new Timestamp(System.currentTimeMillis()));
+
         if (sqs01.getSentState() != null)
-            this.setStatus(Application.STATUS_SUBMISSION);
-        else if (sqs01.getAccountstate() == "1")
+            this.setSendStatus(Application.SEND_STATUS_YES);
+        else
+            this.setSendStatus(SEND_STATUS_NO);
+
+        if (sqs01.getAccountstate() == "1")
             this.setStatus(Application.STATUS_PAY);
         else
             this.setStatus(Application.STATUS_NEW);
@@ -205,7 +214,15 @@ public class Application extends BaseEntity {
     }
 
     public Integer getStatus() {
-        return this.status;
+        if (this.status == STATUS_PAY) {
+            if (this.sendStatus == SEND_STATUS_YES) {
+                return 3;//已报送
+            } else {
+                return this.status;
+            }
+        } else {
+            return this.status;
+        }
     }
 
     public void setStatus(Integer status) {
@@ -259,5 +276,13 @@ public class Application extends BaseEntity {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Integer getSendStatus() {
+        return sendStatus;
+    }
+
+    public void setSendStatus(Integer sendStatus) {
+        this.sendStatus = sendStatus;
     }
 }

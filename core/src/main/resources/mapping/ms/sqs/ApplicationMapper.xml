@@ -20,6 +20,7 @@
         <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime"/>
         <result column="submit_op" jdbcType="NVARCHAR" property="submitOp"/>
         <result column="remark" jdbcType="NVARCHAR" property="remark"/>
+        <result column="send_status" jdbcType="NVARCHAR" property="sendStatus"/>
     </resultMap>
     <resultMap id="StatisticsVoResultMap" type="com.gt.ms.vo.statistics.StatisticsVo">
         <result column="ctmRegDate" property="ctmRegDate" jdbcType="NVARCHAR"/>
@@ -31,7 +32,7 @@
     </resultMap>
     <sql id="Application_List">
     guid, ctm_Code,ctm_name,ctm_addr,app_Name,app_Type,gui_Fei,agent_Fei,
-    pice,cjid,cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op,remark
+    pice,cjid,cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op,remark,send_status
   </sql>
     <select id="getSumGroupByOp" parameterType="java.util.Map" resultMap="OpNewApplicationVoResultMap">
         SELECT
@@ -166,11 +167,11 @@
     <insert id="save" parameterType="com.gt.ms.entity.sqs.Application">
         insert into application (guid,ctm_Code, ctm_name, ctm_addr,
         app_Name, app_Type, gui_Fei,agent_Fei, pice, cjid,
-        cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op,remark)
+        cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op,remark,send_status)
         values (#{guid},#{ctmCode}, #{ctmName}, #{ctmAddr},
         #{appName}, #{appType}, #{guiFei},
         #{agentFei}, #{pice}, #{cjid},
-        #{cjsj},#{status},#{agentNumber},#{dlguid},#{appCounts},#{submitTime},#{submitOp},#{remark})
+        #{cjsj},#{status},#{agentNumber},#{dlguid},#{appCounts},#{submitTime},#{submitOp},#{remark},#{sendStatus})
     </insert>
 
     <update id="update" parameterType="com.gt.ms.entity.sqs.Application">
@@ -223,6 +224,9 @@
             </if>
             <if test="remark!=null">
                 remark = #{remark},
+            </if>
+            <if test="sendStatus!=null">
+                send_status = #{sendStatus},
             </if>
         </set>
         where guid = #{guid}

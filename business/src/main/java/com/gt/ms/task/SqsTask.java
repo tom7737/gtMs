@@ -51,7 +51,7 @@ public class SqsTask implements ISqsTask {
             Sqs01 sqs = rows.get(i);
             Application app = applicationService.get(sqs.getGuid());
             logger.error("app:{}", app);
-            if (app == null|| !Application.STATUS_PAY.equals(app.getStatus())) {
+            if (app == null || !Application.STATUS_PAY.equals(app.getStatus())) {
                 //如果申请书表中没有相应的申请书，或者申请书状态不是已通过财务审核，则跳过
                 continue;
             }
@@ -59,7 +59,7 @@ public class SqsTask implements ISqsTask {
             sqs = sqs01Service.get(sqs.getGuid());
             Application update = new Application();
             update.setGuid(app.getGuid());
-            update.setStatus(Application.STATUS_SUBMISSION);
+            update.setSendStatus(Application.SEND_STATUS_YES);
             update.setSubmitOp(sqs.getSentOp());
             update.setSubmitTime(new Timestamp(DateUtils.format(sqs.getSentDate(), DateUtils.format_yyyy_MM_dd).getTime()));
             applicationService.update(update);

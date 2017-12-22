@@ -369,7 +369,7 @@ public class ApplicationController extends BaseController {
             }
             Application update = new Application();
             update.setGuid(app.getGuid());
-            update.setStatus(Application.STATUS_SUBMISSION);
+            update.setSendStatus(Application.SEND_STATUS_YES);
             update.setSubmitOp(currentUser.getOpName());
             update.setSubmitTime(new Timestamp(System.currentTimeMillis()));
             applicationService.update(update);

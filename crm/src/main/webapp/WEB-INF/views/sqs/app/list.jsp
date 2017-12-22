@@ -77,16 +77,17 @@
                     field: 'status',
                     sortable: true,
                     formatter: function (value, row, index) {
-                        if (value == 0)
+                        if (value == 0) {
                             return "新创建";
-                        else if (value == 1)
+                        } else if (value == 1) {
                             return "财务审核中"
-                        else if (value == 2)
+                        } else if (value == 2) {
                             return "财务审核通过"
-                        else if (value == 3)
+                        } else if (value == 3) {
                             return "已报送"
-                        else
+                        } else {
                             return "";
+                        }
                     }
                 }, {
                     field: 'action',
@@ -151,7 +152,7 @@
                 }
             });
         }
-        
+
         function submitCheckPay(id) {
             if (id == undefined) {//点击右键菜单才会触发这个
                 var rows = dataGrid.datagrid('getSelections');

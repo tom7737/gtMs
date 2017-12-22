@@ -68,7 +68,7 @@ public class ResourceController extends BaseController {
         trees3.add(tree31);
         tree3.setChildren(trees3);
         //财务模块权限
-        if ('1'==currentUser.getOpLimit().charAt(10)) {
+        if ('1' == currentUser.getOpLimit().charAt(10)) {
             trees.add(tree3);
         }
         Tree tree4 = new Tree(4L, "系统模块", "open", false, "icon-company", "");
@@ -77,24 +77,26 @@ public class ResourceController extends BaseController {
         trees4.add(tree41);
         tree4.setChildren(trees4);
         //系统模块权限
-        if ('1'==currentUser.getOpLimit().charAt(11)) {
+        if ('1' == currentUser.getOpLimit().charAt(11)) {
             trees.add(tree4);
         }
         Tree tree5 = new Tree(5L, "统计模块", "open", false, "icon-company", "");
-        Tree tree51 = new Tree(51L, "新增客户统计", "open", false, "icon-list", "/statistics/newCustomer");
-        Tree tree52 = new Tree(52L, "新增申请统计", "open", false, "icon-list", "/statistics/newApplication");
-        Tree tree53 = new Tree(53L, "新增业绩统计", "open", false, "icon-list", "/statistics/newFinance");
+        Tree tree51 = new Tree(51L, "新增客户图表", "open", false, "icon-list", "/statistics/newCustomer");
+        Tree tree52 = new Tree(52L, "新增申请图表", "open", false, "icon-list", "/statistics/newApplication");
+        Tree tree53 = new Tree(53L, "新增业绩图表", "open", false, "icon-list", "/statistics/newFinance");
         Tree tree54 = new Tree(54L, "代理人业绩", "open", false, "icon-list", "/statistics/opNewFinance");
         Tree tree55 = new Tree(55L, "代理人业务量", "open", false, "icon-list", "/statistics/opNewApplication");
+        Tree tree56 = new Tree(56L, "新增业务列表", "open", false, "icon-list", "/statistics/applicationList");
         List<Tree> trees5 = new ArrayList<Tree>();
         trees5.add(tree51);
         trees5.add(tree52);
         trees5.add(tree53);
         trees5.add(tree54);
         trees5.add(tree55);
+        trees5.add(tree56);
         tree5.setChildren(trees5);
         //统计模块权限
-        if ('1'==currentUser.getOpLimit().charAt(7)) {
+        if ('1' == currentUser.getOpLimit().charAt(7)) {
             trees.add(tree5);
         }
         return trees;

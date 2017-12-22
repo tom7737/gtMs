@@ -46,6 +46,21 @@ public class UserController extends BaseController {
     private OpService opService;
 
     /**
+     * 获取用户真实姓名
+     *
+     * @return
+     */
+    @RequestMapping(value = "/getAdminRealName", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult getAdminRealName() {
+        AjaxResult result = new AjaxResult();
+        Map<String, String> map = opService.getMap();
+        result.setSuccess(true);
+        result.setDatas(map);
+        return result;
+    }
+
+    /**
      * 用户管理页
      *
      * @return

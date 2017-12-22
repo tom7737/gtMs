@@ -13,6 +13,7 @@ import com.gt.ms.service.sys.AppguifeiService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.RandomUtils;
 import com.gt.ms.utils.StringUtils;
+import com.gt.ms.utils.constants.AppConstants;
 import com.gt.ms.utils.constants.Constants;
 import com.gt.ms.utils.properties.PropertyUtil;
 import com.gt.ms.vo.AjaxResult;
@@ -52,10 +53,7 @@ public class ApplicationController extends BaseController {
     private AgentService agentService;
     @Autowired
     private AppguifeiService appguifeiService;
-    /**
-     * 业务类型-商标注册
-     */
-    public static final Integer SBZC_APP_TYPE = 1;
+
     /**
      * 申请书管理
      *
@@ -152,7 +150,7 @@ public class ApplicationController extends BaseController {
     public AjaxResult add(Application app) {
         AjaxResult result = new AjaxResult();
         try {
-            if (SBZC_APP_TYPE.equals(app.getAppType())) {
+            if (AppConstants.APP_TYPE_TM_SBZC.equals(app.getAppType())) {
                 result.setSuccess(false);
                 result.setMessage("请直接操作商标注册申请书！");
                 return result;
@@ -241,7 +239,7 @@ public class ApplicationController extends BaseController {
         AjaxResult ajaxResult = new AjaxResult();
         try {
             Application temp = applicationService.get(app.getGuid());
-            if (SBZC_APP_TYPE.equals(app.getAppType()) || SBZC_APP_TYPE.equals(temp.getAppType())) {
+            if (AppConstants.APP_TYPE_TM_SBZC.equals(app.getAppType()) || AppConstants.APP_TYPE_TM_SBZC.equals(temp.getAppType())) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("请直接操作商标注册申请书！");
                 return ajaxResult;
@@ -281,7 +279,7 @@ public class ApplicationController extends BaseController {
         AjaxResult ajaxResult = new AjaxResult();
         try {
             Application app = applicationService.get(guid);
-            if (SBZC_APP_TYPE.equals(app.getAppType())) {
+            if (AppConstants.APP_TYPE_TM_SBZC.equals(app.getAppType())) {
                 ajaxResult.setSuccess(false);
                 ajaxResult.setMessage("请直接操作商标注册申请书！");
                 return ajaxResult;

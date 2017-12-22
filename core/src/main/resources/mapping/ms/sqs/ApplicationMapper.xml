@@ -62,7 +62,7 @@
         SELECT
         top 1000
         convert(nvarchar(10),cjsj,120) as ctmRegDate,
-        isnull( sum (app_counts),0)  AS counts
+        isnull( sum (app_counts),0) AS counts
         FROM
         dbo.[application]
         where
@@ -110,6 +110,12 @@
             <if test="condition.agentNumber!=null and condition.agentNumber!=''">
                 and agent_number = #{condition.agentNumber}
             </if>
+            <if test="condition.cjid!=null and condition.cjid!=''">
+                and cjid = #{condition.cjid}
+            </if>
+            <if test="condition.status!=null and condition.status!=''">
+                and status = #{condition.status}
+            </if>
         </where>
         ) AS TEMP1
         WHERE ROWID> ${from}
@@ -129,6 +135,12 @@
             </if>
             <if test="condition.agentNumber!=null and condition.agentNumber!=''">
                 and agent_number = #{condition.agentNumber}
+            </if>
+            <if test="condition.cjid!=null and condition.cjid!=''">
+                and cjid = #{condition.cjid}
+            </if>
+            <if test="condition.status!=null and condition.status!=''">
+                and status = #{condition.status}
             </if>
         </where>
     </select>

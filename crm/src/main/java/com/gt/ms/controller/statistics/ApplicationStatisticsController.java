@@ -204,10 +204,10 @@ public class ApplicationStatisticsController extends BaseController {
         int columeCount = titleArray.length;
         //申请书类型MAp
         Map<Integer, String> appTypeMap = appguifeiService.getAppTypeMap();
-        if (groupByOp != null && groupByOp) {
-            Map<String, String> map = opService.getMap();
-            Map<String, HSSFSheet> sheets = new HashMap<>();
-            Map<String, Integer> indexs = new HashMap<>();
+        if (groupByOp != null && groupByOp) {//是否按代理人分组
+            Map<String, String> map = opService.getMap();//用户名与用户真实姓名
+            Map<String, HSSFSheet> sheets = new HashMap<>();//标签页
+            Map<String, Integer> indexs = new HashMap<>();//每个标签页当前行
             for (String opName : map.keySet()) {
                 HSSFSheet sheet = workbook.createSheet(map.get(opName));
                 CreateFirstRow(titleArray, workbook, columeCount, sheet);
@@ -222,8 +222,12 @@ public class ApplicationStatisticsController extends BaseController {
                 index++;
                 indexs.put(entity.getCjid(), index);
             }
+            for (ApplicationListVo entity : list) {
+                setPiceFormual(sheets.get(entity.getCjid()), indexs.get(entity.getCjid()));
+            }
+
         } else {
-            HSSFSheet sheet = workbook.createSheet("sheet1");
+            HSSFSheet sheet = workbook.createSheet("全部");
             //创建第一栏
             CreateFirstRow(titleArray, workbook, columeCount, sheet);
             int index = 1;
@@ -233,10 +237,7 @@ public class ApplicationStatisticsController extends BaseController {
                 setCell(columeCount, appTypeMap, entity, row);
                 index++;
             }
-            HSSFRow headRow = sheet.getRow(0);
-            headRow.getCell(5).setCellValue("=\"规费\"&SUM(F2:F" + index + ")&\"元\"");
-            headRow.getCell(6).setCellValue("=\"代理费\"&SUM(F2:F" + index + ")&\"元\"");
-            headRow.getCell(7).setCellValue("=\"总费用\"&SUM(F2:F" + index + ")&\"元\"");
+            setPiceFormual(sheet, index);
         }
         try {
             outExcelFile(response, fileName, workbook);
@@ -246,6 +247,27 @@ public class ApplicationStatisticsController extends BaseController {
         }
     }
 
+    /**
+     * 设置费用统计公式
+     *
+     * @param sheet
+     * @param index
+     */
+    private void setPiceFormual(HSSFSheet sheet, int index) {
+        HSSFRow headRow = sheet.getRow(0);
+        headRow.getCell(5).setCellFormula("\"规费\"&SUM(F2:F" + index + ")&\"元\"");
+        headRow.getCell(6).setCellFormula("\"代理费\"&SUM(G2:G" + index + ")&\"元\"");
+        headRow.getCell(7).setCellFormula("\"总费用\"&SUM(H2:H" + index + ")&\"元\"");
+    }
+
+    /**
+     * 设置每行单元格的值
+     *
+     * @param columeCount
+     * @param appTypeMap
+     * @param entity
+     * @param row
+     */
     private void setCell(int columeCount, Map<Integer, String> appTypeMap, ApplicationListVo entity, HSSFRow row) {
         for (int n = 0; n <= columeCount - 1; n++)
             row.createCell(n);
@@ -262,6 +284,14 @@ public class ApplicationStatisticsController extends BaseController {
         row.getCell(10).setCellValue(entity.getRemark());
     }
 
+    /**
+     * 设置第一行的值
+     *
+     * @param titleArray
+     * @param workbook
+     * @param columeCount
+     * @param sheet
+     */
     private void CreateFirstRow(String[] titleArray, HSSFWorkbook workbook, int columeCount, HSSFSheet sheet) {
         HSSFRow headRow = sheet.createRow(0);
         for (int m = 0; m <= columeCount - 1; m++) {
@@ -280,6 +310,14 @@ public class ApplicationStatisticsController extends BaseController {
         }
     }
 
+    /**
+     * 输出excel文件
+     *
+     * @param response
+     * @param fileName
+     * @param workbook
+     * @throws IOException
+     */
     private void outExcelFile(HttpServletResponse response, String fileName, HSSFWorkbook workbook) throws IOException {
         ByteArrayOutputStream os = null;
         OutputStream outputStream = null;
@@ -301,6 +339,14 @@ public class ApplicationStatisticsController extends BaseController {
         }
     }
 
+    /**
+     * 创建文件
+     *
+     * @param application
+     * @param startTime
+     * @param endTime
+     * @return
+     */
     private String makeFileName(Application application, String startTime, String endTime) {
         //代理人
         String appName = "";

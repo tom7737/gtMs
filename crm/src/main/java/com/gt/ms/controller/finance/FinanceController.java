@@ -1,14 +1,17 @@
 package com.gt.ms.controller.finance;
 
+import com.gt.ms.common.constants.SysDictionaryConstants;
 import com.gt.ms.controller.base.BaseController;
 import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.finance.Finance;
-import com.gt.ms.entity.sys.Appguifei;
 import com.gt.ms.entity.sqs.Application;
+import com.gt.ms.entity.sys.Appguifei;
+import com.gt.ms.entity.sys.SysDictionary;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.finance.FinanceService;
-import com.gt.ms.service.sys.AppguifeiService;
 import com.gt.ms.service.sqs.ApplicationService;
+import com.gt.ms.service.sys.AppguifeiService;
+import com.gt.ms.service.sys.SysDictionaryService;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
@@ -44,6 +47,8 @@ public class FinanceController extends BaseController {
     private OpService opService;
     @Autowired
     private AppguifeiService appguifeiService;
+    @Autowired
+    private SysDictionaryService sysDictionaryService;
 
     /**
      * 财务管理
@@ -107,10 +112,12 @@ public class FinanceController extends BaseController {
         Application app = applicationService.get(finance.getAppGuid());
         Appguifei appguifei = appguifeiService.get(app.getAppType());
         List<Op> opList = opService.getList();
+        List<SysDictionary> dicList = sysDictionaryService.getListByType(SysDictionaryConstants.DEPOIST_ACCOUNT);
         model.addAttribute("app", app);
         model.addAttribute("finance", finance);
         model.addAttribute("appguifei", appguifei);
         model.addAttribute("opList", opList);
+        model.addAttribute("dicList", dicList);
         return "/finance/info";
     }
 
@@ -125,10 +132,12 @@ public class FinanceController extends BaseController {
         Application app = applicationService.get(finance.getAppGuid());
         Appguifei appguifei = appguifeiService.get(app.getAppType());
         List<Op> opList = opService.getList();
+        List<SysDictionary> dicList = sysDictionaryService.getListByType(SysDictionaryConstants.DEPOIST_ACCOUNT);
         model.addAttribute("app", app);
         model.addAttribute("finance", finance);
         model.addAttribute("appguifei", appguifei);
         model.addAttribute("opList", opList);
+        model.addAttribute("dicList", dicList);
         return "/finance/edit";
     }
 
@@ -153,6 +162,7 @@ public class FinanceController extends BaseController {
                 update.setAccountmemo(finance.getAccountmemo());
                 update.setAccountdate(DateUtils.getCurrentFormatDate(DateUtils.formatDefaultTimestamp));
                 update.setAccountman(op.getOpName());
+                update.setDepositAccount(finance.getDepositAccount());
                 if (Finance.ACCOUNTSTATE_PASS.equals(finance.getAccountstate())) {
                     update.setReceivable(Finance.RECEIVABLE_YES);
                 } else if (Finance.ACCOUNTSTATE_NOT_PASS.equals(finance.getAccountstate())) {

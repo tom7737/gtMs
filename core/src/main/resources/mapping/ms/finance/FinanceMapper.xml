@@ -17,6 +17,7 @@
         <result column="kddh" jdbcType="NVARCHAR" property="kddh"/>
         <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
         <result column="cjid" jdbcType="NVARCHAR" property="cjid"/>
+        <result column="depositAccount" jdbcType="NVARCHAR" property="depositAccount"/>
         <association property="application" resultMap="ApplicationResultMap"/>
     </resultMap>
     <resultMap id="ApplicationResultMap" type="com.gt.ms.entity.sqs.Application">
@@ -47,7 +48,7 @@
     </resultMap>
     <sql id="Finance_List">
     guid, app_guid,accountman,accountstate,accountmemo,accountdate,invoice,receiptcode,
-    invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid
+    invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid,depositAccount
   </sql>
     <select id="getPiceByCjsjGourpByOp" parameterType="java.util.Map" resultMap="OpNewFinanceVoResultMap">
         SELECT
@@ -162,11 +163,11 @@
 
     <insert id="save" parameterType="com.gt.ms.entity.finance.Finance">
         insert into finance (app_guid,accountman,accountstate,accountmemo,accountdate,invoice,receiptcode,
-    invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid)
+    invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid,depositAccount)
         values (#{appGuid}, #{accountman}, #{accountstate},
         #{accountmemo}, #{accountdate}, #{invoice},
         #{receiptcode}, #{invoicedate}, #{invoiceman},
-        #{receivable},#{fpqx},#{kddh},#{cjsj},#{cjid})
+        #{receivable},#{fpqx},#{kddh},#{cjsj},#{cjid},#{depositAccount})
     </insert>
     <update id="update" parameterType="com.gt.ms.entity.finance.Finance">
         update finance
@@ -204,6 +205,9 @@
             </if>
             <if test="kddh != null">
                 kddh = #{kddh},
+            </if>
+            <if test="depositAccount != null">
+                depositAccount = #{depositAccount},
             </if>
         </set>
         where guid = #{guid}

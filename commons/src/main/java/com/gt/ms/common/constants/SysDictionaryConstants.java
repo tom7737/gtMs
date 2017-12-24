@@ -7,5 +7,5 @@ public class SysDictionaryConstants {
     /**
      * 入款帐号
      */
-    public static final String DEPOIST_ACCOUNT = "depoist.account";
+    public static final String DEPOIST_ACCOUNT = "deposit.account";
 }

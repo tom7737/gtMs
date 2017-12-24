@@ -64,7 +64,7 @@ public class Finance extends BaseEntity {
     private String kddh;//快递单号
     private Timestamp cjsj;//创建时间
     private String cjid;//创建人
-
+    private String depositAccount;//收款帐号
     private Application application;
 
     // Constructors
@@ -227,4 +227,11 @@ public class Finance extends BaseEntity {
         this.application = application;
     }
 
+    public String getDepositAccount() {
+        return depositAccount;
+    }
+
+    public void setDepositAccount(String depositAccount) {
+        this.depositAccount = depositAccount;
+    }
 }

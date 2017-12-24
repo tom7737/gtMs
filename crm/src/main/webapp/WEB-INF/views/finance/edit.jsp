@@ -47,6 +47,10 @@
             <tr>
                 <td>总费用</td>
                 <td><input type="text" class="easyui-validatebox" value="${app.pice}" readonly></td>
+                <td>申请备注</td>
+                <td><input type="text" class="easyui-validatebox" value="${app.remark}" readonly></td>
+            </tr>
+            <tr>
                 <td>审核状态</td>
                 <td>
 
@@ -56,6 +60,13 @@
                         <option <c:if test="${finance.accountstate==2}">selected</c:if> value="2">审核不通过</option>
                     </select>
                 </td>
+                <td>收款帐号</td>
+                <td><select name="depositAccount">
+                    <c:forEach items="${dicList}" var="dic">
+                        <option <c:if test="${dic.key==finance.depositAccount}">selected</c:if>
+                                value="${dic.key}">${dic.value}</option>
+                    </c:forEach>
+                </select></td>
             </tr>
             <tr>
                 <td>审核备注</td>
@@ -73,6 +84,7 @@
                     <input type="text" class="easyui-validatebox" readonly value="${finance.accountdate}"/>
                 </td>
             </tr>
+
             <tr>
                 <td>是否开票</td>
                 <td>

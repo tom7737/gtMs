@@ -11,7 +11,10 @@
 
         var dataGrid;
         var map = new Map();
+        var weekDate = new GetWeekDate(new Date().getTime());
         $(function () {
+            $("#startTime").val(weekDate.getMonthStartDate());
+            $("#endTime").val(weekDate.getMonthEndDate());
             //获取用户名和用户真实姓名
             $.post('${path }/user/getAdminRealName',
                     function (data) {
@@ -32,7 +35,6 @@
                     }
             );
             $("#dateType").change(function () {
-                var weekDate = new GetWeekDate(new Date().getTime());
                 var val = $(this).val();
                 switch (val) {
                     case "0"://今天
@@ -187,7 +189,7 @@
                     <option value="1">昨天</option>
                     <option value="2">本周</option>
                     <option value="3">上周</option>
-                    <option value="4">本月</option>
+                    <option value="4" selected>本月</option>
                     <option value="5">上月</option>
                     <option value="6">今年</option>
                     <option value="7">去年</option>

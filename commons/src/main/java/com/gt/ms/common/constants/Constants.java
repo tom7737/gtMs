@@ -1,4 +1,4 @@
-package com.gt.ms.utils.constants;
+package com.gt.ms.common.constants;
 
 /**
  * Created by tom on 2017-12-16.

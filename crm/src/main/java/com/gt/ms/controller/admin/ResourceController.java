@@ -73,8 +73,10 @@ public class ResourceController extends BaseController {
         }
         Tree tree4 = new Tree(4L, "系统模块", "open", false, "icon-company", "");
         Tree tree41 = new Tree(41L, "规费管理", "open", false, "icon-list", "/appguifei/manager");
+        Tree tree42 = new Tree(42L, "字典管理", "open", false, "icon-list", "/dictionary/manager");
         List<Tree> trees4 = new ArrayList<Tree>();
         trees4.add(tree41);
+        trees4.add(tree42);
         tree4.setChildren(trees4);
         //系统模块权限
         if ('1' == currentUser.getOpLimit().charAt(11)) {

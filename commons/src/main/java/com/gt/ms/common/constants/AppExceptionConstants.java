@@ -1,4 +1,4 @@
-package com.gt.ms.common;
+package com.gt.ms.common.constants;
 
 import org.apache.commons.collections.map.HashedMap;
 
@@ -16,7 +16,7 @@ import java.util.Map;
  * 在定义常量时，CODE的变量名以CODE_为前缀，描述的变量名以MSG_为前缀，
  * 且CODE和描述的变量名其他部分需完全一致。描述信息可通过Constants.getMsg(String key);获取
  */
-public class Constants {
+public class AppExceptionConstants {
 
 
     /**
@@ -142,7 +142,7 @@ public class Constants {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        Class c = Constants.class;
+        Class c = AppExceptionConstants.class;
         Field[] fields = c.getDeclaredFields();
         Map<String, Object> list = new HashedMap();
         for (Field field : fields) {

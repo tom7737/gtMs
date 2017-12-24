@@ -3,7 +3,7 @@ package com.gt.ms.entity.sqs;
 import com.gt.ms.entity.base.BaseEntity;
 import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.StringUtils;
-import com.gt.ms.utils.constants.AppConstants;
+import com.gt.ms.common.constants.AppConstants;
 
 import java.sql.Timestamp;
 

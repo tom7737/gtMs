@@ -7,6 +7,7 @@ import com.gt.ms.mapper.finance.FinanceMapper;
 import com.gt.ms.mapper.sqs.ApplicationMapper;
 import com.gt.ms.service.base.BaseServiceImpl;
 import com.gt.ms.service.sqs.ApplicationService;
+import com.gt.ms.vo.PageInfo;
 import com.gt.ms.vo.statistics.OpNewApplicationVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,11 @@ public class ApplicationServiceImpl extends BaseServiceImpl<Application, String>
     @Override
     public List<OpNewApplicationVo> getSumGroupByOp(Integer appType, String startTime, String endTime) {
         return applicationMapper.getSumGroupByOp(appType, startTime, endTime);
+    }
+
+    @Override
+    public void findDataGridByStatistics(PageInfo pageInfo) {
+        pageInfo.setRows(applicationMapper.findPageConditionByStatistics(pageInfo));
+        pageInfo.setTotal(applicationMapper.findPageCountByStatistics(pageInfo));
     }
 }

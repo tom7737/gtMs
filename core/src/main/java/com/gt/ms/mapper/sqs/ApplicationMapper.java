@@ -3,6 +3,7 @@ package com.gt.ms.mapper.sqs;
 
 import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.mapper.base.BaseMapper;
+import com.gt.ms.vo.PageInfo;
 import com.gt.ms.vo.statistics.OpNewApplicationVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 import org.apache.ibatis.annotations.Param;
@@ -46,4 +47,8 @@ public interface ApplicationMapper extends BaseMapper<Application, String> {
      * @return
      */
     List<OpNewApplicationVo> getSumGroupByOp(@Param("appType") Integer appType, @Param("startTime") String startTime, @Param("endTime") String endTime);
+
+    List findPageConditionByStatistics(PageInfo pageInfo);
+
+    int findPageCountByStatistics(PageInfo pageInfo);
 }

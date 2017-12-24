@@ -30,6 +30,21 @@
         <result column="cjid" property="cjid" jdbcType="NVARCHAR"/>
         <result column="sums" property="sums" jdbcType="INTEGER"/>
     </resultMap>
+    <resultMap id="ApplicationListVoResultMap" type="com.gt.ms.vo.statistics.ApplicationListVo">
+        <id column="guid" jdbcType="NVARCHAR" property="guid"/>
+        <result column="ctm_name" jdbcType="NVARCHAR" property="ctmName"/>
+        <result column="app_Name" jdbcType="NVARCHAR" property="appName"/>
+        <result column="app_Type" jdbcType="INTEGER" property="appType"/>
+        <result column="gui_Fei" jdbcType="DOUBLE" property="guiFei"/>
+        <result column="agent_Fei" jdbcType="DOUBLE" property="agentFei"/>
+        <result column="pice" jdbcType="DOUBLE" property="pice"/>
+        <result column="cjid" jdbcType="NVARCHAR" property="cjid"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="app_counts" jdbcType="INTEGER" property="appCounts"/>
+        <result column="depositAccount" jdbcType="NVARCHAR" property="depositAccount"/>
+        <result column="accountdate" jdbcType="NVARCHAR" property="accountdate"/>
+        <result column="remark" jdbcType="NVARCHAR" property="remark"/>
+    </resultMap>
     <sql id="Application_List">
     guid, ctm_Code,ctm_name,ctm_addr,app_Name,app_Type,gui_Fei,agent_Fei,
     pice,cjid,cjsj,status,agent_Number,dlguid,app_counts,submit_time,submit_op,remark,send_status
@@ -80,7 +95,84 @@
         convert(nvarchar(10),cjsj,120) asc
 
     </select>
+    <select id="findPageConditionByStatistics" parameterType="com.gt.ms.vo.PageInfo" resultMap="ApplicationListVoResultMap">
+        SELECT
+        guid,ctm_name,app_Name,app_Type,gui_Fei,agent_Fei,
+        pice,cjid,cjsj,status,app_counts,remark,depositAccount,accountdate
+        FROM(
 
+        SELECT TOP ${size+from} ROW_NUMBER() OVER(
+        <choose>
+            <when test="sort!=null and sort!='seq'">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by guid DESC
+            </otherwise>
+        </choose>
+        ) AS ROWID,a.*,f.depositAccount,f.accountdate
+
+        FROM application a inner join finance f on a.guid = f.app_guid
+        <where>
+            and f.accountstate = 1
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                and cjid = #{condition.makeOpQx}
+            </if>
+            <if test="condition.appName!=null and condition.appName!=''">
+                and app_name like '%${condition.appName}%'
+            </if>
+            <if test="condition.ctmName!=null and condition.ctmName!=''">
+                and ctm_name like '%${condition.ctmName}%'
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and agent_number = #{condition.agentNumber}
+            </if>
+            <if test="condition.cjid!=null and condition.cjid!=''">
+                and cjid = #{condition.cjid}
+            </if>
+            <if test="condition.status!=null and condition.status!=''">
+                and status = #{condition.status}
+            </if>
+            <if test="condition.startTime !=null and condition.startTime !=''">
+                and convert(nvarchar(10),cjsj,120) &gt;= #{condition.startTime}
+            </if>
+            <if test="condition.endTime !=null and condition.endTime !=''">
+                and convert(nvarchar(10),cjsj,120) &lt;= #{condition.endTime}
+            </if>
+        </where>
+        ) AS TEMP1
+        WHERE ROWID> ${from}
+    </select>
+    <select id="findPageCountByStatistics" parameterType="com.gt.ms.vo.PageInfo" resultType="java.lang.Integer">
+        SELECT COUNT (*)
+        FROM application
+        <where>
+            <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
+                cjid = #{condition.makeOpQx}
+            </if>
+            <if test="condition.appName!=null and condition.appName!=''">
+                and app_name like '%${condition.appName}%'
+            </if>
+            <if test="condition.ctmName!=null and condition.ctmName!=''">
+                and ctm_name like '%${condition.ctmName}%'
+            </if>
+            <if test="condition.agentNumber!=null and condition.agentNumber!=''">
+                and agent_number = #{condition.agentNumber}
+            </if>
+            <if test="condition.cjid!=null and condition.cjid!=''">
+                and cjid = #{condition.cjid}
+            </if>
+            <if test="condition.status!=null and condition.status!=''">
+                and status = #{condition.status}
+            </if>
+            <if test="condition.startTime !=null and condition.startTime !=''">
+                and convert(nvarchar(10),cjsj,120) &gt;= #{condition.startTime}
+            </if>
+            <if test="condition.endTime !=null and condition.endTime !=''">
+                and convert(nvarchar(10),cjsj,120) &lt;= #{condition.endTime}
+            </if>
+        </where>
+    </select>
     <select id="findPageCondition" parameterType="com.gt.ms.vo.PageInfo" resultMap="ApplicationResultMap">
         SELECT
         <include refid="Application_List"/>

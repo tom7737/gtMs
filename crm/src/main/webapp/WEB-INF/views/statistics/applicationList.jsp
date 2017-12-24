@@ -94,12 +94,12 @@
                     sortable: false
                 }, {
                     width: '200',
-                    title: '业务类型',
+                    title: '业务名称',
                     field: 'appName',
                     sortable: false
                 }, {
                     width: '150',
-                    title: '申请书类型',
+                    title: '业务类型',
                     field: 'appType',
                     sortable: false,
                     formatter: function (value, row, index) {
@@ -145,14 +145,29 @@
                     sortable: true
                 }, {
                     width: '100',
+                    title: '收款帐号',
+                    field: 'depositAccount',
+                    sortable: true
+                }, {
+                    width: '120',
+                    title: '收款日期',
+                    field: 'accountdate',
+                    sortable: true
+                }, {
+                    width: '200',
                     title: '备注',
                     field: 'remark',
-                    sortable: true
+                    sortable: true,
+                    formatter: function (value, row, index) {
+                        return "<p title='" + value + "' onclick='showTitle(\""+value+"\")' >" + (value == null ? "" : value) + "</p>";
+                    }
                 }]],
                 toolbar: '#toolbar'
             });
         }
-
+        function showTitle(title) {
+            parent.$.messager.alert("备注", title, "info");
+        }
 
         function searchFun() {
             dataGrid.datagrid('load', $.serializeObject($('#searchForm')));

@@ -9,6 +9,7 @@ import com.gt.ms.utils.DateUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
+import com.gt.ms.vo.statistics.ApplicationListVo;
 import com.gt.ms.vo.statistics.OpNewApplicationVo;
 import com.gt.ms.vo.statistics.OpNewFinanceVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
@@ -163,11 +164,11 @@ public class ApplicationStatisticsController extends BaseController {
             condition.put("endTime", endTime);
         }
         pageInfo.setCondition(condition);
-        applicationService.findDataGrid(pageInfo);
+        applicationService.findDataGridByStatistics(pageInfo);
         Map<String, String> map = opService.getMap();
         List list = pageInfo.getRows();
         if (list != null && list.size() > 0) {
-            for (Application s : (List<Application>) list) {
+            for (ApplicationListVo s : (List<ApplicationListVo>) list) {
                 s.setCjid(map.get(s.getCjid()));
             }
         }

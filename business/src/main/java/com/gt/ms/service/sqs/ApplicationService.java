@@ -1,9 +1,9 @@
 package com.gt.ms.service.sqs;
 
 import com.gt.ms.entity.admin.Op;
-import com.gt.ms.entity.sqs.App01More;
 import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.service.base.BaseService;
+import com.gt.ms.vo.PageInfo;
 import com.gt.ms.vo.statistics.OpNewApplicationVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 
@@ -54,4 +54,11 @@ public interface ApplicationService extends BaseService<Application, String> {
      * @return
      */
     List<OpNewApplicationVo> getSumGroupByOp(Integer appType, String startTime, String endTime);
+
+    /**
+     * 分页统计
+     *
+     * @param pageInfo
+     */
+    void findDataGridByStatistics(PageInfo pageInfo);
 }

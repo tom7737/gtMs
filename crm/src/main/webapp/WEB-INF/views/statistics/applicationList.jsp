@@ -10,15 +10,16 @@
     <script type="text/javascript">
 
         var dataGrid;
+        var userRealNames;//用户名和用户真实姓名Object
         var map = new Map();
         var weekDate = new GetWeekDate(new Date().getTime());
         $(function () {
-            $("#startTime").val(weekDate.getMonthStartDate());
-            $("#endTime").val(weekDate.getMonthEndDate());
+//            $("#startTime").val(weekDate.getMonthStartDate());
+//            $("#endTime").val(weekDate.getMonthEndDate());
             //获取用户名和用户真实姓名
             $.post('${path }/user/getAdminRealName',
                     function (data) {
-                        var userRealNames = data.datas;
+                        userRealNames = data.datas;
                         for (var key in userRealNames) {
                             $("#cjid").append(' <option value="' + key + '">' + userRealNames[key] + '</option>');
 //                            console.log(key + "--" + userRealNames[key]);
@@ -70,6 +71,8 @@
                         $("#endTime").val(weekDate.getLastYearEndDate());
                         break;
                     default:
+                        $("#startTime").val("");
+                        $("#endTime").val("");
                         break;
                 }
             });
@@ -77,6 +80,7 @@
         function dataGridFun() {
             dataGrid = $('#dataGrid').datagrid({
                 url: '${path }/statistics/applicationList',
+                sync: true,
                 fit: true,
                 striped: true,
                 rownumbers: true,
@@ -154,12 +158,12 @@
                     field: 'accountdate',
                     sortable: true
                 }, {
-                    width: '200',
+                    width: '100',
                     title: '备注',
                     field: 'remark',
                     sortable: true,
                     formatter: function (value, row, index) {
-                        return "<p title='" + value + "' onclick='showTitle(\""+value+"\")' >" + (value == null ? "" : value) + "</p>";
+                        return "<span title='" + value + "' onclick='showTitle(\"" + value + "\")' >" + (value == null ? "" : value) + "</span>";
                     }
                 }]],
                 toolbar: '#toolbar'
@@ -168,7 +172,18 @@
         function showTitle(title) {
             parent.$.messager.alert("备注", title, "info");
         }
-
+        function exportExcel() {
+//            console.log($.serializeObject($('#searchForm')));
+            parent.$.messager.alert("提示", "已发出下载请求，请勿重复点击，耐心等待下载提示...", "info");
+            $('#searchForm').attr("action", "${path }/statistics/exportExcelApplicationList");
+            $('#searchForm').submit();
+        }
+        function exportExcelGroupByOp() {
+//            console.log($.serializeObject($('#searchForm')));
+            parent.$.messager.alert("提示", "已发出下载请求，请勿重复点击，耐心等待下载提示...", "info");
+            $('#searchForm').attr("action", "${path }/statistics/exportExcelApplicationListGroupByOp");
+            $('#searchForm').submit();
+        }
         function searchFun() {
             dataGrid.datagrid('load', $.serializeObject($('#searchForm')));
         }
@@ -180,42 +195,51 @@
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
 <div data-options="region:'north',border:false" style="height: 60px; background-color: #fff">
-    <form id="searchForm">
+    <form id="searchForm" method="post">
         <table>
             <tr>
                 <th>客户名称:</th>
                 <td><input name="ctmName" placeholder="请输入客户名称"/></td>
                 <th>财务状态:</th>
-                <td><select name="status">
+                <td><select name="status" style="width: 150px;height: 20px;">
                     <option value="">全部</option>
                     <option value="0">新创建</option>
                     <option value="1">财务审核中</option>
-                    <option value="2" selected>财务审核通过</option>
+                    <option value="2">财务审核通过</option>
                 </select></td>
                 <th>代理人:</th>
-                <td><select id="cjid" name="cjid">
+                <td><select id="cjid" name="cjid" style="width: 150px;height: 20px;">
                     <option value="">全部</option>
                 </select></td>
-            <tr></tr>
+                <td><a href="javascript:void(0);" class="easyui-linkbutton"
+                       data-options="iconCls:'icon-print',plain:true" onclick="exportExcel();">导出excel</a><a
+                        href="javascript:void(0);" class="easyui-linkbutton"
+                        data-options="iconCls:'icon-print',plain:true" onclick="exportExcelGroupByOp();">按代理人导出excel</a>
+                </td>
+            </tr>
             <th>选择时间:</th>
             <td>
-                <select id="dateType">
+                <select id="dateType" style="width: 150px;height: 20px;">
+                    <option value="">请选择</option>
                     <option value="0">今天</option>
                     <option value="1">昨天</option>
                     <option value="2">本周</option>
                     <option value="3">上周</option>
-                    <option value="4" selected>本月</option>
+                    <option value="4">本月</option>
                     <option value="5">上月</option>
                     <option value="6">今年</option>
                     <option value="7">去年</option>
                 </select>
             </td>
+
             <th>自定义时间:</th>
             <td>
                 <input id="startTime" name="startTime" placeholder="点击选择时间"
                        onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
                        readonly="readonly"/>
-                至
+            </td>
+            <th> 至</th>
+            <td>
                 <input id="endTime" name="endTime" placeholder="点击选择时间"
                        onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd'})"
                        readonly="readonly"/>
@@ -225,6 +249,7 @@
                    data-options="iconCls:'icon-search',plain:true" onclick="searchFun();">查询</a><a
                     href="javascript:void(0);" class="easyui-linkbutton"
                     data-options="iconCls:'icon-cancel',plain:true" onclick="cleanFun();">清空</a>
+
             </td>
             </tr>
         </table>

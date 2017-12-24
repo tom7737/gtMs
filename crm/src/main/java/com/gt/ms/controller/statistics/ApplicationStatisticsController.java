@@ -5,13 +5,14 @@ import com.gt.ms.entity.admin.Op;
 import com.gt.ms.entity.sqs.Application;
 import com.gt.ms.service.admin.OpService;
 import com.gt.ms.service.sqs.ApplicationService;
+import com.gt.ms.service.sys.AppguifeiService;
 import com.gt.ms.utils.DateUtils;
+import com.gt.ms.utils.IOUtils;
 import com.gt.ms.utils.StringUtils;
 import com.gt.ms.vo.AjaxResult;
 import com.gt.ms.vo.PageInfo;
 import com.gt.ms.vo.statistics.ApplicationListVo;
 import com.gt.ms.vo.statistics.OpNewApplicationVo;
-import com.gt.ms.vo.statistics.OpNewFinanceVo;
 import com.gt.ms.vo.statistics.StatisticsVo;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.hssf.usermodel.*;
@@ -28,7 +29,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -44,7 +44,8 @@ public class ApplicationStatisticsController extends BaseController {
     private ApplicationService applicationService;
     @Autowired
     private OpService opService;
-
+    @Autowired
+    private AppguifeiService appguifeiService;
     /**
      * 新增申请统计
      *
@@ -176,49 +177,97 @@ public class ApplicationStatisticsController extends BaseController {
     }
 
     /**
-     * 乐豆明细列表导出excel
+     * 新增业务列表导出excel
      *
-     * @param page
-     * @param rows
      * @return
      */
-    @RequestMapping(value = "/export", method = RequestMethod.POST)
-    @ResponseBody
-    public void export(Long id, Date startTime, Date endTime, Integer page, Integer rows, HttpServletResponse response) {
-        PageInfo pageInfo = new PageInfo(1, Integer.MAX_VALUE, "createTime", "desc");
-        Map<String, Object> condition = new HashMap<String, Object>();
-        condition.put("uid", id);
-        if (null != startTime && null != endTime) {
-            condition.put("start", startTime);
-            condition.put("end", endTime);
-        }
-        pageInfo.setCondition(condition);
-
-        try {
-//            userBeanRecordService.findDataGrid(pageInfo);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        String[] titleArray = new String[]{"编号", "项目", "变动乐豆", "变动后乐豆余额", "变动时间"};
-        List<Object> list = pageInfo.getRows();
+    @RequestMapping(value = "/statistics/exportExcelApplicationListGroupByOp", method = RequestMethod.POST)
+    public void exportGroupByOp(Application application, String startTime, String endTime, HttpServletResponse response) {
+        export(application, startTime, endTime, true, response);
+    }
+    /**
+     * 新增业务列表导出excel
+     *
+     * @return
+     */
+    @RequestMapping(value = "/statistics/exportExcelApplicationList", method = RequestMethod.POST)
+    public void export(Application application, String startTime, String endTime, Boolean groupByOp, HttpServletResponse response) {
+        PageInfo pageInfo = applicationList(application, 1, Integer.MAX_VALUE, "accountdate", "desc", startTime, endTime);
+        String[] titleArray = new String[]{"客户名称", "业务名称", "业务类型", "状态", "代理人", "规费", "代理费", "总费用", "收款帐号", "收款日期", "备注"};
+        List<ApplicationListVo> list = (List<ApplicationListVo>) pageInfo.getRows();
         logger.info(" list size = " + list.size());
-
-        StringBuilder fileName = new StringBuilder("uid" + id);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        fileName.append("乐豆明细.xls");
+        String fileName = makeFileName(application, startTime, endTime);
         logger.info(" xls name = " + fileName);
         HSSFWorkbook workbook = null;
         workbook = new HSSFWorkbook();
         //获取参数个数作为excel列数
         int columeCount = titleArray.length;
-        HSSFSheet sheet = workbook.createSheet("sheet1");
-        //创建第一栏
+        //申请书类型MAp
+        Map<Integer, String> appTypeMap = appguifeiService.getAppTypeMap();
+        if (groupByOp != null && groupByOp) {
+            Map<String, String> map = opService.getMap();
+            Map<String, HSSFSheet> sheets = new HashMap<>();
+            Map<String, Integer> indexs = new HashMap<>();
+            for (String opName : map.keySet()) {
+                HSSFSheet sheet = workbook.createSheet(map.get(opName));
+                CreateFirstRow(titleArray, workbook, columeCount, sheet);
+                sheets.put(map.get(opName), sheet);
+                indexs.put(map.get(opName), 1);
+            }
+            for (ApplicationListVo entity : list) {
+                HSSFSheet sheet = sheets.get(entity.getCjid());
+                int index = indexs.get(entity.getCjid());
+                HSSFRow row = sheet.createRow(index);
+                setCell(columeCount, appTypeMap, entity, row);
+                index++;
+                indexs.put(entity.getCjid(), index);
+            }
+        } else {
+            HSSFSheet sheet = workbook.createSheet("sheet1");
+            //创建第一栏
+            CreateFirstRow(titleArray, workbook, columeCount, sheet);
+            int index = 1;
+            //写入数据
+            for (ApplicationListVo entity : list) {
+                HSSFRow row = sheet.createRow(index);
+                setCell(columeCount, appTypeMap, entity, row);
+                index++;
+            }
+            HSSFRow headRow = sheet.getRow(0);
+            headRow.getCell(5).setCellValue("=\"规费\"&SUM(F2:F" + index + ")&\"元\"");
+            headRow.getCell(6).setCellValue("=\"代理费\"&SUM(F2:F" + index + ")&\"元\"");
+            headRow.getCell(7).setCellValue("=\"总费用\"&SUM(F2:F" + index + ")&\"元\"");
+        }
+        try {
+            outExcelFile(response, fileName, workbook);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setCell(int columeCount, Map<Integer, String> appTypeMap, ApplicationListVo entity, HSSFRow row) {
+        for (int n = 0; n <= columeCount - 1; n++)
+            row.createCell(n);
+        row.getCell(0).setCellValue(entity.getCtmName());
+        row.getCell(1).setCellValue(entity.getAppName());
+        row.getCell(2).setCellValue(appTypeMap.get(entity.getAppType()));
+        row.getCell(3).setCellValue(entity.getStatusString());
+        row.getCell(4).setCellValue(entity.getCjid());
+        row.getCell(5).setCellValue(entity.getGuiFei());
+        row.getCell(6).setCellValue(entity.getAgentFei());
+        row.getCell(7).setCellValue(entity.getPice());
+        row.getCell(8).setCellValue(entity.getDepositAccount());
+        row.getCell(9).setCellValue(entity.getAccountdate());
+        row.getCell(10).setCellValue(entity.getRemark());
+    }
+
+    private void CreateFirstRow(String[] titleArray, HSSFWorkbook workbook, int columeCount, HSSFSheet sheet) {
         HSSFRow headRow = sheet.createRow(0);
         for (int m = 0; m <= columeCount - 1; m++) {
             HSSFCell cell = headRow.createCell(m);
             cell.setCellType(HSSFCell.CELL_TYPE_STRING);
-            sheet.setColumnWidth(m, 6000);
+            sheet.setColumnWidth(m, 4000);
             HSSFCellStyle style = workbook.createCellStyle();
             HSSFFont font = workbook.createFont();
             font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
@@ -229,25 +278,13 @@ public class ApplicationStatisticsController extends BaseController {
             cell.setCellStyle(style);
             cell.setCellValue(titleArray[m]);
         }
-        int index = 0;
-        //写入数据
-        for (Object entity : list) {
-         /*   HSSFRow row = sheet.createRow(index + 1);
-            for (int n = 0; n <= columeCount - 1; n++)
-                row.createCell(n);
-            row.getCell(0).setCellValue(entity.getId());
-            String actionDesc = BeanAndScoreTypeConstants.getMsg(entity.getActionCode());
-            if (1101 == entity.getActionCode() && 1 != entity.getPrimaryId()) {
-                actionDesc = actionDesc + "(" + entity.getPrimaryId() + "日）";
-            }
-            row.getCell(1).setCellValue(actionDesc);
-            row.getCell(2).setCellValue(entity.getAmount());
-            row.getCell(3).setCellValue(entity.getAfterQty());
-            row.getCell(4).setCellValue(simpleDateFormat.format(entity.getCreateTime()));
-            index++;*/
-        }
+    }
+
+    private void outExcelFile(HttpServletResponse response, String fileName, HSSFWorkbook workbook) throws IOException {
+        ByteArrayOutputStream os = null;
+        OutputStream outputStream = null;
         try {
-            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            os = new ByteArrayOutputStream();
             workbook.write(os);
             byte[] bytes = os.toByteArray();
             // 在下载框默认显示的文件名
@@ -255,16 +292,27 @@ public class ApplicationStatisticsController extends BaseController {
             response.reset();
             response.setContentType("application/vnd.ms-excel;charset=utf-8");
             response.setHeader("Content-disposition", "attachment;filename= " + new String(fileName.toString().getBytes("UTF-8"), "ISO-8859-1"));
-            OutputStream outputStream = response.getOutputStream();
+            outputStream = response.getOutputStream();
             outputStream.write(bytes);
-            os.close();
-
             outputStream.flush();
-            outputStream.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            IOUtils.closeQuietly(os);
+//            IOUtils.closeQuietly(outputStream);
         }
+    }
+
+    private String makeFileName(Application application, String startTime, String endTime) {
+        //代理人
+        String appName = "";
+        if (StringUtils.isNotBlank(application.getCjid())) {
+            appName = opService.getMap().get(application.getCjid());
+        }
+        //时间
+        String time = "";
+        if (StringUtils.isNotBlank(startTime) || StringUtils.isNotBlank(endTime)) {
+            time = "(" + (startTime == null ? "" : startTime) + "~" + (endTime == null ? "" : endTime) + ")";
+        }
+        return new String(appName + "业绩详情" + time + ".xls");
     }
 
 }

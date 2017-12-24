@@ -7,6 +7,10 @@ import com.gt.ms.service.sys.AppguifeiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by admini on 2017/5/10.
  */
@@ -22,4 +26,14 @@ public class AppguifeiServiceImpl extends BaseServiceImpl<Appguifei, Integer> im
         this.appguifeiMapper = appguifeiMapper;
     }
 
+    @Override
+    public Map<Integer, String> getAppTypeMap() {
+        List<Appguifei> list = appguifeiMapper.getList();
+        Map<Integer, String> map = new HashMap<>();
+        for (Appguifei appguifei : list) {
+            map.put(appguifei.getAppno(), appguifei.getAppType());
+        }
+
+        return map;
+    }
 }

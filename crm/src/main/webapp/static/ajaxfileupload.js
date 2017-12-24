@@ -196,7 +196,11 @@ jQuery
 						form.enctype = 'multipart/form-data';
 					}
 					jQuery(form).submit();
-
+					//在后面加上这四句，原理是提交后把元素再复制回来
+					var oldElement = jQuery('#jUploadFile' +id ,form);
+					var newElement =  jQuery('#'+s.fileElementId );
+					jQuery(newElement).replaceWith(oldElement);
+					jQuery(oldElement).attr('id', s.fileElementId );
 				} catch (e) {
 					jQuery.handleError(s, xml, null, e);
 				}

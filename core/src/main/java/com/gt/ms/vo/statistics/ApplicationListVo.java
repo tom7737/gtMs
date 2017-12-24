@@ -1,6 +1,7 @@
 package com.gt.ms.vo.statistics;
 
 import com.gt.ms.entity.base.BaseEntity;
+import com.gt.ms.entity.sqs.Application;
 
 /**
  * Created by tom on 2017-12-24.
@@ -20,6 +21,18 @@ public class ApplicationListVo extends BaseEntity {
     private String depositAccount;//收款帐号
     private String accountdate;//财务审核日期
     private String remark;//备注
+
+    public String getStatusString() {
+        if (Application.STATUS_NEW.equals(this.status)) {
+            return "新创建";
+        } else if (Application.STATUS_CHECK_PAY.equals(this.status)) {
+            return "财务审核中";
+        } else if (Application.STATUS_PAY.equals(this.status)) {
+            return "财务审核通过";
+        } else {
+            return "";
+        }
+    }
 
     public String getGuid() {
         return guid;

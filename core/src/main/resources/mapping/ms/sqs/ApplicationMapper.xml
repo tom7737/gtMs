@@ -107,37 +107,39 @@
                 order by ${sort} ${order}
             </when>
             <otherwise>
-                order by guid DESC
+                order by a.guid DESC
             </otherwise>
         </choose>
         ) AS ROWID,a.*,f.depositAccount,f.accountdate
 
-        FROM application a inner join finance f on a.guid = f.app_guid
+        FROM application a left join finance f on a.guid = f.app_guid
         <where>
-            and f.accountstate = 1
+            <if test="2==condition.status">
+                and f.accountstate = 1
+            </if>
             <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
-                and cjid = #{condition.makeOpQx}
+                and a.cjid = #{condition.makeOpQx}
             </if>
             <if test="condition.appName!=null and condition.appName!=''">
-                and app_name like '%${condition.appName}%'
+                and a.app_name like '%${condition.appName}%'
             </if>
             <if test="condition.ctmName!=null and condition.ctmName!=''">
-                and ctm_name like '%${condition.ctmName}%'
+                and a.ctm_name like '%${condition.ctmName}%'
             </if>
             <if test="condition.agentNumber!=null and condition.agentNumber!=''">
-                and agent_number = #{condition.agentNumber}
+                and a.agent_number = #{condition.agentNumber}
             </if>
             <if test="condition.cjid!=null and condition.cjid!=''">
-                and cjid = #{condition.cjid}
+                and a.cjid = #{condition.cjid}
             </if>
             <if test="condition.status!=null and condition.status!=''">
-                and status = #{condition.status}
+                and a.status = #{condition.status}
             </if>
             <if test="condition.startTime !=null and condition.startTime !=''">
-                and convert(nvarchar(10),cjsj,120) &gt;= #{condition.startTime}
+                and convert(nvarchar(10),a.cjsj,120) &gt;= #{condition.startTime}
             </if>
             <if test="condition.endTime !=null and condition.endTime !=''">
-                and convert(nvarchar(10),cjsj,120) &lt;= #{condition.endTime}
+                and convert(nvarchar(10),a.cjsj,120) &lt;= #{condition.endTime}
             </if>
         </where>
         ) AS TEMP1
@@ -145,31 +147,34 @@
     </select>
     <select id="findPageCountByStatistics" parameterType="com.gt.ms.vo.PageInfo" resultType="java.lang.Integer">
         SELECT COUNT (*)
-        FROM application
+        FROM application a left join finance f on a.guid = f.app_guid
         <where>
+            <if test="2==condition.status">
+                and f.accountstate = 1
+            </if>
             <if test="condition.makeOpQx!=null and condition.makeOpQx!=''">
-                cjid = #{condition.makeOpQx}
+                and a.cjid = #{condition.makeOpQx}
             </if>
             <if test="condition.appName!=null and condition.appName!=''">
-                and app_name like '%${condition.appName}%'
+                and a.app_name like '%${condition.appName}%'
             </if>
             <if test="condition.ctmName!=null and condition.ctmName!=''">
-                and ctm_name like '%${condition.ctmName}%'
+                and a.ctm_name like '%${condition.ctmName}%'
             </if>
             <if test="condition.agentNumber!=null and condition.agentNumber!=''">
-                and agent_number = #{condition.agentNumber}
+                and a.agent_number = #{condition.agentNumber}
             </if>
             <if test="condition.cjid!=null and condition.cjid!=''">
-                and cjid = #{condition.cjid}
+                and a.cjid = #{condition.cjid}
             </if>
             <if test="condition.status!=null and condition.status!=''">
-                and status = #{condition.status}
+                and a.status = #{condition.status}
             </if>
             <if test="condition.startTime !=null and condition.startTime !=''">
-                and convert(nvarchar(10),cjsj,120) &gt;= #{condition.startTime}
+                and convert(nvarchar(10),a.cjsj,120) &gt;= #{condition.startTime}
             </if>
             <if test="condition.endTime !=null and condition.endTime !=''">
-                and convert(nvarchar(10),cjsj,120) &lt;= #{condition.endTime}
+                and convert(nvarchar(10),a.cjsj,120) &lt;= #{condition.endTime}
             </if>
         </where>
     </select>

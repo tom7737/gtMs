@@ -89,6 +89,7 @@ public class LoginController extends BaseController {
     public AjaxResult loginPost(String username, String password, String verifyCode, HttpServletRequest request, Model model) {
         LOGGER.info("POST请求登录");
         AjaxResult result = new AjaxResult();
+        result.setSuccess(false);
         if (StringUtils.isBlank(verifyCode)) {
             result.setMessage("验证码不能为空");
             return result;
@@ -185,7 +186,7 @@ public class LoginController extends BaseController {
             int w = 130, h = 33;
             VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);
         } catch (Exception e) {
-            LOGGER.info(" 获取验证码异常 ",e);
+            LOGGER.info(" 获取验证码异常 ", e);
         }
 
     }

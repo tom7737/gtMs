@@ -85,22 +85,45 @@
                 toolbar: '#toolbar'
             });
         });
-
-        function addFun() {
+        /**
+         * 选择客户
+         */
+        function selectCustomerFun(successCallback) {
             parent.$.modalDialog({
                 title: '添加',
                 width: 500,
-                height: 300,
-                href: '${path }/user/addPage',
+                height: 500,
+                href: '${path }/customer/select',
                 buttons: [{
-                    text: '添加',
+                    text: '确定',
                     handler: function () {
-                        parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                        var f = parent.$.modalDialog.handler.find('#userAddForm');
-                        f.submit();
+                        var callback = parent.$.modalDialog.callback;
+                        callback();
+                        var ctmCode_temp = parent.$.modalDialog.ctmCodeTemp;
+                        if (ctmCode_temp != null && ctmCode_temp != "") {
+                            successCallback(ctmCode_temp);
+                        }
                     }
                 }]
             });
+        }
+
+        function AddSqs(path) {
+            console.log(path);
+            var tt = parent.$.modalDialog.index_tabs;
+            tt.tabs('add', {
+                title: "添加商标注册申请书",
+                content: '<iframe frameborder="0" src="' + path + '" style="border:0;width:100%;height:99.5%;"></iframe>',
+                closable: true,
+                iconCls: 'menu_icon_service'
+            });
+        }
+        function openAddFun(ctmCode) {
+            AddSqs('${path}/sqs/01/add?ctmCode=' + ctmCode);
+        }
+
+        function addFun() {
+            selectCustomerFun(openAddFun);
         }
 
         function deleteFun(id) {
@@ -119,7 +142,7 @@
                         if (result.success) {
                             parent.$.messager.alert('提示', result.message, 'info');
                             dataGrid.datagrid('reload');
-                        }else {
+                        } else {
                             parent.$.messager.alert('提示', result.message, 'info');
                         }
                         progressClose();
@@ -128,28 +151,6 @@
             });
         }
 
-        function editFun(id) {
-            if (id == undefined) {
-                var rows = dataGrid.datagrid('getSelections');
-                id = rows[0].id;
-            } else {
-                dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
-            }
-            parent.$.modalDialog({
-                title: '编辑',
-                width: 500,
-                height: 300,
-                href: '${path }/user/editPage?id=' + id,
-                buttons: [{
-                    text: '确定',
-                    handler: function () {
-                        parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                        var f = parent.$.modalDialog.handler.find('#userEditForm');
-                        f.submit();
-                    }
-                }]
-            });
-        }
 
         function searchFun() {
             dataGrid.datagrid('load', $.serializeObject($('#searchForm')));
@@ -190,10 +191,8 @@
     </ul>
 </div>--%>
 <div id="toolbar" style="display: none;">
-    <shiro:hasPermission name="/user/add">
-        <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton"
-           data-options="plain:true,iconCls:'icon-add'">添加</a>
-    </shiro:hasPermission>
+    <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton"
+       data-options="plain:true,iconCls:'icon-add'">添加</a>
 </div>
 </body>
 </html>

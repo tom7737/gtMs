@@ -56,12 +56,12 @@
                         var appguifei = map.get(value + "");
                         return appguifei == null ? "" : appguifei.appType;
                     }
-                }, {
+                }/*, {
                     width: '100',
                     title: '申请书编号',
                     field: 'agentNumber',
                     sortable: false
-                }, {
+                }*/, {
                     width: '50',
                     title: '总费用',
                     field: 'pice',
@@ -132,7 +132,46 @@
                 toolbar: '#toolbar'
             });
         }
+        /**
+         * 选择客户
+         */
+        function selectCustomerFun(successCallback) {
+            parent.$.modalDialog({
+                title: '添加',
+                width: 500,
+                height: 500,
+                href: '${path }/customer/select',
+                buttons: [{
+                    text: '确定',
+                    handler: function () {
+                        var callback = parent.$.modalDialog.callback;
+                        callback();
+                        var ctmCode_temp = parent.$.modalDialog.ctmCodeTemp;
+                        if (ctmCode_temp != null && ctmCode_temp != "") {
+                            successCallback(ctmCode_temp);
+                        }
+                    }
+                }]
+            });
+        }
 
+        function AddSqs(path) {
+            console.log(path);
+            var tt = parent.$.modalDialog.index_tabs;
+            tt.tabs('add', {
+                title: "添加申请",
+                content: '<iframe frameborder="0" src="' + path + '" style="border:0;width:100%;height:99.5%;"></iframe>',
+                closable: true,
+                iconCls: 'menu_icon_service'
+            });
+        }
+        function openAddFun(ctmCode) {
+            AddSqs('${path}/sqs/app/addPage?ctmCode=' + ctmCode);
+        }
+
+        function addFun() {
+            selectCustomerFun(openAddFun);
+        }
         function submission(id) {
             parent.$.messager.confirm('询问', '您确定此申请书已报送？', function (b) {
                 if (b) {
@@ -178,22 +217,6 @@
                 }
             });
         }
-        function addFun() {
-            parent.$.modalDialog({
-                title: '添加',
-                width: 500,
-                height: 300,
-                href: '${path }/user/addPage',
-                buttons: [{
-                    text: '添加',
-                    handler: function () {
-                        parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                        var f = parent.$.modalDialog.handler.find('#userAddForm');
-                        f.submit();
-                    }
-                }]
-            });
-        }
 
         function deleteFun(id) {
 
@@ -222,28 +245,6 @@
             });
         }
 
-        function editFun(id) {
-            if (id == undefined) {
-                var rows = dataGrid.datagrid('getSelections');
-                id = rows[0].id;
-            } else {
-                dataGrid.datagrid('unselectAll').datagrid('uncheckAll');
-            }
-            parent.$.modalDialog({
-                title: '编辑',
-                width: 500,
-                height: 300,
-                href: '${path }/user/editPage?id=' + id,
-                buttons: [{
-                    text: '确定',
-                    handler: function () {
-                        parent.$.modalDialog.openner_dataGrid = dataGrid;//因为添加成功之后，需要刷新这个dataGrid，所以先预定义好
-                        var f = parent.$.modalDialog.handler.find('#userEditForm');
-                        f.submit();
-                    }
-                }]
-            });
-        }
 
         function searchFun() {
             dataGrid.datagrid('load', $.serializeObject($('#searchForm')));
@@ -279,10 +280,8 @@
     <table id="dataGrid" data-options="fit:true,border:false"></table>
 </div>
 <div id="toolbar" style="display: none;">
-    <shiro:hasPermission name="/user/add">
-        <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton"
-           data-options="plain:true,iconCls:'icon-add'">添加</a>
-    </shiro:hasPermission>
+    <a onclick="addFun();" href="javascript:void(0);" class="easyui-linkbutton"
+       data-options="plain:true,iconCls:'icon-add'">添加</a>
 </div>
 </body>
 </html>

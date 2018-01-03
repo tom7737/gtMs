@@ -3,6 +3,8 @@ package com.gt.ms.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -99,5 +101,9 @@ public class JsonUtil {
     public static void main(String[] args) {
 
     }
+    private static GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss");
 
+    public static Gson getGson() {
+        return gsonBuilder.create();
+    }
 }

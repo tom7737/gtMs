@@ -24,4 +24,5 @@ public interface State {
 	 * 获取上传文件的路径
 	 */
 	String getUrl();
+	String getInfo();
 }

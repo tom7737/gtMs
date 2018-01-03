@@ -75,5 +75,8 @@ public class BaseState implements State {
 	public String getUrl() {
 		return infoMap.get("url")==null?null:infoMap.get("url").toString();
 	}
-
+	@Override
+	public String getInfo() {
+		return this.info;
+	}
 }

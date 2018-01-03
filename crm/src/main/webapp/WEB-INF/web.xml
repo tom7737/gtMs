@@ -24,8 +24,44 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
-
+    <!--encFile 监听  -->
+    <listener>
+        <listener-class>com.gt.ms.core.listener.EncFileListener</listener-class>
+    </listener>
+    <!-- encFile Filter -->
+    <filter>
+        <filter-name>encFileFilter</filter-name>
+        <filter-class>com.gt.ms.core.filter.EncFileFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>encFileFilter</filter-name>
+        <url-pattern>/encfile/*</url-pattern>
+    </filter-mapping>
+    <!--@分隔  '@"@\@#@:@%@>  ‘@“@＼@＃@：@％@＞ -->
+    <filter>
+        <filter-name>XssFilter</filter-name>
+        <filter-class>com.gt.ms.common.web.XssFilter</filter-class>
+        <init-param>
+            <param-name>excludeUrls</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>SplitChar</param-name>
+            <param-value>@</param-value>
+        </init-param>
+        <init-param>
+            <param-name>FilterChar</param-name>
+            <param-value>'@"@\@#@%@></param-value>
+        </init-param>
+        <init-param>
+            <param-name>ReplaceChar</param-name>
+            <param-value>‘@“@＼@＃@％@＞</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>XssFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <!-- Character Filter -->
     <filter>
         <filter-name>encodingFilter</filter-name>

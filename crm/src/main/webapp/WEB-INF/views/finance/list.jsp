@@ -144,8 +144,8 @@
             }
             parent.$.modalDialog({
                 title: '查看',
-                width: 500,
-                height: 400,
+                width: 600,
+                height: 500,
                 href: '${path }/finance/info?guid=' + id
             });
         }
@@ -158,8 +158,8 @@
             }
             parent.$.modalDialog({
                 title: '编辑',
-                width: 500,
-                height: 400,
+                width: 600,
+                height: 500,
                 href: '${path }/finance/editPage?guid=' + id,
                 buttons: [{
                     text: '确定',

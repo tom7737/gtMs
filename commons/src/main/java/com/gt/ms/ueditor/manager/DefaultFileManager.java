@@ -6,7 +6,10 @@ import com.gt.ms.ueditor.define.BaseState;
 import com.gt.ms.ueditor.define.MultiState;
 import com.gt.ms.ueditor.PathFormat;
 import com.gt.ms.ueditor.define.State;
+import com.gt.ms.ueditor.util.EncAndDecConstants;
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Arrays;
@@ -15,182 +18,193 @@ import java.util.Collections;
 import java.util.List;
 
 public class DefaultFileManager implements IUeditorFileManager {
-	public static final int BUFFER_SIZE = 1024 * 8;
-	
-	private State getState(String rootPath, File[] files) {
-		MultiState state = new MultiState(true);
+    private static final Logger logger = LoggerFactory.getLogger(DefaultFileManager.class);
+    public static final int BUFFER_SIZE = 1024 * 8;
 
-		for (File file : files) {
-			if (file == null) {
-				break;
-			}
-			BaseState fileState = new BaseState(true);
-			String path = file.getAbsolutePath()
-					.replace(rootPath, "/")
-					.replace("\\", "/")
-					.replace("//", "/");
+    private State getState(String rootPath, File[] files) {
+        MultiState state = new MultiState(true);
 
-			fileState.putInfo("url", PathFormat.format(path));
-			state.addState(fileState);
-		}
+        for (File file : files) {
+            if (file == null) {
+                break;
+            }
+            BaseState fileState = new BaseState(true);
+            String path = file.getAbsolutePath()
+                    .replace(rootPath, "/")
+                    .replace("\\", "/")
+                    .replace("//", "/");
 
-		return state;
-	}
-	
-	@Override
-	public State list(ActionConfig conf, int start) {
-		String rootPath = conf.getRootPath();
-		String dirPath = rootPath + conf.getDir();
-		List<String> allowFiles = ManagerUtils.getAllowFiles(conf.getAllowFiles());
-		int count = conf.getCount();
-		
-		File dir = new File(dirPath);
+            fileState.putInfo("url", PathFormat.format(path));
+            state.addState(fileState);
+        }
 
-		if (!dir.exists()) {
-			return new BaseState(false, AppInfo.NOT_EXIST);
-		}
+        return state;
+    }
 
-		if (!dir.isDirectory()) {
-			return new BaseState(false, AppInfo.NOT_DIRECTORY);
-		}
-		
-		Collection<File> list = FileUtils.listFiles(dir, allowFiles.toArray(new String[0]), true);
-		
-		Collections.reverse((List<File>) list);
+    @Override
+    public State list(ActionConfig conf, int start) {
+        String rootPath = conf.getRootPath();
+        String dirPath = rootPath + conf.getDir();
+        List<String> allowFiles = ManagerUtils.getAllowFiles(conf.getAllowFiles());
+        int count = conf.getCount();
 
-		State state = null;
-		if (start < 0 || start > list.size()) {
-			state = new MultiState(true);
-		} else {
-			File[] fileList = Arrays.copyOfRange(list.toArray(new File[0]), start, start + count);
-			state = getState(rootPath, fileList);
-		}
+        File dir = new File(dirPath);
 
-		state.putInfo("start", start);
-		state.putInfo("total", list.size());
+        if (!dir.exists()) {
+            return new BaseState(false, AppInfo.NOT_EXIST);
+        }
 
-		return state;
-	}
+        if (!dir.isDirectory()) {
+            return new BaseState(false, AppInfo.NOT_DIRECTORY);
+        }
 
-	@Override
-	public State saveFile(byte[] data, String rootPath, String savePath) {
-		File file = new File(rootPath + savePath);
+        Collection<File> list = FileUtils.listFiles(dir, allowFiles.toArray(new String[0]), true);
 
-		State state = valid(file);
-		if (!state.isSuccess()) {
-			return state;
-		}
+        Collections.reverse((List<File>) list);
 
-		try {
-			FileUtils.writeByteArrayToFile(file, data);
-		} catch (IOException ioe) {
-			return new BaseState(false, AppInfo.IO_ERROR);
-		}
+        State state = null;
+        if (start < 0 || start > list.size()) {
+            state = new MultiState(true);
+        } else {
+            File[] fileList = Arrays.copyOfRange(list.toArray(new File[0]), start, start + count);
+            state = getState(rootPath, fileList);
+        }
 
-		state = new BaseState(true, file.getAbsolutePath());
-		state.putInfo("size", data.length);
-		state.putInfo("title", file.getName());
-		return state;
-	}
+        state.putInfo("start", start);
+        state.putInfo("total", list.size());
 
-	@Override
-	public State saveFile(InputStream is, String rootPath, String savePath, long maxSize) {
-		byte[] dataBuf = new byte[BUFFER_SIZE];
-		BufferedInputStream bis = new BufferedInputStream(is, BUFFER_SIZE);
+        return state;
+    }
 
-		try {
-			File tmpFile = getTmpFile();
-			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(tmpFile), BUFFER_SIZE);
+    @Override
+    public State saveFile(byte[] data, String rootPath, String savePath) {
+        File file = new File(rootPath + savePath);
 
-			int count = 0;
-			while ((count = bis.read(dataBuf)) != -1) {
-				bos.write(dataBuf, 0, count);
-			}
-			bos.flush();
-			bos.close();
+        State state = valid(file);
+        if (!state.isSuccess()) {
+            return state;
+        }
 
-			if (tmpFile.length() > maxSize) {
-				tmpFile.delete();
-				return new BaseState(false, AppInfo.MAX_SIZE);
-			}
+        try {
+            FileUtils.writeByteArrayToFile(file, data);
+        } catch (IOException ioe) {
+            return new BaseState(false, AppInfo.IO_ERROR);
+        }
 
-			State state = saveTmpFile(tmpFile, rootPath + savePath);
+        state = new BaseState(true, file.getAbsolutePath());
+        state.putInfo("size", data.length);
+        state.putInfo("title", file.getName());
+        return state;
+    }
 
-			if (!state.isSuccess()) {
-				tmpFile.delete();
-			}
-			return state;
-		} catch (IOException e) {
-			// ignore
-		}
-		return new BaseState(false, AppInfo.IO_ERROR);
-	}
+    @Override
+    public State saveFile(InputStream is, String rootPath, String savePath, long maxSize) {
+        byte[] dataBuf = new byte[BUFFER_SIZE];
+        BufferedInputStream bis = new BufferedInputStream(is, BUFFER_SIZE);
 
-	@Override
-	public State saveFile(InputStream is, String rootPath, String savePath) {
-		byte[] dataBuf = new byte[BUFFER_SIZE];
-		BufferedInputStream bis = new BufferedInputStream(is, BUFFER_SIZE);
+        try {
+            File tmpFile = getTmpFile();
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(tmpFile), BUFFER_SIZE);
 
-		State state = null;
-		try {
-			File tmpFile = getTmpFile();
-			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(tmpFile), BUFFER_SIZE);
+            int count = 0;
+            // -------- 判断是否加密 twt
+            Boolean aBoolean = EncAndDecConstants.encrypt.get();
+            if (aBoolean == null || !aBoolean) {//不加密
+                while ((count = bis.read(dataBuf)) != -1) {
+                    bos.write(dataBuf, 0, count);
+                }
+            } else {//加密
+                while ((count = bis.read()) != -1) {
+                    bos.write(count ^ EncAndDecConstants.numOfEncAndDec);
+                }
+            }
+            // -------- 判断是否加密 twt
+            bos.flush();
+            bos.close();
 
-			int count = 0;
-			while ((count = bis.read(dataBuf)) != -1) {
-				bos.write(dataBuf, 0, count);
-			}
-			bos.flush();
-			bos.close();
+            if (tmpFile.length() > maxSize) {
+                tmpFile.delete();
+                return new BaseState(false, AppInfo.MAX_SIZE);
+            }
 
-			state = saveTmpFile(tmpFile, rootPath + savePath);
+            State state = saveTmpFile(tmpFile, rootPath + savePath);
 
-			if (!state.isSuccess()) {
-				tmpFile.delete();
-			}
-			return state;
-		} catch (IOException e) {
-			// ignore
-		}
-		return new BaseState(false, AppInfo.IO_ERROR);
-	}
+            if (!state.isSuccess()) {
+                tmpFile.delete();
+            }
+            return state;
+        } catch (IOException e) {
+            logger.error(" method:saveFile;methodParameters:" + "is = [" + is + "], rootPath = [" + rootPath + "], savePath = [" + savePath + "], maxSize = [" + maxSize + "]" + ";", e);
+            // ignore
+        }
+        return new BaseState(false, AppInfo.IO_ERROR);
+    }
 
-	private static File getTmpFile() throws IOException {
-		File tmpDir = FileUtils.getTempDirectory();
-		if (!tmpDir.exists()) {
-			tmpDir.mkdirs();
-		}
-		String tmpFileName = (Math.random() * 10000 + "").replace(".", "");
-		return new File(tmpDir, tmpFileName);
-	}
+    @Override
+    public State saveFile(InputStream is, String rootPath, String savePath) {
+        byte[] dataBuf = new byte[BUFFER_SIZE];
+        BufferedInputStream bis = new BufferedInputStream(is, BUFFER_SIZE);
 
-	private static State saveTmpFile(File tmpFile, String path) {
-		File targetFile = new File(path);
+        State state = null;
+        try {
+            File tmpFile = getTmpFile();
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(tmpFile), BUFFER_SIZE);
 
-		if (targetFile.canWrite()) {
-			return new BaseState(false, AppInfo.PERMISSION_DENIED);
-		}
-		try {
-			FileUtils.moveFile(tmpFile, targetFile);
-		} catch (IOException e) {
-			return new BaseState(false, AppInfo.IO_ERROR);
-		}
+            int count = 0;
+            while ((count = bis.read(dataBuf)) != -1) {
+                bos.write(dataBuf, 0, count);
+            }
+            bos.flush();
+            bos.close();
 
-		State state = new BaseState(true);
-		state.putInfo("size", targetFile.length());
-		state.putInfo("title", targetFile.getName());
-		return state;
-	}
+            state = saveTmpFile(tmpFile, rootPath + savePath);
 
-	private static State valid(File file) {
-		File parentPath = file.getParentFile();
-		if ((!parentPath.exists()) && (!parentPath.mkdirs())) {
-			return new BaseState(false, AppInfo.FAILED_CREATE_FILE);
-		}
-		if (!parentPath.canWrite()) {
-			return new BaseState(false, AppInfo.PERMISSION_DENIED);
-		}
-		return new BaseState(true);
-	}
+            if (!state.isSuccess()) {
+                tmpFile.delete();
+            }
+            return state;
+        } catch (IOException e) {
+            // ignore
+        }
+        return new BaseState(false, AppInfo.IO_ERROR);
+    }
+
+    private static File getTmpFile() throws IOException {
+        File tmpDir = FileUtils.getTempDirectory();
+        if (!tmpDir.exists()) {
+            tmpDir.mkdirs();
+        }
+        String tmpFileName = (Math.random() * 10000 + "").replace(".", "");
+        return new File(tmpDir, tmpFileName);
+    }
+
+    private static State saveTmpFile(File tmpFile, String path) {
+        File targetFile = new File(path);
+
+        if (targetFile.canWrite()) {
+            return new BaseState(false, AppInfo.PERMISSION_DENIED);
+        }
+        try {
+            FileUtils.moveFile(tmpFile, targetFile);
+        } catch (IOException e) {
+            return new BaseState(false, AppInfo.IO_ERROR);
+        }
+
+        State state = new BaseState(true);
+        state.putInfo("size", targetFile.length());
+        state.putInfo("title", targetFile.getName());
+        return state;
+    }
+
+    private static State valid(File file) {
+        File parentPath = file.getParentFile();
+        if ((!parentPath.exists()) && (!parentPath.mkdirs())) {
+            return new BaseState(false, AppInfo.FAILED_CREATE_FILE);
+        }
+        if (!parentPath.canWrite()) {
+            return new BaseState(false, AppInfo.PERMISSION_DENIED);
+        }
+        return new BaseState(true);
+    }
 
 }

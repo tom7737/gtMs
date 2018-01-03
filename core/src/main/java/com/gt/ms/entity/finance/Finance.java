@@ -65,6 +65,7 @@ public class Finance extends BaseEntity {
     private Timestamp cjsj;//创建时间
     private String cjid;//创建人
     private String depositAccount;//收款帐号
+    private String payProvePic;//收款证明照片
     private Application application;
 
     // Constructors
@@ -233,5 +234,13 @@ public class Finance extends BaseEntity {
 
     public void setDepositAccount(String depositAccount) {
         this.depositAccount = depositAccount;
+    }
+
+    public String getPayProvePic() {
+        return payProvePic;
+    }
+
+    public void setPayProvePic(String payProvePic) {
+        this.payProvePic = payProvePic;
     }
 }

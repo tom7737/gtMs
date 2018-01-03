@@ -41,6 +41,15 @@
                 </select></td>
             </tr>
             <tr>
+                <td>收款凭证</td>
+                <td>
+                </td>
+                <td colspan="2">
+                    <img src="<c:if test="${finance.payProvePic!=null}">${path}${finance.payProvePic}</c:if>" id="img_pic"
+                         style="width: 270px;height:175px;border: 1px solid;">
+                </td>
+            </tr>
+            <tr>
                 <td>审核备注</td>
                 <td colspan="3">
                     <textarea name="accountmemo"  data-options="required:true" style="width: 300px;height:25px;"

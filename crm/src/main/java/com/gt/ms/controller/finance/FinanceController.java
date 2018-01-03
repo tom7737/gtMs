@@ -163,6 +163,7 @@ public class FinanceController extends BaseController {
                 update.setAccountdate(DateUtils.getCurrentFormatDate(DateUtils.formatDefaultTimestamp));
                 update.setAccountman(op.getOpName());
                 update.setDepositAccount(finance.getDepositAccount());
+                update.setPayProvePic(finance.getPayProvePic());
                 if (Finance.ACCOUNTSTATE_PASS.equals(finance.getAccountstate())) {
                     update.setReceivable(Finance.RECEIVABLE_YES);
                 } else if (Finance.ACCOUNTSTATE_NOT_PASS.equals(finance.getAccountstate())) {

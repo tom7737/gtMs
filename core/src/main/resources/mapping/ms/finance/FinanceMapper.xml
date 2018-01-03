@@ -18,6 +18,7 @@
         <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj"/>
         <result column="cjid" jdbcType="NVARCHAR" property="cjid"/>
         <result column="depositAccount" jdbcType="NVARCHAR" property="depositAccount"/>
+        <result column="payProvePic" jdbcType="NVARCHAR" property="payProvePic"/>
         <association property="application" resultMap="ApplicationResultMap"/>
     </resultMap>
     <resultMap id="ApplicationResultMap" type="com.gt.ms.entity.sqs.Application">
@@ -48,7 +49,7 @@
     </resultMap>
     <sql id="Finance_List">
     guid, app_guid,accountman,accountstate,accountmemo,accountdate,invoice,receiptcode,
-    invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid,depositAccount
+    invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid,depositAccount,payProvePic
   </sql>
     <select id="getPiceByCjsjGourpByOp" parameterType="java.util.Map" resultMap="OpNewFinanceVoResultMap">
         SELECT
@@ -163,11 +164,11 @@
 
     <insert id="save" parameterType="com.gt.ms.entity.finance.Finance">
         insert into finance (app_guid,accountman,accountstate,accountmemo,accountdate,invoice,receiptcode,
-    invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid,depositAccount)
+    invoicedate,invoiceman,receivable,fpqx,kddh,cjsj,cjid,depositAccount,payProvePic)
         values (#{appGuid}, #{accountman}, #{accountstate},
         #{accountmemo}, #{accountdate}, #{invoice},
         #{receiptcode}, #{invoicedate}, #{invoiceman},
-        #{receivable},#{fpqx},#{kddh},#{cjsj},#{cjid},#{depositAccount})
+        #{receivable},#{fpqx},#{kddh},#{cjsj},#{cjid},#{depositAccount},#{payProvePic})
     </insert>
     <update id="update" parameterType="com.gt.ms.entity.finance.Finance">
         update finance
@@ -208,6 +209,9 @@
             </if>
             <if test="depositAccount != null">
                 depositAccount = #{depositAccount},
+            </if>
+            <if test="payProvePic != null">
+                payProvePic = #{payProvePic},
             </if>
         </set>
         where guid = #{guid}
